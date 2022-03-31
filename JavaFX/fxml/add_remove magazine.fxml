@@ -60,7 +60,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="297.0" layoutY="256.0" mnemonicParsing="false" onAction="#addBookButtonPressed" text="Add Book" />
+      <Button layoutX="297.0" layoutY="256.0" mnemonicParsing="false" onAction="#addMagazineButtonPressed" text="Add Magazine" />
       <Label fx:id="errorLabel" layoutX="149.0" layoutY="304.0" prefHeight="18.0" prefWidth="374.0" text="Eroor message / Information message" textFill="RED">
          <font>
             <Font size="14.0" />
