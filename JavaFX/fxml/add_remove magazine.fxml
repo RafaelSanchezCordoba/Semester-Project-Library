@@ -24,7 +24,7 @@
       <Button layoutX="1062.0" layoutY="62.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="🔍" />
       <ListView fx:id="bookListView" layoutX="606.0" layoutY="96.0" prefHeight="239.0" prefWidth="487.0" />
       <Button layoutX="461.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeBookButtonPressed" text="Remove" />
-      <Label layoutX="40.0" layoutY="139.0" text="Tittle: ">
+      <Label layoutX="40.0" layoutY="139.0" text="Title: ">
          <font>
             <Font size="14.0" />
          </font>
@@ -61,7 +61,7 @@
          </font>
       </TextField>
       <Button layoutX="297.0" layoutY="256.0" mnemonicParsing="false" onAction="#addMagazineButtonPressed" text="Add Magazine" />
-      <Label fx:id="errorLabel" layoutX="149.0" layoutY="304.0" prefHeight="18.0" prefWidth="374.0" text="Eroor message / Information message" textFill="RED">
+      <Label fx:id="errorLabel" layoutX="149.0" layoutY="304.0" prefHeight="18.0" prefWidth="374.0" text="Error message / Information message" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>
