@@ -14,11 +14,11 @@ public class ViewHandler
     this.currentScene = new Scene(new Region());
   }
 
-  //cambiar el openView en start!!!!
+
 
   public void start(Stage primaryStage) {
     this.primaryStage = primaryStage;
-    openView("!!!");
+    openView("home");
   }
 
 
@@ -33,6 +33,9 @@ public class ViewHandler
       case "addRemoveMagazine":
         root = factory.loadAddRemoveMagazineView();
         break;
+    //  case "home":
+    //    root = factory.loadHomeView();
+    //    break;
       default:
         throw new IllegalArgumentException("Unknown view: " + id);
     }
