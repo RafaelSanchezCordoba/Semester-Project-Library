@@ -1,29 +1,29 @@
+package view;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import viewModel.AddRemoveMagazineViewModel;
 
-public class AddRemoveBookViewController
+public class AddRemoveMagazineViewController
 {
-
   private ViewHandler viewHandler;
   private Region root;
-  private AddRemoveBookViewModel viewModel;
-  @FXML private TextField tittleTextField;
+  private AddRemoveMagazineViewModel viewModel;
+  @FXML private TextField titleTextField;
   @FXML private TextField publisherTextField;
-  @FXML private TextField authorTextField;
-  @FXML private TextField isbnTextField;
+  @FXML private TextField volumeTextField;
+  @FXML private TextField dayTextField;
   @FXML private TextField yearTextField;
+  @FXML private TextField monthTextField;
   @FXML private TextField genreTextField;
-  @FXML private TextField editionTextField;
   @FXML private TextField searchTextField;
-  @FXML private ListView bookListView;
+  @FXML private ListView magazineListView;
   @FXML private Label errorLabel;
 
-
-
-  public void init(ViewHandler viewHandler, AddRemoveBookViewModel viewModel, Region root)
+  public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root)
   {
     this.viewHandler = viewHandler;
     this.viewModel=viewModel;
@@ -44,15 +44,15 @@ public class AddRemoveBookViewController
   }
 
   @FXML
-  public void addBookButtonPressed()
+  public void addMagazineButtonPressed()
   {
-    viewModel.addBook();
+    viewModel.addMagazine();
   }
 
   @FXML
   public void removeBookButtonPressed()
   {
-    viewModel.removeBook();
+    viewModel.removeMagazine();
   }
 
   @FXML
@@ -72,4 +72,10 @@ public class AddRemoveBookViewController
   {
 
   }
+
+
+
+
+
+
 }

@@ -8,29 +8,29 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRemoveMagazineViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="1107.0" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="HOME" />
       <Button layoutX="112.0" layoutY="14.0" mnemonicParsing="false" onAction="#bookMenuButtonPressed" text="BOOKS" />
       <Button layoutX="227.0" layoutY="14.0" mnemonicParsing="false" onAction="#magazinesMenuButtonPressed" text="MAGAZINES" />
       <Button layoutX="1002.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
-      <Label layoutX="10.0" layoutY="65.0" text="BOOKS">
+      <Label layoutX="10.0" layoutY="65.0" text="MAGAZINES">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
       <TextField fx:id="searchTextField" layoutX="606.0" layoutY="62.0" prefHeight="25.0" prefWidth="444.0" />
       <Button layoutX="1062.0" layoutY="62.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="🔍" />
-      <ListView fx:id="bookListView" layoutX="606.0" layoutY="96.0" prefHeight="274.0" prefWidth="487.0" />
-      <Button layoutX="128.0" layoutY="338.0" mnemonicParsing="false" onAction="#removeBookButtonPressed" text="Remove" />
-      <Label layoutX="45.0" layoutY="139.0" text="Title: ">
+      <ListView fx:id="magazineListView" layoutX="606.0" layoutY="96.0" prefHeight="239.0" prefWidth="487.0" />
+      <Button layoutX="461.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeBookButtonPressed" text="Remove" />
+      <Label layoutX="40.0" layoutY="139.0" text="Title: ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="22.0" layoutY="180.0" text="Publisher : " />
-      <TextField fx:id="tittleTextField" layoutX="87.0" layoutY="134.0" prefHeight="28.0" prefWidth="436.0">
+      <Label layoutX="15.0" layoutY="180.0" text="Publisher : " />
+      <TextField fx:id="titleTextField" layoutX="87.0" layoutY="134.0" prefHeight="28.0" prefWidth="436.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -40,58 +40,58 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="43.0" layoutY="262.0" text="ISBN: ">
+      <Label layoutX="23.0" layoutY="219.0" text="Volume: ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="220.0" text="Author: ">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="isbnTextField" layoutX="87.0" layoutY="257.0">
+      <TextField fx:id="volumeTextField" layoutX="87.0" layoutY="214.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="authorTextField" layoutX="87.0" layoutY="215.0" prefHeight="28.0" prefWidth="436.0">
+      <Label layoutX="296.0" layoutY="219.0" text="Genre: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="genreTextField" layoutX="352.0" layoutY="214.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="281.0" layoutY="262.0" text="Genre: ">
+      <Button layoutX="297.0" layoutY="256.0" mnemonicParsing="false" onAction="#addMagazineButtonPressed" text="Add Magazine" />
+      <Label fx:id="errorLabel" layoutX="149.0" layoutY="304.0" prefHeight="18.0" prefWidth="374.0" text="Error message / Information message" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="genreTextField" layoutX="330.0" layoutY="257.0" prefHeight="28.0" prefWidth="193.0">
+      <Label layoutX="44.0" layoutY="259.0" text="Day: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="dayTextField" layoutX="87.0" layoutY="254.0" prefHeight="28.0" prefWidth="51.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="45.0" layoutY="303.0" text="Year: ">
+      <Label layoutX="157.0" layoutY="259.0" text="Month: ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="yearTextField" layoutX="87.0" layoutY="298.0">
+      <TextField fx:id="monthTextField" layoutX="209.0" layoutY="254.0" prefHeight="28.0" prefWidth="51.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="33.0" layoutY="338.0" mnemonicParsing="false" onAction="#addBookButtonPressed" text="Add Book" />
-      <Label fx:id="errorLabel" layoutX="206.0" layoutY="342.0" prefHeight="18.0" prefWidth="317.0" text="Eroor message / Information message" textFill="RED">
+      <Label layoutX="42.0" layoutY="304.0" text="Year: ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="281.0" layoutY="303.0" text="Edition:  ">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="editionTextField" layoutX="330.0" layoutY="298.0" prefHeight="27.0" prefWidth="193.0">
+      <TextField fx:id="yearTextField" layoutX="87.0" layoutY="299.0" prefHeight="28.0" prefWidth="51.0">
          <font>
             <Font size="14.0" />
          </font>

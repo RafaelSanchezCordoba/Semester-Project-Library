@@ -1,3 +1,5 @@
+package view;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Region;
 
@@ -23,7 +25,7 @@ public class ViewFactory
   public Region loadAddRemoveBookView()
   {if (bookController == null) {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("add_remove book.fxml"));
+    loader.setLocation(getClass().getResource("view/add_remove book.fxml"));
     try {
       Region root = loader.load();
       bookController = loader.getController();
@@ -39,7 +41,7 @@ public class ViewFactory
   public Region loadAddRemoveMagazineView()
   {if (magazineController == null) {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("add_remove magazine.fxml"));
+    loader.setLocation(getClass().getResource("view/add_remove magazine.fxml"));
     try {
       Region root = loader.load();
       magazineController = loader.getController();
