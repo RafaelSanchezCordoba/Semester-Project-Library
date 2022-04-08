@@ -3,16 +3,21 @@ package view;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import viewModel.ViewModelFactory;
 
 public class ViewHandler
 {
+  private static final String HOME = "home";
+  private static final String BOOK = "addRemoveBook";
+  private static final String MAGAZINE = "addRemoveMagazine";
+
   private Stage primaryStage;
-  private Scene currentScene;
-  private ViewFactory factory;
+  private final Scene currentScene;
+  private final ViewFactory viewFactory;
 
   public ViewHandler(ViewModelFactory viewModelFactory)
   {
-    this.factory=new ViewFactory(this,viewModelFactory);
+    this.viewFactory=new ViewFactory(this,viewModelFactory);
     this.currentScene = new Scene(new Region());
   }
 
@@ -20,7 +25,7 @@ public class ViewHandler
 
   public void start(Stage primaryStage) {
     this.primaryStage = primaryStage;
-    openView("home");
+    openView(BOOK);
   }
 
 
@@ -29,11 +34,11 @@ public class ViewHandler
     Region root;
     switch (id)
     {
-      case "addRemoveBook":
-        root = factory.loadAddRemoveBookView();
+      case BOOK:
+        root = viewFactory.loadAddRemoveBookView();
         break;
-      case "addRemoveMagazine":
-        root = factory.loadAddRemoveMagazineView();
+      case MAGAZINE:
+        root = viewFactory.loadAddRemoveMagazineView();
         break;
     //  case "home":
     //    root = factory.loadHomeView();

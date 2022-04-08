@@ -74,14 +74,20 @@ public class AddRemoveBookViewController
   }
 
   @FXML
-  public void bookMenuButtonPressed()
-  {
+  public void bookMenuButtonPressed() {
 
   }
 
   @FXML
-  public void magazinesMenuButtonPressed()
-  {
+  public void magazinesMenuButtonPressed() {
 
+  }
+
+  public void reset() {
+
+  }
+
+  public Region getRoot() {
+    return root;
   }
 }

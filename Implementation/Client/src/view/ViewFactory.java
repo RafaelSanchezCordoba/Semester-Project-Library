@@ -2,6 +2,7 @@ package view;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Region;
+import viewModel.ViewModelFactory;
 
 import java.io.IOError;
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class ViewFactory
   private AddRemoveMagazineViewController magazineController;
 
 
-  public ViewFactory(ViewHandler viewHandler,ViewModelFactory viewModelFactory)
+  public ViewFactory(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
   {
     this.viewHandler=viewHandler;
     this.viewModelFactory=viewModelFactory;
@@ -29,7 +30,7 @@ public class ViewFactory
     try {
       Region root = loader.load();
       bookController = loader.getController();
-      bookController.init(viewHandler, viewModelFactory.getAddRemoveBookViewModel(), root);
+      bookController.init(viewHandler, viewModelFactory.getBookViewModel(), root);
     } catch (IOException e) {
       throw new IOError(e);
     }
@@ -45,7 +46,7 @@ public class ViewFactory
     try {
       Region root = loader.load();
       magazineController = loader.getController();
-      magazineController.init(viewHandler, viewModelFactory.getAddRemoveMagazineViewModel(), root);
+      magazineController.init(viewHandler, viewModelFactory.getMagazineViewModel(), root);
     } catch (IOException e) {
       throw new IOError(e);
     }
