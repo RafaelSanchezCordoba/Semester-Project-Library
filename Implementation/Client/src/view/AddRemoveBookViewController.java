@@ -1,8 +1,11 @@
+package view;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import viewModel.AddRemoveBookViewModel;
 
 public class AddRemoveBookViewController
 {
@@ -10,7 +13,7 @@ public class AddRemoveBookViewController
   private ViewHandler viewHandler;
   private Region root;
   private AddRemoveBookViewModel viewModel;
-  @FXML private TextField tittleTextField;
+  @FXML private TextField titleTextField;
   @FXML private TextField publisherTextField;
   @FXML private TextField authorTextField;
   @FXML private TextField isbnTextField;
@@ -28,7 +31,16 @@ public class AddRemoveBookViewController
     this.viewHandler = viewHandler;
     this.viewModel=viewModel;
     this.root = root;
-    //include all the bind from viewModel
+
+    viewModel.bindTitleTextField(titleTextField.textProperty());
+    viewModel.bindAuthorTextField(authorTextField.textProperty());
+    viewModel.bindEditionTextField(editionTextField.textProperty());
+    viewModel.bindErrorLabel(errorLabel.textProperty());
+    viewModel.bindGenreTextField(genreTextField.textProperty());
+    viewModel.bindISBNTextField(isbnTextField.textProperty());
+    viewModel.bindPublisherTextField(publisherTextField.textProperty());
+    viewModel.bindSearchTextField(searchTextField.textProperty());
+    viewModel.bindYearTextField(yearTextField.textProperty());
   }
 
   @FXML
@@ -62,14 +74,20 @@ public class AddRemoveBookViewController
   }
 
   @FXML
-  public void bookMenuButtonPressed()
-  {
+  public void bookMenuButtonPressed() {
 
   }
 
   @FXML
-  public void magazinesMenuButtonPressed()
-  {
+  public void magazinesMenuButtonPressed() {
 
+  }
+
+  public void reset() {
+
+  }
+
+  public Region getRoot() {
+    return root;
   }
 }

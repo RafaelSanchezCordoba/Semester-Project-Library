@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRemoveBookViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="1107.0" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="HOME" />
@@ -30,7 +30,7 @@
          </font>
       </Label>
       <Label layoutX="22.0" layoutY="180.0" text="Publisher : " />
-      <TextField fx:id="tittleTextField" layoutX="87.0" layoutY="134.0" prefHeight="28.0" prefWidth="436.0">
+      <TextField fx:id="titleTextField" layoutX="87.0" layoutY="134.0" prefHeight="28.0" prefWidth="436.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -81,7 +81,7 @@
          </font>
       </TextField>
       <Button layoutX="33.0" layoutY="338.0" mnemonicParsing="false" onAction="#addBookButtonPressed" text="Add Book" />
-      <Label fx:id="errorLabel" layoutX="206.0" layoutY="342.0" prefHeight="18.0" prefWidth="317.0" text="Error message / Information message" textFill="RED">
+      <Label fx:id="errorLabel" layoutX="206.0" layoutY="342.0" prefHeight="18.0" prefWidth="317.0" text="Eroor message / Information message" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>

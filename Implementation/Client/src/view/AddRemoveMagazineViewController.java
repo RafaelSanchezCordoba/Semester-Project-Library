@@ -1,15 +1,18 @@
+package view;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import viewModel.AddRemoveMagazineViewModel;
 
 public class AddRemoveMagazineViewController
 {
   private ViewHandler viewHandler;
   private Region root;
   private AddRemoveMagazineViewModel viewModel;
-  @FXML private TextField tittleTextField;
+  @FXML private TextField titleTextField;
   @FXML private TextField publisherTextField;
   @FXML private TextField volumeTextField;
   @FXML private TextField dayTextField;
@@ -17,7 +20,7 @@ public class AddRemoveMagazineViewController
   @FXML private TextField monthTextField;
   @FXML private TextField genreTextField;
   @FXML private TextField searchTextField;
-  @FXML private ListView bookListView;
+  @FXML private ListView magazineListView;
   @FXML private Label errorLabel;
 
   public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root)
@@ -59,18 +62,22 @@ public class AddRemoveMagazineViewController
   }
 
   @FXML
-  public void bookMenuButtonPressed()
-  {
+  public void bookMenuButtonPressed() {
 
   }
 
   @FXML
-  public void magazinesMenuButtonPressed()
-  {
+  public void magazinesMenuButtonPressed() {
 
   }
 
+  public void reset() {
 
+  }
+
+  public Region getRoot() {
+    return root;
+  }
 
 
 

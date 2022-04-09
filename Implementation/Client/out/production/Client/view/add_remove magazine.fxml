@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRemoveMagazineViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="1107.0" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="HOME" />
@@ -22,7 +22,7 @@
       </Label>
       <TextField fx:id="searchTextField" layoutX="606.0" layoutY="62.0" prefHeight="25.0" prefWidth="444.0" />
       <Button layoutX="1062.0" layoutY="62.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="🔍" />
-      <ListView fx:id="bookListView" layoutX="606.0" layoutY="96.0" prefHeight="239.0" prefWidth="487.0" />
+      <ListView fx:id="magazineListView" layoutX="606.0" layoutY="96.0" prefHeight="239.0" prefWidth="487.0" />
       <Button layoutX="461.0" layoutY="256.0" mnemonicParsing="false" onAction="#removeBookButtonPressed" text="Remove" />
       <Label layoutX="40.0" layoutY="139.0" text="Title: ">
          <font>
@@ -30,7 +30,7 @@
          </font>
       </Label>
       <Label layoutX="15.0" layoutY="180.0" text="Publisher : " />
-      <TextField fx:id="tittleTextField" layoutX="87.0" layoutY="134.0" prefHeight="28.0" prefWidth="436.0">
+      <TextField fx:id="titleTextField" layoutX="87.0" layoutY="134.0" prefHeight="28.0" prefWidth="436.0">
          <font>
             <Font size="14.0" />
          </font>
