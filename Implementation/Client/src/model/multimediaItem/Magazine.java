@@ -7,4 +7,6 @@ public class Magazine extends MultimediaItem{
         super(id, title, publisher);
         this.volume = volume;
     }
+
+    //slkdfjlaskjdflasdfas
 }
