@@ -1,7 +1,5 @@
 package client;
 
-import dk.via.remote.observer.RemotePropertyChangeEvent;
-import dk.via.remote.observer.RemotePropertyChangeListener;
 import model.Magazine;
 import server.RemoteMagazine;
 
@@ -15,31 +13,32 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class MagazineClientImplementation extends UnicastRemoteObject implements MagazineClient{
 
-  private RemoteMagazine magazine;
-  private PropertyChangeSupport  support;
+  private final RemoteMagazine remoteMagazine;
+
   public MagazineClientImplementation(String  host, int port) throws IOException,
           NotBoundException
   {
-    
+
     Registry registry = LocateRegistry.getRegistry(host, port);
-    magazine = (RemoteMagazine) registry.lookup("magazine");
-    
+    remoteMagazine = (RemoteMagazine) registry.lookup("magazine");
+
   }
 
-  @Override public void addMagazine(Magazine magazine)
+  @Override public void addMagazine(Magazine magazine) throws RemoteException
   {
-    magazine.add
+
+    remoteMagazine.addMagazine(magazine);
   }
 
-  @Override public void removeMagazine(int id)
+  @Override public void removeMagazine(int id) throws RemoteException
   {
-
+    remoteMagazine.removeMagazine(id);
   }
 
 
   @Override public void close() throws IOException
   {
-
+      UnicastRemoteObject.unexportObject(this,true);
   }
 
 

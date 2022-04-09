@@ -7,7 +7,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface RemoteMagazine extends Remote {
-    void addMagazine(Magazine magazine);
-    void removeMagazine(int id);
+    void addMagazine(Magazine magazine) throws RemoteException;
+    void removeMagazine(int id) throws RemoteException;
 
 }

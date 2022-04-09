@@ -5,6 +5,7 @@ import model.Book;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.rmi.RemoteException;
 
 public class ModelManagerBook implements ModelBook {
     private final BookClient client;
@@ -16,12 +17,12 @@ public class ModelManagerBook implements ModelBook {
     }
 
     @Override
-    public void addBook(Book book) {
+    public void addBook(Book book) throws RemoteException {
         client.addBook(book);
     }
 
     @Override
-    public void removeBook(int id) {
+    public void removeBook(int id) throws RemoteException {
         client.removeBook(id);
     }
 

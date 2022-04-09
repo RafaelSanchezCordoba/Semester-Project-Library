@@ -28,12 +28,12 @@ public class Comunicator extends UnicastRemoteObject implements RemoteBook, Remo
 
 
     @Override
-    public void addMagazine(Magazine magazine) {
+    public void addMagazine(Magazine magazine) throws RemoteException {
         //
     }
 
     @Override
-    public void removeMagazine(int id) {
+    public void removeMagazine(int id) throws RemoteException{
         //
     }
 

@@ -5,6 +5,7 @@ import model.Magazine;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.rmi.RemoteException;
 
 public class ModelManagerMagazine implements ModelMagazine{
     private final MagazineClient client;
@@ -16,12 +17,12 @@ public class ModelManagerMagazine implements ModelMagazine{
     }
 
     @Override
-    public void addMagazine(Magazine magazine) {
+    public void addMagazine(Magazine magazine) throws RemoteException {
         client.addMagazine(magazine);
     }
 
     @Override
-    public void removeMagazine(int id) {
+    public void removeMagazine(int id) throws RemoteException {
         client.removeMagazine(id);
     }
 
