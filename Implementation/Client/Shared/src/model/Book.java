@@ -3,9 +3,9 @@ package model;
 import java.io.Serializable;
 
 /**
- * Sub-class Book that extends <code>"MultimediaItem"</code>  and implements <code>Serializable</code>
- * @author Rafael Sánchez Córdoba
- * @version 1.0 - 08/04/22
+ * Sub-class Book that extends <code>"MultimediaItem"</code>  and implements <code>Serializable</code>.
+ * @author Rafael Sánchez Córdoba.
+ * @version 1.0 - 08/04/22.
  */
 public class Book extends MultimediaItem implements Serializable {
     private final String isbn;
@@ -13,7 +13,24 @@ public class Book extends MultimediaItem implements Serializable {
     private Author author;
     private GenreList genreList;
 
-
+    /**
+     * Book constructor with super method.
+     * The author is set to null because it could be an anonymous writer.
+     * @param id
+     * The unique identification number of book.
+     * @param title
+     * The title of the book.
+     * @param publisher
+     * The publisher of the book.
+     * @param isbn
+     * The isbn of the book.
+     * @param edition
+     * The edition of the book.
+     * @param year_published
+     * The year published of the book.
+     * @param genreList
+     * The list of genre of the book.
+     */
     public Book(int id, String title, String publisher, String isbn, int edition, int year_published, GenreList genreList) {
         super(id, title, publisher);
         this.isbn = isbn;
@@ -23,6 +40,11 @@ public class Book extends MultimediaItem implements Serializable {
         this.genreList = genreList;
     }
 
+    /**
+     * Set an author in case it is not anonymous.
+     * @param author
+     * The author of the book.
+     */
     public void setAuthor(Author author) {
         this.author = author;
     }
