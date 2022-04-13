@@ -76,15 +76,7 @@ public class DBConnector
     }catch (SQLException e){
       e.printStackTrace();
     }
-    for (int i = 0; i<result.size();i++){
-      Object[] row = result.get(i);
-      String id = row[0].toString();
-      String publisher = row[1].toString();
-      String title = (String)row[2];
-      String isbn = (String) row[3];
-      String author =(String) row[4];
-      System.out.println(id+"|"+publisher+"|"+title+"|"+isbn+"|"+author+"i:"+i);
-    }
+   
     return result;
   }
 
