@@ -58,12 +58,12 @@ public class AddRemoveMagazineViewController
   @FXML
   public void homeMenuButtonPressed()
   {
-    viewHandler.openView("home");
+    viewHandler.openView(viewHandler.HOME);
   }
 
   @FXML
   public void bookMenuButtonPressed() {
-
+    viewHandler.openView(viewHandler.BOOK);
   }
 
   @FXML

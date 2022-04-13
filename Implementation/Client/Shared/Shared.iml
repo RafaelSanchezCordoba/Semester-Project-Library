@@ -8,5 +8,6 @@
     <orderEntry type="jdk" jdkName="corretto-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="remoteobserver" level="application" />
+    <orderEntry type="module" module-name="Client_2" exported="" />
   </component>
 </module>

@@ -1,9 +1,7 @@
 package client;
 
-
 import model.Book;
 import server.RemoteBook;
-
 
 import java.io.IOException;
 import java.rmi.NotBoundException;
@@ -11,6 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class BookClientImplementation extends UnicastRemoteObject implements  BookClient {
 
@@ -21,6 +20,9 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
     Registry registry = LocateRegistry.getRegistry();
     remoteBook = (RemoteBook) registry.lookup("book");
 
+  }
+  public ArrayList<Object[]> getBookList() throws RemoteException{
+    return  remoteBook.getBookList();
   }
   @Override public void addBook(Book book) throws RemoteException
   {

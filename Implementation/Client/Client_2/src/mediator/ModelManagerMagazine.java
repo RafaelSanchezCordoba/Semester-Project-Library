@@ -7,9 +7,11 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 
+
 public class ModelManagerMagazine implements ModelMagazine{
     private final MagazineClient client;
     private final PropertyChangeSupport support;
+
 
     public ModelManagerMagazine(MagazineClient client) {
         this.client = client;

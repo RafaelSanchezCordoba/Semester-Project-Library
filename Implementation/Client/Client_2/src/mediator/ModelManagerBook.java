@@ -6,6 +6,7 @@ import model.Book;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 public class ModelManagerBook implements ModelBook {
     private final BookClient client;
@@ -14,6 +15,16 @@ public class ModelManagerBook implements ModelBook {
     public ModelManagerBook(BookClient client) {
         this.client = client;
         this.support = new PropertyChangeSupport(this);
+    }
+
+    public ArrayList<Object[]> getBookList(){
+        try
+        {
+            return client.getBookList();
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
+       return null;
     }
 
     @Override

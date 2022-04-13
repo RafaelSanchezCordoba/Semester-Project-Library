@@ -2,7 +2,6 @@ package viewModel;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import mediator.ModelBook;
 import mediator.ModelMagazine;
 
 import java.beans.PropertyChangeEvent;

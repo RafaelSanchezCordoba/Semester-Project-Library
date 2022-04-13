@@ -18,6 +18,7 @@ public class Book extends MultimediaItem{
         this.genreList=genreList;
     }
 
+
     public void setAuthor(Author author) {
         this.author = author;
     }

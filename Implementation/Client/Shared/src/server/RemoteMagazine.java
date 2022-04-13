@@ -1,7 +1,7 @@
 package server;
 
 import dk.via.remote.observer.RemotePropertyChangeListener;
-import model.Magazine;
+import model.*;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

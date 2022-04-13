@@ -7,7 +7,12 @@
     </content>
     <orderEntry type="jdk" jdkName="corretto-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Shared" />
+    <orderEntry type="module" module-name="Shared" exported="" />
     <orderEntry type="library" name="JavaFX_17_x64" level="application" />
+    <orderEntry type="library" name="javafx.web" level="application" />
+    <orderEntry type="library" name="remoteobserver" level="application" />
+    <orderEntry type="module" module-name="Server" exported="" />
+    <orderEntry type="module" module-name="Library" />
+    <orderEntry type="library" name="src" level="project" />
   </component>
 </module>

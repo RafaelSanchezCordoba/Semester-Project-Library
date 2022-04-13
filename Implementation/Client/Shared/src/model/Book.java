@@ -40,7 +40,46 @@ public class Book extends MultimediaItem implements Serializable {
         this.genreList = genreList;
     }
 
-    /**
+  public Book(int id,String title,String publisher)
+  {
+    super(id,title,publisher);
+    isbn= null;
+    edition = 0;
+    year_published = 0;
+  }
+
+  public String getIsbn()
+  {
+    return isbn;
+  }
+
+  public int getEdition()
+  {
+    return edition;
+  }
+
+  public int getYear_published()
+  {
+    return year_published;
+  }
+
+  public Author getAuthor()
+  {
+    return author;
+  }
+
+  public GenreList getGenreList()
+  {
+    return genreList;
+  }
+
+  public Book(){
+      isbn= null;
+      edition = 0;
+      year_published = 0;
+
+  }
+  /**
      * Set an author in case it is not anonymous.
      * @param author
      * The author of the book.

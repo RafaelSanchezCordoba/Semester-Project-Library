@@ -7,9 +7,9 @@ import viewModel.ViewModelFactory;
 
 public class ViewHandler
 {
-  private static final String HOME = "home";
-  private static final String BOOK = "addRemoveBook";
-  private static final String MAGAZINE = "addRemoveMagazine";
+  public static final String HOME = "home";
+  public static final String BOOK = "addRemoveBook";
+  public static final String MAGAZINE = "addRemoveMagazine";
 
   private Stage primaryStage;
   private final Scene currentScene;

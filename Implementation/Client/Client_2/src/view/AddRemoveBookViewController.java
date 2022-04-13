@@ -1,11 +1,15 @@
 package view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import viewModel.AddRemoveBookViewModel;
+
+import java.rmi.RemoteException;
 
 public class AddRemoveBookViewController
 {
@@ -21,7 +25,7 @@ public class AddRemoveBookViewController
   @FXML private TextField genreTextField;
   @FXML private TextField editionTextField;
   @FXML private TextField searchTextField;
-  @FXML private ListView bookListView;
+  @FXML private ListView<String> bookListView;
   @FXML private Label errorLabel;
 
 
@@ -41,6 +45,11 @@ public class AddRemoveBookViewController
     viewModel.bindPublisherTextField(publisherTextField.textProperty());
     viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindYearTextField(yearTextField.textProperty());
+
+    for (int i = 0;i<viewModel.getList().size();i++){
+      bookListView.getItems().add(viewModel.getList().get(i).toString());
+    }
+
   }
 
   @FXML
@@ -61,10 +70,19 @@ public class AddRemoveBookViewController
     viewModel.addBook();
   }
 
+  //there is probably a better way
   @FXML
-  public void removeBookButtonPressed()
+  public void removeBookButtonPressed() throws RemoteException
   {
-    viewModel.removeBook();
+
+    //function to get the book id ?????????
+    String index = bookListView.getSelectionModel().getSelectedItem();
+    int trueIndex = Integer.parseInt(index.substring(0,4).trim());
+    System.out.println(index.substring(0,4)+"  "+trueIndex);
+
+
+    viewModel.removeBook(trueIndex);
+    bookListView.getItems().remove(bookListView.getSelectionModel().getSelectedIndex());
   }
 
   @FXML
@@ -74,13 +92,16 @@ public class AddRemoveBookViewController
   }
 
   @FXML
+  public void testDataPressed(){viewModel.dummy();}
+
+  @FXML
   public void bookMenuButtonPressed() {
 
   }
 
   @FXML
   public void magazinesMenuButtonPressed() {
-
+      viewHandler.openView(viewHandler.MAGAZINE);
   }
 
   public void reset() {
