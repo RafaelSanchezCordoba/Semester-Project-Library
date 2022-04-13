@@ -11,6 +11,11 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
+/**
+ * The client implementation for magazine that extends <code>UnicastRemoteObject</code> and implements <code>MagazineClient</code>.
+ * @author Maria Ortiz Planchuelo.
+ * @version 1.0 09/04/22.
+ */
 public class MagazineClientImplementation extends UnicastRemoteObject implements MagazineClient{
 
   private final RemoteMagazine remoteMagazine;

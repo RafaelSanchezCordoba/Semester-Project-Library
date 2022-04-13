@@ -29,7 +29,7 @@ public class MultimediaItemList {
     /**
      * Remove the multimedia item given as an argument from the list
      * @param multimediaItem
-     * The multimedia item.         
+     * The multimedia item.
      */
     public void removeMultimediaItem(MultimediaItem multimediaItem) {
         multimediaItems.remove(multimediaItem);

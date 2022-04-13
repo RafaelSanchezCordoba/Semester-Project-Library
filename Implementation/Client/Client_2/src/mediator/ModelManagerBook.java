@@ -6,7 +6,11 @@ import model.Book;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
-
+/**
+ * The model manager for book.
+ * @author Rafael Sánchez Córdoba.
+ * @version 1.0 09/04/22
+ */
 public class ModelManagerBook implements ModelBook {
     private final BookClient client;
     private final PropertyChangeSupport support;
