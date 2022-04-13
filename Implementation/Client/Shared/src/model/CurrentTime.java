@@ -19,7 +19,7 @@ public class CurrentTime {
     }
 
     /**
-     *
+     * Get the local time
      * @return
      * String local time with a specific format.
      */
@@ -28,6 +28,11 @@ public class CurrentTime {
         return time.format(EUROPEAN_TIME_FORMATTER);
     }
 
+    /**
+     * Get the local date.
+     * @return
+     * String local date with a specific format.
+     */
     public String getFormattedIsoDate() {
         LocalDateTime time = LocalDateTime.now();
         return time.format(ISO_DATE_FORMATTER);
