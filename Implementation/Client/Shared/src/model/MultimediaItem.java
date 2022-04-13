@@ -13,7 +13,7 @@ public class MultimediaItem implements Serializable {
     private final int id;
     private final String title, publisher;
 
-<<<<<<< HEAD
+
     public int getId()
     {
         return id;
@@ -29,7 +29,7 @@ public class MultimediaItem implements Serializable {
         return publisher;
     }
 
-=======
+
     /**
      * Multimedia item constructor
      * @param id
@@ -39,7 +39,7 @@ public class MultimediaItem implements Serializable {
      * @param publisher
      * The publisher of the multimedia item.
      */
->>>>>>> 140f6a0c353514d0b2e9badd881b8031c2386050
+
     public MultimediaItem(int id, String title, String publisher) {
         this.id = id;
         this.title = title;

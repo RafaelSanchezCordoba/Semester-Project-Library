@@ -7,27 +7,17 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 
-<<<<<<< HEAD
-
-=======
 /**
  * The model manager for magazine.
  * @author Rafael Sánchez Córdoba.
  * @version 1.0 09/04/22
  */
->>>>>>> 140f6a0c353514d0b2e9badd881b8031c2386050
+
 public class ModelManagerMagazine implements ModelMagazine{
     private final MagazineClient client;
     private final PropertyChangeSupport support;
 
-<<<<<<< HEAD
 
-=======
-    /**
-     *
-     * @param client
-     */
->>>>>>> 140f6a0c353514d0b2e9badd881b8031c2386050
     public ModelManagerMagazine(MagazineClient client) {
         this.client = client;
         this.support = new PropertyChangeSupport(this);
