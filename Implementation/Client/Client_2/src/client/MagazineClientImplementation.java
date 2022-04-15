@@ -20,8 +20,7 @@ public class MagazineClientImplementation extends UnicastRemoteObject implements
   private final RemoteMagazine remoteMagazine;
 
 
-  public MagazineClientImplementation(String  host, int port) throws IOException,
-          NotBoundException
+  public MagazineClientImplementation(String  host, int port) throws IOException, NotBoundException
   {
 
     Registry registry = LocateRegistry.getRegistry(host, port);
