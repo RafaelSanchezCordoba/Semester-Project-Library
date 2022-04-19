@@ -24,6 +24,8 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
     private final StringProperty searchTextField;
     private final StringProperty errorLabel;
     private final ObservableList options ;
+
+    //counter is initialized in getList ....
     private int counter;
 
     public AddRemoveBookViewModel(ModelBook model) throws RemoteException
@@ -39,24 +41,57 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
         this.searchTextField = new SimpleStringProperty("");
         this.errorLabel = new SimpleStringProperty("");
         this.options = FXCollections.observableArrayList();
+        update();
 
-        for (int i=0;i<model.getBookList().size();i++){
-            Object[] row = model.getBookList().get(i);
-            String id = row[0].toString();
-            String publisher = row[1].toString();
-            String title = (String)row[2];
-            String isbn = (String) row[3];
-            String author =(String) row[4];
-            options.add(id+"   |  "+publisher+"  |  "+title+"  |  "+isbn+"  |  "+author);
-            System.out.println(id+"|"+publisher+"|"+title+"|"+isbn+"|"+author+"i:"+i);
-    }
 
-        //this will get the highest id of the db
-        Object[] row = model.getBookList().get(0);
-        counter = Integer.parseInt(row[0].toString());
+
 
 
     }
+
+        public void update() {
+        try
+        {
+
+            for (int i=0;i<model.getBookList().size();i++)
+            {
+                Object[] row = model.getBookList().get(i);
+                String id = row[0].toString();
+                String publisher = row[1].toString();
+                String title = (String) row[2];
+                String isbn =  row[3].toString();
+                String author = (String) row[4];
+                options.add(
+                    id + "   |  " + publisher + "  |  " + title + "  |  " + isbn
+                        + "  |  " + author);
+                System.out.println(model.getBookList().size());
+            }
+    }catch (RemoteException e){
+            e.printStackTrace();
+        }
+
+    }
+    public int getHighestId(){
+        int result = 0;
+        int temp = 0;
+        try
+        {
+
+            for (int i = 0; i < model.getBookList().size(); i++)
+            {
+
+                String s = options.get(i).toString().substring(0,4).trim();
+                temp = Integer.parseInt(s);
+                result = Math.max(temp, result);
+
+            }
+           // System.out.println("highset ID:" + result);
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public void  dummy (){
         this.titleTextField.setValue("default_tile");
         this.publisherTextField.setValue("default_pubblisher");
@@ -71,10 +106,12 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
     }
 
     public void addBook() {
+        update();
         counter++;
         try
         {
             model.addBook(new Book(counter,titleTextField.getValue(),publisherTextField.getValue()));
+
         }
         catch (RemoteException e)
         {
@@ -85,8 +122,10 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
 
     public void removeBook(int id) throws RemoteException {
         model.removeBook(id);
+        update();
     }
     public ObservableList getList(){
+        this.counter = getHighestId();
         return options;
     }
 

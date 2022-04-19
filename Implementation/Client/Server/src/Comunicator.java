@@ -1,7 +1,5 @@
 
 
-import dk.via.remote.observer.RemotePropertyChangeListener;
-import dk.via.remote.observer.RemotePropertyChangeSupport;
 import model.*;
 import server.*;
 
@@ -11,24 +9,27 @@ import java.util.ArrayList;
 
 public class Comunicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine {
 
-    private DBConnector connector = null;
+    private DBConnector connector;
     private ArrayList<Object[]> list;
 
     public Comunicator() throws RemoteException {
-        connector = new DBConnector("org.postgresql.Driver","jdbc:postgresql://localhost:5433/postgres",
-            "postgres","dragon93");
+        connector = new DBConnectorImplementation("org.postgresql.Driver","jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
+            "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
         connector.start();
         list=connector.getBookList();
 
     }
 
     public ArrayList<Object []> getBookList() throws RemoteException{
+        list  = connector.getBookList();
         return list;
     }
 
     @Override
     public void addBook(Book book) throws RemoteException {
         //We need DB
+        // resolve nul values
+
         connector.addBook(String.valueOf(book.getId()), book.getPublisher(), book.getTitle(),
                             book.getIsbn(), (String.valueOf(book.getYear_published())),
                         null,null,String.valueOf(book.getEdition()),null);

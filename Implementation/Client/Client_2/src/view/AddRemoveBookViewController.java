@@ -46,7 +46,8 @@ public class AddRemoveBookViewController
     viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindYearTextField(yearTextField.textProperty());
 
-    for (int i = 0;i<viewModel.getList().size();i++){
+
+        for (int i = 0;i<viewModel.getList().size();i++){
       bookListView.getItems().add(viewModel.getList().get(i).toString());
     }
 
@@ -68,6 +69,8 @@ public class AddRemoveBookViewController
   public void addBookButtonPressed()
   {
     viewModel.addBook();
+   //bookListView.getItems().add(viewModel.getList().get(0).toString());
+
   }
 
   //there is probably a better way
