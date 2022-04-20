@@ -10,6 +10,7 @@ import java.io.Serializable;
 public class Magazine extends MultimediaItem implements Serializable {
     private final int volume;
     private final Genre genre;
+    private final String day, month, year;
 
     /**
      * Magazine constructor with super method.
@@ -24,9 +25,12 @@ public class Magazine extends MultimediaItem implements Serializable {
      * @param genre
      * The genre of the magazine.
      */
-    public Magazine(int id, String title, String publisher, int volume, Genre genre) {
+    public Magazine(int id, String title, String publisher, int volume, Genre genre, String day, String month, String year) {
         super(id, title, publisher);
         this.volume = volume;
         this.genre = genre;
+        this.day = day;
+        this.month = month;
+        this.year = year;
     }
 }
