@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public interface DBConnector
 {
-  void removeBook(String id);
+  void removeBook(int id);
   ArrayList<Object[]> getBookList();
-  void addBook(String id,String publisher,String title,String isbn,
-      String year_published,String genre,String author,String edition,String librarian_ssn);
+  void addBook(int id,int isbn,String publisher,String title,
+      int year_published,String author,int edition,int librarian_ssn);
   void start();
 }

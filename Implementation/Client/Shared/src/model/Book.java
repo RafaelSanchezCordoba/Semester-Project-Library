@@ -8,9 +8,9 @@ import java.io.Serializable;
  * @version 1.0 - 08/04/22.
  */
 public class Book extends MultimediaItem implements Serializable {
-    private final String isbn;
+    private final int isbn;
     private final int edition, year_published;
-    private Author author;
+    private String author;
     private GenreList genreList;
 
     /**
@@ -31,7 +31,7 @@ public class Book extends MultimediaItem implements Serializable {
      * @param genreList
      * The list of genre of the book.
      */
-    public Book(int id, String title, String publisher, String isbn, int edition, int year_published, GenreList genreList) {
+    public Book(int id, String title, String publisher, int isbn, int edition, int year_published, GenreList genreList) {
         super(id, title, publisher);
         this.isbn = isbn;
         this.edition = edition;
@@ -43,12 +43,19 @@ public class Book extends MultimediaItem implements Serializable {
   public Book(int id,String title,String publisher)
   {
     super(id,title,publisher);
-    isbn= null;
+    isbn= 0;
+    edition = 0;
+    year_published = 0;
+  }
+  public Book(int id,String title,String publisher, int isbn)
+  {
+    super(id,title,publisher);
+    this.isbn = isbn;
     edition = 0;
     year_published = 0;
   }
 
-  public String getIsbn()
+  public int getIsbn()
   {
     return isbn;
   }
@@ -63,7 +70,7 @@ public class Book extends MultimediaItem implements Serializable {
     return year_published;
   }
 
-  public Author getAuthor()
+  public String getAuthor()
   {
     return author;
   }
@@ -74,7 +81,7 @@ public class Book extends MultimediaItem implements Serializable {
   }
 
   public Book(){
-      isbn= null;
+      isbn= 0;
       edition = 0;
       year_published = 0;
 
@@ -84,7 +91,7 @@ public class Book extends MultimediaItem implements Serializable {
      * @param author
      * The author of the book.
      */
-    public void setAuthor(Author author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 }

@@ -24,6 +24,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
     private final StringProperty searchTextField;
     private final StringProperty errorLabel;
     private final ObservableList options ;
+    private String lastAddedBook;
 
     //counter is initialized in getList ....
     private int counter;
@@ -57,20 +58,44 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
             {
                 Object[] row = model.getBookList().get(i);
                 String id = row[0].toString();
-                String publisher = row[1].toString();
-                String title = (String) row[2];
-                String isbn =  row[3].toString();
-                String author = (String) row[4];
-                options.add(
-                    id + "   |  " + publisher + "  |  " + title + "  |  " + isbn
-                        + "  |  " + author);
-                System.out.println(model.getBookList().size());
+                String isbn =  row[1].toString();
+                String publisher = (String) row[2];
+                String title = (String) row[3];
+                String year_published = row[4].toString();
+                String author = (String) row[5];
+                options.add(id + "   |  " + isbn +"  |  "+publisher+ "  |  " + title + "  |  "+year_published + "  |  " + author);
+                //System.out.println(id + "   |  " + isbn +"  |  "+publisher+ "  |  " + title + "  |  "+year_published + "  |  " + author);
+
             }
     }catch (RemoteException e){
             e.printStackTrace();
         }
 
     }
+
+    public void setLastAddedBook() {
+        try
+        {
+            update();
+            Object [] row = model.getBookList().get(0);
+            String id = row[0].toString();
+            String isbn =  row[1].toString();
+            String publisher = (String) row[2];
+            String title = (String) row[3];
+            String year_published = row[4].toString();
+            String author = (String) row[5];
+            this.lastAddedBook = id + "   |  " + isbn +"  |  "+publisher+ "  |  " + title + "  |  "+year_published + "  |  " + author;
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
+
+
+    }
+    public String getLastAddedBook(){
+        return lastAddedBook;
+    }
+
+
     public int getHighestId(){
         int result = 0;
         int temp = 0;
@@ -106,17 +131,19 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
     }
 
     public void addBook() {
-        update();
+
         counter++;
         try
         {
-            model.addBook(new Book(counter,titleTextField.getValue(),publisherTextField.getValue()));
+            model.addBook(new Book(counter,titleTextField.getValue(),publisherTextField.getValue(),Integer.parseInt(isbnTextField.getValue())));
+            setLastAddedBook();
 
         }
         catch (RemoteException e)
         {
             e.printStackTrace();
         }
+        update();
 
     }
 

@@ -69,6 +69,8 @@ public class AddRemoveBookViewController
   public void addBookButtonPressed()
   {
     viewModel.addBook();
+    bookListView.getItems().add(viewModel.getLastAddedBook());
+
    //bookListView.getItems().add(viewModel.getList().get(0).toString());
 
   }

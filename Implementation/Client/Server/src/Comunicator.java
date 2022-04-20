@@ -16,6 +16,7 @@ public class Comunicator extends UnicastRemoteObject implements RemoteBook, Remo
         connector = new DBConnectorImplementation("org.postgresql.Driver","jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
             "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
         connector.start();
+
         list=connector.getBookList();
 
     }
@@ -29,17 +30,16 @@ public class Comunicator extends UnicastRemoteObject implements RemoteBook, Remo
     public void addBook(Book book) throws RemoteException {
         //We need DB
         // resolve nul values
-
-        connector.addBook(String.valueOf(book.getId()), book.getPublisher(), book.getTitle(),
-                            book.getIsbn(), (String.valueOf(book.getYear_published())),
-                        null,null,String.valueOf(book.getEdition()),null);
+        connector.addBook(book.getId(), book.getIsbn(), book.getPublisher(),
+            book.getTitle(), book.getYear_published(), book.getAuthor(),
+            book.getEdition(),1802007570);
         list=connector.getBookList();
 
     }
 
     @Override
     public void removeBook(int id) throws RemoteException {
-        connector.removeBook(String.valueOf(id));
+        connector.removeBook(id);
     }
 
 

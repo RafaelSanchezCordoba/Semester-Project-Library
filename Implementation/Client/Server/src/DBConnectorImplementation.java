@@ -16,8 +16,8 @@ public class DBConnectorImplementation implements DBConnector
 
 
   //Pre-made sql to use in the methods
- private String insertBookSql = "INSERT INTO \"library\".book(id,publisher,title,isbn,year_published,genre,author,edition,librarian_ssn)"
-      + "VALUES( ?,?,?,?,?,?,?,?,?)";
+ private String insertBookSql = "INSERT INTO \"library\".book(id,isbn,publisher,title,year_published,author,edition,librarian_ssn)"
+      + "VALUES( ?,?,?,?,?,?,?,?)";
  private String removeBookSql = "DELETE FROM \"library\".book "
      +"WHERE id=?";
 
@@ -39,10 +39,10 @@ public class DBConnectorImplementation implements DBConnector
 
   //methods for book to use argument to in the presaved query
 
-  public void removeBook(String id){
+  public void removeBook(int id){
     try
     {
-      remBookStatement.setString(1,id);
+      remBookStatement.setInt(1,id);
       remBookStatement.executeUpdate();
     }catch (SQLException e){
       e.printStackTrace();
@@ -56,7 +56,7 @@ public class DBConnectorImplementation implements DBConnector
     ArrayList<Object[]> result = new ArrayList();
     try
     {
-      String query = "SELECT id,publisher,title,isbn,author FROM \"library\".book ORDER BY id DESC";
+      String query = "SELECT * FROM \"library\".book ORDER BY id DESC";
       PreparedStatement queryStatement = connection.prepareStatement(query);
       ResultSet resultSet = queryStatement.executeQuery();
 
@@ -84,19 +84,18 @@ public class DBConnectorImplementation implements DBConnector
 
 
 
-  public void addBook(String id,String publisher,String title,String isbn,
-      String year_published,String genre,String author,String edition,String librarian_ssn){
+  public void addBook(int id,int isbn,String publisher,String title,
+      int year_published,String author,int edition,int librarian_ssn){
     try
     {
-      insBookStatement.setString(1,id);
-      insBookStatement.setString(2,publisher);
-      insBookStatement.setString(3,title);
-      insBookStatement.setString(4,isbn);
-      insBookStatement.setString(5,year_published);
+      insBookStatement.setInt(1,id);
+      insBookStatement.setInt(2,isbn);
+      insBookStatement.setString(3,publisher);
+      insBookStatement.setString(4,title);
+      insBookStatement.setInt(5,year_published);
       insBookStatement.setString(6,author);
-      insBookStatement.setString(7,genre);
-      insBookStatement.setString(8,edition);
-      insBookStatement.setString(9,librarian_ssn);
+      insBookStatement.setInt(7,edition);
+      insBookStatement.setInt(8,librarian_ssn);
       insBookStatement.executeUpdate();
 
     }catch (SQLException e){
