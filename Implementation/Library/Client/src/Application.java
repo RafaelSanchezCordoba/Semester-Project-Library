@@ -23,7 +23,7 @@ public class Application extends javafx.application.Application {
         ViewHandler viewHandler = new ViewHandler(viewModelFactory);
         viewHandler.start(primaryStage);
     }
-
+    
     public static void main(String[] args) {
         Application.launch();
     }
