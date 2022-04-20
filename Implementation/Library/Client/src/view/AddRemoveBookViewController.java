@@ -26,6 +26,7 @@ public class AddRemoveBookViewController
   @FXML private TextField editionTextField;
   @FXML private TextField searchTextField;
   @FXML private ListView<String> bookListView;
+  @FXML private ListView<String> genreListView;
   @FXML private Label errorLabel;
 
 
@@ -98,6 +99,11 @@ public class AddRemoveBookViewController
 
   @FXML
   public void testDataPressed(){viewModel.dummy();}
+
+  @FXML
+  public void addGenreButtonPressed() {
+
+  }
 
   @FXML
   public void bookMenuButtonPressed() {
