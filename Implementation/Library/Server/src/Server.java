@@ -1,6 +1,6 @@
 //package Client.Server.src;
 
-import model.Book;
+import model.*;
 import server.*;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;

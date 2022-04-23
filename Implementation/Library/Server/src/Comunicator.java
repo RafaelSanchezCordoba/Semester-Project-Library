@@ -2,6 +2,7 @@
 
 import model.*;
 import server.*;
+import client.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -37,6 +38,8 @@ public class Comunicator extends UnicastRemoteObject implements RemoteBook, Remo
 
     }
 
+
+
     @Override
     public void removeBook(int id) throws RemoteException {
         connector.removeBook(id);
@@ -47,6 +50,7 @@ public class Comunicator extends UnicastRemoteObject implements RemoteBook, Remo
     public void addMagazine(Magazine magazine) throws RemoteException {
         //
     }
+
 
     @Override
     public void removeMagazine(int id) throws RemoteException{
