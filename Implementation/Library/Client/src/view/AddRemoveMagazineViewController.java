@@ -20,7 +20,8 @@ public class AddRemoveMagazineViewController
   @FXML private TextField monthTextField;
   @FXML private TextField genreTextField;
   @FXML private TextField searchTextField;
-  @FXML private ListView magazineListView;
+  @FXML private ListView<String> magazineListView;
+  @FXML private ListView<String> genreListView;
   @FXML private Label errorLabel;
 
   public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root)
@@ -68,6 +69,11 @@ public class AddRemoveMagazineViewController
 
   @FXML
   public void magazinesMenuButtonPressed() {
+
+  }
+
+  @FXML
+  public void addGenreButtonPressed() {
 
   }
 

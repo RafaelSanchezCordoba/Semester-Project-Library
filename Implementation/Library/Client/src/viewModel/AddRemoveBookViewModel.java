@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 import mediator.ModelBook;
 import model.Book;
 import server.RemoteBook;
@@ -23,7 +24,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
     private final StringProperty editionTextField;
     private final StringProperty searchTextField;
     private final StringProperty errorLabel;
-    private final ObservableList options ;
+    private final ObservableList options;
     private String lastAddedBook;
 
     //counter is initialized in getList ....
