@@ -1,13 +1,11 @@
+package persistance;
+
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBConnectorImplementation implements DBConnector
-{
-  private String driver;
-  private String url;
+public class BookDAOImplementation implements BookDAO {
 
- private String user;
- private String password;
+  private String driver, url, user, password;
 
  private   Connection connection;
  private PreparedStatement insBookStatement;
@@ -26,7 +24,7 @@ public class DBConnectorImplementation implements DBConnector
  private String removeMagazineSql = "DELETE FROM\"library\".magazine "
      +"WHERE id = ?";
 
-  public DBConnectorImplementation(String driver,String url,String user,String password){
+  public BookDAOImplementation(String driver,String url,String user,String password){
     this.driver = driver;
     this.url = url;
     this.user = user;

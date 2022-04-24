@@ -1,6 +1,8 @@
+package persistance;
+
 import java.util.ArrayList;
 
-public interface DBConnector
+public interface BookDAO
 {
   void removeBook(int id);
   ArrayList<Object[]> getBookList();

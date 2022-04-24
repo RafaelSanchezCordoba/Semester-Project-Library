@@ -29,6 +29,7 @@ public class AddRemoveMagazineViewController
     this.viewHandler = viewHandler;
     this.viewModel=viewModel;
     this.root = root;
+
     //include all the bind from viewModel
   }
 

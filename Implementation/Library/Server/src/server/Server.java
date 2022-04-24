@@ -1,7 +1,5 @@
-//package Client.Server.src;
+package server;//package Client.server.Server.src;
 
-import model.Book;
-import server.*;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -14,11 +12,11 @@ public class Server {
 
 
 
-        RemoteBook book = new Comunicator();
-        RemoteMagazine magazine=new Comunicator();
+        RemoteBook book = new Communicator();
+        RemoteMagazine magazine=new Communicator();
         registry.bind("book",book);
         registry.bind("magazine",magazine);
-        System.out.println("Server running on " + Registry.REGISTRY_PORT);
+        System.out.println("server.Server running on " + Registry.REGISTRY_PORT);
 
     }
 
