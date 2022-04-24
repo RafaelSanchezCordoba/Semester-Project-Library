@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @version 1.0 08/04/22.
  */
 public class MultimediaItem implements Serializable {
-    private final int id;
+    private int id;
     private final String title, publisher;
 
 
@@ -41,7 +41,7 @@ public class MultimediaItem implements Serializable {
      */
 
     public MultimediaItem(int id, String title, String publisher) {
-        this.id = id;
+        this.id = 0;
         this.title = title;
         this.publisher = publisher;
     }
@@ -51,5 +51,8 @@ public class MultimediaItem implements Serializable {
         publisher= null;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
 }

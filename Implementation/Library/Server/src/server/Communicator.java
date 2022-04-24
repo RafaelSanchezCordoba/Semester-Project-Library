@@ -8,6 +8,7 @@ import persistance.MagazineStorageImplementation;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine {

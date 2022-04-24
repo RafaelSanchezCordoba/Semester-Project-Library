@@ -7,22 +7,19 @@ public class BookDAOImplementation implements BookDAO {
 
   private String driver, url, user, password;
 
- private   Connection connection;
- private PreparedStatement insBookStatement;
- private PreparedStatement remBookStatement;
+  private Connection connection;
+  private PreparedStatement insBookStatement;
+  private PreparedStatement remBookStatement;
 
 
 
   //Pre-made sql to use in the methods
- private String insertBookSql = "INSERT INTO \"library\".book(id,isbn,publisher,title,year_published,author,edition,librarian_ssn)"
+  private String insertBookSql = "INSERT INTO \"library\".book(id,isbn,publisher,title,year_published,author,edition,librarian_ssn)"
       + "VALUES( ?,?,?,?,?,?,?,?)";
- private String removeBookSql = "DELETE FROM \"library\".book "
-     +"WHERE id=?";
+  private String removeBookSql = "DELETE FROM \"library\".book "
+      +"WHERE id=?";
 
- private String insertMagazineSql = "INSERT INTO \"library\".magazine(id,publisher,title,volume,date,librarian_ssn)"
-     +"VALUES(?,?,?,?,?,?)";
- private String removeMagazineSql = "DELETE FROM\"library\".magazine "
-     +"WHERE id = ?";
+
 
   public BookDAOImplementation(String driver,String url,String user,String password){
     this.driver = driver;

@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+
 /**
  * Sub-class Magazine that extends <code>"MultimediaItem"</code>  and implements <code>Serializable</code>.
  * @author Rafael Sánchez Córdoba.
@@ -9,8 +10,8 @@ import java.io.Serializable;
  */
 public class Magazine extends MultimediaItem implements Serializable {
     private final int volume;
-    private final Genre genre;
-    private final String day, month, year;
+    private final String genre;
+    private final java.sql.Date date;
 
     /**
      * Magazine constructor with super method.
@@ -25,12 +26,25 @@ public class Magazine extends MultimediaItem implements Serializable {
      * @param genre
      * The genre of the magazine.
      */
-    public Magazine(int id, String title, String publisher, int volume, Genre genre, String day, String month, String year) {
+    public Magazine(int id, String title, String publisher, int volume, String genre, java.sql.Date date) {
         super(id, title, publisher);
         this.volume = volume;
         this.genre = genre;
-        this.day = day;
-        this.month = month;
-        this.year = year;
+        this.date = date;
+    }
+
+    public int getVolume()
+    {
+        return volume;
+    }
+
+    public String getGenre()
+    {
+        return genre;
+    }
+
+    public String getDate()
+    {
+        return date.toString();
     }
 }

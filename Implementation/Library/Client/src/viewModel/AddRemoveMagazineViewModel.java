@@ -3,9 +3,12 @@ package viewModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import mediator.ModelMagazine;
+import model.Magazine;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class AddRemoveMagazineViewModel implements PropertyChangeListener {
     private final ModelMagazine model;
@@ -73,8 +76,9 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
 
     }
 
-    public void addMagazine() {
-
+    public void addMagazine(Magazine magazine) throws RemoteException
+    {
+        model.addMagazine(magazine);
     }
 
     public void removeMagazine() {
