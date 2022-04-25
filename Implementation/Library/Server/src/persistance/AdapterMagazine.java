@@ -2,6 +2,7 @@ package persistance;
 
 import model.Magazine;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,24 +10,45 @@ import java.util.HashMap;
 public class AdapterMagazine implements MagazineStorage {
   private MagazineDAO magazineDAO;
 
-  public AdapterMagazine() throws SQLException
+  public AdapterMagazine(MagazineDAO magazineDAO)
   {
-    this.magazineDAO = MagazineDAOImplementation.getInstance();
+    this.magazineDAO = magazineDAO;
   }
 
-  @Override public void removeMagazine(int id) throws SQLException
+  @Override public void removeMagazine(int id) throws RemoteException
   {
-    magazineDAO.removeMagazine(id);
+    try
+    {
+      magazineDAO.removeMagazine(id);
+    }
+    catch (SQLException e)
+    {
+      throw new RemoteException(e.getMessage(), e);
+    }
   }
 
-  @Override public ArrayList<Magazine> getMagazineList() throws SQLException
+  @Override public ArrayList<Magazine> getMagazineList() throws RemoteException
   {
-    return magazineDAO.getMagazineList();
+    try
+    {
+      return magazineDAO.getMagazineList();
+    }
+    catch (SQLException e)
+    {
+      throw new RemoteException(e.getMessage(), e);
+    }
   }
 
-  @Override public void addMagazine(Magazine magazine) throws SQLException
+  @Override public void addMagazine(Magazine magazine) throws RemoteException
   {
-    magazineDAO.addMagazine(magazine);
+    try
+    {
+      magazineDAO.addMagazine(magazine);
+    }
+    catch (SQLException e)
+    {
+      throw new RemoteException(e.getMessage(), e);
+    }
   }
 
 

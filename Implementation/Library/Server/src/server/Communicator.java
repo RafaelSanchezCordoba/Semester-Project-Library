@@ -16,8 +16,8 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     private BookDAO connector;
     private ArrayList<Object[]> list;
 
-    public Communicator() throws RemoteException {
-        magazineStorage = MagazineStorageImplementation.getInstance();
+    public Communicator(MagazineStorage magazineStorage) throws RemoteException {
+        this.magazineStorage=magazineStorage;
         connector = new BookDAOImplementation("org.postgresql.Driver","jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
             "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
         connector.start();
@@ -58,7 +58,9 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     {
         magazineStorage.removeMagazine(id);
     }
-    public ArrayList<Magazine> getMagazineList() throws SQLException{
+    public ArrayList<Magazine> getMagazineList()
+        throws SQLException, RemoteException
+    {
         return magazineStorage.getMagazineList();
     }
 
