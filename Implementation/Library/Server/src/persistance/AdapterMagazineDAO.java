@@ -7,11 +7,11 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AdapterMagazine implements MagazineStorage
+public class AdapterMagazineDAO implements MagazineStorage
 {
   private MagazineDAO magazineDAO;
 
-  public AdapterMagazine(MagazineDAO magazineDAO)
+  public AdapterMagazineDAO(MagazineDAO magazineDAO)
   {
     this.magazineDAO = magazineDAO;
   }

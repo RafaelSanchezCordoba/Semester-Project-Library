@@ -1,6 +1,6 @@
 package server;//package Client.server.Server.src;
 
-import persistance.AdapterMagazine;
+import persistance.AdapterMagazineDAO;
 import persistance.MagazineDAO;
 import persistance.MagazineDAOImplementation;
 
@@ -18,7 +18,7 @@ public class Server {
         Registry registry= LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
 
         MagazineDAO magazineDAO= MagazineDAOImplementation.getInstance();
-        MagazineStorage magazineStorage= new AdapterMagazine(magazineDAO);
+        MagazineStorage magazineStorage= new AdapterMagazineDAO(magazineDAO);
         RemoteBook book = new Communicator(magazineStorage);
         RemoteMagazine magazine=new Communicator(magazineStorage);
         registry.bind("book",book);

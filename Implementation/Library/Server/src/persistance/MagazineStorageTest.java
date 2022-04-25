@@ -5,18 +5,18 @@ import server.MagazineStorage;
 
 import java.util.ArrayList;
 
-public class MagazineStorageImplementation  implements MagazineStorage
+public class MagazineStorageTest implements MagazineStorage
 {
   private ArrayList<Magazine> magazines;
-  private static MagazineStorageImplementation instance;
+  private static MagazineStorageTest instance;
 
-  private MagazineStorageImplementation()
+  private MagazineStorageTest()
   {
     this.magazines = new ArrayList<Magazine>();
   }
-  public static synchronized MagazineStorageImplementation getInstance(){
+  public static synchronized MagazineStorageTest getInstance(){
     if(instance==null){
-      instance=  new MagazineStorageImplementation();
+      instance=  new MagazineStorageTest();
     }
     return instance;
   }
