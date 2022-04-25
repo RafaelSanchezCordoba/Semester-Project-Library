@@ -3,8 +3,6 @@ package server;
 import model.*;
 import persistance.BookDAO;
 import persistance.BookDAOImplementation;
-import persistance.MagazineStorage;
-import persistance.MagazineStorageImplementation;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

@@ -1,13 +1,14 @@
 package persistance;
 
 import model.Magazine;
+import server.MagazineStorage;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class AdapterMagazine implements MagazineStorage {
+public class AdapterMagazine implements MagazineStorage
+{
   private MagazineDAO magazineDAO;
 
   public AdapterMagazine(MagazineDAO magazineDAO)

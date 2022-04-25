@@ -1,4 +1,4 @@
-package persistance;
+package server;
 
 import model.Magazine;
 

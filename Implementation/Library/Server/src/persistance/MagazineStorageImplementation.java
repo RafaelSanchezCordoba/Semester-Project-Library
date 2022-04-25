@@ -1,9 +1,9 @@
 package persistance;
 
 import model.Magazine;
+import server.MagazineStorage;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MagazineStorageImplementation  implements MagazineStorage
 {

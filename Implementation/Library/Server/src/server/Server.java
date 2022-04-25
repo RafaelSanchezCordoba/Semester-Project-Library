@@ -3,7 +3,6 @@ package server;//package Client.server.Server.src;
 import persistance.AdapterMagazine;
 import persistance.MagazineDAO;
 import persistance.MagazineDAOImplementation;
-import persistance.MagazineStorage;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
