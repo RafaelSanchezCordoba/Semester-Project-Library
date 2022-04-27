@@ -1,22 +1,22 @@
 package persistance;
 
 import model.Magazine;
+import server.MagazineStorage;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class MagazineStorageImplementation  implements MagazineStorage
+public class MagazineStorageTest implements MagazineStorage
 {
   private ArrayList<Magazine> magazines;
-  private static MagazineStorageImplementation instance;
+  private static MagazineStorageTest instance;
 
-  private MagazineStorageImplementation()
+  private MagazineStorageTest()
   {
     this.magazines = new ArrayList<Magazine>();
   }
-  public static synchronized MagazineStorageImplementation getInstance(){
+  public static synchronized MagazineStorageTest getInstance(){
     if(instance==null){
-      instance=  new MagazineStorageImplementation();
+      instance=  new MagazineStorageTest();
     }
     return instance;
   }
@@ -24,6 +24,8 @@ public class MagazineStorageImplementation  implements MagazineStorage
   @Override public void addMagazine(Magazine magazine)
   {
     magazines.add( magazine);
+    magazine.setId(magazines.size());
+    System.out.println(magazine);
   }
 
   @Override public void removeMagazine(int id)

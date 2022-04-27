@@ -5,8 +5,6 @@ import fakeStorage.FakeStorageImplementation;
 import model.*;
 import persistance.BookDAO;
 import persistance.BookDAOImplementation;
-import persistance.MagazineStorage;
-import persistance.MagazineStorageImplementation;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,8 +17,8 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     private ArrayList<Object[]> list;
     private FakeStorage fakeStorage;
 
-    public Communicator() throws RemoteException {
-        magazineStorage = MagazineStorageImplementation.getInstance();
+    public Communicator(MagazineStorage magazineStorage) throws RemoteException {
+        this.magazineStorage=magazineStorage;
         connector = new BookDAOImplementation("org.postgresql.Driver","jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
             "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
         connector.start();
@@ -74,6 +72,7 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
 
     @Override
     public void addMagazine(Magazine magazine) throws RemoteException, SQLException {
+        System.out.println("edfghjk");
         magazineStorage.addMagazine(magazine);
     }
 
@@ -82,7 +81,10 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     {
         magazineStorage.removeMagazine(id);
     }
-    public ArrayList<Magazine> getMagazineList() throws SQLException{
+    @Override
+    public ArrayList<Magazine> getMagazineList()
+        throws SQLException, RemoteException
+    {
         return magazineStorage.getMagazineList();
     }
 
