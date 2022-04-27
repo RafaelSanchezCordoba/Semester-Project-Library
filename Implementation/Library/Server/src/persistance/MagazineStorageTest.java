@@ -10,7 +10,7 @@ public class MagazineStorageTest implements MagazineStorage
   private ArrayList<Magazine> magazines;
   private static MagazineStorageTest instance;
 
-  private MagazineStorageTest()
+  public MagazineStorageTest()
   {
     this.magazines = new ArrayList<Magazine>();
   }

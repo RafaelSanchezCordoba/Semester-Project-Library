@@ -42,9 +42,8 @@ public class Librarian  implements Serializable
 
     @Override public String toString()
     {
-        return "Librarian{" + "ssn='" + ssn + '\'' + ", password='" + password
-            + '\'' + ", firstName='" + firstName + '\'' + ", lastName='"
-            + lastName + '\'' + ", date='" + date + '\'' + ", currentTime="
-            + currentTime + '}';
+        return "Librarian{" + "ssn:'" + ssn
+            + '\'' + ", first Name:'" + firstName + '\'' + ", last Name:'"
+            + lastName +"}";
     }
 }

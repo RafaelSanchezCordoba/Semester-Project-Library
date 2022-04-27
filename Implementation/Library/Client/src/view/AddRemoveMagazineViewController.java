@@ -1,5 +1,6 @@
 package view;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -9,6 +10,7 @@ import model.Magazine;
 import viewModel.AddRemoveMagazineViewModel;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class AddRemoveMagazineViewController
 {
@@ -27,7 +29,7 @@ public class AddRemoveMagazineViewController
   @FXML private ListView<String> genreListView;
   @FXML private Label errorLabel;
 
-  public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root)
+  public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root) throws SQLException
   {
     this.viewHandler = viewHandler;
     this.viewModel=viewModel;
@@ -49,25 +51,26 @@ public class AddRemoveMagazineViewController
   }
 
   @FXML
-  public void addMagazineButtonPressed()throws RemoteException
+  public void addMagazineButtonPressed() throws RemoteException, SQLException
   {
     viewModel.addMagazine(new Magazine());
   }
 
   @FXML
-  public void removeBookButtonPressed()
+  public void removeBookButtonPressed() throws SQLException, RemoteException
   {
-    viewModel.removeMagazine();
+    viewModel.removeMagazine(0);
   }
 
   @FXML
-  public void homeMenuButtonPressed()
+  public void homeMenuButtonPressed() throws SQLException, RemoteException
   {
     viewHandler.openView(viewHandler.HOME);
   }
 
   @FXML
-  public void bookMenuButtonPressed() {
+  public void bookMenuButtonPressed() throws SQLException, RemoteException
+  {
     viewHandler.openView(viewHandler.BOOK);
   }
 
@@ -89,7 +92,7 @@ public class AddRemoveMagazineViewController
     return root;
   }
 
-
-
-
+  public void removeMagazineButtonPressed(ActionEvent event)
+  {
+  }
 }

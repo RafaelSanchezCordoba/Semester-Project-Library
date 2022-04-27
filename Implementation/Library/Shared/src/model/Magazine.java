@@ -32,7 +32,7 @@ public class Magazine extends MultimediaItem implements Serializable {
         this.date = date;
     }
     public Magazine(){
-        super(0,"","");
+        super("","");
         this.volume = 0;
         this.genre = "";
         this.date = null;

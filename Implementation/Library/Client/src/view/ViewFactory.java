@@ -56,6 +56,7 @@ public class ViewFactory
       magazineController.init(viewHandler, viewModelFactory.getMagazineViewModel(), root);
     } catch (IOException | SQLException e) {
       throw new IOError(e);
+
     }
   }
     magazineController.reset();
