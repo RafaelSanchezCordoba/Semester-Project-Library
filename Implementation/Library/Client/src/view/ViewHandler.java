@@ -10,6 +10,7 @@ public class ViewHandler
   public static final String HOME = "home";
   public static final String BOOK = "addRemoveBook";
   public static final String MAGAZINE = "addRemoveMagazine";
+  public static final String LIBRARIAN = "addRemoveLibrarian";
 
   private Stage primaryStage;
   private final Scene currentScene;
@@ -39,6 +40,9 @@ public class ViewHandler
         break;
       case MAGAZINE:
         root = viewFactory.loadAddRemoveMagazineView();
+        break;
+      case LIBRARIAN:
+        root = viewFactory.loadAddRemoveLibrarian();
         break;
     //  case "home":
     //    root = factory.loadHomeView();

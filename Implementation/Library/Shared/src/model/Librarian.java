@@ -1,11 +1,15 @@
 package model;
 
+import java.io.Serializable;
+import java.rmi.RemoteException;
+
 /**
  * The librarian class.
  * @author Rafael Sánchez Córdoba.
  * @version 1.0 08/04/22.
  */
-public class Librarian {
+public class Librarian  implements Serializable
+{
     private final String ssn, password, firstName, lastName, date;
     private final CurrentTime currentTime;
 
@@ -29,5 +33,18 @@ public class Librarian {
         this.date = currentTime.getFormattedIsoDate();
     }
 
+    public int getSnn(){
+        return Integer.parseInt(ssn);
+    }
+    public String getSsn(){
+        return ssn;
+    }
 
+    @Override public String toString()
+    {
+        return "Librarian{" + "ssn='" + ssn + '\'' + ", password='" + password
+            + '\'' + ", firstName='" + firstName + '\'' + ", lastName='"
+            + lastName + '\'' + ", date='" + date + '\'' + ", currentTime="
+            + currentTime + '}';
+    }
 }

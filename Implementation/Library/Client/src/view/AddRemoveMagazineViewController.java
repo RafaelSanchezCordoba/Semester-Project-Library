@@ -5,7 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import model.Magazine;
 import viewModel.AddRemoveMagazineViewModel;
+
+import java.rmi.RemoteException;
 
 public class AddRemoveMagazineViewController
 {
@@ -46,9 +49,9 @@ public class AddRemoveMagazineViewController
   }
 
   @FXML
-  public void addMagazineButtonPressed()
+  public void addMagazineButtonPressed()throws RemoteException
   {
-    viewModel.addMagazine();
+    viewModel.addMagazine(new Magazine());
   }
 
   @FXML

@@ -1,5 +1,7 @@
 package server;//package Client.server.Server.src;
 
+import model.Librarian;
+
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -14,8 +16,10 @@ public class Server {
 
         RemoteBook book = new Communicator();
         RemoteMagazine magazine=new Communicator();
+        RemoteLibrarian librarian = new Communicator();
         registry.bind("book",book);
         registry.bind("magazine",magazine);
+        registry.bind("librarian",librarian);
         System.out.println("server.Server running on " + Registry.REGISTRY_PORT);
 
     }

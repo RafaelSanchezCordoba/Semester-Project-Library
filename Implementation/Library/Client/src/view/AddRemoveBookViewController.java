@@ -94,7 +94,7 @@ public class AddRemoveBookViewController
   @FXML
   public void homeMenuButtonPressed()
   {
-    viewHandler.openView("home");
+    viewHandler.openView(ViewHandler.LIBRARIAN);
   }
 
   @FXML

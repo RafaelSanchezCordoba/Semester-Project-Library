@@ -1,5 +1,7 @@
 package server;
 
+import fakeStorage.FakeStorage;
+import fakeStorage.FakeStorageImplementation;
 import model.*;
 import persistance.BookDAO;
 import persistance.BookDAOImplementation;
@@ -11,10 +13,11 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine {
+public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine,RemoteLibrarian {
     private MagazineStorage magazineStorage;
     private BookDAO connector;
     private ArrayList<Object[]> list;
+    private FakeStorage fakeStorage;
 
     public Communicator() throws RemoteException {
         magazineStorage = MagazineStorageImplementation.getInstance();
@@ -23,13 +26,34 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
         connector.start();
 
         list=connector.getBookList();
+        fakeStorage = new FakeStorageImplementation();
+
 
     }
+    public ArrayList<Librarian> getLibrarianList(){
+        return fakeStorage.getLibrarianList();
+    }
+
+    @Override public void removeLibrarianBySsn(int ssn) throws RemoteException
+    {
+
+    }
+
+
+    public void addLibrarian(Librarian librarian){
+        fakeStorage.addLibrarian(librarian);
+    }
+    public void removeLibrarian(Librarian librarian){
+        fakeStorage.removeLibrarian(librarian);
+    }
+
 
     public ArrayList<Object []> getBookList() throws RemoteException{
         list  = connector.getBookList();
         return list;
     }
+
+
 
     @Override
     public void addBook(Book book) throws RemoteException {

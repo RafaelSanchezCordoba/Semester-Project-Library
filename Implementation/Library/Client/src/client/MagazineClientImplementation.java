@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 
 /**
  * The client implementation for magazine that extends <code>UnicastRemoteObject</code> and implements <code>MagazineClient</code>.
@@ -30,13 +31,23 @@ public class MagazineClientImplementation extends UnicastRemoteObject implements
 
   @Override public void addMagazine(Magazine magazine) throws RemoteException
   {
-
-    remoteMagazine.addMagazine(magazine);
+    try
+    {
+      remoteMagazine.addMagazine(magazine);
+    }catch (SQLException e){
+      e.printStackTrace();
+    }
   }
 
   @Override public void removeMagazine(int id) throws RemoteException
   {
-    remoteMagazine.removeMagazine(id);
+    try
+    {
+      remoteMagazine.removeMagazine(id);
+    }catch (SQLException e){
+      e.printStackTrace();
+    }
+
   }
 
 
