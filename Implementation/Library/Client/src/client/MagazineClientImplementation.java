@@ -54,7 +54,7 @@ public class MagazineClientImplementation extends UnicastRemoteObject implements
   @Override public ArrayList<Magazine> getMagazineList()
       throws SQLException, RemoteException
   {
-    return  null;
+    return remoteMagazine.getMagazineList();
   }
 
   @Override public void close() throws IOException
