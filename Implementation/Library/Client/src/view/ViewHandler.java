@@ -5,6 +5,9 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import viewModel.ViewModelFactory;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 public class ViewHandler
 {
   public static final String HOME = "home";
@@ -23,13 +26,14 @@ public class ViewHandler
 
 
 
-  public void start(Stage primaryStage) {
+  public void start(Stage primaryStage) throws SQLException, RemoteException
+  {
     this.primaryStage = primaryStage;
-    openView(BOOK);
+    openView(MAGAZINE);
   }
 
 
-  public void openView(String id)
+  public void openView(String id) throws SQLException, RemoteException
   {
     Region root;
     switch (id)

@@ -32,7 +32,7 @@ public class Book extends MultimediaItem implements Serializable {
      * The list of genre of the book.
      */
     public Book(int id, String title, String publisher, int isbn, int edition, int year_published, GenreList genreList) {
-        super(id, title, publisher);
+        super(title, publisher);
         this.isbn = isbn;
         this.edition = edition;
         this.year_published = year_published;
@@ -42,14 +42,14 @@ public class Book extends MultimediaItem implements Serializable {
 
   public Book(int id,String title,String publisher)
   {
-    super(id,title,publisher);
+    super(title,publisher);
     isbn= 0;
     edition = 0;
     year_published = 0;
   }
   public Book(int id,String title,String publisher, int isbn)
   {
-    super(id,title,publisher);
+    super(title,publisher);
     this.isbn = isbn;
     edition = 0;
     year_published = 0;

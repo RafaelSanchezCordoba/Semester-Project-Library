@@ -24,6 +24,8 @@ public class MagazineStorageTest implements MagazineStorage
   @Override public void addMagazine(Magazine magazine)
   {
     magazines.add( magazine);
+    magazine.setId(magazines.size());
+    System.out.println(magazine);
   }
 
   @Override public void removeMagazine(int id)

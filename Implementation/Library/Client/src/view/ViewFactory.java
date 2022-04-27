@@ -1,11 +1,15 @@
 package view;
 
+
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.layout.Region;
 import viewModel.ViewModelFactory;
 
 import java.io.IOError;
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class ViewFactory
 {
@@ -24,7 +28,8 @@ public class ViewFactory
   }
 
   public Region loadAddRemoveBookView()
-  {if (bookController == null) {
+  {
+    if (bookController == null) {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("addRemoveBook.fxml"));
     try {
@@ -39,7 +44,7 @@ public class ViewFactory
     return bookController.getRoot();
   }
 
-  public Region loadAddRemoveMagazineView()
+  public Region loadAddRemoveMagazineView() throws SQLException, RemoteException
   {if (magazineController == null) {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("addRemoveMagazine.fxml"));
@@ -47,7 +52,7 @@ public class ViewFactory
       Region root = loader.load();
       magazineController = loader.getController();
       magazineController.init(viewHandler, viewModelFactory.getMagazineViewModel(), root);
-    } catch (IOException e) {
+    } catch (IOException | SQLException e) {
       throw new IOError(e);
     }
   }

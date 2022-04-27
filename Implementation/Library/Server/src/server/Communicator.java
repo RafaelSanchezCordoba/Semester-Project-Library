@@ -48,6 +48,7 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
 
     @Override
     public void addMagazine(Magazine magazine) throws RemoteException, SQLException {
+        System.out.println("edfghjk");
         magazineStorage.addMagazine(magazine);
     }
 
@@ -56,6 +57,7 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     {
         magazineStorage.removeMagazine(id);
     }
+    @Override
     public ArrayList<Magazine> getMagazineList()
         throws SQLException, RemoteException
     {

@@ -3,6 +3,7 @@ package server;//package Client.server.Server.src;
 import persistance.AdapterMagazineDAO;
 import persistance.MagazineDAO;
 import persistance.MagazineDAOImplementation;
+import persistance.MagazineStorageTest;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -17,8 +18,8 @@ public class Server {
 
         Registry registry= LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
 
-        MagazineDAO magazineDAO= MagazineDAOImplementation.getInstance();
-        MagazineStorage magazineStorage= new AdapterMagazineDAO(magazineDAO);
+        //MagazineDAO magazineDAO= MagazineDAOImplementation.getInstance();
+        MagazineStorage magazineStorage= MagazineStorageTest.getInstance();
         RemoteBook book = new Communicator(magazineStorage);
         RemoteMagazine magazine=new Communicator(magazineStorage);
         registry.bind("book",book);
