@@ -57,7 +57,7 @@ public class AddRemoveMagazineViewController
   }
 
   @FXML
-  public void removeBookButtonPressed() throws SQLException, RemoteException
+  public void removeMagazineButtonPressed() throws SQLException, RemoteException
   {
     viewModel.removeMagazine(0);
   }

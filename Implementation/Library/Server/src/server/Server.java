@@ -12,7 +12,7 @@ public class Server {
     public static void main(String[] args) throws RemoteException, AlreadyBoundException {
 
         Registry registry= LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
-        MagazineStorage storage = new MagazineStorageTest();
+        MagazineStorage storage = MagazineStorageTest.getInstance();
 
 
 
