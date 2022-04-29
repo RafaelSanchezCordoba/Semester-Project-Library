@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class MagazineStorageTest implements MagazineStorage
 {
+  private int counter = 0;
   private ArrayList<Magazine> magazines;
   private static MagazineStorageTest instance;
 

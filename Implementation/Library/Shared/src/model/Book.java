@@ -38,6 +38,7 @@ public class Book extends MultimediaItem implements Serializable {
         this.year_published = year_published;
         this.author = null;
         this.genreList = genreList;
+        setAuthor("Anonymous");
     }
 
   public Book(int id,String title,String publisher)

@@ -81,6 +81,7 @@ public class MagazineDAOImplementation implements MagazineDAO {
         String genre = resultSet.getString(5);
         java.sql.Date date = resultSet.getDate(6);
         Magazine magazine = new Magazine(title, publisher, volume, genre, date);
+        magazine.setId(id);
         result.add(magazine);
       }
       return result;
