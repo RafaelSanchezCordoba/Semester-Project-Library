@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="255.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Login">
+   <children>
+      <TextField fx:id="userNameTextField" layoutX="150.0" layoutY="96.0" />
+      <Label layoutX="70.0" layoutY="100.0" text="Username" />
+      <Label layoutX="70.0" layoutY="141.0" text="Password" />
+      <Button layoutX="259.0" layoutY="204.0" mnemonicParsing="false" onAction="#logInButtonPressedlogInButtonPressed" text="Log in" />
+      <Label fx:id="errorLabel" layoutX="70.0" layoutY="208.0" prefHeight="17.0" prefWidth="187.0" text="Error label" textFill="RED" />
+      <Label layoutX="142.0" layoutY="24.0" text="LOG IN">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="passwordTextField" layoutX="150.0" layoutY="137.0" />
+      <RadioButton fx:id="libraryUserOption" layoutX="70.0" layoutY="178.0" mnemonicParsing="false" text="Libray User" />
+      <RadioButton fx:id="librarianOption" layoutX="162.0" layoutY="178.0" mnemonicParsing="false" text="Librarian" />
+      <RadioButton fx:id="managerOption" layoutX="238.0" layoutY="178.0" mnemonicParsing="false" text="Manager" />
+   </children>
+</AnchorPane>
