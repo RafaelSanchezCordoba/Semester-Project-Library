@@ -7,14 +7,13 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class MagazineDAOImplementation implements MagazineDAO {
-  private String driver, url, user, password;
-
-
 
   private String insertMagazineSql = "INSERT INTO \"library\".magazine(id,publisher,title,volume,date,librarian_ssn)"
       +"VALUES(?,?,?,?,?,?)";
   private String removeMagazineSql = "DELETE FROM\"library\".magazine "
       +"WHERE id = ?";
+
+  private String getMagazineListSql = "SELECT * FROM \"library\".magazine ORDER BY id DESC";
 
   private static MagazineDAOImplementation instance;
 
@@ -29,6 +28,7 @@ public class MagazineDAOImplementation implements MagazineDAO {
     }
     return instance;
   }
+
   private Connection getConnection() throws SQLException
   {
     return DriverManager.getConnection("jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
@@ -38,7 +38,7 @@ public class MagazineDAOImplementation implements MagazineDAO {
   @Override public void removeMagazine(int id) throws SQLException
   {
     try(Connection connection = getConnection()){
-      PreparedStatement statement= connection.prepareStatement(removeMagazineSql);
+      PreparedStatement statement = connection.prepareStatement(removeMagazineSql);
       statement.setInt(1, id);
       statement.executeUpdate();
     }
@@ -70,7 +70,7 @@ public class MagazineDAOImplementation implements MagazineDAO {
 
   @Override public ArrayList<Magazine> getMagazineList() throws SQLException{
     try (Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"library\".magazine ORDER BY id DESC");
+      PreparedStatement statement = connection.prepareStatement(getMagazineListSql);
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Magazine> result = new ArrayList<Magazine>();
       while (resultSet.next()) {
