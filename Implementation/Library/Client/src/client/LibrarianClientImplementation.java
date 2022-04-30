@@ -12,6 +12,11 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+/**
+ * The client implementation for Librarian that extends <code>UnicastRemoteObject</code> and implements <code>LibrarianClient</code>.
+ * @author Alexandru Dulghier.
+ * @version 1.0 27/04/22.
+ */
 public class LibrarianClientImplementation extends UnicastRemoteObject implements LibrarianClient
 {
   private final RemoteLibrarian remoteLibrarian;

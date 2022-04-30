@@ -6,6 +6,11 @@ import java.awt.*;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+/**
+ * The model Interface for Librarian.
+ * @author Alexandru Dulghier.
+ * @version 1.0 27/04/22
+ */
 public interface ModelLibrarian extends PropertyChangeSubject
 {
   void addLibrarian(Librarian librarian) throws RemoteException;

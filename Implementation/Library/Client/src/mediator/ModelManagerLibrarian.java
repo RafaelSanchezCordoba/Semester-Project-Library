@@ -9,6 +9,12 @@ import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+/**
+ * The model manager for Librarian.
+ * @author Alexandru Dulghier.
+ * @version 1.0 27/04/22
+ */
+
 public class ModelManagerLibrarian implements ModelLibrarian
 {
   private final LibrarianClient client;
@@ -18,10 +24,12 @@ public class ModelManagerLibrarian implements ModelLibrarian
     this.client = client;
     support = new PropertyChangeSupport(this);
   }
+
   public void addLibrarian(Librarian librarian) throws RemoteException
   {
     client.addLibrarian(librarian);
   }
+
   public void removeLibrarian(Librarian librarian) throws RemoteException{
     client.removeLibrarian(librarian);
   }
