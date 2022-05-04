@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -8,7 +9,8 @@ import java.time.format.DateTimeFormatter;
  * @author Rafael Sánchez Córdoba.
  * @version 1.0 - 08/04/22.
  */
-public class CurrentTime {
+public class CurrentTime implements Serializable
+{
     private static final DateTimeFormatter EUROPEAN_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     private static final DateTimeFormatter ISO_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy_MM_dd");
 

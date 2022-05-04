@@ -22,7 +22,7 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
   public BookClientImplementation(String  host, int port) throws IOException,
       NotBoundException
   {
-    Registry registry = LocateRegistry.getRegistry();
+    Registry registry = LocateRegistry.getRegistry(host,port);
     remoteBook = (RemoteBook) registry.lookup("book");
 
   }

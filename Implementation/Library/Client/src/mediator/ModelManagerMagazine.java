@@ -6,6 +6,8 @@ import model.Magazine;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * The model manager for magazine.
@@ -29,8 +31,23 @@ public class ModelManagerMagazine implements ModelMagazine{
      * @throws RemoteException
      */
     @Override
-    public void addMagazine(Magazine magazine) throws RemoteException {
-        client.addMagazine(magazine);
+    public void addMagazine(Magazine magazine)
+    {
+
+        try
+        {
+            client.addMagazine(magazine);
+            System.out.println("client");
+            support.firePropertyChange("newMagazine",null, magazine);
+        }
+        catch (RemoteException e)
+        {
+            e.printStackTrace();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -39,8 +56,11 @@ public class ModelManagerMagazine implements ModelMagazine{
      * @throws RemoteException
      */
     @Override
-    public void removeMagazine(int id) throws RemoteException {
+    public void removeMagazine(int id) throws RemoteException, SQLException
+    {
+        System.out.println(id);
         client.removeMagazine(id);
+        support.firePropertyChange("removeMagazine", null, id);
     }
 
     /**
@@ -79,5 +99,10 @@ public class ModelManagerMagazine implements ModelMagazine{
     @Override
     public void removePropertyChangeListener(String name, PropertyChangeListener listener) {
         support.removePropertyChangeListener(name, listener);
+    }
+
+    @Override public ArrayList<Magazine> getMagazineList() throws RemoteException, SQLException
+    {
+        return client.getMagazineList();
     }
 }

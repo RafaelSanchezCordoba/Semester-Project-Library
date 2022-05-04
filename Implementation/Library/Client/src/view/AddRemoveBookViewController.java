@@ -10,6 +10,7 @@ import javafx.scene.layout.Region;
 import viewModel.AddRemoveBookViewModel;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class AddRemoveBookViewController
 {
@@ -92,9 +93,9 @@ public class AddRemoveBookViewController
   }
 
   @FXML
-  public void homeMenuButtonPressed()
+  public void homeMenuButtonPressed() throws SQLException, RemoteException
   {
-    viewHandler.openView("home");
+    viewHandler.openView(ViewHandler.LIBRARIAN);
   }
 
   @FXML
@@ -111,7 +112,8 @@ public class AddRemoveBookViewController
   }
 
   @FXML
-  public void magazinesMenuButtonPressed() {
+  public void magazinesMenuButtonPressed() throws SQLException, RemoteException
+  {
       viewHandler.openView(viewHandler.MAGAZINE);
   }
 

@@ -8,8 +8,8 @@ import java.io.Serializable;
  * @version 1.0 - 08/04/22.
  */
 public class Book extends MultimediaItem implements Serializable {
-    private final int isbn;
-    private final int edition, year_published;
+    private final int isbn, edition, year_published;
+    private int id;
     private String author;
     private GenreList genreList;
 
@@ -31,25 +31,26 @@ public class Book extends MultimediaItem implements Serializable {
      * @param genreList
      * The list of genre of the book.
      */
-    public Book(int id, String title, String publisher, int isbn, int edition, int year_published, GenreList genreList) {
-        super(id, title, publisher);
+    public Book(String title, String publisher, int isbn, int edition, int year_published, GenreList genreList) {
+        super(title, publisher);
         this.isbn = isbn;
         this.edition = edition;
         this.year_published = year_published;
         this.author = null;
         this.genreList = genreList;
+        setAuthor("Anonymous");
     }
 
   public Book(int id,String title,String publisher)
   {
-    super(id,title,publisher);
+    super(title,publisher);
     isbn= 0;
     edition = 0;
     year_published = 0;
   }
   public Book(int id,String title,String publisher, int isbn)
   {
-    super(id,title,publisher);
+    super(title,publisher);
     this.isbn = isbn;
     edition = 0;
     year_published = 0;
@@ -80,9 +81,13 @@ public class Book extends MultimediaItem implements Serializable {
     return genreList;
   }
 
-  public Book(){
-      isbn= 0;
-      edition = 0;
+  public void setId(int id) {
+        this.id = id;
+  }
+
+  public Book(String title, String publisher, int isbn, int edition, int year_Published){
+      this.isbn = 0;
+      this.edition = 0;
       year_published = 0;
 
   }

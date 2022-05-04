@@ -4,6 +4,7 @@ import model.Librarian;
 import server.RemoteLibrarian;
 
 import java.io.IOException;
+import java.rmi.NoSuchObjectException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -11,27 +12,56 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-public class LibrarianClientImplementation extends UnicastRemoteObject implements LibrarianClient {
+/**
+ * The client implementation for Librarian that extends <code>UnicastRemoteObject</code> and implements <code>LibrarianClient</code>.
+ * @author Alexandru Dulghier.
+ * @version 1.0 27/04/22.
+ */
+public class LibrarianClientImplementation extends UnicastRemoteObject implements LibrarianClient
+{
+  private final RemoteLibrarian remoteLibrarian;
 
-    private final RemoteLibrarian remoteLibrarian;
-    public LibrarianClientImplementation(String host, int port) throws IOException, NotBoundException{
-        Registry registry = LocateRegistry.getRegistry();
-        remoteLibrarian = (RemoteLibrarian) registry.lookup("librarian");
-    }
+  public LibrarianClientImplementation(String host, int port) throws IOException,
+      NotBoundException
+  {
+    Registry registry = LocateRegistry.getRegistry(host,port);
+    remoteLibrarian= (RemoteLibrarian) registry.lookup("librarian");
+  }
 
-    @Override public void addLibrarian(Librarian librarian) throws RemoteException{
-        remoteLibrarian.addLibrarian(librarian);
-    }
 
-    @Override public void removeLibrarian(String ssn) throws RemoteException{
-        remoteLibrarian.removeLibrarian(ssn);
-    }
+  public void addLibrarian(Librarian librarian) throws RemoteException
+  {
+    remoteLibrarian.addLibrarian(librarian);
+  }
 
-    public ArrayList<Object[]> getLibrarianList() throws RemoteException{
-        return remoteLibrarian.getLibrarianList();
-    }
 
-    @Override public void close() throws IOException{
-        UnicastRemoteObject.unexportObject(this,true);
+  public void removeLibrarian(Librarian librarian) throws RemoteException
+  {
+    remoteLibrarian.removeLibrarian(librarian);
+  }
+
+
+  public ArrayList<Librarian> getLibrarianList() throws RemoteException
+  {
+    return remoteLibrarian.getLibrarianList();
+  }
+
+  public void removeLibrarianBySsn(int ssn) throws RemoteException{
+    remoteLibrarian.removeLibrarianBySsn(ssn);
+  }
+  public String toStringArray() throws RemoteException{
+    return remoteLibrarian.getLibrarianList().toString();
+  }
+
+
+  public void close(){
+    try
+    {
+      UnicastRemoteObject.unexportObject(this,true);
     }
+    catch (NoSuchObjectException e)
+    {
+      e.printStackTrace();
+    }
+  }
 }

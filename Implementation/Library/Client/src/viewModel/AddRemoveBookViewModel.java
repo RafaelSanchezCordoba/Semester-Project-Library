@@ -4,10 +4,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
 import mediator.ModelBook;
 import model.Book;
-import server.RemoteBook;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -24,7 +22,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
     private final StringProperty editionTextField;
     private final StringProperty searchTextField;
     private final StringProperty errorLabel;
-    private final ObservableList options;
+    private final ObservableList bookList;
     private String lastAddedBook;
 
     //counter is initialized in getList ....
@@ -42,7 +40,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
         this.editionTextField = new SimpleStringProperty("");
         this.searchTextField = new SimpleStringProperty("");
         this.errorLabel = new SimpleStringProperty("");
-        this.options = FXCollections.observableArrayList();
+        this.bookList = FXCollections.observableArrayList();
         update();
 
 
@@ -64,7 +62,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
                 String title = (String) row[3];
                 String year_published = row[4].toString();
                 String author = (String) row[5];
-                options.add(id + "   |  " + isbn +"  |  "+publisher+ "  |  " + title + "  |  "+year_published + "  |  " + author);
+                bookList.add(id + "   |  " + isbn +"  |  "+publisher+ "  |  " + title + "  |  "+year_published + "  |  " + author);
                 //System.out.println(id + "   |  " + isbn +"  |  "+publisher+ "  |  " + title + "  |  "+year_published + "  |  " + author);
 
             }
@@ -106,7 +104,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
             for (int i = 0; i < model.getBookList().size(); i++)
             {
 
-                String s = options.get(i).toString().substring(0,4).trim();
+                String s = bookList.get(i).toString().substring(0,4).trim();
                 temp = Integer.parseInt(s);
                 result = Math.max(temp, result);
 
@@ -154,7 +152,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
     }
     public ObservableList getList(){
         this.counter = getHighestId();
-        return options;
+        return bookList;
     }
 
     public void bindTitleTextField(StringProperty property) {

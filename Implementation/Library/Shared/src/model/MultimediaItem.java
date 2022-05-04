@@ -40,7 +40,7 @@ public class MultimediaItem implements Serializable {
      * The publisher of the multimedia item.
      */
 
-    public MultimediaItem(int id, String title, String publisher) {
+    public MultimediaItem(String title, String publisher) {
         this.id = 0;
         this.title = title;
         this.publisher = publisher;

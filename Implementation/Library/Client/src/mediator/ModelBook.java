@@ -25,5 +25,6 @@ public interface ModelBook extends PropertyChangeSubject{
      * @throws RemoteException
      */
     void removeBook(int id) throws RemoteException;
+
     ArrayList<Object[]>getBookList() throws RemoteException ;
 }
