@@ -1,8 +1,8 @@
 package server;//package Client.server.Server.src;
-import fakeStorage.FakeStorage;
-import fakeStorage.FakeStorageImplementation;
+
 import persistance.BookStorageTest;
 import persistance.MagazineStorageTest;
+
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -14,17 +14,17 @@ public class Server {
     Registry registry= LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
     MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
     BookStorage bookStorage = BookStorageTest.getInstance();
-    FakeStorage librarianStorage = new FakeStorageImplementation();
 
 
 
 
-    RemoteBook book = new Communicator(magazineStorage,bookStorage, librarianStorage);
-    RemoteMagazine magazine=new Communicator(magazineStorage, bookStorage, librarianStorage);
-    RemoteLibrarian librarian = new Communicator(magazineStorage, bookStorage, librarianStorage);
+
+    RemoteBook book = new Communicator(magazineStorage,bookStorage);
+    RemoteMagazine magazine=new Communicator(magazineStorage, bookStorage);
+
     registry.bind("book",book);
     registry.bind("magazine",magazine);
-    registry.bind("librarian", librarian);
+
     System.out.println("server.Server running on " + Registry.REGISTRY_PORT);
 
   }

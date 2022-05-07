@@ -17,7 +17,7 @@ public class ViewFactory
   private ViewHandler viewHandler;
   private AddRemoveBookViewController bookController;
   private AddRemoveMagazineViewController magazineController;
-  private AddRemoveLibrarianViewController librarianViewController;
+
 
 
   public ViewFactory(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
@@ -26,7 +26,7 @@ public class ViewFactory
     this.viewModelFactory=viewModelFactory;
     bookController=null;
     magazineController=null;
-    librarianViewController = null;
+
   }
 
   public Region loadAddRemoveBookView() throws SQLException, RemoteException
@@ -62,21 +62,6 @@ public class ViewFactory
     magazineController.reset();
     return magazineController.getRoot();
   }
-  public Region loadAddRemoveLibrarian(){
-    if (librarianViewController== null){
-      FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("addRemoveLibrarian.fxml"));
-      try
-      {
-        Region root = loader.load();
-        librarianViewController = loader.getController();
-        librarianViewController.init(viewHandler,viewModelFactory.getLibrarianViewModel(),root);
-      }catch (IOException e){
-        throw  new IOError(e);
-      }
-    }
-    librarianViewController.reset();
-    return librarianViewController.getRoot();
-  }
+
 
 }

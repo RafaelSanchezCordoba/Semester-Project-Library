@@ -66,15 +66,10 @@ public class AddRemoveBookViewController
 
   @FXML public void addBookButtonPressed() throws SQLException, RemoteException
   {
-    GenreList genreList = new GenreList();
-    genreList.addGenre(null);
-    Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
-        Integer.parseInt(isbnTextField.getText()),
-        Integer.parseInt(editionTextField.getText()),
-        Integer.parseInt(yearTextField.getText()), genreList);
-    viewModel.addBook(book);
 
-    //bookListView.getItems().add(viewModel.getList().get(0).toString());
+    Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
+        Integer.parseInt(isbnTextField.getText()));
+    viewModel.addBook(book);
 
   }
 
@@ -87,7 +82,7 @@ public class AddRemoveBookViewController
 
   @FXML public void homeMenuButtonPressed() throws SQLException, RemoteException
   {
-    viewHandler.openView(ViewHandler.LIBRARIAN);
+
   }
 
   @FXML public void testDataPressed()

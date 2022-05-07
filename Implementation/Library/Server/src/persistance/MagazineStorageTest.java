@@ -28,7 +28,8 @@ public class MagazineStorageTest  implements MagazineStorage
     magazines.add( magazine);
     magazine.setId(counter);
     counter++;
-    System.out.println(magazine);
+    System.out.println(counter);
+
   }
 
   @Override public void removeMagazine(int id)

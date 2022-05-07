@@ -41,14 +41,14 @@ public class Book extends MultimediaItem implements Serializable {
         setAuthor("Anonymous");
     }
 
-  public Book(int id,String title,String publisher)
+  public Book(String title,String publisher)
   {
     super(title,publisher);
     isbn= 0;
     edition = 0;
     year_published = 0;
   }
-  public Book(int id,String title,String publisher, int isbn)
+  public Book(String title,String publisher, int isbn)
   {
     super(title,publisher);
     this.isbn = isbn;

@@ -115,10 +115,12 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
 
     public void removeMagazine(int id) throws SQLException, RemoteException
     {
+        System.out.println("viewModel");
         model.removeMagazine(id);
     }
 
     public void setMagazineList() throws RemoteException, SQLException{
+        magazineList.clear();
         for (int i = 0; i < model.getMagazineList().size(); i++)
         {
             magazineList.add(model.getMagazineList().get(i));
@@ -126,30 +128,23 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public void propertyChange(PropertyChangeEvent evt)
+    {
 
-        try
+        if (evt.getPropertyName().equals("newMagazine"))
         {
-
-            setMagazineList();
+            magazineList.add((Magazine) evt.getNewValue());
         }
-        catch (RemoteException e)
+        else if (evt.getPropertyName().equals("removeMagazine"))
         {
-            e.printStackTrace();
+            for (int i = 0; i < magazineList.size(); i++)
+            {
+                if (magazineList.get(i).getId() == (int) evt.getNewValue())
+                {
+                    magazineList.remove(magazineList.get(i));
+                    break;
+                }
+            }
         }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        //        if(evt.getPropertyName().equals("newMagazine"))
-//        {
-//            magazineList.add((Magazine) evt.getNewValue());
-//        }
-//        else if (evt.getPropertyName().equals("removeMagazine")){
-//            for (int i = 0; i < magazineList.size(); i++) {
-//              if (magazineList.get(i).getId() == (int) evt.getNewValue()) {
-//                  magazineList.remove(magazineList.get(i));
-//              }
-//            }
     }
 }

@@ -107,7 +107,4 @@ public class AddRemoveMagazineViewController
     return root;
   }
 
-  public void removeMagazineButtonPressed(ActionEvent event)
-  {
-  }
 }
