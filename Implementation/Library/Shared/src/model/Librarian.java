@@ -11,12 +11,12 @@ import java.rmi.RemoteException;
 public class Librarian  implements Serializable
 {
     private final String ssn, password, firstName, lastName, date;
-    private final CurrentTime currentTime;
+
 
     /**
      * Librarian constructor.
      * @param ssn
-     * The social security numbner.
+     * The social security number.
      * @param password
      * The password.
      * @param firstName
@@ -25,12 +25,11 @@ public class Librarian  implements Serializable
      * The last name.
      */
     public Librarian(String ssn, String password, String firstName, String lastName) {
-        currentTime = new CurrentTime();
         this.ssn = ssn;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.date = currentTime.getFormattedIsoDate();
+        this.date = new CurrentTime().getFormattedIsoDate();
     }
 
     public int getSnn(){
@@ -44,6 +43,6 @@ public class Librarian  implements Serializable
     {
         return "Librarian{" + "ssn:'" + ssn
             + '\'' + ", first Name:'" + firstName + '\'' + ", last Name:'"
-            + lastName +"}";
+            + lastName +"'}";
     }
 }

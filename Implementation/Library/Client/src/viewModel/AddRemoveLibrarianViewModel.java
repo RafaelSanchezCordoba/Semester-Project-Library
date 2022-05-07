@@ -17,7 +17,6 @@ import java.rmi.RemoteException;
 public class AddRemoveLibrarianViewModel implements PropertyChangeListener
 {
 
-
     private final ModelLibrarian model;
 
     private final StringProperty firstNameTextField;
