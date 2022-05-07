@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -26,15 +27,16 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
     remoteBook = (RemoteBook) registry.lookup("book");
 
   }
-  public ArrayList<Object[]> getBookList() throws RemoteException{
+  public ArrayList<Book> getBookList() throws RemoteException, SQLException
+  {
     return  remoteBook.getBookList();
   }
-  @Override public void addBook(Book book) throws RemoteException
+  @Override public void addBook(Book book) throws RemoteException, SQLException
   {
     remoteBook.addBook(book);
   }
 
-  @Override public void removeBook(int id) throws RemoteException
+  @Override public void removeBook(int id) throws RemoteException, SQLException
   {
     remoteBook.removeBook(id);
   }

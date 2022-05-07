@@ -29,7 +29,7 @@ public class ViewFactory
     librarianViewController = null;
   }
 
-  public Region loadAddRemoveBookView()
+  public Region loadAddRemoveBookView() throws SQLException, RemoteException
   {
     if (bookController == null) {
     FXMLLoader loader = new FXMLLoader();

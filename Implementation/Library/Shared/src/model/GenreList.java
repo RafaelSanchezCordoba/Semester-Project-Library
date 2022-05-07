@@ -18,4 +18,8 @@ public class GenreList {
     public GenreList() {
 
     }
+
+    public void addGenre(Genre genre) {
+        genres.add(genre);
+    }
 }

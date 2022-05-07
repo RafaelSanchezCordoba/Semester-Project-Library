@@ -1,5 +1,6 @@
 package viewModel;
 
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -10,6 +11,8 @@ import model.Book;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AddRemoveBookViewModel implements PropertyChangeListener {
     private final ModelBook model;
@@ -22,14 +25,9 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
     private final StringProperty editionTextField;
     private final StringProperty searchTextField;
     private final StringProperty errorLabel;
-    private final ObservableList bookList;
-    private String lastAddedBook;
+    private final SimpleListProperty<Book> bookList;
 
-    //counter is initialized in getList ....
-    private int counter;
-
-    public AddRemoveBookViewModel(ModelBook model) throws RemoteException
-    {
+    public AddRemoveBookViewModel(ModelBook model) throws RemoteException {
         this.model = model;
         this.titleTextField = new SimpleStringProperty("");
         this.publisherTextField = new SimpleStringProperty("");
@@ -40,119 +38,45 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
         this.editionTextField = new SimpleStringProperty("");
         this.searchTextField = new SimpleStringProperty("");
         this.errorLabel = new SimpleStringProperty("");
-        this.bookList = FXCollections.observableArrayList();
-        update();
+        ObservableList<Book> observableList = FXCollections.observableArrayList(new ArrayList<>());
+        this.bookList = new SimpleListProperty<>(observableList);
 
-
-
-
-
-    }
-
-        public void update() {
-        try
-        {
-
-            for (int i=0;i<model.getBookList().size();i++)
-            {
-                Object[] row = model.getBookList().get(i);
-                String id = row[0].toString();
-                String isbn =  row[1].toString();
-                String publisher = (String) row[2];
-                String title = (String) row[3];
-                String year_published = row[4].toString();
-                String author = (String) row[5];
-                bookList.add(id + "   |  " + isbn +"  |  "+publisher+ "  |  " + title + "  |  "+year_published + "  |  " + author);
-                //System.out.println(id + "   |  " + isbn +"  |  "+publisher+ "  |  " + title + "  |  "+year_published + "  |  " + author);
-
-            }
-    }catch (RemoteException e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public void setLastAddedBook() {
-        try
-        {
-            update();
-            Object [] row = model.getBookList().get(0);
-            String id = row[0].toString();
-            String isbn =  row[1].toString();
-            String publisher = (String) row[2];
-            String title = (String) row[3];
-            String year_published = row[4].toString();
-            String author = (String) row[5];
-            this.lastAddedBook = id + "   |  " + isbn +"  |  "+publisher+ "  |  " + title + "  |  "+year_published + "  |  " + author;
-        }catch (RemoteException e){
-            e.printStackTrace();
-        }
-
-
-    }
-    public String getLastAddedBook(){
-        return lastAddedBook;
-    }
-
-
-    public int getHighestId(){
-        int result = 0;
-        int temp = 0;
-        try
-        {
-
-            for (int i = 0; i < model.getBookList().size(); i++)
-            {
-
-                String s = bookList.get(i).toString().substring(0,4).trim();
-                temp = Integer.parseInt(s);
-                result = Math.max(temp, result);
-
-            }
-           // System.out.println("highset ID:" + result);
-        }catch (RemoteException e){
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public void  dummy (){
-        this.titleTextField.setValue("default_tile");
-        this.publisherTextField.setValue("default_pubblisher");
-        this.authorTextField.setValue("no_name");
-        this.isbnTextField.setValue("deafult_isbn");
-        this.yearTextField.setValue("0000");
-        this.genreTextField.setValue("default_genre");
+        model.addPropertyChangeListener("newBook", this);
+        model.removePropertyChangeListener("removeBook", this);
     }
 
     public void search() {
 
     }
 
-    public void addBook() {
-
-        counter++;
-        try
+    public void setBookList() throws RemoteException, SQLException{
+        for (int i = 0; i < model.getBookList().size(); i++)
         {
-            model.addBook(new Book(counter,titleTextField.getValue(),publisherTextField.getValue(),Integer.parseInt(isbnTextField.getValue())));
-            setLastAddedBook();
-
+            bookList.add(model.getBookList().get(i));
         }
-        catch (RemoteException e)
-        {
-            e.printStackTrace();
-        }
-        update();
-
     }
 
-    public void removeBook(int id) throws RemoteException {
+    public void addBook(Book book) throws RemoteException, SQLException {
+        model.addBook(book);
+    }
+
+    public void removeBook(int id) throws RemoteException, SQLException
+    {
         model.removeBook(id);
-        update();
+
     }
-    public ObservableList getList(){
-        this.counter = getHighestId();
-        return bookList;
+
+    public void reset() throws SQLException, RemoteException{
+        setBookList();
+
+        titleTextField.set("");
+        publisherTextField.set("");
+        authorTextField.set("");
+        isbnTextField.set("");
+        yearTextField.set("");
+        genreTextField.set("");
+        editionTextField.set("");
+        searchTextField.set("");
     }
 
     public void bindTitleTextField(StringProperty property) {
@@ -193,6 +117,17 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
+        try
+        {
+            setBookList();
+        }
+        catch (RemoteException e)
+        {
+            e.printStackTrace();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

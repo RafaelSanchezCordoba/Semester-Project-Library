@@ -3,6 +3,7 @@ package persistance;
 import model.Genre;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class GenreDAOImplementation implements GenreDAO{
 
@@ -53,5 +54,10 @@ public class GenreDAOImplementation implements GenreDAO{
             statement.setInt(1, id);
             statement.executeUpdate();
         }
+    }
+
+    @Override public ArrayList<Genre> getGenreList() throws SQLException
+    {
+        return null;
     }
 }

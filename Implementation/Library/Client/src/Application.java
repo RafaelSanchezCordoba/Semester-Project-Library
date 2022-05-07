@@ -18,7 +18,7 @@ public class Application extends javafx.application.Application {
         ModelMagazine modelMagazine = new ModelManagerMagazine(magazineClient);
         ModelLibrarian modelLibrarian = new ModelManagerLibrarian(librarianClient);
 
-        ViewModelFactory viewModelFactory = new ViewModelFactory(modelBook, modelMagazine,modelLibrarian);
+        ViewModelFactory viewModelFactory = new ViewModelFactory(modelBook, modelMagazine, modelLibrarian);
         ViewHandler viewHandler = new ViewHandler(viewModelFactory);
         viewHandler.start(primaryStage);
     }

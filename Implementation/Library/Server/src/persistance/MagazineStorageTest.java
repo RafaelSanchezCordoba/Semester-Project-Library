@@ -5,15 +5,16 @@ import server.MagazineStorage;
 
 import java.util.ArrayList;
 
-public class MagazineStorageTest implements MagazineStorage
+public class MagazineStorageTest  implements MagazineStorage
 {
-  private int counter = 0;
+  private int counter ;
   private ArrayList<Magazine> magazines;
   private static MagazineStorageTest instance;
 
   private MagazineStorageTest()
   {
     this.magazines = new ArrayList<Magazine>();
+    this.counter=0;
   }
   public static synchronized MagazineStorageTest getInstance(){
     if(instance==null){
@@ -25,7 +26,8 @@ public class MagazineStorageTest implements MagazineStorage
   @Override public void addMagazine(Magazine magazine)
   {
     magazines.add( magazine);
-    magazine.setId(magazines.size());
+    magazine.setId(counter);
+    counter++;
     System.out.println(magazine);
   }
 

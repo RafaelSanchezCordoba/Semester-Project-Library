@@ -7,10 +7,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import model.Book;
+import model.Genre;
+import model.GenreList;
 import viewModel.AddRemoveBookViewModel;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AddRemoveBookViewController
 {
@@ -26,16 +30,15 @@ public class AddRemoveBookViewController
   @FXML private TextField genreTextField;
   @FXML private TextField editionTextField;
   @FXML private TextField searchTextField;
-  @FXML private ListView<String> bookListView;
+  @FXML private ListView<Book> bookListView;
   @FXML private ListView<String> genreListView;
   @FXML private Label errorLabel;
 
-
-
-  public void init(ViewHandler viewHandler, AddRemoveBookViewModel viewModel, Region root)
+  public void init(ViewHandler viewHandler, AddRemoveBookViewModel viewModel,
+      Region root) throws SQLException, RemoteException
   {
     this.viewHandler = viewHandler;
-    this.viewModel=viewModel;
+    this.viewModel = viewModel;
     this.root = root;
 
     viewModel.bindTitleTextField(titleTextField.textProperty());
@@ -48,80 +51,73 @@ public class AddRemoveBookViewController
     viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindYearTextField(yearTextField.textProperty());
 
-
-        for (int i = 0;i<viewModel.getList().size();i++){
-      bookListView.getItems().add(viewModel.getList().get(i).toString());
-    }
-
+    viewModel.setBookList();
   }
 
-  @FXML
-  public void logOutButtonPressed()
+  @FXML public void logOutButtonPressed()
   {
     viewHandler.closeView();
   }
 
-  @FXML
-  public void searchButtonPressed()
+  @FXML public void searchButtonPressed()
   {
     viewModel.search();
   }
 
-  @FXML
-  public void addBookButtonPressed()
+  @FXML public void addBookButtonPressed() throws SQLException, RemoteException
   {
-    viewModel.addBook();
-    bookListView.getItems().add(viewModel.getLastAddedBook());
+    GenreList genreList = new GenreList();
+    genreList.addGenre(null);
+    Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
+        Integer.parseInt(isbnTextField.getText()),
+        Integer.parseInt(editionTextField.getText()),
+        Integer.parseInt(yearTextField.getText()), genreList);
+    viewModel.addBook(book);
 
-   //bookListView.getItems().add(viewModel.getList().get(0).toString());
+    //bookListView.getItems().add(viewModel.getList().get(0).toString());
 
   }
 
-  //there is probably a better way
-  @FXML
-  public void removeBookButtonPressed() throws RemoteException
+  @FXML public void removeBookButtonPressed()
+      throws RemoteException, SQLException
   {
-
-    //function to get the book id ?????????
-    String index = bookListView.getSelectionModel().getSelectedItem();
-    int trueIndex = Integer.parseInt(index.substring(0,4).trim());
-    System.out.println(index.substring(0,4)+"  "+trueIndex);
-
-
-    viewModel.removeBook(trueIndex);
-    bookListView.getItems().remove(bookListView.getSelectionModel().getSelectedIndex());
+    viewModel.removeBook(
+        bookListView.getSelectionModel().getSelectedItem().getId());
   }
 
-  @FXML
-  public void homeMenuButtonPressed() throws SQLException, RemoteException
+  @FXML public void homeMenuButtonPressed() throws SQLException, RemoteException
   {
     viewHandler.openView(ViewHandler.LIBRARIAN);
   }
 
-  @FXML
-  public void testDataPressed(){viewModel.dummy();}
-
-  @FXML
-  public void addGenreButtonPressed() {
-
-  }
-
-  @FXML
-  public void bookMenuButtonPressed() {
-
-  }
-
-  @FXML
-  public void magazinesMenuButtonPressed() throws SQLException, RemoteException
+  @FXML public void testDataPressed()
   {
-      viewHandler.openView(viewHandler.MAGAZINE);
-  }
-
-  public void reset() {
 
   }
 
-  public Region getRoot() {
+  @FXML public void addGenreButtonPressed()
+  {
+
+  }
+
+  @FXML public void bookMenuButtonPressed()
+  {
+
+  }
+
+  @FXML public void magazinesMenuButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(viewHandler.MAGAZINE);
+  }
+
+  public void reset() throws SQLException, RemoteException
+  {
+    viewModel.reset();
+  }
+
+  public Region getRoot()
+  {
     return root;
   }
 }

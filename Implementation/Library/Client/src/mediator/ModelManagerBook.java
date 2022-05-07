@@ -7,6 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -25,23 +26,17 @@ public class ModelManagerBook implements ModelBook {
         this.support = new PropertyChangeSupport(this);
     }
 
-    public ArrayList<Object[]> getBookList(){
-        try
-        {
-            return client.getBookList();
-        }catch (RemoteException e){
-            e.printStackTrace();
-        }
-       return null;
+    public ArrayList<Book> getBookList() throws SQLException, RemoteException {
+        return client.getBookList();
     }
 
     @Override
-    public void addBook(Book book) throws RemoteException {
+    public void addBook(Book book) throws RemoteException, SQLException {
         client.addBook(book);
     }
 
     @Override
-    public void removeBook(int id) throws RemoteException {
+    public void removeBook(int id) throws RemoteException, SQLException {
         client.removeBook(id);
     }
 

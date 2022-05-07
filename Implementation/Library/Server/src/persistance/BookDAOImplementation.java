@@ -18,7 +18,7 @@ public class BookDAOImplementation implements BookDAO {
   private String insertBookSql = "INSERT INTO \"library\".book(id,isbn,publisher,title,year_published,author,edition,librarian_ssn)"
           + "VALUES( ?,?,?,?,?,?,?,?)";
 
-  private String insertGenreSql = "INSERT INTO \"library\".ge;
+  private String insertGenreSql = "INSERT INTO \"library\".ge";
 
   private String removeBookSql = "DELETE FROM \"library\".book "
           + "WHERE id=?";
@@ -87,7 +87,7 @@ public class BookDAOImplementation implements BookDAO {
         int Edition = resultSet.getInt(5);
         int Year_Published = resultSet.getInt(6);
         Book book = new Book(title, publisher, Isbn, Edition, Year_Published);
-
+        book.setId(id);
         result.add(book);
       }
       return result;

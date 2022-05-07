@@ -1,16 +1,15 @@
 package server;
 
-import dk.via.remote.observer.RemotePropertyChangeListener;
 import model.*;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public interface RemoteBook extends Remote {
-    void addBook(Book book) throws RemoteException;
-    void removeBook(int id) throws RemoteException;
-    ArrayList<Object[]> getBookList() throws RemoteException;
+    void addBook(Book book) throws RemoteException, SQLException;
+    void removeBook(int id) throws RemoteException, SQLException;
+    ArrayList<Book> getBookList() throws RemoteException, SQLException;
 
 }

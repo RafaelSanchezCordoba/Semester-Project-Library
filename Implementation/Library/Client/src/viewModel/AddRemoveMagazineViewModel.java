@@ -41,7 +41,7 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         this.searchTextField = new SimpleStringProperty("");
         this.errorLabel = new SimpleStringProperty("");
         ObservableList<Magazine> observableList = FXCollections.observableArrayList( new ArrayList<Magazine>());
-        this.magazineList=  new SimpleListProperty<>(observableList);
+        this.magazineList = new SimpleListProperty<>(observableList);
 
         model.addPropertyChangeListener("newMagazine", this);
         model.addPropertyChangeListener("removeMagazine", this);

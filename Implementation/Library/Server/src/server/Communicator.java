@@ -1,78 +1,64 @@
 package server;
 
 import fakeStorage.FakeStorage;
-import fakeStorage.FakeStorageImplementation;
 import model.*;
-import persistance.BookDAO;
-import persistance.BookDAOImplementation;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine,RemoteLibrarian {
+public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine,RemoteLibrarian{
     private MagazineStorage magazineStorage;
-    private BookDAO connector;
-    private ArrayList<Object[]> list;
-    private FakeStorage fakeStorage;
-
-    public Communicator(MagazineStorage magazineStorage) throws RemoteException {
-        this.magazineStorage=magazineStorage;
-        connector = new BookDAOImplementation("org.postgresql.Driver","jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
-            "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
-        connector.start();
-
-        list=connector.getBookList();
-        fakeStorage = new FakeStorageImplementation();
+    private BookStorage bookStorage;
+    private FakeStorage librarianStorage;
+//    private GenreStorage genreStorage;
 
 
-    }
-    public ArrayList<Librarian> getLibrarianList(){
-        return fakeStorage.getLibrarianList();
+    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage, FakeStorage librarianStorage) throws RemoteException {
+        this.magazineStorage = magazineStorage;
+        this.bookStorage = bookStorage;
+        this.librarianStorage = librarianStorage;
+//        this.genreStorage = genreStorage;
     }
 
-    @Override public void removeLibrarianBySsn(int ssn) throws RemoteException
+//    @Override public void addGenre(Genre genre)
+//        throws SQLException, RemoteException
+//    {
+//        genreStorage.addGenre(genre);
+//    }
+//
+//    @Override public void removeGenre(int id)
+//        throws SQLException, RemoteException
+//    {
+//        genreStorage.removeGenre(id);
+//    }
+//
+//    @Override public ArrayList<Genre> getGenreList()
+//        throws SQLException, RemoteException
+//    {
+//        return genreStorage.getGenreList();
+//    }
+
+    @Override
+    public void addBook(Book book) throws RemoteException, SQLException {
+        bookStorage.addBook(book);
+
+    }
+
+    @Override
+    public void removeBook(int id) throws RemoteException, SQLException
     {
-
+        bookStorage.removeBook(id);
     }
 
-
-    public void addLibrarian(Librarian librarian){
-        fakeStorage.addLibrarian(librarian);
+    @Override public ArrayList<Book> getBookList() throws RemoteException, SQLException
+    {
+        return bookStorage.getBookList();
     }
-    public void removeLibrarian(Librarian librarian){
-        fakeStorage.removeLibrarian(librarian);
-    }
-
-
-    public ArrayList<Object []> getBookList() throws RemoteException{
-        list  = connector.getBookList();
-        return list;
-    }
-
-
-
-    @Override
-    public void addBook(Book book) throws RemoteException {
-        //We need DB
-        // resolve nul values
-        connector.addBook(book.getId(), book.getIsbn(), book.getPublisher(),
-            book.getTitle(), book.getYear_published(), book.getAuthor(),
-            book.getEdition(),1802007570);
-        list=connector.getBookList();
-
-    }
-
-    @Override
-    public void removeBook(int id) throws RemoteException {
-        connector.removeBook(id);
-    }
-
 
     @Override
     public void addMagazine(Magazine magazine) throws RemoteException, SQLException {
-        System.out.println("edfghjk");
         magazineStorage.addMagazine(magazine);
     }
 
@@ -88,6 +74,28 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
         return magazineStorage.getMagazineList();
     }
 
+    @Override public void addLibrarian(Librarian librarian)
+        throws RemoteException
+    {
+
+    }
+
+    @Override public void removeLibrarian(Librarian librarian)
+        throws RemoteException
+    {
+
+    }
+
+    @Override public ArrayList<Librarian> getLibrarianList()
+        throws RemoteException
+    {
+        return null;
+    }
+
+    @Override public void removeLibrarianBySsn(int ssn) throws RemoteException
+    {
+
+    }
 }
 
 

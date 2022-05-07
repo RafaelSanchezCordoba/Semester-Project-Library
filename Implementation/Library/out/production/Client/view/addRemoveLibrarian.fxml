@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="878.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRemoveMagazineViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="878.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRemoveLibrarianViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="878.0" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="HOME" />
@@ -22,13 +22,16 @@
       <TextField fx:id="searchTextField" layoutX="375.0" layoutY="64.0" prefHeight="25.0" prefWidth="444.0" />
       <Button layoutX="831.0" layoutY="64.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="🔍" />
       <ListView fx:id="librarianTextListView" layoutX="375.0" layoutY="98.0" prefHeight="182.0" prefWidth="487.0" />
-      <Button layoutX="265.0" layoutY="251.0" mnemonicParsing="false" onAction="#removeLibrarianButtonPressed" text="Remove" />
+      <Button layoutX="277.0" layoutY="319.0" mnemonicParsing="false" onAction="#removeLibrarianButtonPressed" text="Remove" />
       <Label layoutX="40.0" layoutY="139.0" text="First Name: ">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="181.0" text="Last Name: " />
+      <Label layoutX="43.0" layoutY="181.0" text="Last Name: ">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
       <TextField fx:id="firstNameTextField" layoutX="128.0" layoutY="134.0" prefHeight="28.0" prefWidth="200.0">
          <font>
             <Font size="14.0" />
@@ -41,7 +44,7 @@
       </TextField>
       <Label layoutX="75.0" layoutY="219.0" text="SSN: ">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Label>
       <TextField fx:id="ssnTextField" layoutX="128.0" layoutY="214.0" prefHeight="28.0" prefWidth="200.0">
@@ -49,10 +52,16 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="145.0" layoutY="251.0" mnemonicParsing="false" onAction="#addLibrarianButtonPressed" text="Add Magazine" />
-      <Label fx:id="errorLabel" layoutX="23.0" layoutY="284.0" prefHeight="35.0" prefWidth="335.0" text="Error message / Information message" textFill="RED">
+      <Button layoutX="150.0" layoutY="319.0" mnemonicParsing="false" onAction="#addLibrarianButtonPressed" text="Add Librarian" />
+      <Label fx:id="errorLabel" layoutX="429.0" layoutY="284.0" prefHeight="35.0" prefWidth="335.0" text="Error message / Information message" textFill="RED">
          <font>
             <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="passwordTextField" layoutX="128.0" layoutY="255.0" prefHeight="26.0" prefWidth="200.0" />
+      <Label layoutX="44.0" layoutY="258.0" prefHeight="18.0" prefWidth="62.0" text="Password:">
+         <font>
+            <Font size="13.0" />
          </font>
       </Label>
    </children>
