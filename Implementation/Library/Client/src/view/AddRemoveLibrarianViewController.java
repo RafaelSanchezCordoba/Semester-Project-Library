@@ -45,7 +45,7 @@ public class AddRemoveLibrarianViewController
     viewModel.bindErrorLabelTextField(errorLabel.textProperty());
 
 
-    observableSet.addListener((SetChangeListener.Change<?extends String> c)->{
+   /* observableSet.addListener((SetChangeListener.Change<?extends String> c)->{
       if(c.wasAdded()){
         librarianTextListView.getItems().add(c.getElementAdded());
       }
@@ -56,7 +56,7 @@ public class AddRemoveLibrarianViewController
     });
     librarianTextListView.getItems().setAll(viewModel.getOptions());
 
-    observableSet.addAll(viewModel.getOptions());
+    observableSet.addAll(viewModel.getOptions());*/
   }
 
   @FXML public void addLibrarianButtonPressed(ActionEvent event){

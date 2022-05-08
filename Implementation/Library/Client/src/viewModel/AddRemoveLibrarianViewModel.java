@@ -1,6 +1,7 @@
 package viewModel;
 
 import com.sun.javafx.collections.ObservableListWrapper;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -13,6 +14,9 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeListenerProxy;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class AddRemoveLibrarianViewModel implements PropertyChangeListener
 {
@@ -24,7 +28,8 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener
     private final StringProperty passwordTextField;
     private final StringProperty ssnTextField;
     private final StringProperty errorLabel;
-    private final ObservableList options ;
+    private final ObservableList<Librarian> options;
+
     public AddRemoveLibrarianViewModel(ModelLibrarian model){
 
         this.model = model;
@@ -41,28 +46,37 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener
             e.printStackTrace();
             errorLabel.set("unable to access librarian List");
         }
+        model.addPropertyChangeListener(this);
+
     }
 
-    public ObservableList getOptions(){
-        return options;
-    }
-
-    public void removeLibrarian(Librarian librarian){
+        public void removeLibrarian(Librarian librarian){
         try
         {
+            options.remove(librarian);
             model.removeLibrarian(librarian);
         }catch (RemoteException e){
             e.printStackTrace();
         }
+
+        }
+    public ObservableList<Librarian> getOptions(){
+        return options;
+    }
+
+    public Librarian getInstance(){
+        return new Librarian(firstNameTextField.getValue(),
+            lastNameTextField.getValue(), passwordTextField.getValue(),
+            ssnTextField.getValue());
     }
 
     public void addLibrarian(){
         try
         {
-
-            model.addLibrarian(new Librarian(firstNameTextField.getValue(),
-                    lastNameTextField.getValue(), passwordTextField.getValue(),
-                    ssnTextField.getValue()));
+            Librarian librarian=new Librarian(ssnTextField.getValue(), passwordTextField.getValue(),firstNameTextField.getValue(),
+                lastNameTextField.getValue());
+            options.add(librarian);
+            model.addLibrarian(librarian);
 
         }catch (RemoteException e){
             e.printStackTrace();
@@ -71,11 +85,6 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener
 
     }
 
-    public Librarian getInstance(){
-        return new Librarian(firstNameTextField.getValue(),
-                lastNameTextField.getValue(), passwordTextField.getValue(),
-                ssnTextField.getValue());
-    }
     public void bindFirstNameTextField(StringProperty property) {
         property.bindBidirectional(firstNameTextField);
     }
@@ -92,9 +101,17 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener
         property.bindBidirectional(errorLabel);
     }
 
+    public void reset()
+    {
+        firstNameTextField.set("");
+        lastNameTextField.set("");
+        ssnTextField.set("");
+        passwordTextField.set("");
+    }
+
     @Override public void propertyChange(PropertyChangeEvent evt)
     {
-
+        reset();
     }
 }
 
