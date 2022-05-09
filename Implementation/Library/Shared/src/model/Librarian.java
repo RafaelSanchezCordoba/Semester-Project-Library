@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.sql.Date;
 
 /**
  * The librarian class.
@@ -10,7 +11,10 @@ import java.rmi.RemoteException;
  */
 public class Librarian  implements Serializable
 {
-    private final String password, firstName, lastName, date;
+    private final String password;
+    private final String firstName;
+    private final String lastName;
+    private String date;
     private final int ssn;
     private final CurrentTime currentTime;
 
@@ -38,6 +42,25 @@ public class Librarian  implements Serializable
         return ssn;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getDateOfEmployment() {
+        return date;
+    }
+
+    void setDate(Date date) {
+        this.date = String.valueOf(date);
+    }
 
     @Override public String toString()
     {

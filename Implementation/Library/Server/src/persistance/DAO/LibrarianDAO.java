@@ -18,7 +18,7 @@ public interface LibrarianDAO {
      * Librarian object
      * @throws RemoteException
      */
-    void addLibrarian(Librarian librarian);
+    void addLibrarian(Librarian librarian) throws SQLException;
 
     /**
      * Remove a Librarian by the SSN
@@ -26,7 +26,7 @@ public interface LibrarianDAO {
      * The Social Security Number
      * @throws RemoteException
      */
-    void removeLibrarian(int SSN);
+    void removeLibrarian(int SSN) throws SQLException;
 
     /**
      * Return a list with all the librarians added
@@ -35,5 +35,5 @@ public interface LibrarianDAO {
      * @throws RemoteException
      * @throws SQLException
      */
-    ArrayList<Librarian> getLibrarianList();
+    ArrayList<Librarian> getLibrarianList() throws SQLException;
 }
