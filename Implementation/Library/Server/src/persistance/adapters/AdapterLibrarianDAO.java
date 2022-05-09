@@ -32,7 +32,7 @@ public class AdapterLibrarianDAO implements LibrarianStorage {
      * @throws RemoteException
      */
     @Override
-    public void addLibrarian(Librarian librarian) {
+    public void addLibrarian(Librarian librarian) throws SQLException {
         librarianDAO.addLibrarian(librarian);
     }
 
@@ -43,7 +43,7 @@ public class AdapterLibrarianDAO implements LibrarianStorage {
      * @throws RemoteException
      */
     @Override
-    public void removeLibrarian(int SSN) {
+    public void removeLibrarian(int SSN) throws SQLException {
         librarianDAO.removeLibrarian(SSN);
     }
 
@@ -55,7 +55,7 @@ public class AdapterLibrarianDAO implements LibrarianStorage {
      * @throws SQLException
      */
     @Override
-    public ArrayList<Librarian> getLibrarianList() {
+    public ArrayList<Librarian> getLibrarianList() throws SQLException {
         return librarianDAO.getLibrarianList();
     }
 }

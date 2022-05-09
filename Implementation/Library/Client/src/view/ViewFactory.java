@@ -62,7 +62,7 @@ public class ViewFactory
     magazineController.reset();
     return magazineController.getRoot();
   }
-  public Region loadAddRemoveLibrarian(){
+  public Region loadAddRemoveLibrarian() throws SQLException, RemoteException {
     if (librarianViewController== null){
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("addRemoveLibrarian.fxml"));

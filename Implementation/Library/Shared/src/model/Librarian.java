@@ -58,7 +58,7 @@ public class Librarian  implements Serializable
         return date;
     }
 
-    void setDate(Date date) {
+    public void setDate(Date date) {
         this.date = String.valueOf(date);
     }
 

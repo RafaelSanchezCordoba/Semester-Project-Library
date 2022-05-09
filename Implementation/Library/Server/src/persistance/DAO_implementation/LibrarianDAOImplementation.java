@@ -70,7 +70,10 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
                 String l_name = resultSet.getString(4);
                 Date date = resultSet.getDate(5);
                 Librarian librarian = new Librarian(SSN, password, f_name, l_name);
+                librarian.setDate(date);
+                result.add(librarian);
             }
+            return result;
         }
     }
 }

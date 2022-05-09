@@ -4,6 +4,7 @@ import model.Librarian;
 
 import java.io.Closeable;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * @version 1.2 09/05/22.
  */
 public interface LibrarianClient extends Closeable {
-    void addLibrarian(Librarian librarian) throws RemoteException;
-    void removeLibrarian(int SSN) throws RemoteException;
-    ArrayList<Librarian> getLibrarianList() throws RemoteException;
+    void addLibrarian(Librarian librarian) throws RemoteException, SQLException;
+    void removeLibrarian(int SSN) throws RemoteException, SQLException;
+    ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException;
 }

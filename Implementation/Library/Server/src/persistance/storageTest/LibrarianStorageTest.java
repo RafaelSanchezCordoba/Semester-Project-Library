@@ -44,6 +44,7 @@ public class LibrarianStorageTest implements LibrarianStorage {
     @Override
     public void addLibrarian(Librarian librarian) {
         librarians.add(librarian);
+        System.out.println("Librarian added");
     }
 
     /**

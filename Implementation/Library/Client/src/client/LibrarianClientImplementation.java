@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -45,7 +46,7 @@ public class LibrarianClientImplementation extends UnicastRemoteObject implement
      * @throws RemoteException
      */
     @Override
-    public void addLibrarian(Librarian librarian) throws RemoteException {
+    public void addLibrarian(Librarian librarian) throws RemoteException, SQLException {
         remoteLibrarian.addLibrarian(librarian);
     }
 
@@ -56,7 +57,7 @@ public class LibrarianClientImplementation extends UnicastRemoteObject implement
      * @throws RemoteException
      */
     @Override
-    public void removeLibrarian(int SSN) throws RemoteException {
+    public void removeLibrarian(int SSN) throws RemoteException, SQLException {
         remoteLibrarian.removeLibrarian(SSN);
     }
 
@@ -67,7 +68,7 @@ public class LibrarianClientImplementation extends UnicastRemoteObject implement
      * @throws RemoteException
      */
     @Override
-    public ArrayList<Librarian> getLibrarianList() throws RemoteException {
+    public ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException {
         return remoteLibrarian.getLibrarianList();
     }
 

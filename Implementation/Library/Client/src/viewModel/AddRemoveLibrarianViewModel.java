@@ -1,31 +1,30 @@
 package viewModel;
 
-import com.sun.javafx.collections.ObservableListWrapper;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelLibrarian;
 import model.Librarian;
+import model.Magazine;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeListenerProxy;
-import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class AddRemoveLibrarianViewModel implements PropertyChangeListener
-{
-
-
+public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
     private final ModelLibrarian model;
-
     private final StringProperty firstNameTextField;
     private final StringProperty lastNameTextField;
     private final StringProperty passwordTextField;
     private final StringProperty ssnTextField;
     private final StringProperty errorLabel;
-    private final ObservableList options ;
+    private final SimpleListProperty<Librarian> librarianList;
+
     public AddRemoveLibrarianViewModel(ModelLibrarian model){
 
         this.model = model;
@@ -34,49 +33,13 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener
         this.passwordTextField = new SimpleStringProperty("");
         this.ssnTextField = new SimpleStringProperty("");
         this.errorLabel = new SimpleStringProperty("");
-        this.options = FXCollections.observableArrayList();
-        try
-        {
-            options.addAll(model.getLibrarianList());
-        }catch (RemoteException e){
-            e.printStackTrace();
-            errorLabel.set("unable to access librarian List");
-        }
+        ObservableList<Librarian> observableList = FXCollections.observableList(new ArrayList<>());
+        this.librarianList = new SimpleListProperty<>(observableList);
+
+        model.addPropertyChangeListener("newLibrarian", this);
+        model.addPropertyChangeListener("removeLibrarian", this);
     }
 
-    public ObservableList getOptions(){
-        return options;
-    }
-
-    public void removeLibrarian(Librarian librarian){
-        try
-        {
-            model.removeLibrarian(librarian);
-        }catch (RemoteException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void addLibrarian(){
-        try
-        {
-
-            model.addLibrarian(new Librarian(firstNameTextField.getValue(),
-                    lastNameTextField.getValue(), passwordTextField.getValue(),
-                    ssnTextField.getValue()));
-
-        }catch (RemoteException e){
-            e.printStackTrace();
-            errorLabel.set("unable to add Librarian");
-        }
-
-    }
-
-    public Librarian getInstance(){
-        return new Librarian(firstNameTextField.getValue(),
-                lastNameTextField.getValue(), passwordTextField.getValue(),
-                ssnTextField.getValue());
-    }
     public void bindFirstNameTextField(StringProperty property) {
         property.bindBidirectional(firstNameTextField);
     }
@@ -92,10 +55,58 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener
     public void bindErrorLabelTextField(StringProperty property){
         property.bindBidirectional(errorLabel);
     }
+    public void bindLibrarianListView(ObjectProperty<ObservableList<Librarian>> property){
+        property.bindBidirectional(librarianList);
+    }
 
-    @Override public void propertyChange(PropertyChangeEvent evt)
+    public void search() {
+
+    }
+
+    public void addLibrarian(Librarian librarian) throws RemoteException, SQLException {
+        model.addLibrarian(librarian);
+    }
+
+    public void removeLibrarian(int SSN) throws SQLException, RemoteException
     {
+        model.removeLibrarian(SSN);
+    }
 
+    public void setLibrarianList() throws RemoteException, SQLException{
+        for (int i = 0; i < model.getLibrarianList().size(); i++)
+        {
+            librarianList.add(model.getLibrarianList().get(i));
+        }
+    }
+
+    public void reset() throws SQLException, RemoteException
+    {
+        setLibrarianList();
+
+        ssnTextField.set("");
+        passwordTextField.set("");
+        firstNameTextField.set("");
+        lastNameTextField.set("");
+
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getPropertyName().equals("newLibrarian"))
+        {
+            librarianList.add((Librarian) evt.getNewValue());
+        }
+        else if (evt.getPropertyName().equals("removeLibrarian"))
+        {
+            for (int i = 0; i < librarianList.size(); i++)
+            {
+                if (librarianList.get(i).getSnn() == (int) evt.getNewValue())
+                {
+                    librarianList.remove(librarianList.get(i));
+                    break;
+                }
+            }
+        }
     }
 }
 

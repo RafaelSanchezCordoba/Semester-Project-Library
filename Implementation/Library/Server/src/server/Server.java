@@ -1,9 +1,9 @@
 package server;//package Client.server.Server.src;
-import fakeStorage.FakeStorage;
-import fakeStorage.FakeStorageImplementation;
 import persistance.storageTest.BookStorageTest;
+import persistance.storageTest.LibrarianStorageTest;
 import persistance.storageTest.MagazineStorageTest;
 import server.storage.BookStorage;
+import server.storage.LibrarianStorage;
 import server.storage.MagazineStorage;
 
 import java.rmi.AlreadyBoundException;
@@ -17,7 +17,7 @@ public class Server {
     Registry registry= LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
     MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
     BookStorage bookStorage = BookStorageTest.getInstance();
-    FakeStorage librarianStorage = new FakeStorageImplementation();
+    LibrarianStorage librarianStorage = LibrarianStorageTest.getInstance();
 
 
 

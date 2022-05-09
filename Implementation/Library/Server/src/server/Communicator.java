@@ -1,8 +1,8 @@
 package server;
 
-import fakeStorage.FakeStorage;
 import model.*;
 import server.storage.BookStorage;
+import server.storage.LibrarianStorage;
 import server.storage.MagazineStorage;
 
 import java.rmi.RemoteException;
@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine,RemoteLibrarian{
     private MagazineStorage magazineStorage;
     private BookStorage bookStorage;
-    private FakeStorage librarianStorage;
+    private LibrarianStorage librarianStorage;
 //    private GenreStorage genreStorage;
 
 
-    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage, FakeStorage librarianStorage) throws RemoteException {
+    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage, LibrarianStorage librarianStorage) throws RemoteException {
         this.magazineStorage = magazineStorage;
         this.bookStorage = bookStorage;
         this.librarianStorage = librarianStorage;
@@ -76,27 +76,16 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
         return magazineStorage.getMagazineList();
     }
 
-    @Override public void addLibrarian(Librarian librarian)
-        throws RemoteException
-    {
-
+    @Override public void addLibrarian(Librarian librarian) throws RemoteException, SQLException {
+        librarianStorage.addLibrarian(librarian);
     }
 
-    @Override public void removeLibrarian(Librarian librarian)
-        throws RemoteException
-    {
-
+    @Override public void removeLibrarian(int SSN) throws RemoteException, SQLException {
+        librarianStorage.removeLibrarian(SSN);
     }
 
-    @Override public ArrayList<Librarian> getLibrarianList()
-        throws RemoteException
-    {
-        return null;
-    }
-
-    @Override public void removeLibrarianBySsn(int ssn) throws RemoteException
-    {
-
+    @Override public ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException {
+        return librarianStorage.getLibrarianList();
     }
 }
 
