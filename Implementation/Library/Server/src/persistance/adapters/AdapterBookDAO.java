@@ -1,7 +1,8 @@
-package persistance;
+package persistance.adapters;
 
 import model.Book;
-import server.BookStorage;
+import persistance.DAO.BookDAO;
+import server.storage.BookStorage;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

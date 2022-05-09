@@ -10,7 +10,8 @@ import java.rmi.RemoteException;
  */
 public class Librarian  implements Serializable
 {
-    private final String ssn, password, firstName, lastName, date;
+    private final String password, firstName, lastName, date;
+    private final int ssn;
     private final CurrentTime currentTime;
 
     /**
@@ -24,7 +25,7 @@ public class Librarian  implements Serializable
      * @param lastName
      * The last name.
      */
-    public Librarian(String ssn, String password, String firstName, String lastName) {
+    public Librarian(int ssn, String password, String firstName, String lastName) {
         currentTime = new CurrentTime();
         this.ssn = ssn;
         this.password = password;
@@ -34,11 +35,9 @@ public class Librarian  implements Serializable
     }
 
     public int getSnn(){
-        return Integer.parseInt(ssn);
-    }
-    public String getSsn(){
         return ssn;
     }
+
 
     @Override public String toString()
     {

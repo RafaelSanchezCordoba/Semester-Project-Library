@@ -1,8 +1,11 @@
 package server;//package Client.server.Server.src;
 import fakeStorage.FakeStorage;
 import fakeStorage.FakeStorageImplementation;
-import persistance.BookStorageTest;
-import persistance.MagazineStorageTest;
+import persistance.storageTest.BookStorageTest;
+import persistance.storageTest.MagazineStorageTest;
+import server.storage.BookStorage;
+import server.storage.MagazineStorage;
+
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;

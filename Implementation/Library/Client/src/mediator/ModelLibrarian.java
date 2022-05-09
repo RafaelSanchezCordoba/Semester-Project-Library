@@ -4,17 +4,37 @@ import model.Librarian;
 
 import java.awt.*;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * The model Interface for Librarian.
- * @author Alexandru Dulghier.
- * @version 1.0 27/04/22
+ * The model interface for librarian.
+ * @author Rafael Sánchez Córdoba.
+ * @version 1.0 09/05/22
  */
-public interface ModelLibrarian extends PropertyChangeSubject
-{
+public interface ModelLibrarian extends PropertyChangeSubject {
+  /**
+   * Add a Librarian
+   * @param librarian
+   * Librarian object
+   * @throws RemoteException
+   */
   void addLibrarian(Librarian librarian) throws RemoteException;
-  void removeLibrarian(Librarian librarian) throws  RemoteException;
+
+  /**
+   * Remove a Librarian by the SSN
+   * @param SSN
+   * The Social Security Number
+   * @throws RemoteException
+   */
+  void removeLibrarian(int SSN) throws  RemoteException;
+
+  /**
+   * Return a list with all the librarians added
+   * @return
+   * Librarian List
+   * @throws RemoteException
+   * @throws SQLException
+   */
   ArrayList<Librarian> getLibrarianList() throws RemoteException;
-  String toStringArray() throws RemoteException;
 }

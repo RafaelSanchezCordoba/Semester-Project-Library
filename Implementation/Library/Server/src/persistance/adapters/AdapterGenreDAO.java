@@ -1,7 +1,8 @@
-package persistance;
+package persistance.adapters;
 
 import model.Genre;
-import server.GenreStorage;
+import persistance.DAO.GenreDAO;
+import server.storage.GenreStorage;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

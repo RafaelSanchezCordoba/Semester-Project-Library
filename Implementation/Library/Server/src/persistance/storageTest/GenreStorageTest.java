@@ -1,7 +1,7 @@
-package persistance;
+package persistance.storageTest;
 
 import model.Genre;
-import server.GenreStorage;
+import server.storage.GenreStorage;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

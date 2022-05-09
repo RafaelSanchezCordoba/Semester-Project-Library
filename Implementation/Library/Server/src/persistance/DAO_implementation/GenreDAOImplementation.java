@@ -1,11 +1,12 @@
-package persistance;
+package persistance.DAO_implementation;
 
 import model.Genre;
+import persistance.DAO.GenreDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class GenreDAOImplementation implements GenreDAO{
+public class GenreDAOImplementation implements GenreDAO {
 
     private String insertGenreSql = "INSERT INTO \"library\".genre(id,genre)"
             +"VALUES(?,?)";

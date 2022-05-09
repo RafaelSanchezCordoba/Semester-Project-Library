@@ -3,16 +3,16 @@ package mediator;
 import client.LibrarianClient;
 import model.Librarian;
 
-import javax.print.DocFlavor;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
  * The model manager for Librarian.
- * @author Alexandru Dulghier.
- * @version 1.0 27/04/22
+ * @author Rafael Sánchez Córdoba.
+ * @version 1.2 09/05/22
  */
 
 public class ModelManagerLibrarian implements ModelLibrarian
@@ -20,27 +20,48 @@ public class ModelManagerLibrarian implements ModelLibrarian
   private final LibrarianClient client;
   private final PropertyChangeSupport support;
 
+  /**
+   * Public constructor that set the client and a property change support
+   * @param client
+   * The LibrarianClient
+   */
   public ModelManagerLibrarian(LibrarianClient client){
     this.client = client;
     support = new PropertyChangeSupport(this);
   }
 
+  /**
+   * Add a Librarian
+   * @param librarian
+   * Librarian object
+   * @throws RemoteException
+   */
   public void addLibrarian(Librarian librarian) throws RemoteException
   {
     client.addLibrarian(librarian);
+    support.firePropertyChange("newLibrarian", null, librarian);
   }
 
-  public void removeLibrarian(Librarian librarian) throws RemoteException{
-    client.removeLibrarian(librarian);
+  /**
+   * Remove a Librarian by the SSN
+   * @param SSN
+   * The Social Security Number
+   * @throws RemoteException
+   */
+  public void removeLibrarian(int SSN) throws RemoteException{
+    client.removeLibrarian(SSN);
+    support.firePropertyChange("removeLibrarian", null , SSN);
   }
 
+  /**
+   * Return a list with all the librarians added
+   * @return
+   * Librarian List
+   * @throws RemoteException
+   * @throws SQLException
+   */
   public ArrayList<Librarian> getLibrarianList() throws RemoteException{
      return  client.getLibrarianList();
-  }
-
-  @Override public String toStringArray() throws RemoteException
-  {
-    return client.toStringArray();
   }
 
   @Override

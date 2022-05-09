@@ -1,7 +1,7 @@
-package persistance;
+package persistance.storageTest;
 
 import model.Magazine;
-import server.MagazineStorage;
+import server.storage.MagazineStorage;
 
 import java.util.ArrayList;
 

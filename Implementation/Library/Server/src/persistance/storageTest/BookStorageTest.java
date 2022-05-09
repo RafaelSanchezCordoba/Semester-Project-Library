@@ -1,8 +1,7 @@
-package persistance;
+package persistance.storageTest;
 
 import model.Book;
-import model.Magazine;
-import server.BookStorage;
+import server.storage.BookStorage;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

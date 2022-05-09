@@ -2,6 +2,8 @@ package server;
 
 import fakeStorage.FakeStorage;
 import model.*;
+import server.storage.BookStorage;
+import server.storage.MagazineStorage;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
