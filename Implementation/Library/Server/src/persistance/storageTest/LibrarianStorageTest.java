@@ -56,7 +56,7 @@ public class LibrarianStorageTest implements LibrarianStorage {
     @Override
     public void removeLibrarian(int SSN) {
         for (int i = 0; i < librarians.size(); i++) {
-            if (librarians.get(i).getSnn() == SSN) {
+            if (librarians.get(i).getSsn() == SSN) {
                 librarians.remove(librarians.get(i));
                 break;
             }

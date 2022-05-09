@@ -9,7 +9,7 @@ class BookTest {
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         System.out.println("->> setUp()");
-        book = new Book(1234,"Wiedźmin",null);
+//        book = new Book(1234,"Wiedźmin",null);
     }
 
     @org.junit.jupiter.api.AfterEach

@@ -1,6 +1,5 @@
 package viewModel;
 
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -8,7 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelLibrarian;
 import model.Librarian;
-import model.Magazine;
+
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -53,10 +52,10 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
         property.bindBidirectional(ssnTextField);
     }
     public void bindErrorLabelTextField(StringProperty property){
-        property.bindBidirectional(errorLabel);
+        property.bind(errorLabel);
     }
-    public void bindLibrarianListView(ObjectProperty<ObservableList<Librarian>> property){
-        property.bindBidirectional(librarianList);
+    public void bindLibrarianListView(SimpleListProperty<Librarian> property){
+        property.bind(librarianList);
     }
 
     public void search() {
@@ -64,7 +63,18 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
     }
 
     public void addLibrarian(Librarian librarian) throws RemoteException, SQLException {
-        model.addLibrarian(librarian);
+        if (!errorsCheck())
+        {
+            model.addLibrarian(librarian);
+        }
+        try
+        {
+            reset();
+        }
+        catch (SQLException | RemoteException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public void removeLibrarian(int SSN) throws SQLException, RemoteException
@@ -73,10 +83,8 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
     }
 
     public void setLibrarianList() throws RemoteException, SQLException{
-        for (int i = 0; i < model.getLibrarianList().size(); i++)
-        {
-            librarianList.add(model.getLibrarianList().get(i));
-        }
+        librarianList.clear();
+        librarianList.addAll(model.getLibrarianList());
     }
 
     public void reset() throws SQLException, RemoteException
@@ -90,6 +98,64 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
 
     }
 
+
+    private boolean errorsCheck()
+    {
+        if(firstNameTextField.get().equals(""))
+        {
+            errorLabel.set("First name can't be null");
+            return true;
+        }
+        else if (ssnTextField.get().equals(""))
+        {
+            errorLabel.set("Social security number can't be null");
+            return true;
+        }
+        else if (lastNameTextField.get().equals(""))
+        {
+            errorLabel.set("Last name can't be null");
+            return true;
+        }
+        else if (passwordTextField.get().equals(""))
+        {
+            errorLabel.set("Password can't be null");
+            return true;
+        }
+        else if (passwordTextField.get().length()>20)
+        {
+            errorLabel.set("Password must be less than 20 characters");
+            return true;
+        }
+        else if (firstNameTextField.get().length()>50)
+        {
+            errorLabel.set("First name must be less than 50 characters");
+            return true;
+        }
+        else if (lastNameTextField.get().length()>50)
+        {
+            errorLabel.set("Last name must be less than 50 characters");
+            return true;
+        }
+        else if (ssnDuplicateCheck())
+        {
+            errorLabel.set("There is already a librarian with that ssn in the system");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean ssnDuplicateCheck()
+    {
+        for (int i=0;i<librarianList.getSize();i++)
+        {
+            if (librarianList.get(i).getSsn()==Integer.parseInt(ssnTextField.get()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (evt.getPropertyName().equals("newLibrarian"))
@@ -100,7 +166,7 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
         {
             for (int i = 0; i < librarianList.size(); i++)
             {
-                if (librarianList.get(i).getSnn() == (int) evt.getNewValue())
+                if (librarianList.get(i).getSsn() == (int) evt.getNewValue())
                 {
                     librarianList.remove(librarianList.get(i));
                     break;

@@ -13,7 +13,7 @@ class MultimediaItemTest {
     @BeforeEach
     void setUp() {
         System.out.println("--> setUp()");
-        multimediaItem = new MultimediaItem(1234,"Wiedźmin","Supernova");
+       // multimediaItem = new MultimediaItem(1234,"Wiedźmin","Supernova");
     }
 
     @AfterEach

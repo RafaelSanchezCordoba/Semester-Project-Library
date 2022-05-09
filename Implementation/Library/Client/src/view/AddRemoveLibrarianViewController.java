@@ -41,12 +41,20 @@ public class AddRemoveLibrarianViewController
 
   @FXML
   public void addLibrarianButtonPressed() throws SQLException, RemoteException {
-    Librarian librarian = new Librarian(Integer.parseInt(ssnTextField.getText()), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
+    Librarian librarian;
+    if (ssnTextField.getText().equals(""))
+    {
+     librarian = new Librarian(1, passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
+    }
+    else
+    {
+      librarian = new Librarian(Integer.parseInt(ssnTextField.getText()), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
+    }
     viewModel.addLibrarian(librarian);
   }
   @FXML
   public void removeLibrarianButtonPressed() throws SQLException, RemoteException {
-    viewModel.removeLibrarian(librarianTextListView.getSelectionModel().getSelectedItem().getSnn());
+    viewModel.removeLibrarian(librarianTextListView.getSelectionModel().getSelectedItem().getSsn());
   }
   public void reset() throws SQLException, RemoteException {
     viewModel.reset();

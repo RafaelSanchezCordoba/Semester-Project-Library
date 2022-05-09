@@ -15,7 +15,7 @@ class MagazineTest {
     @BeforeEach
     void setUp() {
         System.out.println("--> setUp()");
-        magazine = new Magazine(1234,"Forbes","Forbes",12/2004,"Economy",null);
+  //      magazine = new Magazine(1234,"Forbes","Forbes",12/2004,"Economy",null);
     }
 
     @AfterEach

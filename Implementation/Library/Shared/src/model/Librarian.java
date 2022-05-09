@@ -16,7 +16,6 @@ public class Librarian  implements Serializable
     private final String lastName;
     private String date;
     private final int ssn;
-    private final CurrentTime currentTime;
 
     /**
      * Librarian constructor.
@@ -30,15 +29,14 @@ public class Librarian  implements Serializable
      * The last name.
      */
     public Librarian(int ssn, String password, String firstName, String lastName) {
-        currentTime = new CurrentTime();
         this.ssn = ssn;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.date = currentTime.getFormattedIsoDate();
+        this.date =  new CurrentTime().getFormattedIsoDate();
     }
 
-    public int getSnn(){
+    public int getSsn(){
         return ssn;
     }
 
@@ -66,6 +64,6 @@ public class Librarian  implements Serializable
     {
         return "Librarian{" + "ssn:'" + ssn
             + '\'' + ", first Name:'" + firstName + '\'' + ", last Name:'"
-            + lastName +"}";
+            + lastName +"'}";
     }
 }

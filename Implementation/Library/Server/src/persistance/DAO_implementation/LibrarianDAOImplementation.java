@@ -1,7 +1,6 @@
 package persistance.DAO_implementation;
 
 import model.Librarian;
-import model.Magazine;
 import persistance.DAO.LibrarianDAO;
 
 import java.sql.*;
@@ -39,7 +38,7 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
     public void addLibrarian(Librarian librarian) throws SQLException {
         try(Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(insertLibrarianSql);
-            statement.setInt(1, librarian.getSnn());
+            statement.setInt(1, librarian.getSsn());
             statement.setString(2, librarian.getPassword());
             statement.setString(3, librarian.getFirstName());
             statement.setString(4, librarian.getLastName());
