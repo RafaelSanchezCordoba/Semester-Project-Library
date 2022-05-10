@@ -24,4 +24,20 @@ public class Author {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    public String toString(){
+        return id + " " + firstName + " " + lastName;
+    }
+
+    public String getFirstName(){
+        return firstName;
+    }
+
+    public String getLastName(){
+        return lastName;
+    }
+
+    public int getId(){
+        return id;
+    }
 }
