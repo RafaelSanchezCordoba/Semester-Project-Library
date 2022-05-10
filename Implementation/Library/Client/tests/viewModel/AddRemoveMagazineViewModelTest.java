@@ -294,10 +294,40 @@ public class AddRemoveMagazineViewModelTest
     volume.set("134");
     day.set("12");
     month.set("13");
-    year.set("2022");
+    year.set("2021");
     genre.set("Economy");
     viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
     assertEquals("Invalid date",error.get());
+    assertEquals("[]",magazineList.get().toString());
+  }
+
+  @Test void title_51_character_gives_error_and_doent_add()
+      throws SQLException, RemoteException
+  {
+    title.set("fffffffffffffffffffffffffffffffffffffffffffffffffff");
+    publisher.set("Forbes");
+    volume.set("134");
+    day.set("12");
+    month.set("11");
+    year.set("2020");
+    genre.set("Economy");
+    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    assertEquals("Title must be less than 50 characters",error.get());
+    assertEquals("[]",magazineList.get().toString());
+  }
+
+  @Test void publisher_51_character_gives_error_and_doent_add()
+      throws SQLException, RemoteException
+  {
+    title.set("Forbes");
+    publisher.set("fffffffffffffffffffffffffffffffffffffffffffffffffff");
+    volume.set("134");
+    day.set("12");
+    month.set("11");
+    year.set("2020");
+    genre.set("Economy");
+    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    assertEquals("Publisher must be less than 50 characters",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
 
