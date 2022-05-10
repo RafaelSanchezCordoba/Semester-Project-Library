@@ -19,6 +19,7 @@ public interface ModelMagazine extends PropertyChangeSubject{
      */
     void addMagazine(Magazine magazine) throws RemoteException, SQLException;
 
+
     /**
      *
      * @param id
