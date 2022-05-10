@@ -83,6 +83,12 @@ public class Book extends MultimediaItem implements Serializable {
         this.id = id;
   }
 
+  @Override public String toString()
+  {
+    return "Book{" + "isbn=" + isbn + ", edition=" + edition
+        + ", year_published=" + year_published + ", id=" + id + " '}'";
+  }
+
   public Book(String title, String publisher, int isbn, int edition, int year_Published){
       this.isbn = 0;
       this.edition = 0;

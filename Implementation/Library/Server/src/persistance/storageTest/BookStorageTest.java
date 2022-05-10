@@ -41,9 +41,9 @@ public class BookStorageTest implements BookStorage
 
   @Override public void addBook(Book book) throws SQLException
   {
-    books.add(book);
     book.setId(counter);
+    books.add(book);
     counter++;
-    System.out.println(book);
+   // System.out.println(book);
   }
 }
