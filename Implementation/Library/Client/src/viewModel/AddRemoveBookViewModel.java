@@ -7,16 +7,14 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelBook;
-import model.Book;
-import model.Genre;
-import model.GenreList;
-import model.Magazine;
+import model.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AddRemoveBookViewModel implements PropertyChangeListener
 {
@@ -57,12 +55,52 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   }
 
+  public boolean errorCheck()
+  {
+    if (titleTextField.get().equals(""))
+    {
+      errorLabel.set("Title can't be null");
+      return true;
+    }
+    else if (publisherTextField.get().equals(""))
+    {
+      errorLabel.set("Publisher can't be null");
+      return true;
+    }
+    else if (isbnTextField.get().equals(""))
+    {
+      errorLabel.set("Isbn can't be null");
+      return true;
+    }
+    else if (titleTextField.get().length()>50)
+    {
+      errorLabel.set("Title must have less than 50 characters");
+      return true;
+    }
+    else if (publisherTextField.get().length()>50)
+    {
+      errorLabel.set("Publisher must have less than 50 characters");
+      return true;
+    }
+    else if (futureYearCheck())
+    {
+      errorLabel.set("Invalid date: future date");
+      return true;
+    }
+return false;
+  }
+public boolean futureYearCheck()
+{
+  CurrentTime now=new CurrentTime();
+  String year=now.getFormattedIsoDate().substring(0,4);
+  return Integer.parseInt(yearTextField.get())>Integer.parseInt(year);
+}
   public void setGenreList() throws RemoteException, SQLException {
     genreList.clear();
 
     for (int i = 0; i < model.getGenreList().getSize(); i++)
     {
-      genreList.add(model.getGenreList().getGenre(i));
+      genreList.addAll(model.getGenreList().getGenre(i));
     }
 
   }
@@ -70,15 +108,14 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   public void setBookList() throws RemoteException, SQLException
   {
     bookList.clear();
-    for (int i = 0; i < model.getBookList().size(); i++)
-    {
-      bookList.add(model.getBookList().get(i));
-    }
+    bookList.addAll(model.getBookList());
   }
 
   public void addBook(Book book) throws RemoteException, SQLException
   {
-    model.addBook(book);
+    if (!errorCheck()){
+    model.addBook(book);}
+    reset();
   }
 
   public void removeBook(int id) throws RemoteException, SQLException

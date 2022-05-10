@@ -185,6 +185,16 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
             errorLabel.set("Invalid date: future date");
             return true;
         }
+        else if (titleTextField.get().length()>50)
+        {
+            errorLabel.set("Title must be less than 50 characters");
+            return true;
+        }
+        else if (publisherTextField.get().length()>50)
+        {
+            errorLabel.set("Publisher must be less than 50 characters");
+            return true;
+        }
         return false;
     }
 
