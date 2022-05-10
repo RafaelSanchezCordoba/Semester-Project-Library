@@ -9,7 +9,6 @@ import java.io.Serializable;
  */
 public class Book extends MultimediaItem implements Serializable {
     private final int isbn, edition, year_published;
-    private int id;
     private String author;
     private GenreList genreList;
 
@@ -38,21 +37,36 @@ public class Book extends MultimediaItem implements Serializable {
         this.genreList = genreList;
         setAuthor("Anonymous");
     }
-
-  public Book(String title,String publisher)
-  {
-    super(title,publisher);
-    isbn= 0;
-    edition = 0;
-    year_published = 0;
-  }
-  public Book(String title,String publisher, int isbn)
-  {
-    super(title,publisher);
+  public Book(String author,String title, String publisher, int isbn, int edition, int year_published, GenreList genreList) {
+    super(title, publisher);
     this.isbn = isbn;
-    edition = 0;
-    year_published = 0;
+    this.edition = edition;
+    this.year_published = year_published;
+    this.author = null;
+    this.genreList = genreList;
+    setAuthor("Anonymous");
   }
+  public Book(String author,String title, String publisher, int isbn, int edition, int year_published) {
+    super(title, publisher);
+    this.isbn = isbn;
+    this.edition = edition;
+    this.year_published = year_published;
+    this.author = null;
+
+    setAuthor(author);
+  }
+  public Book(String title, String publisher, int isbn, int edition, int year_published) {
+    super(title, publisher);
+    this.isbn = isbn;
+    this.edition = edition;
+    this.year_published = year_published;
+    this.author = null;
+
+    setAuthor("Anonymous");
+  }
+
+
+
 
   public int getIsbn()
   {
@@ -80,15 +94,10 @@ public class Book extends MultimediaItem implements Serializable {
   }
 
   public void setId(int id) {
-        this.id = id;
+      super.setId(id);
   }
 
-  public Book(String title, String publisher, int isbn, int edition, int year_Published){
-      this.isbn = 0;
-      this.edition = 0;
-      year_published = 0;
 
-  }
   /**
      * Set an author in case it is not anonymous.
      * @param author

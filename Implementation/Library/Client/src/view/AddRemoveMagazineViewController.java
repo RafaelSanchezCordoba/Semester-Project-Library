@@ -69,6 +69,7 @@ public class AddRemoveMagazineViewController
     Date date = new Date(Integer.parseInt(yearTextField.getText()), Integer.parseInt(monthTextField.getText()), Integer.parseInt(dayTextField.getText()));
     Magazine magazine = new Magazine(titleTextField.getText(), publisherTextField.getText(), Integer.parseInt(volumeTextField.getText()), genreTextField.getText(),date);
     viewModel.addMagazine(magazine);
+    reset();
   }
 
   @FXML

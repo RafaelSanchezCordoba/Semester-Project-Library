@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-
+import java.sql.Date;
 
 /**
  * Sub-class Magazine that extends <code>"MultimediaItem"</code>  and implements <code>Serializable</code>.
@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 public class Magazine extends MultimediaItem implements Serializable {
     private final int volume;
-    private int id;
+
     private final String genre;
     private final java.sql.Date date;
 
@@ -43,13 +43,13 @@ public class Magazine extends MultimediaItem implements Serializable {
         return genre;
     }
 
-    public String getDate()
+    public Date getDate()
     {
-        return date.toString();
+        return date;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @Override public String toString()
+    {
+        return super.toString();
     }
-
 }

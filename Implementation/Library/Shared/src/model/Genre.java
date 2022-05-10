@@ -1,11 +1,14 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Genre class that create a genre object.
  * @author Rafael Sánchez Córdoba.
  * @version 1.0 08/04/22.
  */
-public class Genre {
+public class Genre implements Serializable
+{
     private int id;
     private final String genre;
 

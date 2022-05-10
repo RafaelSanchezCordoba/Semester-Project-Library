@@ -3,6 +3,7 @@ package view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -27,11 +28,10 @@ public class AddRemoveBookViewController
   @FXML private TextField authorTextField;
   @FXML private TextField isbnTextField;
   @FXML private TextField yearTextField;
-  @FXML private TextField genreTextField;
   @FXML private TextField editionTextField;
   @FXML private TextField searchTextField;
   @FXML private ListView<Book> bookListView;
-  @FXML private ListView<String> genreListView;
+  @FXML private ListView<Genre> genreListView;
   @FXML private Label errorLabel;
 
   public void init(ViewHandler viewHandler, AddRemoveBookViewModel viewModel,
@@ -45,14 +45,15 @@ public class AddRemoveBookViewController
     viewModel.bindAuthorTextField(authorTextField.textProperty());
     viewModel.bindEditionTextField(editionTextField.textProperty());
     viewModel.bindErrorLabel(errorLabel.textProperty());
-    viewModel.bindGenreTextField(genreTextField.textProperty());
     viewModel.bindISBNTextField(isbnTextField.textProperty());
     viewModel.bindPublisherTextField(publisherTextField.textProperty());
     viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindYearTextField(yearTextField.textProperty());
     viewModel.bindBookListView(bookListView.itemsProperty());
+    viewModel.bindGenreList(genreListView.itemsProperty());
 
     viewModel.setBookList();
+    viewModel.setGenreList();
   }
 
   @FXML public void logOutButtonPressed()
@@ -67,10 +68,24 @@ public class AddRemoveBookViewController
 
   @FXML public void addBookButtonPressed() throws SQLException, RemoteException
   {
+    GenreList genres = new GenreList();
+    genres.addAll((ArrayList<Genre>) genreListView.getSelectionModel().getSelectedItems());
+    if (authorTextField.equals("")) {
+      Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
+          Integer.parseInt(isbnTextField.getText()), Integer.parseInt(editionTextField.getText()),
+          Integer.parseInt(yearTextField.getText()), genres);
+      viewModel.addBook(book);
 
-    Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
-        Integer.parseInt(isbnTextField.getText()));
-    viewModel.addBook(book);
+    }
+    else{
+      Book book = new Book(authorTextField.getText(), titleTextField.getText(), publisherTextField.getText(),
+          Integer.parseInt(isbnTextField.getText()), Integer.parseInt(editionTextField.getText()),
+          Integer.parseInt(yearTextField.getText()), genres);
+      viewModel.addBook(book);
+    }
+    reset();
+
+
 
   }
 

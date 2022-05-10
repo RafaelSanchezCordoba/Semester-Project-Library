@@ -1,6 +1,8 @@
 package persistance;
 
 import model.Book;
+import model.Genre;
+import model.GenreList;
 import server.BookStorage;
 
 import java.rmi.RemoteException;
@@ -45,5 +47,11 @@ public class AdapterBookDAO implements BookStorage {
     {
       throw new RemoteException(e.getMessage(), e);
     }
+  }
+
+  @Override public GenreList getGenreList()
+      throws SQLException, RemoteException
+  {
+    return bookDAO.getGenreList();
   }
 }
