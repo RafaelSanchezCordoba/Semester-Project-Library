@@ -7,6 +7,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelMagazine;
+import model.CurrentTime;
 import model.Magazine;
 
 import java.beans.PropertyChangeEvent;
@@ -14,6 +15,7 @@ import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AddRemoveMagazineViewModel implements PropertyChangeListener {
     private final ModelMagazine model;
@@ -126,10 +128,87 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
 
     public void setMagazineList() throws RemoteException, SQLException{
         magazineList.clear();
-        for (int i = 0; i < model.getMagazineList().size(); i++)
+        magazineList.addAll(model.getMagazineList());
+    }
+
+    private boolean errorsCheck()
+    {
+        if (titleTextField.get().equals(""))
         {
-            magazineList.add(model.getMagazineList().get(i));
+            errorLabel.set("Title can't be null");
+            return true;
         }
+        else if (publisherTextField.get().equals(""))
+        {
+            errorLabel.set("Publisher can't be null");
+            return true;
+        }
+        else if (dayTextField.get().equals(""))
+        {
+            errorLabel.set("Day can't be null");
+            return true;
+        }
+        else if (monthTextField.get().equals(""))
+        {
+            errorLabel.set("Month can't be null");
+            return true;
+        }
+        else if(yearTextField.get().equals(""))
+        {
+            errorLabel.set("Year can't be null");
+            return true;
+        }
+        else if (Integer.parseInt(dayTextField.get())<1)
+        {
+            errorLabel.set("Invalid date");
+            return true;
+        }
+        else if (Integer.parseInt(dayTextField.get())>28)
+        {
+            switch (Integer.parseInt(monthTextField.get()))
+            {
+                case 2:
+                    errorLabel.set("Invalid date");
+                    return true;
+                case 1,3,5,7,8,10,12:
+                    if (Integer.parseInt(dayTextField.get())>31)
+                    {
+                        errorLabel.set("Invalid date");
+                        return true;
+                    }
+                case 4,6,9,11:
+                    if (Integer.parseInt(dayTextField.get())>30)
+                    {
+                        errorLabel.set("Invalid date");
+                        return true;
+                    }
+            }
+
+        }
+        else if (Integer.parseInt(monthTextField.get())<1||Integer.parseInt(monthTextField.get())>12)
+        {
+            errorLabel.set("invalid date");
+            return true;
+        }
+        else if (Integer.parseInt(yearTextField.get())>2021)
+        {
+            //There probably is a simpler way to check if the date is future, but this is working
+            Date date=new Date(Integer.parseInt(yearTextField.getValue())-1900,Integer.parseInt(monthTextField.getValue())-1,Integer.parseInt(dayTextField.getValue()));
+
+            CurrentTime now=new CurrentTime();
+            String day=now.getFormattedIsoDate().substring(8,10);
+            String month=now.getFormattedIsoDate().substring(5,7);
+            String year=now.getFormattedIsoDate().substring(0,4);
+            Date currentDate=new Date(Integer.parseInt(year)-1900,Integer.parseInt(month)-1,Integer.parseInt(day));
+
+            if (date.after(currentDate))
+            {
+                errorLabel.set("Invalid date: future date");
+                return true;
+            }
+
+        }
+        return false;
     }
 
     @Override

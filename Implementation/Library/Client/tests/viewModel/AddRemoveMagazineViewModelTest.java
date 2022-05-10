@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.FakeModelManagerMagazine;
 import mediator.ModelMagazine;
+import model.CurrentTime;
 import model.Magazine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -143,6 +144,8 @@ public class AddRemoveMagazineViewModelTest
     viewModel.removeMagazine(magazineList.get(0).getId());
     assertEquals("[Magazine{title=Hola, publisher=Paquito, volume=128, genre='Sports', date=2019-08-01}]",magazineList.get().toString());
   }
+
+
 
 
 }

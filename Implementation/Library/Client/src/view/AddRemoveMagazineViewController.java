@@ -66,7 +66,7 @@ public class AddRemoveMagazineViewController
   @FXML
   public void addMagazineButtonPressed() throws RemoteException, SQLException
   {
-    Date date = new Date(Integer.parseInt(yearTextField.getText()), Integer.parseInt(monthTextField.getText()), Integer.parseInt(dayTextField.getText()));
+    Date date = new Date(Integer.parseInt(yearTextField.getText())-1900, Integer.parseInt(monthTextField.getText())-1, Integer.parseInt(dayTextField.getText()));
     Magazine magazine = new Magazine(titleTextField.getText(), publisherTextField.getText(), Integer.parseInt(volumeTextField.getText()), genreTextField.getText(),date);
     viewModel.addMagazine(magazine);
   }
