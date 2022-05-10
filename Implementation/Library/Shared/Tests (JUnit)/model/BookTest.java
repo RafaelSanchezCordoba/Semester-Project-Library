@@ -16,30 +16,26 @@ class BookTest {
 
     @AfterEach
     void tearDown() {
+        System.out.println("Running tear down");
+        book = null;
+        assertNull(book);
     }
 
-    @Test
-    void getIsbn() {
-        System.out.println("Get isbn number");
-        String expectedIsbn = "1234";
-        //get cannot be tested without set
-
-    }
-
-    @Test
-    void getEdition() {
-    }
-
-    @Test
-    void getYear_published() {
-    }
+//    @Test
+//    void getIsbn() {
+//        System.out.println("Get isbn number");
+//        String expectedIsbn = "1234";
+//
+//    }
 
     @Test
     void getAuthor() {
-    }
-
-    @Test
-    void getGenreList() {
+        System.out.println("Getting author of the book");
+        Book instance = new Book("","",1234,0,0);
+        String expectedAuthor = "Andrzej Sapkowski";
+        instance.setAuthor("Andrzej Sapkowski");
+        String result = instance.getAuthor();
+        assertEquals(expectedAuthor,result);
     }
 
     @Test
