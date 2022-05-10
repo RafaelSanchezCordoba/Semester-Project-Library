@@ -1,6 +1,7 @@
 package mediator;
 
 import model.Book;
+import model.GenreList;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -41,6 +42,11 @@ public class FakeModelManagerBook implements ModelBook
       throws RemoteException, SQLException
   {
     return list;
+  }
+
+  @Override public GenreList getGenreList() throws RemoteException, SQLException
+  {
+    return null;
   }
 
   @Override public void addPropertyChangeListener(

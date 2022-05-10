@@ -145,8 +145,16 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     property.bindBidirectional(bookList);
   }
 
+  public void bindBookListViewForTesting(SimpleListProperty<Book> property)
+  {
+    property.bindBidirectional(bookList);
+  }
+
   public void bindGenreList(ObjectProperty property) {
     property.bindBidirectional(genreList);
+  }
+  public void bindGenreListForTest(SimpleListProperty<Genre> property) {
+    property.bind(genreList);
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)

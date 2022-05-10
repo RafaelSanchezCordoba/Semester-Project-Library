@@ -51,7 +51,6 @@ public class AddRemoveBooksViewModelTest
     viewModel.bindAuthorTextField(author);
     viewModel.bindEditionTextField(edition);
     viewModel.bindErrorLabel(error);
-    viewModel.bindGenreTextField(genre);
     viewModel.bindISBNTextField(isbn);
     viewModel.bindPublisherTextField(publisher);
     viewModel.bindSearchTextField(search);
