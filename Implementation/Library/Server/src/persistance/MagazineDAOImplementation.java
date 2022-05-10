@@ -8,10 +8,9 @@ import java.util.ArrayList;
 
 public class MagazineDAOImplementation implements MagazineDAO {
 
-  private String insertMagazineSql = "INSERT INTO \"library\".magazine(id,publisher,title,volume,date,librarian_ssn)"
-      +"VALUES(?,?,?,?,?,?)";
-  private String removeMagazineSql = "DELETE FROM\"library\".magazine "
-      +"WHERE id = ?";
+  private String insertMagazineSql = "INSERT INTO \"library\".magazine(publisher,title,volume,genre,date)"
+      +"VALUES(?,?,?,?,?)";
+  private String removeMagazineSql = "DELETE FROM \"library\".magazine WHERE id = ?";
 
   private String getMagazineListSql = "SELECT * FROM \"library\".magazine ORDER BY id DESC";
 
@@ -53,8 +52,8 @@ public class MagazineDAOImplementation implements MagazineDAO {
       statement.setString(2, magazine.getPublisher());
       statement.setInt(3, magazine.getVolume());
       statement.setString(4, magazine.getGenre());
-      java.sql.Date date = Date.valueOf(magazine.getDate());
-      statement.setDate(5, date);
+      //java.sql.Date date = Date.valueOf(magazine.getDate());
+      statement.setDate(5, magazine.getDate());
       statement.executeUpdate();
 
       ResultSet keys = statement.getGeneratedKeys();
@@ -74,12 +73,12 @@ public class MagazineDAOImplementation implements MagazineDAO {
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Magazine> result = new ArrayList<Magazine>();
       while (resultSet.next()) {
-        int id = resultSet.getInt(1);
-        String title = resultSet.getString(2);
-        String publisher = resultSet.getString(3);
-        int volume = resultSet.getInt(4);
-        String genre = resultSet.getString(5);
-        java.sql.Date date = resultSet.getDate(6);
+        int id = resultSet.getInt("id");
+        String title = resultSet.getString("publisher");
+        String publisher = resultSet.getString("title");
+        int volume = resultSet.getInt("volume");
+        java.sql.Date date = resultSet.getDate("date");
+        String genre = resultSet.getString("genre");
         Magazine magazine = new Magazine(title, publisher, volume, genre, date);
         magazine.setId(id);
         result.add(magazine);

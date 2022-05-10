@@ -1,6 +1,8 @@
 package persistance;
 
 import model.Book;
+import model.Genre;
+import model.GenreList;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,13 +17,13 @@ public class BookDAOImplementation implements BookDAO {
 
 
   //Pre-made sql to use in the methods
-  private String insertBookSql = "INSERT INTO \"library\".book(id,isbn,publisher,title,year_published,author,edition,librarian_ssn)"
-          + "VALUES( ?,?,?,?,?,?,?,?)";
+  private String insertBookSql = "INSERT INTO \"library\".book(isbn,publisher,title,year_published,author,edition)"
+          + "VALUES( ?,?,?,?,?,?)";
 
-  private String insertGenreSql = "INSERT INTO \"library\".ge";
+  private String insertGenreBookSql = "INSERT INTO \"library\".book_genre(book_id, genre_id)" + "VALUES(?,?)";
+  private String getGenreListSql= "SELECT * FROM \"library\".genre ORDER BY id DESC";
 
-  private String removeBookSql = "DELETE FROM \"library\".book "
-          + "WHERE id=?";
+  private String removeBookSql = "DELETE FROM \"library\".book WHERE id=?";
 
   private String getBookListSql = "SELECT * FROM \"library\".book ORDER BY id DESC";
 
@@ -56,13 +58,23 @@ public class BookDAOImplementation implements BookDAO {
   public void addBook(Book book) throws SQLException {
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement((insertBookSql), PreparedStatement.RETURN_GENERATED_KEYS);
-      statement.setString(1, book.getTitle());
+      statement.setInt(1, book.getIsbn());
       statement.setString(2, book.getPublisher());
-      statement.setInt(3, book.getIsbn());
-      statement.setInt(4, book.getEdition());
-      statement.setInt(5, book.getYear_published());
+      statement.setString(3, book.getTitle());
+      statement.setInt(4, book.getYear_published());
+      statement.setString(5, book.getAuthor());
+      statement.setInt(6, book.getEdition());
+
       //statement.setGenre
       statement.executeUpdate();
+      PreparedStatement statementGenre = connection.prepareStatement((insertGenreBookSql));
+      for (int i = 0; i < book.getGenreList().getSize(); i++)
+      {
+        statement.setInt(1,book.getId());
+        statement.setInt(2, book.getGenreList().getGenre(i).getId());
+      }
+      statement.executeUpdate();
+
 
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next()) {
@@ -80,17 +92,37 @@ public class BookDAOImplementation implements BookDAO {
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Book> result = new ArrayList<Book>();
       while (resultSet.next()) {
-        int id = resultSet.getInt(1);
-        String title = resultSet.getString(2);
-        String publisher = resultSet.getString(3);
-        int Isbn = resultSet.getInt(4);
-        int Edition = resultSet.getInt(5);
-        int Year_Published = resultSet.getInt(6);
-        Book book = new Book(title, publisher, Isbn, Edition, Year_Published);
+        int id = resultSet.getInt("id");
+        String author =  resultSet.getString("author");
+        String title = resultSet.getString("title");
+        String publisher = resultSet.getString("publisher");
+        int Isbn = resultSet.getInt("isbn");
+        int Edition = resultSet.getInt("edition");
+        int Year_Published = resultSet.getInt("year_published");
+        Book book = new Book(author,title, publisher, Isbn, Edition, Year_Published);
         book.setId(id);
         result.add(book);
       }
       return result;
     }
   }
-}
+  public GenreList getGenreList() throws SQLException {
+    try (Connection connection = getConnection()) {
+      PreparedStatement statement = connection.prepareStatement(getGenreListSql);
+      ResultSet resultSet = statement.executeQuery();
+      ArrayList<Genre> result = new ArrayList<Genre>();
+      while (resultSet.next()) {
+        int id = resultSet.getInt("id");
+        String genre_name =  resultSet.getString("genre");
+
+        Genre genre = new Genre(genre_name);
+        genre.setId(id);
+        result.add(genre);
+      }
+      GenreList resultList= new GenreList();
+      resultList.addAll(result);
+      return resultList;
+    }
+  }
+  }
+

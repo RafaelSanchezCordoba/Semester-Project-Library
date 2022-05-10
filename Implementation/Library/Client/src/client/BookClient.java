@@ -1,6 +1,8 @@
 package client;
 
 import model.Book;
+import model.Genre;
+import model.GenreList;
 
 import java.io.Closeable;
 import java.rmi.RemoteException;
@@ -21,5 +23,6 @@ public interface BookClient extends Closeable
   void addBook(Book book) throws RemoteException, SQLException;
   void removeBook(int id) throws RemoteException, SQLException;
   ArrayList<Book> getBookList() throws RemoteException, SQLException;
+  GenreList getGenreList() throws RemoteException, SQLException;
 
 }
