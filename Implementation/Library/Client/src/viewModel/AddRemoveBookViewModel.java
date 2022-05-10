@@ -1,5 +1,6 @@
 package viewModel;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -7,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelBook;
 import model.Book;
+import model.Librarian;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -113,6 +115,11 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
 
     public void bindErrorLabel(StringProperty property) {
         property.bind(errorLabel);
+    }
+
+    public void bindBookListView(
+        ObjectProperty<ObservableList<Book>> property){
+        property.bindBidirectional(bookList);
     }
 
     @Override

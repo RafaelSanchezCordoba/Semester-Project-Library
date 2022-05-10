@@ -50,6 +50,7 @@ public class AddRemoveBookViewController
     viewModel.bindPublisherTextField(publisherTextField.textProperty());
     viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindYearTextField(yearTextField.textProperty());
+    viewModel.bindBookListView(bookListView.itemsProperty());
 
     viewModel.setBookList();
   }

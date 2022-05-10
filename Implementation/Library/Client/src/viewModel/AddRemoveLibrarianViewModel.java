@@ -1,5 +1,6 @@
 package viewModel;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -7,7 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelLibrarian;
 import model.Librarian;
-
+import model.Magazine;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -54,8 +55,12 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
     public void bindErrorLabelTextField(StringProperty property){
         property.bind(errorLabel);
     }
-    public void bindLibrarianListView(SimpleListProperty<Librarian> property){
+    public void bindLibrarianListViewForTest(SimpleListProperty<Librarian> property){
         property.bind(librarianList);
+    }
+    public void bindLibrarianListView(
+        ObjectProperty<ObservableList<Librarian>> property){
+        property.bindBidirectional(librarianList);
     }
 
     public void search() {

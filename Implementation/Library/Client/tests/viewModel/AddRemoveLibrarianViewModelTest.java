@@ -45,7 +45,7 @@ public class AddRemoveLibrarianViewModelTest
     viewModel.bindLastNameTextField(lastName);
     viewModel.bindPasswordTextField(password);
     viewModel.bindSsnTextField(ssn);
-    viewModel.bindLibrarianListView(librarianList);
+    viewModel.bindLibrarianListViewForTest(librarianList);
 
   }
 

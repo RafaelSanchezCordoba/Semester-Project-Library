@@ -35,6 +35,7 @@ public class AddRemoveLibrarianViewController
     viewModel.bindSsnTextField(ssnTextField.textProperty());
     viewModel.bindPasswordTextField(passwordTextField.textProperty());
     viewModel.bindErrorLabelTextField(errorLabel.textProperty());
+    viewModel.bindLibrarianListView(librarianTextListView.itemsProperty());
 
     viewModel.setLibrarianList();
   }
