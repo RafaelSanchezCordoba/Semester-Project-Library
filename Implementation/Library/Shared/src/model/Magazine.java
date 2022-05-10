@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-
+import java.sql.Date;
 
 /**
  * Sub-class Magazine that extends <code>"MultimediaItem"</code>  and implements <code>Serializable</code>.

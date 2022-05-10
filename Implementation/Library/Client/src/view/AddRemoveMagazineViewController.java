@@ -66,9 +66,30 @@ public class AddRemoveMagazineViewController
   @FXML
   public void addMagazineButtonPressed() throws RemoteException, SQLException
   {
+    if (!errorsCheck()){
     Date date = new Date(Integer.parseInt(yearTextField.getText())-1900, Integer.parseInt(monthTextField.getText())-1, Integer.parseInt(dayTextField.getText()));
     Magazine magazine = new Magazine(titleTextField.getText(), publisherTextField.getText(), Integer.parseInt(volumeTextField.getText()), genreTextField.getText(),date);
-    viewModel.addMagazine(magazine);
+    viewModel.addMagazine(magazine);}
+  }
+
+  public boolean errorsCheck()
+  {
+    if (dayTextField.getText().equals(""))
+  {
+    errorLabel.setText("Day can't be null");
+    return true;
+  }
+  else if (monthTextField.getText().equals(""))
+  {
+    errorLabel.setText("Month can't be null");
+    return true;
+  }
+  else if(yearTextField.getText().equals(""))
+  {
+    errorLabel.setText("Year can't be null");
+    return true;
+  }
+  return  false;
   }
 
   @FXML

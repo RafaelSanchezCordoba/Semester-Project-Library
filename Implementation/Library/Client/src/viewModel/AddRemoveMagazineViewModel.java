@@ -111,13 +111,18 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         dayTextField.set("");
         monthTextField.set("");
         yearTextField.set("");
+
     }
 
     public void addMagazine(Magazine magazine)
         throws RemoteException, SQLException
     {
-
-        model.addMagazine(magazine);
+        if (!errorsCheck())
+        {
+            model.addMagazine(magazine);
+            errorLabel.set("");
+        }
+        reset();
     }
 
     public void removeMagazine(int id) throws SQLException, RemoteException
@@ -141,21 +146,6 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         else if (publisherTextField.get().equals(""))
         {
             errorLabel.set("Publisher can't be null");
-            return true;
-        }
-        else if (dayTextField.get().equals(""))
-        {
-            errorLabel.set("Day can't be null");
-            return true;
-        }
-        else if (monthTextField.get().equals(""))
-        {
-            errorLabel.set("Month can't be null");
-            return true;
-        }
-        else if(yearTextField.get().equals(""))
-        {
-            errorLabel.set("Year can't be null");
             return true;
         }
         else if (Integer.parseInt(dayTextField.get())<1)
@@ -187,29 +177,33 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         }
         else if (Integer.parseInt(monthTextField.get())<1||Integer.parseInt(monthTextField.get())>12)
         {
-            errorLabel.set("invalid date");
+            errorLabel.set("Invalid date");
             return true;
         }
-        else if (Integer.parseInt(yearTextField.get())>2021)
+        else if (futureDateCheck())
         {
-            //There probably is a simpler way to check if the date is future, but this is working
-            Date date=new Date(Integer.parseInt(yearTextField.getValue())-1900,Integer.parseInt(monthTextField.getValue())-1,Integer.parseInt(dayTextField.getValue()));
-
-            CurrentTime now=new CurrentTime();
-            String day=now.getFormattedIsoDate().substring(8,10);
-            String month=now.getFormattedIsoDate().substring(5,7);
-            String year=now.getFormattedIsoDate().substring(0,4);
-            Date currentDate=new Date(Integer.parseInt(year)-1900,Integer.parseInt(month)-1,Integer.parseInt(day));
-
-            if (date.after(currentDate))
-            {
-                errorLabel.set("Invalid date: future date");
-                return true;
-            }
-
+            errorLabel.set("Invalid date: future date");
+            return true;
         }
         return false;
     }
+
+
+    public boolean futureDateCheck()
+    {
+        //There probably is a simpler way to check if the date is future, but this is working
+
+        Date date=new Date(Integer.parseInt(yearTextField.getValue())-1900,Integer.parseInt(monthTextField.getValue())-1,Integer.parseInt(dayTextField.getValue()));
+
+        CurrentTime now=new CurrentTime();
+        String day=now.getFormattedIsoDate().substring(8,10);
+        String month=now.getFormattedIsoDate().substring(5,7);
+        String year=now.getFormattedIsoDate().substring(0,4);
+        Date currentDate=new Date(Integer.parseInt(year)-1900,Integer.parseInt(month)-1,Integer.parseInt(day));
+
+        return date.after(currentDate);
+    }
+
 
     @Override
     public void propertyChange(PropertyChangeEvent evt)
