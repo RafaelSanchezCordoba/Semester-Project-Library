@@ -43,7 +43,7 @@ public class AddRemoveMagazineViewController
     viewModel.bindYearTextField(yearTextField.textProperty());
     viewModel.bindMontTextField(monthTextField.textProperty());
     viewModel.bindGenreTextField(genreTextField.textProperty());
-    viewModel.bindGenreTextField(searchTextField.textProperty());
+    viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindErrorLabel(errorLabel.textProperty());
     viewModel.bindMagazineListView(magazineListView.itemsProperty());
 

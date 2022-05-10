@@ -1,7 +1,6 @@
 package persistance;
 
 import model.Book;
-import model.Magazine;
 import server.BookStorage;
 
 import java.sql.SQLException;

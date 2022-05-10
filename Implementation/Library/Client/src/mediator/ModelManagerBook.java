@@ -33,11 +33,13 @@ public class ModelManagerBook implements ModelBook {
     @Override
     public void addBook(Book book) throws RemoteException, SQLException {
         client.addBook(book);
+        support.firePropertyChange("newBook", null, book);
     }
 
     @Override
     public void removeBook(int id) throws RemoteException, SQLException {
         client.removeBook(id);
+        support.firePropertyChange("removeBook", null, id);
     }
 
     @Override
