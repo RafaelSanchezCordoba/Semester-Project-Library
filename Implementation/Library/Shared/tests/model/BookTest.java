@@ -29,5 +29,9 @@ class BookTest {
         assertEquals("0 Ender's Game Supernova 98765432",book.toStringForSecondConstructor());
     }
 
-
+    @Test void null_title_for_constructor_one(){
+        multimediaItem = new MultimediaItem("Wiedźmin","Supernova");
+        book = new Book(null,multimediaItem.getPublisher(),12345678,1,1992,list);
+        assertEquals("null Supernova 12345678 1 1992 [Fantasy]",book.toStringForFirstConstructor());
+    }
 }
