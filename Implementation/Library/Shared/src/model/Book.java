@@ -16,8 +16,6 @@ public class Book extends MultimediaItem implements Serializable {
     /**
      * Book constructor with super method.
      * The author is set to null because it could be an anonymous writer.
-     * @param id
-     * The unique identification number of book.
      * @param title
      * The title of the book.
      * @param publisher
