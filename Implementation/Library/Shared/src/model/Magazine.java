@@ -52,4 +52,9 @@ public class Magazine extends MultimediaItem implements Serializable {
         this.id = id;
     }
 
+    @Override public String toString()
+    {
+        return "Magazine{"+"title="+getTitle()+", publisher="+getPublisher() + ", volume=" + volume + ", genre='"
+            + genre + '\'' + ", date=" + date + '}';
+    }
 }

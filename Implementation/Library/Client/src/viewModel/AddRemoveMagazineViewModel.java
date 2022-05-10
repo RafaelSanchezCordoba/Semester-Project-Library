@@ -85,7 +85,12 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
     }
 
     public void bindMagazineListView(ObjectProperty<ObservableList<Magazine>> property){
-        property.bindBidirectional(magazineList);
+        property.bind(magazineList);
+    }
+
+    public void bindMagazineListViewForTest(SimpleListProperty<Magazine> property)
+    {
+        property.bind(magazineList);
     }
 
 

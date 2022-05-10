@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class FakeModelManagerMagazine implements ModelMagazine
 {
-  private ArrayList<Magazine> list;
-  private PropertyChangeSupport support;
+  private final ArrayList<Magazine> list;
+  private final PropertyChangeSupport support;
 
   public FakeModelManagerMagazine()
   {
@@ -23,6 +23,7 @@ public class FakeModelManagerMagazine implements ModelMagazine
       throws RemoteException, SQLException
   {
     list.add(magazine);
+    support.firePropertyChange("newMagazine",null,magazine);
   }
 
   @Override public void removeMagazine(int id)
@@ -35,6 +36,7 @@ public class FakeModelManagerMagazine implements ModelMagazine
        list.remove(list.get(i));
      }
    }
+   support.firePropertyChange("removeMagazine",null,id);
   }
 
   @Override public ArrayList<Magazine> getMagazineList()
