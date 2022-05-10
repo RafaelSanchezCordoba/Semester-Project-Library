@@ -50,6 +50,7 @@ public class AddRemoveBookViewController
     viewModel.bindPublisherTextField(publisherTextField.textProperty());
     viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindYearTextField(yearTextField.textProperty());
+    viewModel.bindBookListView(bookListView.itemsProperty());
 
     viewModel.setBookList();
   }
@@ -76,8 +77,7 @@ public class AddRemoveBookViewController
   @FXML public void removeBookButtonPressed()
       throws RemoteException, SQLException
   {
-    viewModel.removeBook(
-        bookListView.getSelectionModel().getSelectedItem().getId());
+    viewModel.removeBook(bookListView.getSelectionModel().getSelectedItem().getId());
   }
 
   @FXML public void homeMenuButtonPressed() throws SQLException, RemoteException

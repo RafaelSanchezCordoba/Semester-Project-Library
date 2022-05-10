@@ -1,5 +1,6 @@
 package viewModel;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -7,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelBook;
 import model.Book;
+import model.Magazine;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -42,7 +44,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
         this.bookList = new SimpleListProperty<>(observableList);
 
         model.addPropertyChangeListener("newBook", this);
-        model.removePropertyChangeListener("removeBook", this);
+        model.addPropertyChangeListener("removeBook", this);
     }
 
     public void search() {
@@ -115,19 +117,25 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
         property.bind(errorLabel);
     }
 
+    public void bindBookListView(ObjectProperty<ObservableList<Book>> property){
+        property.bindBidirectional(bookList);
+    }
+
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        try
+    public void propertyChange(PropertyChangeEvent evt) {if (evt.getPropertyName().equals("newBook"))
+    {
+        bookList.add((Book) evt.getNewValue());
+    }
+    else if (evt.getPropertyName().equals("removeBook"))
+    {
+        for (int i = 0; i < bookList.size(); i++)
         {
-            setBookList();
+            if (bookList.get(i).getId() == (int) evt.getNewValue())
+            {
+                bookList.remove(bookList.get(i));
+                break;
+            }
         }
-        catch (RemoteException e)
-        {
-            e.printStackTrace();
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
+    }
     }
 }

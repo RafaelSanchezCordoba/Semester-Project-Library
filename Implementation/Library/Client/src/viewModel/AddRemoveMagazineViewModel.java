@@ -121,10 +121,8 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
 
     public void setMagazineList() throws RemoteException, SQLException{
         magazineList.clear();
-        for (int i = 0; i < model.getMagazineList().size(); i++)
-        {
-            magazineList.add(model.getMagazineList().get(i));
-        }
+
+        magazineList.addAll(model.getMagazineList());
     }
 
     @Override
