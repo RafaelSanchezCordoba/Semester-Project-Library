@@ -52,10 +52,8 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
     }
 
     public void setBookList() throws RemoteException, SQLException{
-        for (int i = 0; i < model.getBookList().size(); i++)
-        {
-            bookList.add(model.getBookList().get(i));
-        }
+        bookList.clear();
+        bookList.addAll(model.getBookList());
     }
 
     public void addBook(Book book) throws RemoteException, SQLException {
@@ -118,6 +116,10 @@ public class AddRemoveBookViewModel implements PropertyChangeListener {
     }
 
     public void bindBookListView(ObjectProperty<ObservableList<Book>> property){
+        property.bindBidirectional(bookList);
+    }
+
+    public void bindBookListViewForTesting(SimpleListProperty<Book> property){
         property.bindBidirectional(bookList);
     }
 

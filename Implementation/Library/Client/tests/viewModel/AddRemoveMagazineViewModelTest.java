@@ -46,7 +46,8 @@ public class AddRemoveMagazineViewModelTest
     this.month= new SimpleStringProperty("");
     this.search= new SimpleStringProperty("");
     this.error = new SimpleStringProperty("");
-    ObservableList<Magazine> observableList = FXCollections.observableArrayList( new ArrayList<Magazine>());
+    ObservableList<Magazine> observableList = FXCollections.observableArrayList(
+        new ArrayList<>());
     this.magazineList = new SimpleListProperty<>(observableList);
 
     viewModel.bindTitleTextField(title);
@@ -342,6 +343,11 @@ public class AddRemoveMagazineViewModelTest
     assertEquals("",error.get());
   }
 
+
+  @Test
+  public void error_cannot_be_set_outside_viewmodel() {
+    assertThrows(RuntimeException.class, () -> error.set("Error"));
+  }
 
 
 
