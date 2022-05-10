@@ -6,7 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Library/Client/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/Server/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/Shared/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Library/Shared/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/Library/Shared/Tests (JUnit)" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
