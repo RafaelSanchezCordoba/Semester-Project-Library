@@ -43,10 +43,10 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     this.editionTextField = new SimpleStringProperty("");
     this.searchTextField = new SimpleStringProperty("");
     this.errorLabel = new SimpleStringProperty("");
-    ObservableList<Book> observableList = FXCollections.observableArrayList(
-        new ArrayList<>());
-    this.bookList = new SimpleListProperty<>(observableList);
-    this.genreList = new SimpleListProperty<>();
+    ObservableList<Book> observableListBook = FXCollections.observableArrayList(new ArrayList<>());
+    ObservableList<Genre> observableListGenre = FXCollections.observableArrayList(new ArrayList<>());
+    this.bookList = new SimpleListProperty<>(observableListBook);
+    this.genreList = new SimpleListProperty<>(observableListGenre);
 
     model.addPropertyChangeListener("newBook", this);
     model.addPropertyChangeListener("removeBook", this);
@@ -57,8 +57,11 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   }
 
+  public GenreList getGenreList() throws SQLException, RemoteException {
+    return model.getGenreList();
+  }
+
   public void setGenreList() throws RemoteException, SQLException {
-    genreList.clear();
 
     for (int i = 0; i < model.getGenreList().getSize(); i++)
     {
@@ -145,7 +148,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     property.bindBidirectional(bookList);
   }
 
-  public void bindGenreList(ObjectProperty property) {
+  public void bindGenreList(ObjectProperty<ObservableList<Genre>> property) {
     property.bindBidirectional(genreList);
   }
 
