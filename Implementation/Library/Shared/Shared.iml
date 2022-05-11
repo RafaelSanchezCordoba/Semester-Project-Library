@@ -9,7 +9,6 @@
     <orderEntry type="jdk" jdkName="corretto-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="remoteobserver" level="application" />
-    <orderEntry type="module" module-name="Client_2" exported="" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5.7.0">
         <CLASSES>
@@ -27,6 +26,5 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="javafx-swt" level="application" />
-    <orderEntry type="module" module-name="Client" scope="TEST" />
   </component>
 </module>
