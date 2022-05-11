@@ -113,7 +113,7 @@ public class AddRemoveBookViewController
   @FXML
   public void removeGenreButtonPressed() {
     //selectedGenreListView.getItems().remove(selectedGenreListView.getSelectionModel().getSelectedItem());
-    viewModel.removeGenreFromSelectedGenreList(selectedGenreListView.getSelectionModel().getSelectedItem());
+    viewModel.removeFromSelectedGenreList(selectedGenreListView.getSelectionModel().getSelectedItem());
   }
 
   @FXML public void bookMenuButtonPressed()
