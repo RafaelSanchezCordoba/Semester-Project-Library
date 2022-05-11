@@ -32,7 +32,6 @@ public class BookStorageTestTest
     {
       try
       {
-
         int exp = storage.getBookList().size();
         storage.addBook(book);
         exp++;
@@ -62,7 +61,7 @@ public class BookStorageTestTest
     {
       int exp = storage.getBookList().size();
       storage.addBook(book);
-      storage.removeBook(0);
+      storage.removeBook(book.getId());
       Assertions.assertEquals(exp,storage.getBookList().size());
     }
     @Test
@@ -73,8 +72,8 @@ public class BookStorageTestTest
       storage.addBook(book);
       storage.addBook(book1);
       exp++;
-      storage.removeBook(0);
-      storage.removeBook(0);
+      storage.removeBook(book.getId());
+      storage.removeBook(book1.getId());
 
       Assertions.assertEquals(exp,storage.getBookList().size());
     }
@@ -91,7 +90,7 @@ public class BookStorageTestTest
       int exp = storage.getBookList().size();
       storage.addBook(book2);
       exp++;
-      storage.removeBook(3);
+      storage.removeBook(999999999);
       Assertions.assertEquals(exp,storage.getBookList().size());
     }
   }

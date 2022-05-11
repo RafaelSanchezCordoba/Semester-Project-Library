@@ -58,7 +58,7 @@ public class MagazineStorageTestTest
     storage.addMagazine(magazine);
     storage.addMagazine(magazine1);
 
-    Assertions.assertEquals(true,(storage.getMagazineList().get(1).getId())!=storage.getMagazineList().get(2).getId());
+    Assertions.assertTrue((storage.getMagazineList().get(1).getId())!=storage.getMagazineList().get(2).getId());
   }
   @Test
   public  void removeMultiple(){
