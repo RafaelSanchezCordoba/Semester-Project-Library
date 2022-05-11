@@ -15,7 +15,7 @@ public class Librarian  implements Serializable
     private final String firstName;
     private final String lastName;
     private String date;
-    private final int ssn;
+    private final long ssn;
 
     /**
      * Librarian constructor.
@@ -28,7 +28,7 @@ public class Librarian  implements Serializable
      * @param lastName
      * The last name.
      */
-    public Librarian(int ssn, String password, String firstName, String lastName) {
+    public Librarian(long ssn, String password, String firstName, String lastName) {
         this.ssn = ssn;
         this.password = password;
         this.firstName = firstName;
@@ -36,7 +36,7 @@ public class Librarian  implements Serializable
         this.date =  new CurrentTime().getFormattedIsoDate();
     }
 
-    public int getSsn(){
+    public long getSsn(){
         return ssn;
     }
 

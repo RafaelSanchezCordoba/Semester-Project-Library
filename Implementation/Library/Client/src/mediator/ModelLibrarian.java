@@ -2,7 +2,6 @@ package mediator;
 
 import model.Librarian;
 
-import java.awt.*;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public interface ModelLibrarian extends PropertyChangeSubject {
    * The Social Security Number
    * @throws RemoteException
    */
-  void removeLibrarian(int SSN) throws RemoteException, SQLException;
+  void removeLibrarian(long SSN) throws RemoteException, SQLException;
 
   /**
    * Return a list with all the librarians added

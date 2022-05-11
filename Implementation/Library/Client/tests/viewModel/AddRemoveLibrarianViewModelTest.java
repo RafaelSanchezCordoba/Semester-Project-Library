@@ -65,7 +65,7 @@ public class AddRemoveLibrarianViewModelTest
     firstName.setValue("Rosa");
     lastName.setValue("Briales");
     password.setValue("password");
-    ssn.setValue("1234567890");
+    ssn.setValue("1234567890123");
     assertEquals("", error.get());
     assertEquals("[]", librarianList.getValue().toString());
   }
@@ -77,7 +77,7 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Briales");
     password.set("password");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("", error.get());
     assertEquals("[Librarian{ssn:'1234567890', first Name:'Rosa', last Name:'Briales'}]",
@@ -92,20 +92,20 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Briales");
     password.set("password");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     firstName.set("Rafa");
     lastName.set("Sanchez");
     password.set("password");
-    ssn.set("22222222");
+    ssn.set("2222222222222");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     firstName.set("Maria");
     lastName.set("Ortiz");
     password.set("password");
-    ssn.set("333333333");
+    ssn.set("33333333333333");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-    viewModel.removeLibrarian(22222222);
-    assertEquals("[Librarian{ssn:'1234567890', first Name:'Rosa', last Name:'Briales'}, Librarian{ssn:'333333333', first Name:'Maria', last Name:'Ortiz'}]",
+    viewModel.removeLibrarian(2222222222222L);
+    assertEquals("[Librarian{ssn:'1234567890123', first Name:'Rosa', last Name:'Briales'}, Librarian{ssn:'3333333333333', first Name:'Maria', last Name:'Ortiz'}]",
         librarianList.getValue().toString());
   }
 
@@ -185,6 +185,45 @@ public class AddRemoveLibrarianViewModelTest
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("Last name must be less than 50 characters", error.get());
     assertEquals("[]", librarianList.get().toString());
+  }
+
+  @Test void ssn_shorter_than_13_digits_gives_error_and_doenst_add()
+      throws SQLException, RemoteException
+  {
+    firstName.set("Rosa");
+    lastName.set("Briales");
+    password.set("password");
+    ssn.set("1234567890");
+    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
+    assertEquals("The ssn must be 13 digits", error.get());
+    assertEquals("[]",
+        librarianList.getValue().toString());
+  }
+
+  @Test void ssn_loonger_than_13_digits_gives_error_and_doenst_add()
+      throws SQLException, RemoteException
+  {
+    firstName.set("Rosa");
+    lastName.set("Briales");
+    password.set("password");
+    ssn.set("12345678901234");
+    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
+    assertEquals("The ssn must be 13 digits", error.get());
+    assertEquals("[]",
+        librarianList.getValue().toString());
+  }
+
+  @Test void ssn_with_letters_in_it_gives_error_and_doenst_add()
+      throws SQLException, RemoteException
+  {
+    firstName.set("Rosa");
+    lastName.set("Briales");
+    password.set("password");
+    ssn.set("1234567890abc");
+    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
+    assertEquals("The ssn must be 13 digits", error.get());
+    assertEquals("[]",
+        librarianList.getValue().toString());
   }
 
 

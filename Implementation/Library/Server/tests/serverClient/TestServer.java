@@ -1,4 +1,4 @@
-package ServerClient;
+package serverClient;
 
 import persistance.storageTest.BookStorageTest;
 import persistance.storageTest.LibrarianStorageTest;

@@ -10,6 +10,6 @@ import java.util.ArrayList;
 public interface RemoteLibrarian extends Remote
 {
   void  addLibrarian(Librarian librarian) throws RemoteException, SQLException;
-  void removeLibrarian(int SSN) throws RemoteException, SQLException;
+  void removeLibrarian(long SSN) throws RemoteException, SQLException;
   ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException;
 }
