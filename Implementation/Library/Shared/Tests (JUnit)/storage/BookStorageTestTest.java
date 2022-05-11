@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 public class BookStorageTestTest
 {
+  //check constrains of Db here ????????''
 
 
 
@@ -20,18 +21,24 @@ public class BookStorageTestTest
 
     @BeforeAll
     public static void  setupVariables(){
-      book = new Book("mark of the shaper","atlas");
+      book = new Book("mark of the shaper","atlas",1432);
       book1 = new Book("mark of the elder","atlas");
       book2 = new Book("fall of Oriath","spencers");
     }
 
     @Test
-    public void addOne() throws SQLException
+    public void addOne()
     {
-      int exp =  storage.getBookList().size();
-      storage.addBook(book);
-      exp++;
-      Assertions.assertEquals(exp,storage.getBookList().size());
+      try
+      {
+
+        int exp = storage.getBookList().size();
+        storage.addBook(book);
+        exp++;
+        Assertions.assertEquals(exp, storage.getBookList().size());
+      }catch (SQLException e){
+        e.printStackTrace();
+      }
     }
     public  void clear() throws SQLException
     {
@@ -40,16 +47,51 @@ public class BookStorageTestTest
     @Test
     public void checkUniqueID() throws SQLException
     {
+      //does not generate unique id fix
       clear();
-      int dif = book.getId();
+    storage.addBook(book);
+    storage.addBook(book1);
+    storage.addBook(book2);
+      System.out.println(storage.getBookList().get(1).getId());
+    Assertions.assertNotEquals(storage.getBookList().get(1).getId(),storage.getBookList().get(2).getId());
+    }
+
+    @Test
+  public void removeOne() throws SQLException
+    {
+      int exp = storage.getBookList().size();
+      storage.addBook(book);
+      storage.removeBook(0);
+      Assertions.assertEquals(exp,storage.getBookList().size());
+    }
+    @Test
+  public void removeAndAddMultiple() throws SQLException
+    {
+      int exp = storage.getBookList().size();
+      storage.addBook(book);
       storage.addBook(book);
       storage.addBook(book1);
+      exp++;
+      storage.removeBook(0);
+      storage.removeBook(0);
+
+      Assertions.assertEquals(exp,storage.getBookList().size());
+    }
+    @Test
+  public void removeFromEmpty() throws SQLException
+    {
+      int exp = storage.getBookList().size();
+      storage.removeBook(4);
+   Assertions.assertEquals(exp,storage.getBookList().size(),"-->no changes");
+    }
+    @Test
+    public void removeNotExistingID() throws SQLException
+    {
+      int exp = storage.getBookList().size();
       storage.addBook(book2);
-      storage.addBook(book);
-      for (int i = 0; i<storage.getBookList().size();i++){
-        System.out.println( storage.getBookList().get(i).toString());
-      }
-      //Assertions.assertNotEquals(dif,storage.getBookList().get(2).getId());
+      exp++;
+      storage.removeBook(3);
+      Assertions.assertEquals(exp,storage.getBookList().size());
     }
   }
 

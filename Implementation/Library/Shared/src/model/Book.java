@@ -39,6 +39,11 @@ public class Book extends MultimediaItem implements Serializable {
         setAuthor("Anonymous");
     }
 
+  @Override public String toString()
+  {
+    return super.toString();
+  }
+
   public Book(String title,String publisher)
   {
     super(title,publisher);
