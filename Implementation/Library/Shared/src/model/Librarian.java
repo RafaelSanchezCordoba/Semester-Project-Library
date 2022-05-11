@@ -14,7 +14,7 @@ public class Librarian  implements Serializable
     private final String password;
     private final String firstName;
     private final String lastName;
-    private String date;
+    private Date date;
     private final long ssn;
 
     /**
@@ -52,12 +52,12 @@ public class Librarian  implements Serializable
         return lastName;
     }
 
-    public String getDateOfEmployment() {
+    public Date getDateOfEmployment() {
         return date;
     }
 
     public void setDate(Date date) {
-        this.date = String.valueOf(date);
+        this.date = date;
     }
 
     @Override public String toString()

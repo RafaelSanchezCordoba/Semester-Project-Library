@@ -41,7 +41,7 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
             statement.setString(2, librarian.getPassword());
             statement.setString(3, librarian.getFirstName());
             statement.setString(4, librarian.getLastName());
-            statement.setDate(5, Date.valueOf(librarian.getDateOfEmployment()));
+            statement.setDate(5, librarian.getDateOfEmployment());
             statement.executeUpdate();
         }
     }
