@@ -30,6 +30,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   private final StringProperty searchTextField;
   private final StringProperty errorLabel;
   private final SimpleListProperty<Book> bookList;
+  private final SimpleListProperty<Genre> selectedGenreList;
   private final SimpleListProperty<Genre> genreList;
 
   public AddRemoveBookViewModel(ModelBook model) throws RemoteException
@@ -45,8 +46,10 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     this.errorLabel = new SimpleStringProperty("");
     ObservableList<Book> observableListBook = FXCollections.observableArrayList(new ArrayList<>());
     ObservableList<Genre> observableListGenre = FXCollections.observableArrayList(new ArrayList<>());
+    ObservableList<Genre> observableListSelectedGenre = FXCollections.observableArrayList(new ArrayList<>());
     this.bookList = new SimpleListProperty<>(observableListBook);
     this.genreList = new SimpleListProperty<>(observableListGenre);
+    this.selectedGenreList = new SimpleListProperty<>(observableListSelectedGenre);
 
     model.addPropertyChangeListener("newBook", this);
     model.addPropertyChangeListener("removeBook", this);
@@ -57,8 +60,20 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   }
 
+  public void addGenreToSelectedGenreList(Genre genre) {
+    selectedGenreList.add(genre);
+  }
+
+  public void removeGenreFromSelectedGenreList(Genre genre) {
+    selectedGenreList.remove(genre);
+  }
+
   public GenreList getGenreList() throws SQLException, RemoteException {
-    return model.getGenreList();
+    GenreList genres = new GenreList();
+    for (int i = 0; i < selectedGenreList.size(); i++) {
+      genres.addGenre(selectedGenreList.get(i));
+    }
+    return genres;
   }
 
   public void setGenreList() throws RemoteException, SQLException {
@@ -150,6 +165,10 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   public void bindGenreList(ObjectProperty<ObservableList<Genre>> property) {
     property.bindBidirectional(genreList);
+  }
+
+  public void bindSelectedGenreList(ObjectProperty<ObservableList<Genre>> property) {
+    property.bindBidirectional(selectedGenreList);
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
