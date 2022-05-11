@@ -79,6 +79,7 @@ public class AddRemoveBookViewController
 
   }
 
+
   @FXML public void removeBookButtonPressed()
       throws RemoteException, SQLException
   {

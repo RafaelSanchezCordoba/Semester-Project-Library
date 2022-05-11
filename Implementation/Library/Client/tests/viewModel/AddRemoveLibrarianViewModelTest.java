@@ -80,7 +80,7 @@ public class AddRemoveLibrarianViewModelTest
     ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("", error.get());
-    assertEquals("[Librarian{ssn:'1234567890', first Name:'Rosa', last Name:'Briales'}]",
+    assertEquals("[Librarian{ssn:'1234567890123', first Name:'Rosa', last Name:'Briales'}]",
         librarianList.getValue().toString());
   }
 
@@ -115,7 +115,7 @@ public class AddRemoveLibrarianViewModelTest
   {
     lastName.set("Briales");
     password.set("password");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("First name can't be null", error.get());
     assertEquals("[]", librarianList.get().toString());
@@ -125,7 +125,7 @@ public class AddRemoveLibrarianViewModelTest
   {
     firstName.set("Rosa");
     password.set("password");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("Last name can't be null", error.get());
     assertEquals("[]", librarianList.get().toString());
@@ -145,7 +145,7 @@ public class AddRemoveLibrarianViewModelTest
   {
     firstName.set("Rosa");
     lastName.set("Briales");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("Password can't be null", error.get());
     assertEquals("[]", librarianList.get().toString());
@@ -157,7 +157,7 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Briales");
     password.set("passwordddddddddddddd");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("Password must be less than 20 characters", error.get());
     assertEquals("[]", librarianList.get().toString());
@@ -169,7 +169,7 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     lastName.set("Briales");
     password.set("password");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("First name must be less than 50 characters", error.get());
     assertEquals("[]", librarianList.get().toString());
@@ -181,7 +181,7 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Brialessssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
     password.set("password");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("Last name must be less than 50 characters", error.get());
     assertEquals("[]", librarianList.get().toString());
@@ -193,7 +193,7 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Briales");
     password.set("password");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("The ssn must be 13 digits", error.get());
     assertEquals("[]",
@@ -220,8 +220,7 @@ public class AddRemoveLibrarianViewModelTest
     lastName.set("Briales");
     password.set("password");
     ssn.set("1234567890abc");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-    assertEquals("The ssn must be 13 digits", error.get());
+    assertThrows(NumberFormatException.class,()-> viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue())));
     assertEquals("[]",
         librarianList.getValue().toString());
   }
@@ -233,15 +232,15 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Briales");
     password.set("password");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     firstName.set("Rafa");
     lastName.set("Sanchez");
     password.set("password");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("There is already a librarian with that ssn in the system", error.get());
-    assertEquals("[Librarian{ssn:'1234567890', first Name:'Rosa', last Name:'Briales'}]",
+    assertEquals("[Librarian{ssn:'1234567890123', first Name:'Rosa', last Name:'Briales'}]",
         librarianList.get().toString());
   }
 
@@ -249,7 +248,7 @@ public class AddRemoveLibrarianViewModelTest
   {
     firstName.set("Rosa");
     lastName.set("Briales");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("", firstName.get());
     assertEquals("", lastName.get());
@@ -264,7 +263,7 @@ public class AddRemoveLibrarianViewModelTest
   {
     firstName.set("Rosa");
     lastName.set("Briales");
-    ssn.set("1234567890");
+    ssn.set("1234567890123");
     password.set("password");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("", error.get());
