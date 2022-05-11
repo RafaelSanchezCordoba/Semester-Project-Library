@@ -34,7 +34,7 @@ public class BookRmiTest
   @BeforeEach
   public void setupVariables(){
     boonk = new Book("sportal","kringe",1234,345,2022);
-    boonk = new Book("spooky","peak",23123,109,2012);
+    boonk1 = new Book("spooky","peak",23123,109,2012);
 
     try
     {
@@ -45,7 +45,7 @@ public class BookRmiTest
       e.printStackTrace();
     }
   }
-  @AfterEach
+
   public void tearDown() throws SQLException, RemoteException
   {
 
@@ -67,6 +67,7 @@ public class BookRmiTest
   @Test
   public void addMultiple() throws SQLException, RemoteException
   {
+
     int expected = bookClient.getBookList().size();
     bookClient.addBook(boonk);
     expected++;
@@ -96,17 +97,18 @@ public class BookRmiTest
     expected--;
     Assertions.assertEquals(expected,books.size());
   }
-  @Test
+  
   public void removeMultiple() throws SQLException, RemoteException
   {
+
     int exp = bookClient.getBookList().size();
     bookClient.addBook(boonk);
     bookClient.addBook(boonk1);
-    bookClient.addBook(boonk1);
+
 
     bookClient.removeBook(boonk.getId());
-    bookClient.removeBook(boonk1.getId());
-    bookClient.removeBook(boonk1.getId());
+    bookClient.removeBook(boonk.getId());
+
 
     Assertions.assertEquals(exp,bookClient.getBookList().size());
   }
