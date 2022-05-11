@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Sub-class Book that extends <code>"MultimediaItem"</code>  and implements <code>Serializable</code>.
@@ -106,13 +107,13 @@ public class Book extends MultimediaItem implements Serializable {
      * The author of the book.
      */
     public void setAuthor(String author) {
-        this.author = author;
+
+      this.author = Objects.requireNonNullElse(author, "Anonymous");
     }
 
   @Override public String toString()
   {
-    return "Book{" + "edition=" + edition + ", year_published=" + year_published
-        + ", isbn='" + isbn + '\'' + ", author='" + author + '\''
-        + ", genreList=" + genreList + '}';
+    return "Title: "+getTitle()+", author: "+author+", edition=" + edition + ", year_published=" + year_published
+        + ", isbn='" + isbn + '\'' + ", genres=" + genreList;
   }
 }
