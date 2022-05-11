@@ -45,13 +45,17 @@ public class AddRemoveLibrarianViewController
     Librarian librarian;
     if (ssnTextField.getText().equals(""))
     {
-     librarian = new Librarian(1, passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
+     errorLabel.setText("Social security number can't be null");}
+    else if (ssnFormatCheck())
+    {
+      errorLabel.setText("Social security number must be 13 digits");
     }
     else
     {
       librarian = new Librarian(Integer.parseInt(ssnTextField.getText()), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
+      viewModel.addLibrarian(librarian);
     }
-    viewModel.addLibrarian(librarian);
+
   }
   @FXML
   public void removeLibrarianButtonPressed() throws SQLException, RemoteException {
@@ -64,6 +68,22 @@ public class AddRemoveLibrarianViewController
     return root;
   }
 
+  private boolean ssnFormatCheck()
+  {
+    if (ssnTextField.getText().length()==13)
+    {
+      try
+      {
+        Long.parseLong(ssnTextField.getText());
+      }
+      catch (NumberFormatException e)
+      {
+        return true;
+      }
+      return false;
+    }
+    return true;
+  }
   @FXML
   public void logOutButtonPressed()
   {

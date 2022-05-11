@@ -141,11 +141,6 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
             errorLabel.set("Last name must be less than 50 characters");
             return true;
         }
-        else if (ssnFormatCheck())
-        {
-            errorLabel.set("The ssn must be 13 digits");
-            return true;
-        }
         else if (ssnDuplicateCheck())
         {
             errorLabel.set("There is already a librarian with that ssn in the system");
@@ -154,22 +149,7 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
         return false;
     }
 
-    private boolean ssnFormatCheck()
-    {
-       if (ssnTextField.get().length()==13)
-       {
-           try
-           {
-               Integer.parseInt(ssnTextField.get());
-           }
-           catch (NumberFormatException e)
-           {
-               return true;
-           }
-           return false;
-       }
-       return true;
-    }
+
 
     private boolean ssnDuplicateCheck()
     {
