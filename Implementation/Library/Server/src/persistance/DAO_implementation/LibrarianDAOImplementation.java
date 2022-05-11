@@ -3,6 +3,7 @@ package persistance.DAO_implementation;
 import model.Librarian;
 import persistance.DAO.LibrarianDAO;
 
+import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -37,7 +38,7 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
     public void addLibrarian(Librarian librarian) throws SQLException {
         try(Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(insertLibrarianSql);
-            statement.setLong(1, librarian.getSsn());
+            statement.setString(1, String.valueOf(librarian.getSsn()));
             statement.setString(2, librarian.getPassword());
             statement.setString(3, librarian.getFirstName());
             statement.setString(4, librarian.getLastName());
@@ -50,7 +51,7 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
     public void removeLibrarian(long SSN) throws SQLException {
         try(Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(removeLibrarianSql);
-            statement.setLong(1, SSN);
+            statement.setString(1, String.valueOf(SSN));
             statement.executeUpdate();
         }
     }
@@ -62,12 +63,12 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
             ResultSet resultSet = statement.executeQuery();
             ArrayList<Librarian> result = new ArrayList<Librarian>();
             while (resultSet.next()) {
-                int SSN = resultSet.getInt("ssn");
+                String SSN = resultSet.getString("ssn");
                 String password = resultSet.getString("password");
                 String f_name = resultSet.getString("f_name");
                 String l_name = resultSet.getString("l_name");
                 Date date = resultSet.getDate("dateofemployment");
-                Librarian librarian = new Librarian(SSN, password, f_name, l_name);
+                Librarian librarian = new Librarian(Long.parseLong(SSN), password, f_name, l_name);
                 librarian.setDate(date);
                 result.add(librarian);
             }
