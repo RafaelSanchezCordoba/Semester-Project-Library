@@ -15,11 +15,11 @@ import java.util.ArrayList;
 
 public class BookRmiTest
 {
-
   private static Registry registry;
   private static BookClientImplementation bookClient;
   private static Book boonk;
   private static Book boonk1;
+
   private static ArrayList books;
 
   @BeforeAll
@@ -33,8 +33,9 @@ public class BookRmiTest
   }
   @BeforeEach
   public void setupVariables(){
-    boonk = new Book("dombnom","fhjkl",77);
-    boonk1 = new Book("sparta","spritied",98);
+    boonk = new Book("sportal","kringe",1234,345,2022);
+    boonk = new Book("spooky","peak",23123,109,2012);
+
     try
     {
       books = bookClient.getBookList();
