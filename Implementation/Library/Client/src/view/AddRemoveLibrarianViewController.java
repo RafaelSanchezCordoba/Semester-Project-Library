@@ -49,7 +49,7 @@ public class AddRemoveLibrarianViewController
     }
     else
     {
-      librarian = new Librarian(Integer.parseInt(ssnTextField.getText()), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
+      librarian = new Librarian(Long.parseLong(ssnTextField.getText()), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
     }
     viewModel.addLibrarian(librarian);
   }
