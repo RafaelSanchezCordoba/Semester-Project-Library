@@ -3,6 +3,7 @@ package storage;
 import model.Librarian;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import persistance.storageTest.LibrarianStorageTest;
 import server.storage.LibrarianStorage;
@@ -61,6 +62,7 @@ public class LibrarianStorageTestTest
   @Test
   public void removeOne() throws SQLException
   {
+    expected = storage.getLibrarianList().size();
     storage.addLibrarian(librarian);
     storage.addLibrarian(librarian2);
     expected++;
