@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -36,9 +35,9 @@ public class CurrentTime implements Serializable
      * @return
      * String local date with a specific format.
      */
-    public Date getFormattedIsoDate() {
-        Date date = Date.valueOf(LocalDate.now());
+    public String getFormattedIsoDate() {
+        Date date;
         LocalDateTime time = LocalDateTime.now();
-        return date;
+        return time.format(ISO_DATE_FORMATTER);
     }
 }
