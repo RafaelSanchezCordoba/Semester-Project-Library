@@ -2,6 +2,8 @@ package mediator;
 
 import client.BookClient;
 import model.Book;
+import model.Genre;
+import model.GenreList;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -28,6 +30,12 @@ public class ModelManagerBook implements ModelBook {
 
     public ArrayList<Book> getBookList() throws SQLException, RemoteException {
         return client.getBookList();
+    }
+
+    @Override public GenreList getGenreList()
+        throws RemoteException, SQLException
+    {
+        return client.getGenreList();
     }
 
     @Override

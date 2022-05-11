@@ -1,6 +1,8 @@
 package client;
 
 import model.Book;
+import model.Genre;
+import model.GenreList;
 import server.RemoteBook;
 
 import java.io.IOException;
@@ -41,7 +43,11 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
     remoteBook.removeBook(id);
   }
 
-
+  @Override public GenreList getGenreList()
+      throws RemoteException, SQLException
+  {
+    return remoteBook.getGenreList();
+  }
 
   @Override public void close() throws IOException
   {
