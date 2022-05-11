@@ -103,12 +103,4 @@ public class Book extends MultimediaItem implements Serializable {
     public void setAuthor(String author) {
         this.author = author;
     }
-
-    public String toStringForFirstConstructor(){
-        return super.getTitle() + " " + super.getPublisher() + " " + isbn + " " + edition + " " + year_published + " " + genreList.getGenresList();
-    }
-
-    public String toStringForSecondConstructor(){
-        return id + " " + super.getTitle() + " " + super.getPublisher() + " " + isbn;
-    }
 }
