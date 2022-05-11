@@ -14,7 +14,6 @@ import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class AddRemoveBookViewModel implements PropertyChangeListener
 {
@@ -41,10 +40,10 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     this.editionTextField = new SimpleStringProperty("");
     this.searchTextField = new SimpleStringProperty("");
     this.errorLabel = new SimpleStringProperty("");
-    ObservableList<Book> observableList = FXCollections.observableArrayList(
-        new ArrayList<>());
-    this.bookList = new SimpleListProperty<>(observableList);
-    this.genreList = new SimpleListProperty<>();
+    ObservableList<Book> observableListBook = FXCollections.observableArrayList(new ArrayList<>());
+    ObservableList<Genre> observableListGenre = FXCollections.observableArrayList(new ArrayList<>());
+    this.bookList = new SimpleListProperty<>(observableListBook);
+    this.genreList = new SimpleListProperty<>(observableListGenre);
 
     model.addPropertyChangeListener("newBook", this);
     model.addPropertyChangeListener("removeBook", this);
@@ -87,20 +86,25 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
       errorLabel.set("Invalid date: future date");
       return true;
     }
-return false;
+    return false;
   }
-public boolean futureYearCheck()
-{
-  CurrentTime now=new CurrentTime();
-  String year=now.getFormattedIsoDate().substring(0,4);
-  return Integer.parseInt(yearTextField.get())>Integer.parseInt(year);
-}
+  public boolean futureYearCheck()
+  {
+    CurrentTime now=new CurrentTime();
+    String year=now.getFormattedIsoDate().substring(0,4);
+    return Integer.parseInt(yearTextField.get())>Integer.parseInt(year);
+  }
+
+  public GenreList getGenreList() throws SQLException, RemoteException {
+    return model.getGenreList();
+  }
+
   public void setGenreList() throws RemoteException, SQLException {
     genreList.clear();
 
     for (int i = 0; i < model.getGenreList().getSize(); i++)
     {
-      genreList.addAll(model.getGenreList().getGenre(i));
+      genreList.add(model.getGenreList().getGenre(i));
     }
 
   }
@@ -184,12 +188,13 @@ public boolean futureYearCheck()
 
   public void bindBookListViewForTesting(SimpleListProperty<Book> property)
   {
-    property.bindBidirectional(bookList);
+    property.bind(bookList);
   }
 
-  public void bindGenreList(ObjectProperty property) {
-    property.bindBidirectional(genreList);
+  public void bindGenreList(ObjectProperty<ObservableList<Genre>> property) {
+    property.bind(genreList);
   }
+
   public void bindGenreListForTest(SimpleListProperty<Genre> property) {
     property.bind(genreList);
   }

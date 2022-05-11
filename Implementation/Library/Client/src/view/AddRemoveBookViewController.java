@@ -3,10 +3,7 @@ package view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.Book;
 import model.Genre;
@@ -31,7 +28,7 @@ public class AddRemoveBookViewController
   @FXML private TextField editionTextField;
   @FXML private TextField searchTextField;
   @FXML private ListView<Book> bookListView;
-  @FXML private ListView<Genre> genreListView;
+  @FXML private ComboBox<Genre> genreComboBox;
   @FXML private Label errorLabel;
 
   public void init(ViewHandler viewHandler, AddRemoveBookViewModel viewModel,
@@ -50,10 +47,14 @@ public class AddRemoveBookViewController
     viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindYearTextField(yearTextField.textProperty());
     viewModel.bindBookListView(bookListView.itemsProperty());
-    viewModel.bindGenreList(genreListView.itemsProperty());
+    viewModel.bindGenreList(genreComboBox.itemsProperty());
 
     viewModel.setBookList();
     viewModel.setGenreList();
+
+    for (int i = 0; i < viewModel.getGenreList().getSize(); i++) {
+      genreComboBox.setItems((ObservableList<Genre>) viewModel.getGenreList().getGenre(i));
+    }
   }
 
   @FXML public void logOutButtonPressed()
@@ -69,7 +70,7 @@ public class AddRemoveBookViewController
   @FXML public void addBookButtonPressed() throws SQLException, RemoteException
   {
     GenreList genres = new GenreList();
-    genres.addAll((ArrayList<Genre>) genreListView.getSelectionModel().getSelectedItems());
+    genreComboBox.getSelectionModel().getSelectedItem();
     if (authorTextField.equals("")) {
       Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
           Integer.parseInt(isbnTextField.getText()), Integer.parseInt(editionTextField.getText()),
