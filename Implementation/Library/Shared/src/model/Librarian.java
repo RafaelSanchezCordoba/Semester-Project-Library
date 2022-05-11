@@ -37,8 +37,8 @@ public class Librarian  implements Serializable
         String day=now.getFormattedIsoDate().substring(8,10);
         String month=now.getFormattedIsoDate().substring(5,7);
         String year=now.getFormattedIsoDate().substring(0,4);
-        this.date = new Date(Integer.parseInt(year)-1900,Integer.parseInt(month)-1,Integer.parseInt(day));
-    }
+        this.date=new Date(Integer.parseInt(year)-1900,Integer.parseInt(month)-1,Integer.parseInt(day));
+       }
 
 
     public long getSsn(){
