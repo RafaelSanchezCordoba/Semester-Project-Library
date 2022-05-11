@@ -155,7 +155,7 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
     {
         for (int i=0;i<librarianList.getSize();i++)
         {
-            if (librarianList.get(i).getSsn()==Integer.parseInt(ssnTextField.get()))
+            if (librarianList.get(i).getSsn()==Long.parseLong(ssnTextField.get()))
             {
                 return true;
             }
@@ -173,7 +173,7 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
         {
             for (int i = 0; i < librarianList.size(); i++)
             {
-                if (librarianList.get(i).getSsn() == (int) evt.getNewValue())
+                if (librarianList.get(i).getSsn() == (long) evt.getNewValue())
                 {
                     librarianList.remove(librarianList.get(i));
                     break;
