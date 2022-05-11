@@ -10,8 +10,7 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
 
     private String insertLibrarianSql = "INSERT INTO \"library\".librarian(ssn,password,f_name,l_name,dateOfEmployment)"
             +"VALUES(?,?,?,?,?)";
-    private String removeLibrarianSql = "DELETE FROM\"library\".librarian "
-            +"WHERE ssn = ?";
+    private String removeLibrarianSql = "DELETE FROM \"library\".librarian WHERE ssn = ?";
 
     private String getLibrarianListSql = "SELECT * FROM \"library\".librarian ORDER BY l_name DESC";
 
@@ -63,11 +62,11 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
             ResultSet resultSet = statement.executeQuery();
             ArrayList<Librarian> result = new ArrayList<Librarian>();
             while (resultSet.next()) {
-                int SSN = resultSet.getInt(1);
-                String password = resultSet.getString(2);
-                String f_name = resultSet.getString(3);
-                String l_name = resultSet.getString(4);
-                Date date = resultSet.getDate(5);
+                int SSN = resultSet.getInt("ssn");
+                String password = resultSet.getString("password");
+                String f_name = resultSet.getString("f_name");
+                String l_name = resultSet.getString("l_name");
+                Date date = resultSet.getDate("dateofemployment");
                 Librarian librarian = new Librarian(SSN, password, f_name, l_name);
                 librarian.setDate(date);
                 result.add(librarian);
