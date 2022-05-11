@@ -1,50 +1,39 @@
 package model;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GenreTest {
+
     private Genre genre;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeEach void setUp() {}
+
+    @Test void create_new_genre_with_all_correct_parameters(){
         genre = new Genre("Fantasy");
+        assertEquals("Fantasy", genre.toString());
     }
 
-    @AfterEach
-    void tearDown() {
-        System.out.println("Running tear down");
-        genre = null;
-        assertNull(genre);
+    @Test void null_genre(){
+        genre = new Genre(null);
+        assertNull(genre.toString());
     }
 
-    @Test
-    void getGenre() {
-        System.out.println("Getting a genre type of the book");
-        String expectedGenre = "Fantasy";
-        String result = genre.getGenre();
-        assertEquals(expectedGenre,result);
+    @Test void get_genre(){
+        genre = new Genre("Fantasy");
+        assertEquals("Fantasy",genre.getGenre());
     }
 
-    @Test
-    void setId() {
-        System.out.println("Setting id number");
-        int id = 1;
-        genre.setId(id);
-        assertEquals(genre.getId(), id);
+    @Test void getId(){
+        genre = new Genre("Fantasy");
+        assertEquals(0,genre.getId());
     }
 
-    @Test
-    void getId() {
-        System.out.println("Getting id number");
-        int expectedId = 2;
-        int result = genre.getId();
-        assertEquals(expectedId, result);
+    @Test void setId(){
+        genre = new Genre("Fantasy");
+        genre.setId(1);
+        assertEquals(1, genre.getId());
     }
-
 }

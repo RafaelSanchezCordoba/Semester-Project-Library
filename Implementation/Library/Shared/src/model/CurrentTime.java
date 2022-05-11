@@ -17,8 +17,7 @@ public class CurrentTime implements Serializable
     /**
      * Empty constructor.
      */
-    public CurrentTime() {
-    }
+    public CurrentTime() {}
 
     /**
      * Get the local time
