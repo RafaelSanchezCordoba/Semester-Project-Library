@@ -99,5 +99,91 @@ public class AddRemoveBooksViewModelTest
 
   }
 
+ @Test void add_adds_the_book_with_more_genres()
+{
+
+}
+
+//errors
+  @Test void null_title_gives_error_and_doesnt_add()
+  {
+    publisher.set("Hodder & Stoughton");
+    author.set("Laini Taylor");
+    isbn.set("9780316134026");
+    year.set("2011");
+    edition.set("1");
+    genre.set("Fantasy");
+    //viewModel.addBook(new Book(title.get(), publisher.get(),));
+    assertEquals("Title can't be null",error.get());
+    assertEquals("[]",bookList.getValue().toString());
+  }
+
+  @Test void null_publisher_gives_error_and_doesnt_add()
+  {
+    title.set("Daugther of Smoke and Bone");
+    author.set("Laini Taylor");
+    isbn.set("9780316134026");
+    year.set("2011");
+    edition.set("1");
+    genre.set("Fantasy");
+    //viewModel.addBook(new Book(title.get(), publisher.get(),));
+    assertEquals("Title can't be null",error.get());
+    assertEquals("[]",bookList.getValue().toString());
+  }
+
+  @Test void null_isbn_gives_error_and_doesnt_add()
+  {
+    title.set("Daugther of Smoke and Bone");
+    publisher.set("Hodder & Stoughton");
+    author.set("Laini Taylor");
+    year.set("2011");
+    edition.set("1");
+    genre.set("Fantasy");
+    //viewModel.addBook(new Book(title.get(), publisher.get(),));
+    assertEquals("Isbn can't be null",error.get());
+    assertEquals("[]",bookList.getValue().toString());
+  }
+
+  @Test void title_51_characters_gives_error_and_doesnt_add()
+  {
+    title.set("DaugtherofSmokeAndBone, days of blood and starlight");
+    publisher.set("Hodder & Stoughton");
+    author.set("Laini Taylor");
+    isbn.set("9780316134026");
+    year.set("2011");
+    edition.set("1");
+    genre.set("Fantasy");
+    //viewModel.addBook(new Book(title.get(), publisher.get(),));
+    assertEquals("Title must have less than 50 characters",error.get());
+    assertEquals("[]",bookList.getValue().toString());
+  }
+
+  @Test void publisher_51_characters_gives_error_and_doesnt_add()
+  {
+    title.set("Daugther of Smoke And Bone");
+    publisher.set("Hodder & Stoughtonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+    author.set("Laini Taylor");
+    isbn.set("9780316134026");
+    year.set("2011");
+    edition.set("1");
+    genre.set("Fantasy");
+    //viewModel.addBook(new Book(title.get(), publisher.get(),));
+    assertEquals("Publisher must have less than 50 characters",error.get());
+    assertEquals("[]",bookList.getValue().toString());
+  }
+
+  @Test void future_year_gives_error_and_doesnt_add()
+  {
+    title.set("Daugther of Smoke and Bone");
+    publisher.set("Hodder & Stoughton");
+    author.set("Laini Taylor");
+    isbn.set("9780316134026");
+    year.set("2031");
+    edition.set("1");
+    genre.set("Fantasy");
+    //viewModel.addBook();
+    assertEquals("Invalid date:future date",error.get());
+    assertEquals("[]",bookList.getValue().toString());
+  }
 
 }
