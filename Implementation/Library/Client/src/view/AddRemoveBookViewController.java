@@ -28,7 +28,8 @@ public class AddRemoveBookViewController
   @FXML private TextField editionTextField;
   @FXML private TextField searchTextField;
   @FXML private ListView<Book> bookListView;
-  @FXML private ComboBox<Genre> genreComboBox;
+  @FXML private ListView<Genre> genreListView;
+  @FXML private ListView<Genre> selectedGenreListView;
   @FXML private Label errorLabel;
 
   public void init(ViewHandler viewHandler, AddRemoveBookViewModel viewModel,
@@ -47,14 +48,11 @@ public class AddRemoveBookViewController
     viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindYearTextField(yearTextField.textProperty());
     viewModel.bindBookListView(bookListView.itemsProperty());
-    viewModel.bindGenreList(genreComboBox.itemsProperty());
+    viewModel.bindGenreList(genreListView.itemsProperty());
+    viewModel.bindSelectedGenreList(selectedGenreListView.itemsProperty());
 
     viewModel.setBookList();
     viewModel.setGenreList();
-
-    for (int i = 0; i < viewModel.getGenreList().getSize(); i++) {
-      genreComboBox.setItems((ObservableList<Genre>) viewModel.getGenreList().getGenre(i));
-    }
   }
 
   @FXML public void logOutButtonPressed()
@@ -69,8 +67,8 @@ public class AddRemoveBookViewController
 
   @FXML public void addBookButtonPressed() throws SQLException, RemoteException
   {
-    GenreList genres = new GenreList();
-    genreComboBox.getSelectionModel().getSelectedItem();
+    GenreList genres;
+    genres = viewModel.getGenreList();
     if (authorTextField.equals("")) {
       Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
           Integer.parseInt(isbnTextField.getText()), Integer.parseInt(editionTextField.getText()),
@@ -108,7 +106,14 @@ public class AddRemoveBookViewController
 
   @FXML public void addGenreButtonPressed()
   {
+    //selectedGenreListView.getItems().add(genreListView.getSelectionModel().getSelectedItem());
+    viewModel.addGenreToSelectedGenreList(genreListView.getSelectionModel().getSelectedItem());
+  }
 
+  @FXML
+  public void removeGenreButtonPressed() {
+    //selectedGenreListView.getItems().remove(selectedGenreListView.getSelectionModel().getSelectedItem());
+    viewModel.removeFromSelectedGenreList(selectedGenreListView.getSelectionModel().getSelectedItem());
   }
 
   @FXML public void bookMenuButtonPressed()

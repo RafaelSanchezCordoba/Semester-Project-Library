@@ -70,10 +70,10 @@ public class BookDAOImplementation implements BookDAO {
       PreparedStatement statementGenre = connection.prepareStatement((insertGenreBookSql));
       for (int i = 0; i < book.getGenreList().getSize(); i++)
       {
-        statement.setInt(1,book.getId());
-        statement.setInt(2, book.getGenreList().getGenre(i).getId());
+        statementGenre.setInt(1,book.getId());
+        statementGenre.setInt(2, book.getGenreList().getGenre(i).getId());
       }
-      statement.executeUpdate();
+      statementGenre.executeUpdate();
 
 
       ResultSet keys = statement.getGeneratedKeys();
