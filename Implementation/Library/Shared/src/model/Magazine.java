@@ -10,7 +10,7 @@ import java.sql.Date;
  */
 public class Magazine extends MultimediaItem implements Serializable {
     private final int volume;
-
+    private int id;
     private final String genre;
     private final java.sql.Date date;
 
@@ -48,8 +48,13 @@ public class Magazine extends MultimediaItem implements Serializable {
         return date;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override public String toString()
     {
-        return super.toString();
+        return "Magazine{"+"title="+getTitle()+", publisher="+getPublisher() + ", volume=" + volume + ", genre='"
+            + genre + '\'' + ", date=" + date + '}';
     }
 }

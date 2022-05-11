@@ -7,10 +7,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelBook;
-import model.Book;
-import model.Genre;
-import model.GenreList;
-import model.Magazine;
+import model.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -30,7 +27,6 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   private final StringProperty searchTextField;
   private final StringProperty errorLabel;
   private final SimpleListProperty<Book> bookList;
-  private final SimpleListProperty<Genre> selectedGenreList;
   private final SimpleListProperty<Genre> genreList;
 
   public AddRemoveBookViewModel(ModelBook model) throws RemoteException
@@ -46,10 +42,8 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     this.errorLabel = new SimpleStringProperty("");
     ObservableList<Book> observableListBook = FXCollections.observableArrayList(new ArrayList<>());
     ObservableList<Genre> observableListGenre = FXCollections.observableArrayList(new ArrayList<>());
-    ObservableList<Genre> observableListSelectedGenre = FXCollections.observableArrayList(new ArrayList<>());
     this.bookList = new SimpleListProperty<>(observableListBook);
     this.genreList = new SimpleListProperty<>(observableListGenre);
-    this.selectedGenreList = new SimpleListProperty<>(observableListSelectedGenre);
 
     model.addPropertyChangeListener("newBook", this);
     model.addPropertyChangeListener("removeBook", this);
@@ -60,23 +54,53 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   }
 
-  public void addGenreToSelectedGenreList(Genre genre) {
-    selectedGenreList.add(genre);
+  public boolean errorCheck()
+  {
+    if (titleTextField.get().equals(""))
+    {
+      errorLabel.set("Title can't be null");
+      return true;
+    }
+    else if (publisherTextField.get().equals(""))
+    {
+      errorLabel.set("Publisher can't be null");
+      return true;
+    }
+    else if (isbnTextField.get().equals(""))
+    {
+      errorLabel.set("Isbn can't be null");
+      return true;
+    }
+    else if (titleTextField.get().length()>50)
+    {
+      errorLabel.set("Title must have less than 50 characters");
+      return true;
+    }
+    else if (publisherTextField.get().length()>50)
+    {
+      errorLabel.set("Publisher must have less than 50 characters");
+      return true;
+    }
+    else if (futureYearCheck())
+    {
+      errorLabel.set("Invalid date: future date");
+      return true;
+    }
+    return false;
   }
-
-  public void removeGenreFromSelectedGenreList(Genre genre) {
-    selectedGenreList.remove(genre);
+  public boolean futureYearCheck()
+  {
+    CurrentTime now=new CurrentTime();
+    String year=now.getFormattedIsoDate().substring(0,4);
+    return Integer.parseInt(yearTextField.get())>Integer.parseInt(year);
   }
 
   public GenreList getGenreList() throws SQLException, RemoteException {
-    GenreList genres = new GenreList();
-    for (int i = 0; i < selectedGenreList.size(); i++) {
-      genres.addGenre(selectedGenreList.get(i));
-    }
-    return genres;
+    return model.getGenreList();
   }
 
   public void setGenreList() throws RemoteException, SQLException {
+    genreList.clear();
 
     for (int i = 0; i < model.getGenreList().getSize(); i++)
     {
@@ -88,15 +112,14 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   public void setBookList() throws RemoteException, SQLException
   {
     bookList.clear();
-    for (int i = 0; i < model.getBookList().size(); i++)
-    {
-      bookList.add(model.getBookList().get(i));
-    }
+    bookList.addAll(model.getBookList());
   }
 
   public void addBook(Book book) throws RemoteException, SQLException
   {
-    model.addBook(book);
+    if (!errorCheck()){
+    model.addBook(book);}
+    reset();
   }
 
   public void removeBook(int id) throws RemoteException, SQLException
@@ -163,12 +186,17 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     property.bindBidirectional(bookList);
   }
 
-  public void bindGenreList(ObjectProperty<ObservableList<Genre>> property) {
-    property.bindBidirectional(genreList);
+  public void bindBookListViewForTesting(SimpleListProperty<Book> property)
+  {
+    property.bind(bookList);
   }
 
-  public void bindSelectedGenreList(ObjectProperty<ObservableList<Genre>> property) {
-    property.bindBidirectional(selectedGenreList);
+  public void bindGenreList(ObjectProperty<ObservableList<Genre>> property) {
+    property.bind(genreList);
+  }
+
+  public void bindGenreListForTest(SimpleListProperty<Genre> property) {
+    property.bind(genreList);
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
