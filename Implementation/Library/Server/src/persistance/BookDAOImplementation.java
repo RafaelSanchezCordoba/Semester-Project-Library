@@ -58,7 +58,7 @@ public class BookDAOImplementation implements BookDAO {
   public void addBook(Book book) throws SQLException {
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement((insertBookSql), PreparedStatement.RETURN_GENERATED_KEYS);
-      statement.setInt(1, book.getIsbn());
+      statement.setString(1, book.getIsbn());
       statement.setString(2, book.getPublisher());
       statement.setString(3, book.getTitle());
       statement.setInt(4, book.getYear_published());
@@ -96,7 +96,7 @@ public class BookDAOImplementation implements BookDAO {
         String author =  resultSet.getString("author");
         String title = resultSet.getString("title");
         String publisher = resultSet.getString("publisher");
-        int Isbn = resultSet.getInt("isbn");
+        String Isbn = resultSet.getString("isbn");
         int Edition = resultSet.getInt("edition");
         int Year_Published = resultSet.getInt("year_published");
         Book book = new Book(author,title, publisher, Isbn, Edition, Year_Published);
