@@ -1,4 +1,4 @@
-package serverClient;
+package client;
 
 import client.LibrarianClient;
 import client.LibrarianClientImplementation;
