@@ -35,4 +35,9 @@ public class Genre implements Serializable
     {
         return id;
     }
+
+    @Override public String toString()
+    {
+        return  genre;
+    }
 }

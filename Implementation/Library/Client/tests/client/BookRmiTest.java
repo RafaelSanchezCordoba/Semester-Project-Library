@@ -1,4 +1,4 @@
-package serverClient;
+package client;
 
 import client.BookClientImplementation;
 import model.Book;
@@ -33,8 +33,13 @@ public class BookRmiTest
   }
   @BeforeEach
   public void setupVariables(){
-    boonk = new Book("sportal","kringe",1234,345,2022);
-    boonk1 = new Book("spooky","peak",23123,109,2012);
+<<<<<<<< HEAD:Implementation/Library/Client/tests/serverClient/BookRmiTest.java
+//    boonk = new Book("sportal","kringe",1234,345,2022);
+//    boonk1 = new Book("spooky","peak",23123,109,2012);
+========
+    boonk = new Book("sportal","kringe","1234",345,2022);
+    boonk1 = new Book("spooky","peak","23123",109,2012);
+>>>>>>>> fabc66920b3a28202b546245222d9b73c24789e8:Implementation/Library/Client/tests/client/BookRmiTest.java
 
     try
     {

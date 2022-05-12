@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public interface BookStorage
 {
-  void addBook(Book magazine) throws SQLException, RemoteException;
+  void addBook(Book book) throws SQLException, RemoteException;
   void removeBook(int id) throws SQLException, RemoteException;
   ArrayList<Book> getBookList() throws SQLException, RemoteException;
   GenreList getGenreList() throws SQLException, RemoteException;

@@ -71,14 +71,15 @@ public class AddRemoveBookViewController
     genres = viewModel.getGenreList();
     if (authorTextField.equals("")) {
       Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
-          Integer.parseInt(isbnTextField.getText()), Integer.parseInt(editionTextField.getText()),
+          isbnTextField.getText(), Integer.parseInt(editionTextField.getText()),
           Integer.parseInt(yearTextField.getText()), genres);
       viewModel.addBook(book);
 
     }
     else{
       Book book = new Book(authorTextField.getText(), titleTextField.getText(), publisherTextField.getText(),
-          Integer.parseInt(isbnTextField.getText()), Integer.parseInt(editionTextField.getText()),
+          isbnTextField.getText()
+          , Integer.parseInt(editionTextField.getText()),
           Integer.parseInt(yearTextField.getText()), genres);
       viewModel.addBook(book);
     }

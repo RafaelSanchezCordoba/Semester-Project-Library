@@ -58,29 +58,28 @@ public class BookDAOImplementation implements BookDAO {
   public void addBook(Book book) throws SQLException {
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement((insertBookSql), PreparedStatement.RETURN_GENERATED_KEYS);
-      statement.setInt(1, book.getIsbn());
+      statement.setString(1, book.getIsbn());
       statement.setString(2, book.getPublisher());
       statement.setString(3, book.getTitle());
       statement.setInt(4, book.getYear_published());
       statement.setString(5, book.getAuthor());
       statement.setInt(6, book.getEdition());
 
-      //statement.setGenre
       statement.executeUpdate();
-      PreparedStatement statementGenre = connection.prepareStatement((insertGenreBookSql));
-      for (int i = 0; i < book.getGenreList().getSize(); i++)
-      {
-        statementGenre.setInt(1,book.getId());
-        statementGenre.setInt(2, book.getGenreList().getGenre(i).getId());
-      }
-      statementGenre.executeUpdate();
-
 
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next()) {
         book.setId(keys.getInt(1));
       } else {
         throw new SQLException("No keys generated");
+      }
+
+      PreparedStatement statementGenre = connection.prepareStatement((insertGenreBookSql));
+      for (int i = 0; i < book.getGenreList().getSize(); i++)
+      {
+        statementGenre.setInt(1,book.getId());
+        statementGenre.setInt(2, book.getGenreList().getGenre(i).getId());
+        statementGenre.executeUpdate();
       }
     }
   }
@@ -96,7 +95,7 @@ public class BookDAOImplementation implements BookDAO {
         String author =  resultSet.getString("author");
         String title = resultSet.getString("title");
         String publisher = resultSet.getString("publisher");
-        int Isbn = resultSet.getInt("isbn");
+        String Isbn = resultSet.getString("isbn");
         int Edition = resultSet.getInt("edition");
         int Year_Published = resultSet.getInt("year_published");
         Book book = new Book(author,title, publisher, Isbn, Edition, Year_Published);

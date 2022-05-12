@@ -34,4 +34,14 @@ public class GenreList implements Serializable
     public void addAll(ArrayList<Genre> genres){
         this.genres.addAll(genres);
     }
+
+    @Override public String toString()
+    {
+        String list="";
+        for (int i=0;i<genres.size();i++)
+        {
+            list+=genres.get(i)+" ";
+        }
+        return list.trim();
+    }
 }

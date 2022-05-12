@@ -22,9 +22,9 @@ public class BookStorageTestTest
 
     @BeforeAll
     public static void  setupVariables(){
-      book = new Book("mark of the shaper","atlas",1432,1999,2034);
-      book1 = new Book("mark of the elder","atlas","polka",123,4,2011);
-      book2 = new Book("hjkl","fghjk",123,23,203);
+//      book = new Book("mark of the shaper","atlas",1432,1999,2034);
+//      book1 = new Book("mark of the elder","atlas","polka",123,4,2011);
+//      book2 = new Book("hjkl","fghjk",123,23,203);
     }
 
     @Test

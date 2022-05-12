@@ -52,11 +52,7 @@ public class MultimediaItem implements Serializable {
             + ", publisher='" + publisher + '\'' + '}';
     }
 
-    public MultimediaItem(){
-        id= 0;
-        title = null;
-        publisher= null;
-    }
+
 
     public void setId(int id) {
         this.id = id;

@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Sub-class Book that extends <code>"MultimediaItem"</code>  and implements <code>Serializable</code>.
@@ -8,8 +9,8 @@ import java.io.Serializable;
  * @version 1.0 - 08/04/22.
  */
 public class Book extends MultimediaItem implements Serializable {
-    private final int isbn, edition, year_published;
-    private String author;
+    private final int  edition, year_published;
+    private String isbn,author;
     private GenreList genreList;
 
     /**
@@ -28,47 +29,49 @@ public class Book extends MultimediaItem implements Serializable {
      * @param genreList
      * The list of genre of the book.
      */
-    public Book(String title, String publisher, int isbn, int edition, int year_published, GenreList genreList) {
+
+    //constructor without author
+    public Book(String title, String publisher, String isbn, int edition, int year_published, GenreList genreList) {
         super(title, publisher);
         this.isbn = isbn;
         this.edition = edition;
         this.year_published = year_published;
-        this.author = null;
         this.genreList = genreList;
         setAuthor("Anonymous");
     }
-  public Book(String author,String title, String publisher, int isbn, int edition, int year_published, GenreList genreList) {
-    super(title, publisher);
-    this.isbn = isbn;
-    this.edition = edition;
-    this.year_published = year_published;
-    this.author = null;
-    this.genreList = genreList;
-    setAuthor("Anonymous");
-  }
-  public Book(String author,String title, String publisher, int isbn, int edition, int year_published) {
-    super(title, publisher);
-    this.isbn = isbn;
-    this.edition = edition;
-    this.year_published = year_published;
-    this.author = null;
 
+    //complete constructor
+  public Book(String author,String title, String publisher, String isbn, int edition, int year_published, GenreList genreList) {
+    super(title, publisher);
+    this.isbn = isbn;
+    this.edition = edition;
+    this.year_published = year_published;
+    this.genreList = genreList;
     setAuthor(author);
   }
-  public Book(String title, String publisher, int isbn, int edition, int year_published) {
+
+  //constructor without genreList
+  public Book(String author,String title, String publisher, String isbn, int edition, int year_published) {
     super(title, publisher);
     this.isbn = isbn;
     this.edition = edition;
     this.year_published = year_published;
-    this.author = null;
+    setAuthor(author);
+  }
 
+  //constructor without genreList and author
+  public Book(String title, String publisher, String isbn, int edition, int year_published) {
+    super(title, publisher);
+    this.isbn = isbn;
+    this.edition = edition;
+    this.year_published = year_published;
     setAuthor("Anonymous");
   }
 
 
 
 
-  public int getIsbn()
+  public String getIsbn()
   {
     return isbn;
   }
@@ -104,6 +107,13 @@ public class Book extends MultimediaItem implements Serializable {
      * The author of the book.
      */
     public void setAuthor(String author) {
-        this.author = author;
+
+      this.author = Objects.requireNonNullElse(author, "Anonymous");
     }
+
+  @Override public String toString()
+  {
+    return "Title: "+getTitle()+", author: "+author+", edition=" + edition + ", year_published=" + year_published
+        + ", isbn='" + isbn + '\'' + ", genres=" + genreList;
+  }
 }
