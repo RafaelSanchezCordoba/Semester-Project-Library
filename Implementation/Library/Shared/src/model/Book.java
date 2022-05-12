@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -98,6 +99,10 @@ public class Book extends MultimediaItem implements Serializable {
 
   public void setId(int id) {
       super.setId(id);
+  }
+
+  public void setGenreList(GenreList genreList) {
+        this.genreList = genreList;
   }
 
 

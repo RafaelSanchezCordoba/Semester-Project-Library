@@ -23,7 +23,7 @@ public class BookDAOImplementation implements BookDAO {
   private String insertGenreBookSql = "INSERT INTO \"library\".book_genre(book_id, genre_id)" + "VALUES(?,?)";
   private String getGenreListSql= "SELECT * FROM \"library\".genre ORDER BY id DESC";
 
-  private String removeBookSql = "DELETE FROM \"library\".book WHERE id=?";
+  private String removeBookSql = "DELETE FROM \"library\".book  WHERE id=?";
 
   private String getBookListSql = "SELECT * FROM \"library\".book ORDER BY id DESC";
 
@@ -89,7 +89,7 @@ public class BookDAOImplementation implements BookDAO {
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement(getBookListSql);
       ResultSet resultSet = statement.executeQuery();
-      ArrayList<Book> result = new ArrayList<Book>();
+      ArrayList<Book> result = new ArrayList<>();
       while (resultSet.next()) {
         int id = resultSet.getInt("id");
         String author =  resultSet.getString("author");
@@ -105,6 +105,7 @@ public class BookDAOImplementation implements BookDAO {
       return result;
     }
   }
+  
   public GenreList getGenreList() throws SQLException {
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement(getGenreListSql);
