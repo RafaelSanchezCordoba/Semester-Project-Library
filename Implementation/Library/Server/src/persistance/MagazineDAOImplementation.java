@@ -1,7 +1,6 @@
-package persistance.DAO_implementation;
+package persistance;
 
 import model.Magazine;
-import persistance.DAO.MagazineDAO;
 
 import java.sql.*;
 import java.util.ArrayList;

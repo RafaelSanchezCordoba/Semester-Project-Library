@@ -1,7 +1,7 @@
-package persistance.adapters;
+package persistance;
 
 import model.Magazine;
-import persistance.DAO.MagazineDAO;
+import persistance.MagazineDAO;
 import server.storage.MagazineStorage;
 
 import java.rmi.RemoteException;

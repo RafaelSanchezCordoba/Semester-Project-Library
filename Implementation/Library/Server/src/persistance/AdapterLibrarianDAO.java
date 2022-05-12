@@ -1,7 +1,7 @@
-package persistance.adapters;
+package persistance;
 
 import model.Librarian;
-import persistance.DAO.LibrarianDAO;
+import persistance.LibrarianDAO;
 import server.storage.LibrarianStorage;
 
 import java.rmi.RemoteException;

@@ -1,7 +1,6 @@
 package persistance;
 
 import model.Book;
-import model.Genre;
 import model.GenreList;
 import server.BookStorage;
 

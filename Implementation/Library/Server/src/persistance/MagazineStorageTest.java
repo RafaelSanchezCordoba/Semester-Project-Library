@@ -1,4 +1,4 @@
-package persistance.storageTest;
+package persistance;
 
 import model.Magazine;
 import server.storage.MagazineStorage;

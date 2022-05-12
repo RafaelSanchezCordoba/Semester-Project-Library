@@ -4,7 +4,7 @@ import model.Librarian;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import persistance.storageTest.LibrarianStorageTest;
+import persistance.LibrarianStorageTest;
 import server.storage.LibrarianStorage;
 
 import java.sql.SQLException;

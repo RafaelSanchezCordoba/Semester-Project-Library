@@ -1,41 +1,27 @@
 package server;
 
 import model.*;
+import server.storage.BookStorage;
+import server.storage.LibrarianStorage;
+import server.storage.MagazineStorage;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine{
+public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine, RemoteLibrarian{
     private MagazineStorage magazineStorage;
     private BookStorage bookStorage;
+    private LibrarianStorage librarianStorage;
 //    private GenreStorage genreStorage;
 
 
-    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage) throws RemoteException {
+    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage, LibrarianStorage librarianStorage) throws RemoteException {
         this.magazineStorage = magazineStorage;
         this.bookStorage = bookStorage;
-//        this.genreStorage = genreStorage;
+        this.librarianStorage = librarianStorage;
     }
-
-//    @Override public void addGenre(Genre genre)
-//        throws SQLException, RemoteException
-//    {
-//        genreStorage.addGenre(genre);
-//    }
-//
-//    @Override public void removeGenre(int id)
-//        throws SQLException, RemoteException
-//    {
-//        genreStorage.removeGenre(id);
-//    }
-//
-//    @Override public ArrayList<Genre> getGenreList()
-//        throws SQLException, RemoteException
-//    {
-//        return genreStorage.getGenreList();
-//    }
 
     @Override
     public void addBook(Book book) throws RemoteException, SQLException {
@@ -54,9 +40,8 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
         return bookStorage.getBookList();
     }
 
-    @Override public GenreList getGenreList()
-        throws RemoteException, SQLException
-    {
+    @Override
+    public GenreList getGenreList() throws RemoteException, SQLException {
         return bookStorage.getGenreList();
     }
 
@@ -72,12 +57,22 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     }
     @Override
     public ArrayList<Magazine> getMagazineList()
-        throws SQLException, RemoteException
+            throws SQLException, RemoteException
     {
         return magazineStorage.getMagazineList();
     }
 
+    @Override public void addLibrarian(Librarian librarian) throws RemoteException, SQLException {
+        librarianStorage.addLibrarian(librarian);
+    }
 
+    @Override public void removeLibrarian(String SSN) throws RemoteException, SQLException {
+        librarianStorage.removeLibrarian(SSN);
+    }
+
+    @Override public ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException {
+        return librarianStorage.getLibrarianList();
+    }
 }
 
 

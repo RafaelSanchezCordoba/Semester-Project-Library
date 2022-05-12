@@ -1,8 +1,8 @@
 package serverClient;
 
 import persistance.storageTest.BookStorageTest;
-import persistance.storageTest.LibrarianStorageTest;
-import persistance.storageTest.MagazineStorageTest;
+import persistance.LibrarianStorageTest;
+import persistance.MagazineStorageTest;
 import server.Communicator;
 import server.RemoteBook;
 import server.RemoteLibrarian;

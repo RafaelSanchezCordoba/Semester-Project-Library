@@ -1,4 +1,4 @@
-package persistance.DAO;
+package persistance;
 
 import model.Librarian;
 
