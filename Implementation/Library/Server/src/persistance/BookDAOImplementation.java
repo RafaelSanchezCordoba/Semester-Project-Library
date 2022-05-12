@@ -86,7 +86,8 @@ public class BookDAOImplementation implements BookDAO {
 
   @Override
   public ArrayList<Book> getBookList() throws SQLException {
-    try (Connection connection = getConnection()) {
+    Connection connection = getConnection();
+    try {
       connection.setAutoCommit(false);
       PreparedStatement statement = connection.prepareStatement(getBookListSql);
       ResultSet resultSet = statement.executeQuery();
