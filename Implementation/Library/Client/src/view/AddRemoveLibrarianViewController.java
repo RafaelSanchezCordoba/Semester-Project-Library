@@ -45,19 +45,11 @@ public class AddRemoveLibrarianViewController
     Librarian librarian;
     if (ssnTextField.getText().equals(""))
     {
-     librarian = new Librarian("1", passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
+     librarian = new Librarian(1, passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
     }
     else
     {
-<<<<<<< Updated upstream
       librarian = new Librarian(Integer.parseInt(ssnTextField.getText()), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
-=======
-<<<<<<< HEAD
-      librarian = new Librarian(ssnTextField.getText(), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
-=======
-      librarian = new Librarian(Integer.parseInt(ssnTextField.getText()), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     }
     viewModel.addLibrarian(librarian);
   }

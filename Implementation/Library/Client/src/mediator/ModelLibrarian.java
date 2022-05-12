@@ -27,15 +27,7 @@ public interface ModelLibrarian extends PropertyChangeSubject {
    * The Social Security Number
    * @throws RemoteException
    */
-<<<<<<< Updated upstream
   void removeLibrarian(int SSN) throws RemoteException, SQLException;
-=======
-<<<<<<< HEAD
-  void removeLibrarian(String SSN) throws RemoteException, SQLException;
-=======
-  void removeLibrarian(int SSN) throws RemoteException, SQLException;
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
 
   /**
    * Return a list with all the librarians added

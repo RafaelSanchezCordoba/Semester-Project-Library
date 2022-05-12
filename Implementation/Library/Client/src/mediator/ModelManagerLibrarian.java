@@ -47,15 +47,7 @@ public class ModelManagerLibrarian implements ModelLibrarian
    * The Social Security Number
    * @throws RemoteException
    */
-<<<<<<< Updated upstream
   public void removeLibrarian(int SSN) throws RemoteException, SQLException {
-=======
-<<<<<<< HEAD
-  public void removeLibrarian(String SSN) throws RemoteException, SQLException {
-=======
-  public void removeLibrarian(int SSN) throws RemoteException, SQLException {
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     client.removeLibrarian(SSN);
     support.firePropertyChange("removeLibrarian", null , SSN);
   }

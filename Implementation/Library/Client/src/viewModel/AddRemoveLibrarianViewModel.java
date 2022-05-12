@@ -82,15 +82,7 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
         }
     }
 
-<<<<<<< Updated upstream
     public void removeLibrarian(int SSN) throws SQLException, RemoteException
-=======
-<<<<<<< HEAD
-    public void removeLibrarian(String SSN) throws SQLException, RemoteException
-=======
-    public void removeLibrarian(int SSN) throws SQLException, RemoteException
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     {
         model.removeLibrarian(SSN);
     }
@@ -161,15 +153,7 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
     {
         for (int i=0;i<librarianList.getSize();i++)
         {
-<<<<<<< Updated upstream
             if (librarianList.get(i).getSsn()==Integer.parseInt(ssnTextField.get()))
-=======
-<<<<<<< HEAD
-            if (librarianList.get(i).getSsn().equals(ssnTextField.get()))
-=======
-            if (librarianList.get(i).getSsn()==Integer.parseInt(ssnTextField.get()))
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
             {
                 return true;
             }
@@ -187,15 +171,7 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
         {
             for (int i = 0; i < librarianList.size(); i++)
             {
-<<<<<<< Updated upstream
                 if (librarianList.get(i).getSsn() == (int) evt.getNewValue())
-=======
-<<<<<<< HEAD
-                if (librarianList.get(i).getSsn().equals(evt.getNewValue()))
-=======
-                if (librarianList.get(i).getSsn() == (int) evt.getNewValue())
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
                 {
                     librarianList.remove(librarianList.get(i));
                     break;
