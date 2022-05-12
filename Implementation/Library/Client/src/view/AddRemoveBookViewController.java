@@ -1,7 +1,5 @@
 package view;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
@@ -12,7 +10,6 @@ import viewModel.AddRemoveBookViewModel;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class AddRemoveBookViewController
 {
