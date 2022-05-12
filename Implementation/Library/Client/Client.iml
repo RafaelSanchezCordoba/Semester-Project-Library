@@ -12,7 +12,6 @@
     <orderEntry type="library" name="JavaFX_17_x64" level="application" />
     <orderEntry type="library" name="javafx" level="application" />
     <orderEntry type="library" name="postgresql-42.3.3" level="application" />
-    <orderEntry type="library" name="javafx-swt" level="application" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5.7.0">
         <CLASSES>
@@ -30,5 +29,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="javafx.web" level="application" />
+    <orderEntry type="library" name="javafx-swt" level="project" />
   </component>
 </module>
