@@ -4,7 +4,8 @@
     <exclude-output />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="javafx.web" level="application" />
-    <orderEntry type="library" name="remoteobserver" level="application" />
     <orderEntry type="library" name="postgresql-42.3.3" level="project" />
+    <orderEntry type="library" name="observer" level="project" />
+    <orderEntry type="library" name="remoteobserver" level="project" />
   </component>
 </module>

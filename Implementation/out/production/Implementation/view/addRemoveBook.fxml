@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRemoveBookViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRemoveBookViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="1107.0" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="HOME" />
@@ -22,9 +22,8 @@
       </Label>
       <TextField fx:id="searchTextField" layoutX="606.0" layoutY="62.0" prefHeight="25.0" prefWidth="444.0" />
       <Button layoutX="1062.0" layoutY="62.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="🔍" />
-      <ListView fx:id="bookListView" layoutX="606.0" layoutY="96.0" prefHeight="274.0" prefWidth="487.0" />
-      <Button layoutX="128.0" layoutY="338.0" mnemonicParsing="false" onAction="#removeBookButtonPressed" text="Remove" />
-      <Button fx:id="testData" layoutX="33.0" layoutY="385.0" mnemonicParsing="false" onAction="#testDataPressed" text="Test Data" />
+      <ListView fx:id="bookListView" layoutX="606.0" layoutY="96.0" prefHeight="455.0" prefWidth="487.0" />
+      <Button layoutX="128.0" layoutY="517.0" mnemonicParsing="false" onAction="#removeBookButtonPressed" text="Remove" />
       <Label layoutX="45.0" layoutY="139.0" text="Title: ">
          <font>
             <Font size="14.0" />
@@ -61,16 +60,11 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="281.0" layoutY="262.0" text="Genre: ">
+      <Label layoutX="114.0" layoutY="383.0" text="Selected Genre">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="genreTextField" layoutX="330.0" layoutY="257.0" prefHeight="28.0" prefWidth="193.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
       <Label layoutX="45.0" layoutY="303.0" text="Year: ">
          <font>
             <Font size="14.0" />
@@ -81,22 +75,31 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="33.0" layoutY="338.0" mnemonicParsing="false" onAction="#addBookButtonPressed" text="Add Book" />
-      <Label fx:id="errorLabel" layoutX="206.0" layoutY="342.0" prefHeight="18.0" prefWidth="317.0" text="Eroor message / Information message" textFill="RED">
+      <Button layoutX="14.0" layoutY="517.0" mnemonicParsing="false" onAction="#addBookButtonPressed" text="Add Book" />
+      <Label fx:id="errorLabel" layoutX="16.0" layoutY="564.0" prefHeight="18.0" prefWidth="513.0" text="Eroor message / Information message" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="281.0" layoutY="303.0" text="Edition:  ">
+      <Label layoutX="39.0" layoutY="347.0" text="Edition:  ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="editionTextField" layoutX="330.0" layoutY="298.0" prefHeight="27.0" prefWidth="193.0">
+      <TextField fx:id="editionTextField" layoutX="88.0" layoutY="342.0" prefHeight="28.0" prefWidth="172.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
+      <Button layoutX="234.0" layoutY="517.0" mnemonicParsing="false" onAction="#addGenreButtonPressed" text="Add Genre" />
+      <ListView fx:id="selectedGenreListView" layoutX="59.0" layoutY="409.0" prefHeight="86.0" prefWidth="200.0" />
+      <Button layoutX="357.0" layoutY="518.0" mnemonicParsing="false" onAction="#removeGenreButtonPressed" text="Remove Genre" />
+      <Label layoutX="391.0" layoutY="262.0" text="Genres">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ListView fx:id="genreListView" layoutX="312.0" layoutY="292.0" prefHeight="200.0" prefWidth="213.0" />
 
    </children>
 </AnchorPane>

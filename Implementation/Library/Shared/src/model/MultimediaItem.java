@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @version 1.0 08/04/22.
  */
 public class MultimediaItem implements Serializable {
-    private final int id;
+    private int id;
     private final String title, publisher;
 
 
@@ -40,15 +40,22 @@ public class MultimediaItem implements Serializable {
      * The publisher of the multimedia item.
      */
 
-    public MultimediaItem(int id, String title, String publisher) {
-        this.id = id;
+    public MultimediaItem(String title, String publisher) {
+        this.id = 0;
         this.title = title;
         this.publisher = publisher;
     }
-    public MultimediaItem(){
-        id= 0;
-        title = null;
-        publisher= null;
+
+    @Override public String toString()
+    {
+        return "MultimediaItem{" + "id=" + id + ", title='" + title + '\''
+            + ", publisher='" + publisher + '\'' + '}';
+    }
+
+
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 

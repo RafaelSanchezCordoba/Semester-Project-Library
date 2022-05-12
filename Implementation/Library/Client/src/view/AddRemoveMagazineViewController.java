@@ -1,11 +1,17 @@
 package view;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import model.Magazine;
 import viewModel.AddRemoveMagazineViewModel;
+
+import java.rmi.RemoteException;
+import java.sql.Date;
+import java.sql.SQLException;
 
 public class AddRemoveMagazineViewController
 {
@@ -20,15 +26,28 @@ public class AddRemoveMagazineViewController
   @FXML private TextField monthTextField;
   @FXML private TextField genreTextField;
   @FXML private TextField searchTextField;
-  @FXML private ListView<String> magazineListView;
+  @FXML private ListView<Magazine> magazineListView;
   @FXML private ListView<String> genreListView;
   @FXML private Label errorLabel;
 
-  public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root)
+  public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root) throws SQLException, RemoteException
   {
     this.viewHandler = viewHandler;
     this.viewModel=viewModel;
     this.root = root;
+
+    viewModel.bindTitleTextField(titleTextField.textProperty());
+    viewModel.bindPublisherTextField(publisherTextField.textProperty());
+    viewModel.bindVolumeTextField(volumeTextField.textProperty());
+    viewModel.bindDayTextField(dayTextField.textProperty());
+    viewModel.bindYearTextField(yearTextField.textProperty());
+    viewModel.bindMontTextField(monthTextField.textProperty());
+    viewModel.bindGenreTextField(genreTextField.textProperty());
+    viewModel.bindSearchTextField(searchTextField.textProperty());
+    viewModel.bindErrorLabel(errorLabel.textProperty());
+    viewModel.bindMagazineListView(magazineListView.itemsProperty());
+
+    viewModel.setMagazineList();
     //include all the bind from viewModel
   }
 
@@ -45,31 +64,55 @@ public class AddRemoveMagazineViewController
   }
 
   @FXML
-  public void addMagazineButtonPressed()
+  public void addMagazineButtonPressed() throws RemoteException, SQLException
   {
-    viewModel.addMagazine();
+    if (!errorsCheck()){
+    Date date = new Date(Integer.parseInt(yearTextField.getText())-1900, Integer.parseInt(monthTextField.getText())-1, Integer.parseInt(dayTextField.getText()));
+    Magazine magazine = new Magazine(titleTextField.getText(), publisherTextField.getText(), Integer.parseInt(volumeTextField.getText()), genreTextField.getText(),date);
+    viewModel.addMagazine(magazine);}
+  }
+
+  public boolean errorsCheck()
+  {
+    if (dayTextField.getText().equals(""))
+  {
+    errorLabel.setText("Day can't be null");
+    return true;
+  }
+  else if (monthTextField.getText().equals(""))
+  {
+    errorLabel.setText("Month can't be null");
+    return true;
+  }
+  else if(yearTextField.getText().equals(""))
+  {
+    errorLabel.setText("Year can't be null");
+    return true;
+  }
+  return  false;
   }
 
   @FXML
-  public void removeBookButtonPressed()
+  public void removeMagazineButtonPressed() throws SQLException, RemoteException
   {
-    viewModel.removeMagazine();
+    viewModel.removeMagazine(magazineListView.getSelectionModel().getSelectedItem().getId());
   }
 
   @FXML
-  public void homeMenuButtonPressed()
+  public void homeMenuButtonPressed() throws SQLException, RemoteException
   {
     viewHandler.openView(viewHandler.HOME);
   }
 
   @FXML
-  public void bookMenuButtonPressed() {
+  public void bookMenuButtonPressed() throws SQLException, RemoteException
+  {
     viewHandler.openView(viewHandler.BOOK);
   }
 
   @FXML
-  public void magazinesMenuButtonPressed() {
-
+  public void magazinesMenuButtonPressed() throws SQLException, RemoteException {
+    viewHandler.openView(viewHandler.MAGAZINE);
   }
 
   @FXML
@@ -77,15 +120,12 @@ public class AddRemoveMagazineViewController
 
   }
 
-  public void reset() {
-
+  public void reset() throws SQLException, RemoteException{
+    viewModel.reset();
   }
 
   public Region getRoot() {
     return root;
   }
-
-
-
 
 }

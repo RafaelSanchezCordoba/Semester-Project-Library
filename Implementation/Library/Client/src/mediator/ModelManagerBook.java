@@ -2,11 +2,14 @@ package mediator;
 
 import client.BookClient;
 import model.Book;
+import model.Genre;
+import model.GenreList;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -25,24 +28,26 @@ public class ModelManagerBook implements ModelBook {
         this.support = new PropertyChangeSupport(this);
     }
 
-    public ArrayList<Object[]> getBookList(){
-        try
-        {
-            return client.getBookList();
-        }catch (RemoteException e){
-            e.printStackTrace();
-        }
-       return null;
+    public ArrayList<Book> getBookList() throws SQLException, RemoteException {
+        return client.getBookList();
+    }
+
+    @Override public GenreList getGenreList()
+        throws RemoteException, SQLException
+    {
+        return client.getGenreList();
     }
 
     @Override
-    public void addBook(Book book) throws RemoteException {
+    public void addBook(Book book) throws RemoteException, SQLException {
         client.addBook(book);
+        support.firePropertyChange("newBook", null, book);
     }
 
     @Override
-    public void removeBook(int id) throws RemoteException {
+    public void removeBook(int id) throws RemoteException, SQLException {
         client.removeBook(id);
+        support.firePropertyChange("removeBook", null, id);
     }
 
     @Override

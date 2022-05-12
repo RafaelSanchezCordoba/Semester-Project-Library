@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="observer">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/remoteobserver.jar!/dk/via/remote/observer" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

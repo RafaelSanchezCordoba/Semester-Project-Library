@@ -1,12 +1,15 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Genre class that create a genre object.
  * @author Rafael Sánchez Córdoba.
  * @version 1.0 08/04/22.
  */
-public class Genre {
-    private final int id;
+public class Genre implements Serializable
+{
+    private int id;
     private final String genre;
 
     /**
@@ -16,8 +19,25 @@ public class Genre {
      * @param genre
      * The genre name, ex: Drama, Horror...
      */
-    public Genre(int id, String genre) {
-        this.id = id;
+    public Genre(String genre) {
         this.genre = genre;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    @Override public String toString()
+    {
+        return  genre;
     }
 }

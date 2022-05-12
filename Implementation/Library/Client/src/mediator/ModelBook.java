@@ -1,8 +1,11 @@
 package mediator;
 
 import model.Book;
+import model.Genre;
+import model.GenreList;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -17,13 +20,16 @@ public interface ModelBook extends PropertyChangeSubject{
      * The book to add.
      * @throws RemoteException
      */
-    void addBook(Book book) throws RemoteException;
+    void addBook(Book book) throws RemoteException, SQLException;
 
     /**
      *
      * @param id
      * @throws RemoteException
      */
-    void removeBook(int id) throws RemoteException;
-    ArrayList<Object[]>getBookList() throws RemoteException ;
+    void removeBook(int id) throws RemoteException, SQLException;
+
+    ArrayList<Book> getBookList() throws RemoteException, SQLException;
+
+    GenreList getGenreList() throws RemoteException, SQLException;
 }
