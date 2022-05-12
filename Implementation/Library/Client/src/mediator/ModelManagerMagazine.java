@@ -26,9 +26,8 @@ public class ModelManagerMagazine implements ModelMagazine{
     }
 
     /**
-     * Add a Magazine
+     *
      * @param magazine
-     * Magazine object
      * @throws RemoteException
      */
     @Override
@@ -52,9 +51,8 @@ public class ModelManagerMagazine implements ModelMagazine{
     }
 
     /**
-     * Remove a Magazine by the id
+     *
      * @param id
-     * The unique identification number
      * @throws RemoteException
      */
     @Override
@@ -63,18 +61,6 @@ public class ModelManagerMagazine implements ModelMagazine{
         System.out.println(id);
         client.removeMagazine(id);
         support.firePropertyChange("removeMagazine", null, id);
-    }
-
-    /**
-     * Return a list with all the magazines added
-     * @return
-     * Magazine List
-     * @throws RemoteException
-     * @throws SQLException
-     */
-    @Override public ArrayList<Magazine> getMagazineList() throws RemoteException, SQLException
-    {
-        return client.getMagazineList();
     }
 
     /**
@@ -115,5 +101,8 @@ public class ModelManagerMagazine implements ModelMagazine{
         support.removePropertyChangeListener(name, listener);
     }
 
-
+    @Override public ArrayList<Magazine> getMagazineList() throws RemoteException, SQLException
+    {
+        return client.getMagazineList();
+    }
 }

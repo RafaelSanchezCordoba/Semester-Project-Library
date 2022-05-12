@@ -4,7 +4,7 @@ import model.Book;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import persistance.BookStorageTest;
+import persistance.storageTest.BookStorageTest;
 
 import java.sql.SQLException;
 

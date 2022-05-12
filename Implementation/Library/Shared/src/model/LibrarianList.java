@@ -84,7 +84,7 @@ public class LibrarianList implements Serializable
 
       result += x.toString();
       result+=" ";
-      }
+    }
     return result.trim();
   }
 }

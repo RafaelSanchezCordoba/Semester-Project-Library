@@ -1,6 +1,6 @@
 package server;
 
-//import dk.via.remote.observer.RemotePropertyChangeListener;
+import dk.via.remote.observer.RemotePropertyChangeListener;
 import model.*;
 
 import java.rmi.Remote;

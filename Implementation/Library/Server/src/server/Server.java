@@ -1,6 +1,11 @@
 package server;//package Client.server.Server.src;
 
-import persistance.*;
+import persistance.DAO_implementation.BookDAOImplementation;
+import persistance.DAO_implementation.LibrarianDAOImplementation;
+import persistance.DAO_implementation.MagazineDAOImplementation;
+import persistance.adapters.AdapterBookDAO;
+import persistance.adapters.AdapterLibrarianDAO;
+import persistance.adapters.AdapterMagazineDAO;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -17,16 +22,16 @@ public class Server {
     LibrarianDAOImplementation librarianDAO = LibrarianDAOImplementation.getInstance();
     AdapterBookDAO adapterBookDAO = new AdapterBookDAO(bookDAO);
     AdapterMagazineDAO adapterMagazineDAO = new AdapterMagazineDAO(magazineDAO);
-    AdapterLibrarianDAO adapterLibrarianDAO = new AdapterLibrarianDAO(librarianDAO);
 //    MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
 //    BookStorage bookStorage = BookStorageTest.getInstance();
+    AdapterLibrarianDAO adapterLibrarianDAO = new AdapterLibrarianDAO(librarianDAO);
 
 
 
 
 
-    RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO, librarianDAO);
-    RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO, librarianDAO);
+    RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO, adapterLibrarianDAO);
+    RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO);
     RemoteLibrarian librarian = new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO);
 
     registry.bind("book",book);
