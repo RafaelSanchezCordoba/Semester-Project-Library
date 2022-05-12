@@ -87,6 +87,7 @@ public class BookDAOImplementation implements BookDAO {
   @Override
   public ArrayList<Book> getBookList() throws SQLException {
     try (Connection connection = getConnection()) {
+      connection.setAutoCommit(false);
       PreparedStatement statement = connection.prepareStatement(getBookListSql);
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Book> result = new ArrayList<>();
@@ -102,7 +103,14 @@ public class BookDAOImplementation implements BookDAO {
         book.setId(id);
         result.add(book);
       }
+      connection.commit();
       return result;
+    }catch (SQLException e){
+      connection.rollback();
+      throw e;
+    }finally
+    {
+      connection.close();
     }
   }
   
