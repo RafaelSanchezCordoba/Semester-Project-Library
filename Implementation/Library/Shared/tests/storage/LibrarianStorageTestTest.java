@@ -25,9 +25,9 @@ public class LibrarianStorageTestTest
   @BeforeAll
   public static void setupVariables() throws SQLException
   {
-    librarian = new Librarian("1245","pass","marco","polo");
-    librarian1 = new Librarian("2345", "pass","cristoforo","colombo");
-    librarian2 = new Librarian("3456","pass","stefano","magellano");
+    librarian = new Librarian(1234,"pass","marco","polo");
+    librarian1 = new Librarian(2345, "pass","cristoforo","colombo");
+    librarian2 = new Librarian(3456,"pass","stefano","magellano");
     expected = storage.getLibrarianList().size();
   }
 

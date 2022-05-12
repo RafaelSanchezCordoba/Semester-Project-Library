@@ -26,15 +26,7 @@ public interface LibrarianDAO {
      * The Social Security Number
      * @throws RemoteException
      */
-<<<<<<< Updated upstream
     void removeLibrarian(int SSN) throws SQLException;
-=======
-<<<<<<< HEAD
-    void removeLibrarian(String SSN) throws SQLException;
-=======
-    void removeLibrarian(int SSN) throws SQLException;
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
 
     /**
      * Return a list with all the librarians added

@@ -26,15 +26,7 @@ public class FakeModelManagerLibrarian implements ModelLibrarian
     support.firePropertyChange("newLibrarian", null, librarian);
   }
 
-<<<<<<< Updated upstream
   @Override public void removeLibrarian(int SSN)
-=======
-<<<<<<< HEAD
-  @Override public void removeLibrarian(String SSN)
-=======
-  @Override public void removeLibrarian(int SSN)
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
       throws RemoteException, SQLException
   {
     list.removeLibrarianBySsn(SSN);

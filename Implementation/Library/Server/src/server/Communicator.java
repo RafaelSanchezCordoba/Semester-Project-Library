@@ -80,15 +80,7 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
         librarianStorage.addLibrarian(librarian);
     }
 
-<<<<<<< Updated upstream
     @Override public void removeLibrarian(int SSN) throws RemoteException, SQLException {
-=======
-<<<<<<< HEAD
-    @Override public void removeLibrarian(String SSN) throws RemoteException, SQLException {
-=======
-    @Override public void removeLibrarian(int SSN) throws RemoteException, SQLException {
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
         librarianStorage.removeLibrarian(SSN);
     }
 

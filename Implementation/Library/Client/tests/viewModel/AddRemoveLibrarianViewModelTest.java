@@ -77,18 +77,8 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Briales");
     password.set("password");
-<<<<<<< Updated upstream
     ssn.set("1234567890");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-<<<<<<< HEAD
-    ssn.set("1234567890123");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-    ssn.set("1234567890");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     assertEquals("", error.get());
     assertEquals("[Librarian{ssn:'1234567890', first Name:'Rosa', last Name:'Briales'}]",
         librarianList.getValue().toString());
@@ -102,7 +92,6 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Briales");
     password.set("password");
-<<<<<<< Updated upstream
     ssn.set("1234567890");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     firstName.set("Rafa");
@@ -113,42 +102,10 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Maria");
     lastName.set("Ortiz");
     password.set("password");
-=======
-<<<<<<< HEAD
-    ssn.set("1234567890123");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-    firstName.set("Rafa");
-    lastName.set("Sanchez");
-    password.set("password");
-    ssn.set("2222222222222");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-    firstName.set("Maria");
-    lastName.set("Ortiz");
-    password.set("password");
-    ssn.set("33333333333333");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-    viewModel.removeLibrarian("2222222222222");
-    assertEquals("[Librarian{ssn:'1234567890123', first Name:'Rosa', last Name:'Briales'}, Librarian{ssn:'33333333333333', first Name:'Maria', last Name:'Ortiz'}]",
-=======
-    ssn.set("1234567890");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-    firstName.set("Rafa");
-    lastName.set("Sanchez");
-    password.set("password");
-    ssn.set("22222222");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-    firstName.set("Maria");
-    lastName.set("Ortiz");
-    password.set("password");
->>>>>>> Stashed changes
     ssn.set("333333333");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     viewModel.removeLibrarian(22222222);
     assertEquals("[Librarian{ssn:'1234567890', first Name:'Rosa', last Name:'Briales'}, Librarian{ssn:'333333333', first Name:'Maria', last Name:'Ortiz'}]",
-<<<<<<< Updated upstream
-=======
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
         librarianList.getValue().toString());
   }
 
@@ -158,18 +115,8 @@ public class AddRemoveLibrarianViewModelTest
   {
     lastName.set("Briales");
     password.set("password");
-<<<<<<< Updated upstream
     ssn.set("1234567890");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-<<<<<<< HEAD
-    ssn.set("1234567890123");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-    ssn.set("1234567890");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     assertEquals("First name can't be null", error.get());
     assertEquals("[]", librarianList.get().toString());
   }
@@ -178,18 +125,8 @@ public class AddRemoveLibrarianViewModelTest
   {
     firstName.set("Rosa");
     password.set("password");
-<<<<<<< Updated upstream
     ssn.set("1234567890");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-<<<<<<< HEAD
-    ssn.set("1234567890123");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-    ssn.set("1234567890");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     assertEquals("Last name can't be null", error.get());
     assertEquals("[]", librarianList.get().toString());
   }
@@ -199,7 +136,7 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Briales");
     password.set("password");
-    viewModel.addLibrarian(new Librarian("1",password.getValue(),firstName.getValue(),lastName.getValue()));
+    viewModel.addLibrarian(new Librarian(1,password.getValue(),firstName.getValue(),lastName.getValue()));
     assertEquals("Social security number can't be null", error.get());
     assertEquals("[]", librarianList.get().toString());
   }
@@ -208,18 +145,8 @@ public class AddRemoveLibrarianViewModelTest
   {
     firstName.set("Rosa");
     lastName.set("Briales");
-<<<<<<< Updated upstream
     ssn.set("1234567890");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-<<<<<<< HEAD
-    ssn.set("1234567890123");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-    ssn.set("1234567890");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     assertEquals("Password can't be null", error.get());
     assertEquals("[]", librarianList.get().toString());
   }
@@ -230,18 +157,8 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Briales");
     password.set("passwordddddddddddddd");
-<<<<<<< Updated upstream
     ssn.set("1234567890");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-<<<<<<< HEAD
-    ssn.set("1234567890123");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-    ssn.set("1234567890");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     assertEquals("Password must be less than 20 characters", error.get());
     assertEquals("[]", librarianList.get().toString());
   }
@@ -252,18 +169,8 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     lastName.set("Briales");
     password.set("password");
-<<<<<<< Updated upstream
     ssn.set("1234567890");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-<<<<<<< HEAD
-    ssn.set("1234567890123");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-    ssn.set("1234567890");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     assertEquals("First name must be less than 50 characters", error.get());
     assertEquals("[]", librarianList.get().toString());
   }
@@ -274,49 +181,19 @@ public class AddRemoveLibrarianViewModelTest
     firstName.set("Rosa");
     lastName.set("Brialessssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
     password.set("password");
-<<<<<<< Updated upstream
     ssn.set("1234567890");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-<<<<<<< HEAD
-    ssn.set("1234567890123");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-    ssn.set("1234567890");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     assertEquals("Last name must be less than 50 characters", error.get());
     assertEquals("[]", librarianList.get().toString());
   }
 
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-  @Test void ssn_with_letters_in_it_gives_error_and_doenst_add()
-      throws SQLException, RemoteException
-  {
-    firstName.set("Rosa");
-    lastName.set("Briales");
-    password.set("password");
-    ssn.set("1234567890abc");
-    assertThrows(NumberFormatException.class,()-> viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue())));
-    assertEquals("[]",
-        librarianList.getValue().toString());
-  }
-
-
-=======
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
   @Test void adding_a_librarian_with_ssn_already_in_the_list_gives_error_and_doesnt_add()
       throws SQLException, RemoteException
   {
     firstName.set("Rosa");
     lastName.set("Briales");
     password.set("password");
-<<<<<<< Updated upstream
     ssn.set("1234567890");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
     ssn.set("1234567890");
@@ -324,25 +201,6 @@ public class AddRemoveLibrarianViewModelTest
     lastName.set("Sanchez");
     password.set("password");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-<<<<<<< HEAD
-    ssn.set("1234567890123");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-    ssn.set("1234567890123");
-    firstName.set("Rafa");
-    lastName.set("Sanchez");
-    password.set("password");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-    ssn.set("1234567890");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-    ssn.set("1234567890");
-    firstName.set("Rafa");
-    lastName.set("Sanchez");
-    password.set("password");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     assertEquals("There is already a librarian with that ssn in the system", error.get());
     assertEquals("[Librarian{ssn:'1234567890', first Name:'Rosa', last Name:'Briales'}]",
         librarianList.get().toString());
@@ -352,18 +210,8 @@ public class AddRemoveLibrarianViewModelTest
   {
     firstName.set("Rosa");
     lastName.set("Briales");
-<<<<<<< Updated upstream
     ssn.set("1234567890");
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-<<<<<<< HEAD
-    ssn.set("1234567890123");
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-    ssn.set("1234567890");
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     assertEquals("", firstName.get());
     assertEquals("", lastName.get());
     assertEquals("", password.get());
@@ -379,15 +227,7 @@ public class AddRemoveLibrarianViewModelTest
     lastName.set("Briales");
     ssn.set("1234567890");
     password.set("password");
-<<<<<<< Updated upstream
     viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-<<<<<<< HEAD
-    viewModel.addLibrarian(new Librarian(ssn.getValue(),password.getValue(),firstName.getValue(),lastName.getValue()));
-=======
-    viewModel.addLibrarian(new Librarian(Integer.parseInt(ssn.getValue()),password.getValue(),firstName.getValue(),lastName.getValue()));
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
     assertEquals("", error.get());
   }
 

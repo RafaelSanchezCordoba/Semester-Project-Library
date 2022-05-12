@@ -54,17 +54,9 @@ public class LibrarianStorageTest implements LibrarianStorage {
      * @throws RemoteException
      */
     @Override
-<<<<<<< Updated upstream
     public void removeLibrarian(int SSN) {
-=======
-<<<<<<< HEAD
-    public void removeLibrarian(String SSN) {
-=======
-    public void removeLibrarian(int SSN) {
->>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
->>>>>>> Stashed changes
         for (int i = 0; i < librarians.size(); i++) {
-            if (librarians.get(i).getSsn().equals(SSN)) {
+            if (librarians.get(i).getSsn() == SSN) {
                 librarians.remove(librarians.get(i));
                 break;
             }
