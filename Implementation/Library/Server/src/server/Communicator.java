@@ -7,15 +7,17 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine{
+public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine,RemoteLibraryUser{
     private MagazineStorage magazineStorage;
     private BookStorage bookStorage;
+    private LibraryUserStorage libraryUserStorage;
 //    private GenreStorage genreStorage;
 
 
-    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage) throws RemoteException {
+    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage,LibraryUserStorage libraryUserStorage) throws RemoteException {
         this.magazineStorage = magazineStorage;
         this.bookStorage = bookStorage;
+        this.libraryUserStorage = libraryUserStorage;
 //        this.genreStorage = genreStorage;
     }
 
@@ -77,7 +79,23 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
         return magazineStorage.getMagazineList();
     }
 
+    @Override public void addLibraryUser(LibraryUser libraryUser)
+        throws RemoteException, SQLException
+    {
+        libraryUserStorage.addLibraryUser(libraryUser);
+    }
 
+    @Override public void removeLibraryUser(int ssn)
+        throws RemoteException, SQLException
+    {
+        libraryUserStorage.removeLibraryUser(ssn);
+    }
+
+    @Override public ArrayList<LibraryUser> getLibraryUserList()
+        throws RemoteException, SQLException
+    {
+        return libraryUserStorage.getLibraryUserList();
+    }
 }
 
 

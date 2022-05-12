@@ -17,6 +17,7 @@ public class Server {
     MagazineDAOImplementation magazineDAO = MagazineDAOImplementation.getInstance();
     AdapterBookDAO adapterBookDAO = new AdapterBookDAO(bookDAO);
     AdapterMagazineDAO adapterMagazineDAO = new AdapterMagazineDAO(magazineDAO);
+    LibraryUserStorage libraryUserStorage = LibraryUserStorageTest.getInstance();
 //    MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
 //    BookStorage bookStorage = BookStorageTest.getInstance();
 
@@ -24,11 +25,13 @@ public class Server {
 
 
 
-    RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO);
-    RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO);
+    RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO,libraryUserStorage);
+    RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO,libraryUserStorage);
+    RemoteLibraryUser libraryUser  = new Communicator(adapterMagazineDAO, adapterBookDAO,libraryUserStorage);
 
     registry.bind("book",book);
     registry.bind("magazine",magazine);
+    registry.bind("libraryUser",libraryUser);
 
     System.out.println("server.Server running on " + Registry.REGISTRY_PORT);
 
