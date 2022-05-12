@@ -1,12 +1,13 @@
-package persistance;
+package persistance.DAO_implementation;
 
-import model.Genre;
 import model.Magazine;
+import persistance.DAO.MagazineDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class MagazineDAOImplementation implements MagazineDAO {
+public class MagazineDAOImplementation implements MagazineDAO
+{
 
   private String insertMagazineSql = "INSERT INTO \"library\".magazine(publisher,title,volume,genre,date)"
       +"VALUES(?,?,?,?,?)";

@@ -1,13 +1,15 @@
-package persistance;
+package persistance.DAO_implementation;
 
 import model.Book;
 import model.Genre;
 import model.GenreList;
+import persistance.DAO.BookDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class BookDAOImplementation implements BookDAO {
+public class BookDAOImplementation implements BookDAO
+{
 
   private String driver, url, user, password;
 

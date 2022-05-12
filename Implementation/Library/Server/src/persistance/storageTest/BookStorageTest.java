@@ -1,9 +1,9 @@
-package persistance;
+package persistance.storageTest;
 
 import model.Book;
 import model.Genre;
 import model.GenreList;
-import server.BookStorage;
+import server.storage.BookStorage;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
