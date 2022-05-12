@@ -13,6 +13,22 @@ public class LibraryUser implements Serializable
   private String firstName;
   private String lastName;
   private String ssn;
+
+  public String getFirstName()
+  {
+    return firstName;
+  }
+
+  public String getLastName()
+  {
+    return lastName;
+  }
+
+  public String getPassword()
+  {
+    return password;
+  }
+
   private String password;
 
   /**
