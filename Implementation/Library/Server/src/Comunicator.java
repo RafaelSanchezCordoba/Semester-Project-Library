@@ -2,7 +2,7 @@
 
 import model.*;
 import server.*;
-import client.*;
+
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
