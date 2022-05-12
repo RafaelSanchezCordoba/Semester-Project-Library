@@ -38,9 +38,9 @@ public class LibrarianRmiTest
 
   @BeforeAll
   public static void setupVariables(){
-    librarian = new Librarian(1,"form","abe","smith");
-    librarian1 = new Librarian(2,"pass","norm","dwaine");
-    librarian2 = new Librarian(3,"smoke","peter","minus");
+    librarian = new Librarian("1","form","abe","smith");
+    librarian1 = new Librarian("2","pass","norm","dwaine");
+    librarian2 = new Librarian("3","smoke","peter","minus");
   }
   @Test
   public void addNull() throws SQLException, RemoteException
@@ -137,7 +137,7 @@ public class LibrarianRmiTest
   {
     try
     {
-      librarianClient.removeLibrarian(12456);
+      librarianClient.removeLibrarian("12456");
     }catch (NullPointerException e)
     {
        e.fillInStackTrace();

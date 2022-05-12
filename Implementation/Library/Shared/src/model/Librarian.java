@@ -14,8 +14,18 @@ public class Librarian  implements Serializable
     private final String password;
     private final String firstName;
     private final String lastName;
+<<<<<<< Updated upstream
     private String date;
     private final int ssn;
+=======
+<<<<<<< HEAD
+    private Date date;
+    private final String ssn;
+=======
+    private String date;
+    private final int ssn;
+>>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
+>>>>>>> Stashed changes
 
     /**
      * Librarian constructor.
@@ -28,15 +38,33 @@ public class Librarian  implements Serializable
      * @param lastName
      * The last name.
      */
+<<<<<<< Updated upstream
     public Librarian(int ssn, String password, String firstName, String lastName) {
+=======
+<<<<<<< HEAD
+    public Librarian(String ssn, String password, String firstName, String lastName) {
+=======
+    public Librarian(int ssn, String password, String firstName, String lastName) {
+>>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
+>>>>>>> Stashed changes
         this.ssn = ssn;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.date =  new CurrentTime().getFormattedIsoDate();
     }
+<<<<<<< Updated upstream
 
     public int getSsn(){
+=======
+
+<<<<<<< HEAD
+
+    public String getSsn(){
+=======
+    public int getSsn(){
+>>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
+>>>>>>> Stashed changes
         return ssn;
     }
 

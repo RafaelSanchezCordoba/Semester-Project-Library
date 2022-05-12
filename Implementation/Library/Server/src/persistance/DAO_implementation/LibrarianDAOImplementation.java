@@ -3,6 +3,13 @@ package persistance.DAO_implementation;
 import model.Librarian;
 import persistance.DAO.LibrarianDAO;
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
+>>>>>>> Stashed changes
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -48,10 +55,23 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
     }
 
     @Override
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    public void removeLibrarian(String SSN) throws SQLException {
+        try(Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(removeLibrarianSql);
+            statement.setString(1, SSN);
+=======
+>>>>>>> Stashed changes
     public void removeLibrarian(int SSN) throws SQLException {
         try(Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(removeLibrarianSql);
             statement.setInt(1, SSN);
+<<<<<<< Updated upstream
+=======
+>>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
+>>>>>>> Stashed changes
             statement.executeUpdate();
         }
     }
@@ -63,15 +83,30 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
             ResultSet resultSet = statement.executeQuery();
             ArrayList<Librarian> result = new ArrayList<Librarian>();
             while (resultSet.next()) {
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+                String SSN = resultSet.getString("ssn");
+                String password = resultSet.getString("password");
+                String f_name = resultSet.getString("f_name");
+                String l_name = resultSet.getString("l_name");
+                Date date = resultSet.getDate("dateofemployment");
+=======
+>>>>>>> Stashed changes
                 int SSN = resultSet.getInt(1);
                 String password = resultSet.getString(2);
                 String f_name = resultSet.getString(3);
                 String l_name = resultSet.getString(4);
                 Date date = resultSet.getDate(5);
+<<<<<<< Updated upstream
+=======
+>>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
+>>>>>>> Stashed changes
                 Librarian librarian = new Librarian(SSN, password, f_name, l_name);
                 librarian.setDate(date);
                 result.add(librarian);
             }
+
             return result;
         }
     }
