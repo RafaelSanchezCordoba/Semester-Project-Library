@@ -26,7 +26,7 @@ public class FakeModelManagerLibrarian implements ModelLibrarian
     support.firePropertyChange("newLibrarian", null, librarian);
   }
 
-  @Override public void removeLibrarian(long SSN)
+  @Override public void removeLibrarian(String SSN)
       throws RemoteException, SQLException
   {
     list.removeLibrarianBySsn(SSN);

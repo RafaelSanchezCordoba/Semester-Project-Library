@@ -26,7 +26,7 @@ public interface LibrarianStorage {
      * The Social Security Number
      * @throws RemoteException
      */
-    void removeLibrarian(long SSN) throws SQLException;
+    void removeLibrarian(String SSN) throws SQLException;
 
     /**
      * Return a list with all the librarians added

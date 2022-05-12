@@ -38,15 +38,15 @@ public class LibrarianRmiTest
 
   @BeforeAll
   public static void setupVariables(){
-    librarian = new Librarian(1,"form","abe","smith");
-    librarian1 = new Librarian(2,"pass","norm","dwaine");
-    librarian2 = new Librarian(3,"smoke","peter","minus");
+    librarian = new Librarian("1","form","abe","smith");
+    librarian1 = new Librarian("2","pass","norm","dwaine");
+    librarian2 = new Librarian("3","smoke","peter","minus");
   }
   @Test
   public void addNull() throws SQLException, RemoteException
   {
     int exp = librarianClient.getLibrarianList().size();
-  // librarianClient.addLibrarian(null);
+    // librarianClient.addLibrarian(null);
 
 
     Assertions.assertEquals(exp,librarianClient.getLibrarianList().size());
@@ -75,19 +75,19 @@ public class LibrarianRmiTest
   public void clearList() throws SQLException, RemoteException
   {
 
-  for (int i = 1; i<librarianClient.getLibrarianList().size();i++)
-  {
-    try
+    for (int i = 1; i<librarianClient.getLibrarianList().size();i++)
     {
-      librarianClient.removeLibrarian(librarianClient.getLibrarianList().get(i).getSsn());
-      System.out.println(librarianClient.getLibrarianList().get(i).toString());
-    }catch (NullPointerException e){
+      try
+      {
+        librarianClient.removeLibrarian(librarianClient.getLibrarianList().get(i).getSsn());
+        System.out.println(librarianClient.getLibrarianList().get(i).toString());
+      }catch (NullPointerException e){
 
+      }
+      librarianClient.getLibrarianList().removeIf(Objects::isNull);
+
+      System.out.println(librarianClient.getLibrarianList().size());
     }
-    librarianClient.getLibrarianList().removeIf(Objects::isNull);
-
-    System.out.println(librarianClient.getLibrarianList().size());
-  }
   }
 
 
@@ -130,17 +130,17 @@ public class LibrarianRmiTest
     String check = librarian.toString();
     librarianClient.addLibrarian(librarian);
     Assertions.assertEquals(librarianClient.getLibrarianList().get(0).toString(),check);
-  //  System.out.println(librarianClient.getLibrarianList().get(0).toString());
+    //  System.out.println(librarianClient.getLibrarianList().get(0).toString());
   }
   @Test
   public void removeNonExistingElement() throws SQLException, RemoteException
   {
     try
     {
-      librarianClient.removeLibrarian(12456);
+      librarianClient.removeLibrarian("12456");
     }catch (NullPointerException e)
     {
-       e.fillInStackTrace();
+      e.fillInStackTrace();
     }
 
   }

@@ -3,7 +3,6 @@ package storage;
 import model.Librarian;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import persistance.storageTest.LibrarianStorageTest;
 import server.storage.LibrarianStorage;
@@ -26,9 +25,9 @@ public class LibrarianStorageTestTest
   @BeforeAll
   public static void setupVariables() throws SQLException
   {
-    librarian = new Librarian(1234,"pass","marco","polo");
-    librarian1 = new Librarian(2345, "pass","cristoforo","colombo");
-    librarian2 = new Librarian(3456,"pass","stefano","magellano");
+    librarian = new Librarian("1234","pass","marco","polo");
+    librarian1 = new Librarian("2345", "pass","cristoforo","colombo");
+    librarian2 = new Librarian("3456","pass","stefano","magellano");
     expected = storage.getLibrarianList().size();
   }
 
@@ -62,7 +61,6 @@ public class LibrarianStorageTestTest
   @Test
   public void removeOne() throws SQLException
   {
-    expected = storage.getLibrarianList().size();
     storage.addLibrarian(librarian);
     storage.addLibrarian(librarian2);
     expected++;
@@ -99,9 +97,9 @@ public class LibrarianStorageTestTest
     Assertions.assertTrue(expected!=storage.getLibrarianList().size());
   }
 
- @Test
+  @Test
   public void removeNonExistingSsn() throws SQLException
- {
+  {
     storage.addLibrarian(librarian);
     expected++;
 
@@ -109,5 +107,5 @@ public class LibrarianStorageTestTest
     //no changes
 
     Assertions.assertEquals(expected,storage.getLibrarianList().size());
- }
+  }
 }

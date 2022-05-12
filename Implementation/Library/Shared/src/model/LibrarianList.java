@@ -50,10 +50,10 @@ public class LibrarianList implements Serializable
    * list if they have the specified ssn as an attribute
    * @param ssn
    */
-  public void removeLibrarianBySsn(long ssn){
-    for (Librarian x: list){
-      if (x.getSsn()==ssn){
-        list.remove(x);
+  public void removeLibrarianBySsn(String ssn){
+    for (int i=0;i< list.size();i++){
+      if (list.get(i).getSsn().equals(ssn)){
+        list.remove(list.get(i));
       }
     }
   }
@@ -64,9 +64,9 @@ public class LibrarianList implements Serializable
    * @param ssn
    * @return Librarian
    */
-  public Librarian getLibrarianBySsn(long ssn){
+  public Librarian getLibrarianBySsn(String ssn){
     for (Librarian x:list){
-      if (x.getSsn()==ssn){
+      if (x.getSsn().equals(ssn)){
         return x;
       }
     }

@@ -82,7 +82,7 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
         }
     }
 
-    public void removeLibrarian(long SSN) throws SQLException, RemoteException
+    public void removeLibrarian(String SSN) throws SQLException, RemoteException
     {
         model.removeLibrarian(SSN);
     }
@@ -141,6 +141,11 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
             errorLabel.set("Last name must be less than 50 characters");
             return true;
         }
+        else if(ssnFormatCheck())
+        {
+            errorLabel.set("The ssn must be 13 digits");
+            return true;
+        }
         else if (ssnDuplicateCheck())
         {
             errorLabel.set("There is already a librarian with that ssn in the system");
@@ -150,12 +155,28 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
     }
 
 
+    private boolean ssnFormatCheck()
+    {
+        if (ssnTextField.get().length()==13)
+        {
+            try
+            {
+                Long.parseLong(ssnTextField.get());
+            }
+            catch (NumberFormatException e)
+            {
+                return true;
+            }
+            return false;
+        }
+        return true;
+    }
 
     private boolean ssnDuplicateCheck()
     {
         for (int i=0;i<librarianList.getSize();i++)
         {
-            if (librarianList.get(i).getSsn()==Long.parseLong(ssnTextField.get()))
+            if (librarianList.get(i).getSsn().equals(ssnTextField.get()))
             {
                 return true;
             }
@@ -173,7 +194,7 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
         {
             for (int i = 0; i < librarianList.size(); i++)
             {
-                if (librarianList.get(i).getSsn() == (long) evt.getNewValue())
+                if (librarianList.get(i).getSsn().equals(evt.getNewValue()))
                 {
                     librarianList.remove(librarianList.get(i));
                     break;

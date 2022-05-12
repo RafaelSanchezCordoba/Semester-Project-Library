@@ -38,7 +38,7 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
     public void addLibrarian(Librarian librarian) throws SQLException {
         try(Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(insertLibrarianSql);
-            statement.setString(1, String.valueOf(librarian.getSsn()));
+            statement.setString(1, librarian.getSsn());
             statement.setString(2, librarian.getPassword());
             statement.setString(3, librarian.getFirstName());
             statement.setString(4, librarian.getLastName());
@@ -48,7 +48,7 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
     }
 
     @Override
-    public void removeLibrarian(long SSN) throws SQLException {
+    public void removeLibrarian(String SSN) throws SQLException {
         try(Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(removeLibrarianSql);
             statement.setString(1, String.valueOf(SSN));
@@ -68,7 +68,7 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
                 String f_name = resultSet.getString("f_name");
                 String l_name = resultSet.getString("l_name");
                 Date date = resultSet.getDate("dateofemployment");
-                Librarian librarian = new Librarian(Long.parseLong(SSN), password, f_name, l_name);
+                Librarian librarian = new Librarian(SSN, password, f_name, l_name);
                 librarian.setDate(date);
                 result.add(librarian);
             }

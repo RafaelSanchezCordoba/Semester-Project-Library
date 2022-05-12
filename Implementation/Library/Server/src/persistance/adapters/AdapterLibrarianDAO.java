@@ -43,7 +43,7 @@ public class AdapterLibrarianDAO implements LibrarianStorage {
      * @throws RemoteException
      */
     @Override
-    public void removeLibrarian(long SSN) throws SQLException {
+    public void removeLibrarian(String SSN) throws SQLException {
         librarianDAO.removeLibrarian(SSN);
     }
 
