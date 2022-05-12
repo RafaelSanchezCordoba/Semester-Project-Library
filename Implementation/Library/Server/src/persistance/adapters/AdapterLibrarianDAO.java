@@ -43,7 +43,15 @@ public class AdapterLibrarianDAO implements LibrarianStorage {
      * @throws RemoteException
      */
     @Override
+<<<<<<< Updated upstream
     public void removeLibrarian(int SSN) throws SQLException {
+=======
+<<<<<<< HEAD
+    public void removeLibrarian(String SSN) throws SQLException {
+=======
+    public void removeLibrarian(int SSN) throws SQLException {
+>>>>>>> 7e718619a38eaa66df02ddfe9864aa4893dd4e7c
+>>>>>>> Stashed changes
         librarianDAO.removeLibrarian(SSN);
     }
 
