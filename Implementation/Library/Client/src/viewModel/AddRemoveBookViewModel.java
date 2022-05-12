@@ -100,8 +100,8 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   public GenreList getGenreList() throws SQLException, RemoteException {
     GenreList genres = new GenreList();
-    for (int i = 0; i < genreList.size(); i++) {
-      genres.addGenre(genreList.get(i));
+    for (int i = 0; i < selectedGenreList.size(); i++) {
+      genres.addGenre(selectedGenreList.get(i));
     }
     return genres;
   }

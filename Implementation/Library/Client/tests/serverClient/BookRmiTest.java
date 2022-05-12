@@ -33,8 +33,8 @@ public class BookRmiTest
   }
   @BeforeEach
   public void setupVariables(){
-    boonk = new Book("sportal","kringe",1234,345,2022);
-    boonk1 = new Book("spooky","peak",23123,109,2012);
+//    boonk = new Book("sportal","kringe",1234,345,2022);
+//    boonk1 = new Book("spooky","peak",23123,109,2012);
 
     try
     {
