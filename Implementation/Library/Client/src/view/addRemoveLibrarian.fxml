@@ -12,7 +12,6 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="878.0" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="HOME" />
-      <Button layoutX="375.0" layoutY="14.0" mnemonicParsing="false" onAction="#librarianMenuButtonPressed" text="LIBRARIAN" />
       <Button layoutX="771.0" layoutY="16.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
       <Label layoutX="23.0" layoutY="65.0" text="Librarians">
          <font>
@@ -64,7 +63,5 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Button layoutX="123.0" layoutY="14.0" mnemonicParsing="false" onAction="#bookMenuButtonPressed" text="BOOK" />
-      <Button layoutX="236.0" layoutY="14.0" mnemonicParsing="false" onAction="#magazineMenuButtonPressed" text="MAGAZINE" />
    </children>
 </AnchorPane>

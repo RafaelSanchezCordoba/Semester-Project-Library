@@ -12,8 +12,6 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="1107.0" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="HOME" />
-      <Button layoutX="112.0" layoutY="14.0" mnemonicParsing="false" onAction="#bookMenuButtonPressed" text="BOOKS" />
-      <Button layoutX="227.0" layoutY="14.0" mnemonicParsing="false" onAction="#magazinesMenuButtonPressed" text="MAGAZINES" />
       <Button layoutX="1002.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
       <Label layoutX="10.0" layoutY="65.0" text="BOOKS">
          <font>
@@ -100,6 +98,8 @@
          </font>
       </Label>
       <ListView fx:id="genreListView" layoutX="312.0" layoutY="292.0" prefHeight="200.0" prefWidth="213.0" />
+      <Button layoutX="88.0" layoutY="14.0" mnemonicParsing="false" onAction="#manageItemsPressed" text="MANAGE ITEMS" />
+      <Button layoutX="208.0" layoutY="14.0" mnemonicParsing="false" text="USERS" />
 
    </children>
 </AnchorPane>

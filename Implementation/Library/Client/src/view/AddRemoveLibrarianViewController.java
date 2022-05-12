@@ -67,21 +67,6 @@ public class AddRemoveLibrarianViewController
     viewHandler.openView(viewHandler.HOME);
   }
 
-  @FXML
-  public void magazineMenuButtonPressed() throws SQLException, RemoteException {
-    viewHandler.openView(viewHandler.MAGAZINE);
-  }
-
-  @FXML
-  public void bookMenuButtonPressed() throws SQLException, RemoteException {
-    viewHandler.openView(viewHandler.BOOK);
-  }
-
-  @FXML
-  public void librarianMenuButtonPressed() throws SQLException, RemoteException {
-    viewHandler.openView(viewHandler.LIBRARIAN);
-  }
-
   public void searchButtonPressed() {
     viewModel.search();
   }

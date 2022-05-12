@@ -97,7 +97,7 @@ public class AddRemoveBookViewController
 
   @FXML public void homeMenuButtonPressed() throws SQLException, RemoteException
   {
-
+     viewHandler.openView(ViewHandler.BOOK);
   }
 
   @FXML public void testDataPressed()
@@ -117,16 +117,11 @@ public class AddRemoveBookViewController
     viewModel.removeFromSelectedGenreList(selectedGenreListView.getSelectionModel().getSelectedItem());
   }
 
-  @FXML public void bookMenuButtonPressed()
+  @FXML public void manageItemsPressed() throws SQLException, RemoteException
   {
-
+    viewHandler.openView(viewHandler.ITEM);
   }
 
-  @FXML public void magazinesMenuButtonPressed()
-      throws SQLException, RemoteException
-  {
-    viewHandler.openView(viewHandler.MAGAZINE);
-  }
 
   public void reset() throws SQLException, RemoteException
   {

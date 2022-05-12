@@ -18,6 +18,8 @@ public class ViewFactory
   private AddRemoveBookViewController bookController;
   private AddRemoveMagazineViewController magazineController;
   private AddRemoveLibrarianViewController librarianViewController;
+  private HomeViewController homeController;
+  private ChoseItemTypeViewController itemViewController;
 
 
 
@@ -28,6 +30,8 @@ public class ViewFactory
     bookController=null;
     magazineController=null;
     librarianViewController = null;
+    itemViewController=null;
+    homeController=null;
   }
 
   public Region loadAddRemoveLibrarian() throws SQLException, RemoteException {
@@ -82,4 +86,36 @@ public class ViewFactory
   }
 
 
+
+  public Region loadChoseItemTypeView() throws SQLException, RemoteException
+  {if (itemViewController == null) {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("choseItemType.fxml"));
+    try {
+      Region root = loader.load();
+      itemViewController = loader.getController();
+      itemViewController.init(viewHandler, root);
+    } catch (IOException | SQLException e) {
+      throw new IOError(e);
+
+    }
+  }
+    return itemViewController.getRoot();
+  }
+
+  public Region loadHomeView() throws SQLException, RemoteException {
+    if (homeController== null){
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("home.fxml"));
+      try
+      {
+        Region root = loader.load();
+        homeController = loader.getController();
+        homeController.init(viewHandler,root);
+      }catch (IOException e){
+        throw  new IOError(e);
+      }
+    }
+    return homeController.getRoot();
+  }
 }

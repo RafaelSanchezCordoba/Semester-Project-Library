@@ -104,20 +104,9 @@ public class AddRemoveMagazineViewController
     viewHandler.openView(viewHandler.HOME);
   }
 
-  @FXML
-  public void bookMenuButtonPressed() throws SQLException, RemoteException
+  @FXML public void manageItemsPressed() throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.BOOK);
-  }
-
-  @FXML
-  public void magazinesMenuButtonPressed() throws SQLException, RemoteException {
-    viewHandler.openView(viewHandler.MAGAZINE);
-  }
-
-  @FXML
-  public void addGenreButtonPressed() {
-
+    viewHandler.openView(viewHandler.ITEM);
   }
 
   public void reset() throws SQLException, RemoteException{
