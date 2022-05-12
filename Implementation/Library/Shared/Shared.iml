@@ -6,8 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
     </content>
-    <orderEntry type="jdk" jdkName="openjdk-17 (2)" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="corretto-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="remoteobserver" level="application" />
     <orderEntry type="module" module-name="Client_2" exported="" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5.7.0">
@@ -26,7 +27,5 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="javafx-swt" level="project" />
-    <orderEntry type="module" module-name="Server" scope="TEST" />
-    <orderEntry type="module" module-name="Client" scope="TEST" />
   </component>
 </module>

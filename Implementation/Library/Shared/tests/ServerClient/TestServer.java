@@ -18,7 +18,6 @@ import java.rmi.registry.Registry;
 
 public class TestServer
 {
-
   public static void main(String[] args)
       throws RemoteException, AlreadyBoundException
   {
