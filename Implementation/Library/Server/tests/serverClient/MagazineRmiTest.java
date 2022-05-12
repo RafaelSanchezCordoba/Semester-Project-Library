@@ -1,5 +1,5 @@
 
-package client;
+package serverClient;
 
 import client.MagazineClient;
 import client.MagazineClientImplementation;
