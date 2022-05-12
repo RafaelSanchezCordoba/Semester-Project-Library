@@ -1,4 +1,4 @@
-package persistance;
+package persistance.DAO;
 
 import model.Book;
 import model.Genre;

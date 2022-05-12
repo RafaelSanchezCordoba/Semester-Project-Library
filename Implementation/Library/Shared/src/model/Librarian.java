@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.sql.Date;
 
 /**
  * The librarian class.
@@ -10,8 +11,11 @@ import java.rmi.RemoteException;
  */
 public class Librarian  implements Serializable
 {
-    private final String ssn, password, firstName, lastName, date;
-    private final CurrentTime currentTime;
+    private final String password;
+    private final String firstName;
+    private final String lastName;
+    private Date date;
+    private final String ssn;
 
     /**
      * Librarian constructor.
@@ -25,25 +29,46 @@ public class Librarian  implements Serializable
      * The last name.
      */
     public Librarian(String ssn, String password, String firstName, String lastName) {
-        currentTime = new CurrentTime();
         this.ssn = ssn;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.date = currentTime.getFormattedIsoDate();
-    }
+        CurrentTime now=new CurrentTime();
+        String day=now.getFormattedIsoDate().substring(8,10);
+        String month=now.getFormattedIsoDate().substring(5,7);
+        String year=now.getFormattedIsoDate().substring(0,4);
+        this.date=new Date(Integer.parseInt(year)-1900,Integer.parseInt(month)-1,Integer.parseInt(day));
+       }
 
-    public int getSnn(){
-        return Integer.parseInt(ssn);
-    }
+
     public String getSsn(){
         return ssn;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Date getDateOfEmployment() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override public String toString()
     {
         return "Librarian{" + "ssn:'" + ssn
             + '\'' + ", first Name:'" + firstName + '\'' + ", last Name:'"
-            + lastName +"}";
+            + lastName +"'}";
     }
 }

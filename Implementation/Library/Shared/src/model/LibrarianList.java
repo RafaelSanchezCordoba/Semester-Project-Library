@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -51,10 +50,10 @@ public class LibrarianList implements Serializable
    * list if they have the specified ssn as an attribute
    * @param ssn
    */
-  public void removeLibrarianBySsn(int ssn){
-    for (Librarian x: list){
-      if (x.getSnn()==ssn){
-        list.remove(x);
+  public void removeLibrarianBySsn(String ssn){
+    for (int i=0;i< list.size();i++){
+      if (list.get(i).getSsn().equals(ssn)){
+        list.remove(list.get(i));
       }
     }
   }
@@ -65,9 +64,9 @@ public class LibrarianList implements Serializable
    * @param ssn
    * @return Librarian
    */
-  public Librarian getLibrarianBySsn(int ssn){
+  public Librarian getLibrarianBySsn(String ssn){
     for (Librarian x:list){
-      if (x.getSnn()==ssn){
+      if (x.getSsn().equals(ssn)){
         return x;
       }
     }
@@ -84,7 +83,8 @@ public class LibrarianList implements Serializable
     for (Librarian x:list){
 
       result += x.toString();
+      result+=" ";
       }
-    return result;
+    return result.trim();
   }
 }
