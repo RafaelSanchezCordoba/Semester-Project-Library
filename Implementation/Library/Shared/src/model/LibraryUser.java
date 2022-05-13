@@ -39,8 +39,8 @@ public class LibraryUser implements Serializable
    */
   @Override public String toString()
   {
-    return "LibraryUser{" + "SSN:" + ssn + '\'' + ", Last Name:"
-        + lastName + '\'' + ", First Name:" + firstName + '\'' + '}';
+    return "LibraryUser{SSN: " + ssn + ", Last Name: "
+        + lastName + ", First Name: " + firstName + "}";
   }
 
   /**
@@ -75,16 +75,6 @@ public class LibraryUser implements Serializable
   public int getSsn(){
     return Integer.parseInt(ssn);
   }
-
-  /**
-   * Sets the ssn of the library user
-   * @param ssn
-   */
-  public void setSsn(String ssn)
-  {
-    this.ssn = ssn;
-  }
-
 
   public String getFirstName()
   {
