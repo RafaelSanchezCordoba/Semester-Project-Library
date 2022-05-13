@@ -29,10 +29,6 @@ public class LibraryUser implements Serializable
     this.password = password;
   }
 
-
-
-
-
   /**
    * return ssn fname lname of the library user as a String
    * @return String
