@@ -36,8 +36,10 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         this.passwordTextField = new SimpleStringProperty("");
         this.searchTextField = new SimpleStringProperty("");
         ObservableList<LibraryUser> observableListUserList = FXCollections.observableArrayList(new ArrayList<>());
-        this.errorLabel = new SimpleStringProperty("");
         this.userList = new SimpleListProperty<>(observableListUserList);
+        this.errorLabel = new SimpleStringProperty("");
+
+
 
         model.addPropertyChangeListener("addLibraryUser",this);
         model.addPropertyChangeListener("removeLibraryUser",this);
@@ -66,20 +68,12 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         return true;
     }
 
-    
-    public void addLibraryUserToUsersList(LibraryUser libraryUser){
-        userList.add(libraryUser);
-    }
-
-    public void removeLibraryUserFromUserList(LibraryUser libraryUser){
-        userList.remove(libraryUser);
-    }
 
     public void addLibraryUser(LibraryUser libraryUser) throws RemoteException, SQLException{
         if(!errorCheck()){
             model.addLibraryUser(libraryUser);
-            reset();
         }
+        reset();
     }
 
     public void removeLibraryUser(String ssn) throws RemoteException, SQLException{
@@ -119,7 +113,7 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         property.bindBidirectional(searchTextField);
     }
     public void bindUserListView(ObjectProperty<ObservableList<LibraryUser>> property){
-        property.bindBidirectional(userList);
+        property.bind(userList);
     }
     public void bindErrorLabel(StringProperty property){
         property.bind(errorLabel);
@@ -132,11 +126,13 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if(evt.getPropertyName().equals("addLibraryUser")){
+        if(evt.getPropertyName().equals("addLibraryUser"))
+        {
             userList.add((LibraryUser) evt.getNewValue());
-        }else if(evt.getPropertyName().equals("removeLibraryUser")){
+        }
+        else if(evt.getPropertyName().equals("removeLibraryUser")){
             for (int i = 0; i < userList.size(); i++) {
-                if(userList.get(i).getSSN() == evt.getNewValue()){
+                if(userList.get(i).getSSN().equals(evt.getNewValue())){
                     userList.remove(userList.get(i));
                     break;
                 }
