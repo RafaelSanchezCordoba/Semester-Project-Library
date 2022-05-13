@@ -45,7 +45,7 @@ public class LibraryUserTest {
     @Test
     public void get_ssn_returns_ssn() {
         libraryUser = new LibraryUser("1234567890", "Rafa", "Sanchez", "1234");
-        assertEquals("1234567890", libraryUser.getSsnAsString());
+        assertEquals("1234567890", libraryUser.getSSN());
     }
 
     @Test
