@@ -44,7 +44,7 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
   {
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement((insertLibraryUserSql));
-      statement.setInt(1, libraryUser.getSsn());
+      statement.setString(1, libraryUser.getSSN());
       statement.setString(2, libraryUser.getPassword());
       statement.setString(3, libraryUser.getFirstName());
       statement.setString(4, libraryUser.getLastName());
@@ -54,14 +54,14 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
   }
   }
 
-  @Override public void removeLibraryUser(int ssn) throws SQLException
+  @Override public void removeLibraryUser(String ssn) throws SQLException
   {
     try(Connection connection = getConnection())
     {
       System.out.println("database" + ssn);
       PreparedStatement statement = connection.prepareStatement(
           removeLibraryUserSql);
-      statement.setInt(1, ssn);
+      statement.setString(1, ssn);
       statement.executeUpdate();
     }
   }

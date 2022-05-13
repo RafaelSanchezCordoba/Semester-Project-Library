@@ -81,7 +81,7 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         }
     }
 
-    public void removeLibraryUser(int ssn) throws RemoteException, SQLException{
+    public void removeLibraryUser(String ssn) throws RemoteException, SQLException{
         model.removeLibraryUser(ssn);
     }
 
@@ -130,7 +130,7 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
             userList.add((LibraryUser) evt.getNewValue());
         }else if(evt.getPropertyName().equals("removeLibraryUser")){
             for (int i = 0; i < userList.size(); i++) {
-                if(userList.get(i).getSsn() == (int) evt.getNewValue()){
+                if(userList.get(i).getSSN() == (String) evt.getNewValue()){
                     userList.remove(userList.get(i));
                     break;
                 }

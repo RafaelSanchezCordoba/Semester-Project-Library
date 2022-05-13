@@ -28,7 +28,7 @@ public class ModelManagerLibraryUser implements ModelLibraryUser
     support.firePropertyChange("addLibraryUser",null, libraryUser);
   }
 
-  @Override public void removeLibraryUser(int ssn) throws RemoteException, SQLException{
+  @Override public void removeLibraryUser(String ssn) throws RemoteException, SQLException{
     client.removeLibraryUser(ssn);
     support.firePropertyChange("removeLibraryUser",null,ssn);
   }

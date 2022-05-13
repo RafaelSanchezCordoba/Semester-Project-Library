@@ -34,7 +34,7 @@ public class LibraryUserClientImplementation extends UnicastRemoteObject impleme
     remoteLibraryUser.addLibraryUser(libraryUser);
   }
 
-  @Override public void removeLibraryUser(int ssn)
+  @Override public void removeLibraryUser(String ssn)
       throws SQLException, RemoteException
   {
       remoteLibraryUser.removeLibraryUser(ssn);

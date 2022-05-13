@@ -54,7 +54,7 @@ public class AddRemoveLibraryUserViewController
     }
 
     @FXML public void removeUserButtonPressed() throws RemoteException, SQLException{
-        viewModel.removeLibraryUser(userTextListView.getSelectionModel().getSelectedItem().getSsn());
+        viewModel.removeLibraryUser(userTextListView.getSelectionModel().getSelectedItem().getSSN());
     }
 
     @FXML public void homeMenuButtonPressed() throws SQLException, RemoteException{}

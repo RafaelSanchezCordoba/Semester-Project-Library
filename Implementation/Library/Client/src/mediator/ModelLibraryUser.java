@@ -10,7 +10,7 @@ public interface ModelLibraryUser extends PropertyChangeSubject
 {
   void addLibraryUser(LibraryUser libraryUser) throws RemoteException, SQLException;
 
-  void removeLibraryUser(int ssn) throws RemoteException, SQLException;
+  void removeLibraryUser(String ssn) throws RemoteException, SQLException;
 
   ArrayList<LibraryUser> getLibraryUserList() throws RemoteException, SQLException;
 

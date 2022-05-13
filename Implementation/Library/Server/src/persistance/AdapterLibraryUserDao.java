@@ -32,7 +32,7 @@ public class AdapterLibraryUserDao implements LibraryUserStorage
 
   }
 
-  @Override public void removeLibraryUser(int ssn)
+  @Override public void removeLibraryUser(String ssn)
       throws RemoteException
   {
     try

@@ -85,7 +85,7 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
         libraryUserStorage.addLibraryUser(libraryUser);
     }
 
-    @Override public void removeLibraryUser(int ssn)
+    @Override public void removeLibraryUser(String ssn)
         throws RemoteException, SQLException
     {
         libraryUserStorage.removeLibraryUser(ssn);

@@ -55,11 +55,12 @@ public class LibraryUserStorageTest implements LibraryUserStorage
    * @throws RemoteException
    * @throws SQLException
    */
-  @Override public void removeLibraryUser(int ssn)
+  @Override
+  public void removeLibraryUser(String ssn)
       throws RemoteException, SQLException
   {
     for (int i = 0; i<libraryUsers.size();i++){
-      if (ssn == libraryUsers.get(i).getSsn()){
+      if (ssn == libraryUsers.get(i).getSSN()){
         libraryUsers.remove(i);
       }
     }
