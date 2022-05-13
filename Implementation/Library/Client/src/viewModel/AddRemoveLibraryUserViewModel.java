@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import mediator.ModelLibraryUser;
 import model.LibraryUser;
 import model.LibraryUserList;
+import model.Magazine;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -124,13 +125,18 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         property.bind(errorLabel);
     }
 
+    public void bindLibraryUserListViewForTest(SimpleListProperty<LibraryUser> property)
+    {
+        property.bind(userList);
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("addLibraryUser")){
             userList.add((LibraryUser) evt.getNewValue());
         }else if(evt.getPropertyName().equals("removeLibraryUser")){
             for (int i = 0; i < userList.size(); i++) {
-                if(userList.get(i).getSSN() == (String) evt.getNewValue()){
+                if(userList.get(i).getSSN() == evt.getNewValue()){
                     userList.remove(userList.get(i));
                     break;
                 }

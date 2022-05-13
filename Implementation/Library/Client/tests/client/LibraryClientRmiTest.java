@@ -45,7 +45,7 @@ public class LibraryClientRmiTest
 
     for (LibraryUser x: libraryUserClient.getLibraryUserList()){
 
-        libraryUserClient.removeLibraryUser(x.getSsn());
+        libraryUserClient.removeLibraryUser(x.getSSN());
 
     }
     System.out.println(libraryUserClient.getLibraryUserList().size());
@@ -95,7 +95,7 @@ public class LibraryClientRmiTest
     libraryUserClient.addLibraryUser(libraryUser);
     exp++;
     libraryUserClient.addLibraryUser(libraryUser1);
-    libraryUserClient.removeLibraryUser(libraryUser1.getSsn());
+    libraryUserClient.removeLibraryUser(libraryUser1.getSSN());
 
     Assertions.assertEquals(exp,libraryUserClient.getLibraryUserList().size());
   }
@@ -109,8 +109,8 @@ public class LibraryClientRmiTest
 
     libraryUserClient.addLibraryUser(libraryUser2);
     exp++;
-    libraryUserClient.removeLibraryUser(libraryUser1.getSsn());
-    libraryUserClient.removeLibraryUser(libraryUser.getSsn());
+    libraryUserClient.removeLibraryUser(libraryUser1.getSSN());
+    libraryUserClient.removeLibraryUser(libraryUser.getSSN());
 
     Assertions.assertEquals(exp,libraryUserClient.getLibraryUserList().size());
   }
