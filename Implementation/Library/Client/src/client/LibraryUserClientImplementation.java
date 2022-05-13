@@ -11,6 +11,11 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+/**
+ * The client implementation for library user that extends <code>UnicastRemoteObject</code> and implements <code>LibraryUserClient</code>.
+ * @author Alexandru Dulghier
+ * @version 1.0 13/05/22.
+ */
 
 public class LibraryUserClientImplementation extends UnicastRemoteObject implements LibraryUserClient
 {

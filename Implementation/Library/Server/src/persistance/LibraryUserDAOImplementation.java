@@ -6,6 +6,11 @@ import model.LibraryUser;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * class to access the db to store or remove data implements <code>LibraryUserDao</code>.
+ * @author Alexandru Dulghier
+ * @version 1.0
+ */
 public class LibraryUserDAOImplementation implements LibraryUserDAO
 {
   private String insertLibraryUserSql = "INSERT INTO \"library\".library_user(ssn,password,f_name,l_name)"
