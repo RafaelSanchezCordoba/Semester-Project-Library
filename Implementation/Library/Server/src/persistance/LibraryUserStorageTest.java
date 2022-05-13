@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * class to be used to test the funcionality of the system in absence of a db connection implements <code>LibraryUserStorage</code>.
@@ -47,6 +48,7 @@ public class LibraryUserStorageTest implements LibraryUserStorage
       throws RemoteException, SQLException
   {
     libraryUsers.add(libraryUser);
+    libraryUsers.removeAll(Collections.singleton(null));
   }
 
   /**
