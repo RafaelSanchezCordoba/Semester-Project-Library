@@ -19,14 +19,14 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
 
   private String getLibraryUserList = "SELECT * FROM \"library\".library_user ORDER BY id DESC";
 
-  private LibraryUserDAOImplementation instance;
+  private static LibraryUserDAOImplementation instance;
 
   private LibraryUserDAOImplementation() throws SQLException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
 
-  public LibraryUserDAOImplementation getInstance() throws SQLException
+  public static synchronized LibraryUserDAOImplementation getInstance() throws SQLException
   {
     if(instance ==null){
       instance = new LibraryUserDAOImplementation();

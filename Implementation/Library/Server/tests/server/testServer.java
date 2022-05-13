@@ -1,5 +1,6 @@
 package server;
 
+import model.LibraryUser;
 import persistance.*;
 
 import java.rmi.AlreadyBoundException;
@@ -15,10 +16,12 @@ public class testServer
   {
 
     Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
+    LibraryUserDAOImplementation libraryUserDAO =  LibraryUserDAOImplementation.getInstance();
     // BookDAOImplementation bookDAO = BookDAOImplementation.getInstance();
     //MagazineDAOImplementation magazineDAO = MagazineDAOImplementation.getInstance();
     //AdapterBookDAO adapterBookDAO = new AdapterBookDAO(bookDAO);
     //AdapterMagazineDAO adapterMagazineDAO = new AdapterMagazineDAO(magazineDAO);
+
     LibraryUserStorage libraryUserStorage = LibraryUserStorageTest.getInstance();
     MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
     BookStorage bookStorage = BookStorageTest.getInstance();
@@ -33,6 +36,7 @@ public class testServer
     registry.bind("book", book);
     registry.bind("magazine", magazine);
     registry.bind("libraryUser", libraryUser);
+
 
     System.out.println("server.Server running on " + Registry.REGISTRY_PORT);
   }
