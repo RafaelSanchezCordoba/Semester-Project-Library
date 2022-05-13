@@ -4,6 +4,7 @@ package view;
 import javafx.fxml.FXMLLoader;
 
 import javafx.scene.layout.Region;
+import viewModel.AddRemoveLibraryUserViewModel;
 import viewModel.ViewModelFactory;
 
 import java.io.IOError;
@@ -17,8 +18,7 @@ public class ViewFactory
   private ViewHandler viewHandler;
   private AddRemoveBookViewController bookController;
   private AddRemoveMagazineViewController magazineController;
-
-
+  private AddRemoveLibraryUserViewController libraryUserController;
 
   public ViewFactory(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
   {
@@ -26,6 +26,7 @@ public class ViewFactory
     this.viewModelFactory=viewModelFactory;
     bookController=null;
     magazineController=null;
+    libraryUserController = null;
 
   }
 
@@ -63,5 +64,20 @@ public class ViewFactory
     return magazineController.getRoot();
   }
 
+  public Region loadAddRemoveLibraryUserView() throws SQLException, RemoteException{
+    if(libraryUserController == null){
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("addRemoveUser.fxml"));
+      try{
+        Region root = loader.load();
+        libraryUserController = loader.getController();
+        libraryUserController.init(viewHandler, viewModelFactory.getUserViewModel(), root);
+      }catch (IOException | SQLException e){
+        throw new IOError(e);
+      }
+    }
+    libraryUserController.reset();
+    return libraryUserController.getRoot();
+  }
 
 }

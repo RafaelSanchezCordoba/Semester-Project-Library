@@ -13,6 +13,7 @@ public class ViewHandler
   public static final String HOME = "home";
   public static final String BOOK = "addRemoveBook";
   public static final String MAGAZINE = "addRemoveMagazine";
+  public static final String LIBRARY_USER = "addRemoveLibraryUser";
 
 
   private Stage primaryStage;
@@ -44,6 +45,9 @@ public class ViewHandler
         break;
       case MAGAZINE:
         root = viewFactory.loadAddRemoveMagazineView();
+        break;
+      case LIBRARY_USER:
+        root = viewFactory.loadAddRemoveLibraryUserView();
         break;
 
 
