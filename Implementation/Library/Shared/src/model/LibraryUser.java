@@ -13,23 +13,25 @@ public class LibraryUser implements Serializable
   private String firstName;
   private String lastName;
   private String ssn;
-
-  public String getFirstName()
-  {
-    return firstName;
-  }
-
-  public String getLastName()
-  {
-    return lastName;
-  }
-
-  public String getPassword()
-  {
-    return password;
-  }
-
   private String password;
+
+  /**
+   * Constructor of the library user class
+   * @param ssn
+   * @param firstName
+   * @param lastName
+   * @param password
+   */
+  public LibraryUser(String ssn,String firstName,String lastName,String password){
+    this.ssn= ssn;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.password = password;
+  }
+
+
+
+
 
   /**
    * return ssn fname lname of the library user as a String
@@ -83,17 +85,19 @@ public class LibraryUser implements Serializable
     this.ssn = ssn;
   }
 
-  /**
-   * Constructor of the library user class
-   * @param ssn
-   * @param firstName
-   * @param lastName
-   * @param password
-   */
-  public LibraryUser(String ssn,String firstName,String lastName,String password){
-    this.ssn= ssn;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.password = password;
+
+  public String getFirstName()
+  {
+    return firstName;
+  }
+
+  public String getLastName()
+  {
+    return lastName;
+  }
+
+  public String getPassword()
+  {
+    return password;
   }
 }
