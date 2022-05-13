@@ -74,7 +74,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
       errorLabel.set("Isbn can't be null");
       return true;
     }
-    else if (titleTextField.get().length()>50)
+    /*else if (titleTextField.get().length()>50)
     {
       errorLabel.set("Title must have less than 50 characters");
       return true;
@@ -83,7 +83,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     {
       errorLabel.set("Publisher must have less than 50 characters");
       return true;
-    }
+    }*/
     else if (futureYearCheck())
     {
       errorLabel.set("Invalid date: future date");

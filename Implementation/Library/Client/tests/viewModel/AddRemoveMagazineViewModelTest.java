@@ -300,6 +300,7 @@ public class AddRemoveMagazineViewModelTest
     assertEquals("Invalid date",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
+/*
 
   @Test void title_51_character_gives_error_and_doent_add()
       throws SQLException, RemoteException
@@ -330,6 +331,7 @@ public class AddRemoveMagazineViewModelTest
     assertEquals("Publisher must be less than 50 characters",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
+*/
 
   @Test void errors_clear_fields() throws SQLException, RemoteException
   {

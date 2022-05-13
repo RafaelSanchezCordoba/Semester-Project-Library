@@ -291,7 +291,7 @@ public class AddRemoveBooksViewModelTest
     assertEquals("[]",bookList.getValue().toString());
   }
 
-  @Test void title_51_characters_gives_error_and_doesnt_add()
+  /*@Test void title_51_characters_gives_error_and_doesnt_add()
       throws SQLException, RemoteException
   {
     title.set("DaugtherofSmokeAndBone, days of blood and starlight");
@@ -321,7 +321,7 @@ public class AddRemoveBooksViewModelTest
         edition.get()),Integer.parseInt(year.get()),viewModel.getGenreList()));
     assertEquals("Publisher must have less than 50 characters",error.get());
     assertEquals("[]",bookList.getValue().toString());
-  }
+  }*/
 
   @Test void future_year_gives_error_and_doesnt_add()
       throws SQLException, RemoteException
