@@ -80,5 +80,9 @@ public class LibraryUserStorageTest implements LibraryUserStorage
     return libraryUsers;
   }
 
+  public void clear() {
+    libraryUsers.clear();
+  }
+
 
 }
