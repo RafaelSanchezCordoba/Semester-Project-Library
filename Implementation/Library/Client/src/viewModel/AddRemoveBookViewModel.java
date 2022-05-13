@@ -57,7 +57,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   }
 
-  public boolean errorCheck()
+  public boolean errorCheck() throws SQLException, RemoteException
   {
     if (titleTextField.get().equals(""))
     {
@@ -89,13 +89,40 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
       errorLabel.set("Invalid date: future date");
       return true;
     }
+    else if (duplicateIsbnCheck()){
+      errorLabel.set("There is already a book with that isbn in the system");
+      return true;
+    }
     return false;
   }
-  public boolean futureYearCheck()
+  private boolean futureYearCheck()
   {
     CurrentTime now=new CurrentTime();
     String year=now.getFormattedIsoDate().substring(0,4);
     return Integer.parseInt(yearTextField.get())>Integer.parseInt(year);
+  }
+
+  private boolean duplicateIsbnCheck() throws SQLException, RemoteException
+  {
+    for (int i=0;i<model.getBookList().size();i++)
+    {
+      if (isbnTextField.get().equals(model.getBookList().get(i).getIsbn()))
+      {
+        return true;
+      }
+    } return false;
+  }
+
+  private boolean duplicatedGenreCheck(Genre genre)
+  {
+    for (int i=0;i<selectedGenreList.get().size();i++)
+    {
+      if (genre.getGenre().equals(selectedGenreList.get(i).getGenre()))
+      {
+        return true;
+      }
+    }
+    return false;
   }
 
   public GenreList getGenreList() throws SQLException, RemoteException {
@@ -107,7 +134,18 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   }
 
   public void addGenreToSelectedGenreList(Genre genre) {
-    selectedGenreList.add(genre);
+    if (!duplicatedGenreCheck(genre))
+    {
+      selectedGenreList.add(genre);
+      if (errorLabel.get().equals("Duplicated genre"))
+      {
+        errorLabel.set("");
+      }
+    }
+    else
+    {
+      errorLabel.set("Duplicated genre");
+    }
   }
 
   public void removeFromSelectedGenreList(Genre genre) {
@@ -121,7 +159,6 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     {
       genreList.add(model.getGenreList().getGenre(i));
     }
-
   }
 
   public void setBookList() throws RemoteException, SQLException
@@ -140,12 +177,12 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   public void removeBook(int id) throws RemoteException, SQLException
   {
     model.removeBook(id);
-
   }
 
   public void reset() throws SQLException, RemoteException
   {
     setBookList();
+    setGenreList();
 
     titleTextField.set("");
     publisherTextField.set("");
@@ -216,6 +253,9 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   public void bindGenreListForTest(SimpleListProperty<Genre> property) {
     property.bind(genreList);
+  }
+  public void bindSelectedGenreListForTest(SimpleListProperty<Genre> property) {
+    property.bind(selectedGenreList);
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)

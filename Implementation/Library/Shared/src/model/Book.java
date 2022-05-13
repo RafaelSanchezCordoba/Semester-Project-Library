@@ -118,7 +118,7 @@ public class Book extends MultimediaItem implements Serializable {
 
   @Override public String toString()
   {
-    return "Title: "+getTitle()+", author: "+author+", edition=" + edition + ", year_published=" + year_published
-        + ", isbn='" + isbn + '\'' + ", genres=" + genreList;
+    return "Title="+getTitle()+", author="+author+", edition=" + edition + ", year published=" + year_published
+        + ", isbn=" + isbn;
   }
 }

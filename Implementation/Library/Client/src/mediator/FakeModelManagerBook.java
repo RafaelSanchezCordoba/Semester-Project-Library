@@ -13,11 +13,13 @@ public class FakeModelManagerBook implements ModelBook
 {
   private ArrayList<Book> list;
   private PropertyChangeSupport support;
+  private GenreList genres;
 
   public FakeModelManagerBook()
   {
     list=new ArrayList<>();
     support=new PropertyChangeSupport(this);
+    genres=new GenreList();
   }
 
   @Override public void addBook(Book book) throws RemoteException, SQLException
@@ -46,7 +48,7 @@ public class FakeModelManagerBook implements ModelBook
 
   @Override public GenreList getGenreList() throws RemoteException, SQLException
   {
-    return null;
+    return genres;
   }
 
   @Override public void addPropertyChangeListener(
@@ -58,13 +60,13 @@ public class FakeModelManagerBook implements ModelBook
   @Override public void addPropertyChangeListener(String name,
       PropertyChangeListener listener)
   {
-support.addPropertyChangeListener(name,listener);
+    support.addPropertyChangeListener(name,listener);
   }
 
   @Override public void removePropertyChangeListener(
       PropertyChangeListener listener)
   {
-support.removePropertyChangeListener(listener);
+    support.removePropertyChangeListener(listener);
   }
 
   @Override public void removePropertyChangeListener(String name,
