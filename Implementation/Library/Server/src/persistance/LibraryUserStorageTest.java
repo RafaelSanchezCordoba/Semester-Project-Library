@@ -62,7 +62,7 @@ public class LibraryUserStorageTest implements LibraryUserStorage
       throws RemoteException, SQLException
   {
     for (int i = 0; i<libraryUsers.size();i++){
-      if (ssn == libraryUsers.get(i).getSSN()){
+      if (ssn.equals( libraryUsers.get(i).getSSN())){
         libraryUsers.remove(i);
       }
     }
