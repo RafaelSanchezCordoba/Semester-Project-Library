@@ -1,6 +1,5 @@
 package server;//package Client.server.Server.src;
 
-import model.Magazine;
 import persistance.*;
 
 import java.rmi.AlreadyBoundException;
@@ -15,11 +14,12 @@ public class Server {
     Registry registry= LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
     BookDAOImplementation bookDAO = BookDAOImplementation.getInstance();
     MagazineDAOImplementation magazineDAO = MagazineDAOImplementation.getInstance();
-    //LibraryUserDAOImplementation userDAOImplementation = LibraryUserDAOImplementation.getInstance();
+    LibraryUserDAOImplementation userDAOImplementation = LibraryUserDAOImplementation.getInstance();
 
     AdapterBookDAO adapterBookDAO = new AdapterBookDAO(bookDAO);
     AdapterMagazineDAO adapterMagazineDAO = new AdapterMagazineDAO(magazineDAO);
-    LibraryUserStorage libraryUserStorage =  LibraryUserStorageTest.getInstance();
+    AdapterLibraryUserDAO adapterLibraryUserDAO = new AdapterLibraryUserDAO(userDAOImplementation);
+//    LibraryUserStorage libraryUserStorage =  LibraryUserStorageTest.getInstance();
 //    MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
 //    BookStorage bookStorage = BookStorageTest.getInstance();
 
@@ -27,9 +27,9 @@ public class Server {
 
 
 
-    RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO,libraryUserStorage);
-    RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO,libraryUserStorage);
-    RemoteLibraryUser libraryUser  = new Communicator(adapterMagazineDAO, adapterBookDAO,libraryUserStorage);
+    RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO,adapterLibraryUserDAO);
+    RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO,adapterLibraryUserDAO);
+    RemoteLibraryUser libraryUser  = new Communicator(adapterMagazineDAO, adapterBookDAO,adapterLibraryUserDAO);
 
     registry.bind("book",book);
     registry.bind("magazine",magazine);
