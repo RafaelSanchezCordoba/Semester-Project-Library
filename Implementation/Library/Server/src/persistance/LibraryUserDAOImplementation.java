@@ -48,8 +48,6 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
       statement.setString(2, libraryUser.getPassword());
       statement.setString(3, libraryUser.getFirstName());
       statement.setString(4, libraryUser.getLastName());
-      //java.sql.Date date = Date.valueOf(magazine.getDate());
-
       statement.executeUpdate();
   }
   }
@@ -59,41 +57,27 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
     try(Connection connection = getConnection())
     {
       System.out.println("database" + ssn);
-      PreparedStatement statement = connection.prepareStatement(
-          removeLibraryUserSql);
+      PreparedStatement statement = connection.prepareStatement(removeLibraryUserSql);
       statement.setString(1, ssn);
       statement.executeUpdate();
     }
   }
 
-  @Override public ArrayList<LibraryUser> getLibraryUserList()
-      throws SQLException
-  {
-
-    Connection connection = getConnection();
-    try {
-      connection.setAutoCommit(false);
+  @Override public ArrayList<LibraryUser> getLibraryUserList() throws SQLException {
+    try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement(getLibraryUserList);
       ResultSet resultSet = statement.executeQuery();
       ArrayList<LibraryUser> result = new ArrayList<>();
       while (resultSet.next()) {
         String ssn = resultSet.getString("ssn");
-        String password =  resultSet.getString("password");
+        String password = resultSet.getString("password");
         String firstName = resultSet.getString("f_name");
         String lastName = resultSet.getString("l_name");
 
-        LibraryUser libraryUser = new LibraryUser(ssn,firstName,lastName,password);
-
+        LibraryUser libraryUser = new LibraryUser(ssn, firstName, lastName, password);
         result.add(libraryUser);
       }
-      connection.commit();
       return result;
-    }catch (SQLException e){
-      connection.rollback();
-      throw e;
-    }finally
-    {
-      connection.close();
     }
   }
 }

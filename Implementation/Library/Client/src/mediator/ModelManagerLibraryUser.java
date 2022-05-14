@@ -19,9 +19,7 @@ public class ModelManagerLibraryUser implements ModelLibraryUser
     this.support = new PropertyChangeSupport(this);
   }
 
-  public ArrayList<LibraryUser> getLibraryUserList() throws SQLException,RemoteException{
-    return client.getLibraryUserList();
-  }
+
 
   @Override public void addLibraryUser(LibraryUser libraryUser) throws SQLException, RemoteException{
     client.addLibraryUser(libraryUser);
@@ -31,6 +29,11 @@ public class ModelManagerLibraryUser implements ModelLibraryUser
   @Override public void removeLibraryUser(String ssn) throws RemoteException, SQLException{
     client.removeLibraryUser(ssn);
     support.firePropertyChange("removeLibraryUser",null,ssn);
+  }
+
+  @Override
+  public ArrayList<LibraryUser> getLibraryUserList() throws RemoteException, SQLException {
+    return client.getLibraryUserList();
   }
 
   @Override public void addPropertyChangeListener(PropertyChangeListener listener){

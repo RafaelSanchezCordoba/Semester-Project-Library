@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class LibraryUserClientImplementation extends UnicastRemoteObject implements LibraryUserClient
 {
 
-  private RemoteLibraryUser remoteLibraryUser;
+  private final RemoteLibraryUser remoteLibraryUser;
 
   public LibraryUserClientImplementation(String host,int port) throws IOException, NotBoundException
   {

@@ -10,11 +10,7 @@ import java.util.Objects;
  */
 public class LibraryUser implements Serializable
 {
-  private String firstName;
-  private String lastName;
-  private String ssn;
-  private String password;
-
+  private final String firstName, lastName, ssn, password;
   /**
    * Constructor of the library user class
    * @param ssn
