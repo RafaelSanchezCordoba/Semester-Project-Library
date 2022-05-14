@@ -1,6 +1,9 @@
 package view;
 
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -60,7 +63,7 @@ public class AddRemoveLibraryUserViewController
     @FXML public void homeMenuButtonPressed() throws SQLException, RemoteException{}
 
     @FXML public void bookMenuButtonPressed() throws SQLException, RemoteException{
-        viewHandler.openView(viewHandler.BOOK);
+
     }
 
     public void reset() throws SQLException, RemoteException{

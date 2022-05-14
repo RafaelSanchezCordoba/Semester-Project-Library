@@ -32,6 +32,7 @@ public class ViewHandler
   {
     this.primaryStage = primaryStage;
     openView(MAGAZINE);
+//    openView(LIBRARY_USER);
   }
 
 

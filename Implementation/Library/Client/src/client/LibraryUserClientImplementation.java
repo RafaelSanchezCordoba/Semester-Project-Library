@@ -48,6 +48,6 @@ public class LibraryUserClientImplementation extends UnicastRemoteObject impleme
 
   @Override public void close() throws IOException
   {
-
+    UnicastRemoteObject.unexportObject(this,true);
   }
 }

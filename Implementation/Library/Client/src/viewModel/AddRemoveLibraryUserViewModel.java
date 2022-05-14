@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelLibraryUser;
 import model.LibraryUser;
-import model.LibraryUserList;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

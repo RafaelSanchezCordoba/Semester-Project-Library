@@ -15,6 +15,8 @@ public class Server {
     Registry registry= LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
     BookDAOImplementation bookDAO = BookDAOImplementation.getInstance();
     MagazineDAOImplementation magazineDAO = MagazineDAOImplementation.getInstance();
+    //LibraryUserDAOImplementation userDAOImplementation = LibraryUserDAOImplementation.getInstance();
+
     AdapterBookDAO adapterBookDAO = new AdapterBookDAO(bookDAO);
     AdapterMagazineDAO adapterMagazineDAO = new AdapterMagazineDAO(magazineDAO);
     LibraryUserStorage libraryUserStorage = LibraryUserStorageTest.getInstance();
