@@ -31,8 +31,8 @@ public class ViewHandler
   public void start(Stage primaryStage) throws SQLException, RemoteException
   {
     this.primaryStage = primaryStage;
-    openView(MAGAZINE);
-//    openView(LIBRARY_USER);
+//    openView(MAGAZINE);
+    openView(LIBRARY_USER);
   }
 
 
