@@ -59,17 +59,9 @@ public class LibraryUser implements Serializable
    * returns the ssn of the library user as String
    * @return String
    */
-  public String getSsnAsString()
+  public String getSSN()
   {
     return ssn;
-  }
-
-  /**
-   * returns the ssn of the library user ssn
-   * @return int
-   */
-  public int getSsn(){
-    return Integer.parseInt(ssn);
   }
 
   public String getFirstName()

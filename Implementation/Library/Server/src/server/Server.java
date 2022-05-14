@@ -19,7 +19,7 @@ public class Server {
 
     AdapterBookDAO adapterBookDAO = new AdapterBookDAO(bookDAO);
     AdapterMagazineDAO adapterMagazineDAO = new AdapterMagazineDAO(magazineDAO);
-    LibraryUserStorage libraryUserStorage = LibraryUserStorageTest.getInstance();
+    LibraryUserStorage libraryUserStorage =  LibraryUserStorageTest.getInstance();
 //    MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
 //    BookStorage bookStorage = BookStorageTest.getInstance();
 

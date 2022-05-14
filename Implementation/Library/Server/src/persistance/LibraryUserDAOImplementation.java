@@ -19,14 +19,14 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
 
   private String getLibraryUserList = "SELECT * FROM \"library\".library_user ORDER BY id DESC";
 
-  private LibraryUserDAOImplementation instance;
+  private static LibraryUserDAOImplementation instance;
 
   private LibraryUserDAOImplementation() throws SQLException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
 
-  public LibraryUserDAOImplementation getInstance() throws SQLException
+  public static synchronized LibraryUserDAOImplementation getInstance() throws SQLException
   {
     if(instance ==null){
       instance = new LibraryUserDAOImplementation();
@@ -44,7 +44,7 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
   {
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement((insertLibraryUserSql));
-      statement.setInt(1, libraryUser.getSsn());
+      statement.setString(1, libraryUser.getSSN());
       statement.setString(2, libraryUser.getPassword());
       statement.setString(3, libraryUser.getFirstName());
       statement.setString(4, libraryUser.getLastName());
@@ -54,14 +54,14 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
   }
   }
 
-  @Override public void removeLibraryUser(int ssn) throws SQLException
+  @Override public void removeLibraryUser(String ssn) throws SQLException
   {
     try(Connection connection = getConnection())
     {
       System.out.println("database" + ssn);
       PreparedStatement statement = connection.prepareStatement(
           removeLibraryUserSql);
-      statement.setInt(1, ssn);
+      statement.setString(1, ssn);
       statement.executeUpdate();
     }
   }

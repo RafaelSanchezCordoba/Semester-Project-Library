@@ -10,6 +10,6 @@ import java.util.ArrayList;
 public interface LibraryUserClient extends Closeable
 {
   void addLibraryUser(LibraryUser libraryUser) throws RemoteException, SQLException;
-  void removeLibraryUser(int ssn)throws RemoteException,SQLException;
+  void removeLibraryUser(String ssn)throws RemoteException,SQLException;
   ArrayList<LibraryUser> getLibraryUserList() throws RemoteException,SQLException;
 }

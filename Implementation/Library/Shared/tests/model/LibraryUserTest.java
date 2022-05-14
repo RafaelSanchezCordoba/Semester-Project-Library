@@ -7,61 +7,61 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LibraryUserTest {
     private LibraryUser libraryUser;
-    
+
     //Create libraryUser
     @Test
-    void create_new_libraryUser_with_all_the_correct_parameters() {
+    public void create_new_libraryUser_with_all_the_correct_parameters() {
         libraryUser = new LibraryUser("1234567890", "Rafa", "Sanchez", "1234");
         assertEquals("LibraryUser{SSN: 1234567890, Last Name: Sanchez, First Name: Rafa}", libraryUser.toString());
     }
 
     //Create libraryUser with null values
     @Test
-    void create_new_LibraryUser_with_all_null_parameters() {
+    public void create_new_LibraryUser_with_all_null_parameters() {
         libraryUser = new LibraryUser(null, null, null, null);
         assertEquals("LibraryUser{SSN: null, Last Name: null, First Name: null}", libraryUser.toString());
     }
 
 
     @Test
-    void create_new_libraryUser_with_null_password() {
+    public void create_new_libraryUser_with_null_password() {
         libraryUser = new LibraryUser("1234567890", "Rafa", "Sanchez", null);
         assertEquals("LibraryUser{SSN: 1234567890, Last Name: Sanchez, First Name: Rafa}", libraryUser.toString());
     }
 
     @Test
-    void create_new_libraryUser_with_null_first_name() {
+    public void create_new_libraryUser_with_null_first_name() {
         libraryUser = new LibraryUser("1234567890", null, "Sanchez", "1234");
         assertEquals("LibraryUser{SSN: 1234567890, Last Name: Sanchez, First Name: null}", libraryUser.toString());
     }
 
     @Test
-    void create_new_libraryUser_with_null_last_name() {
+    public void create_new_libraryUser_with_null_last_name() {
         libraryUser = new LibraryUser("1234567890", "Rafa", null, "1234");
         assertEquals("LibraryUser{SSN: 1234567890, Last Name: null, First Name: Rafa}", libraryUser.toString());
     }
 
     //Get methods
     @Test
-    void get_ssn_returns_ssn() {
+    public void get_ssn_returns_ssn() {
         libraryUser = new LibraryUser("1234567890", "Rafa", "Sanchez", "1234");
-        assertEquals("1234567890", libraryUser.getSsnAsString());
+        assertEquals("1234567890", libraryUser.getSSN());
     }
 
     @Test
-    void get_password_returns_password() {
+    public void get_password_returns_password() {
         libraryUser = new LibraryUser("1234567890", "Rafa", "Sanchez", "1234");
         assertEquals("1234", libraryUser.getPassword());
     }
 
     @Test
-    void get_first_name_returns_first_name() {
+    public void get_first_name_returns_first_name() {
         libraryUser = new LibraryUser("1234567890", "Rafa", "Sanchez", "1234");
         assertEquals("Rafa", libraryUser.getFirstName());
     }
 
     @Test
-    void get_last_name_returns_last_name() {
+    public void get_last_name_returns_last_name() {
         libraryUser = new LibraryUser("1234567890", "Rafa", "Sanchez", "1234");
         assertEquals("Sanchez", libraryUser.getLastName());
     }
