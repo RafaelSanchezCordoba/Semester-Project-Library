@@ -51,9 +51,13 @@ public class AddRemoveLibraryUserViewController
         viewModel.search();
     }
     @FXML public void addUserButtonPressed() throws RemoteException, SQLException{
-        LibraryUser libraryUser = new LibraryUser(firstNameTextField.getText(), lastNameTextField.getText(),
-                ssnTextField.getText(), passwordTextField.getText());
+        LibraryUser libraryUser = new LibraryUser(firstNameTextField.getText(),
+                lastNameTextField.getText(),
+                ssnTextField.getText(),
+                passwordTextField.getText());
         viewModel.addLibraryUser(libraryUser);
+        reset();
+        
     }
 
     @FXML public void removeUserButtonPressed() throws RemoteException, SQLException{
