@@ -32,8 +32,6 @@ public class MultimediaItem implements Serializable {
 
     /**
      * Multimedia item constructor
-     * @param id
-     * The unique identification number of the multimedia item,
      * @param title
      * The title of the multimedia item.
      * @param publisher
