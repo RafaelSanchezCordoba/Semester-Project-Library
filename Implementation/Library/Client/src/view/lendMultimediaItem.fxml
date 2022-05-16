@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="430.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LendMultimediaItem">
+<AnchorPane prefHeight="430.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.lendMultimediaItemViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="786.0" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="Home" />
@@ -24,7 +24,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ListView layoutX="14.0" layoutY="158.0" prefHeight="228.0" prefWidth="444.0" />
+      <ListView fx:id="multimediaItemListView" layoutX="14.0" layoutY="158.0" prefHeight="228.0" prefWidth="444.0" />
       <TextField fx:id="multimediaItemSearchTextField" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="403.0" />
       <Button layoutX="427.0" layoutY="119.0" mnemonicParsing="false" onAction="#multimediaItemSearchButtonPressed" text="🔍" />
       <Button layoutX="15.0" layoutY="392.0" mnemonicParsing="false" onAction="#showBookListButtonPressed" text="Books" />
