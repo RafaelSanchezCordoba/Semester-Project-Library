@@ -28,7 +28,7 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
             +"WHERE loan_id = ?";
 
     /**
-     * sql to get all the availables magazines to
+     * sql to get all the availables magazines that can be lended from the database
      */
     private String getAvailableMagazines = "SELECT*"+
             "FROM \"library\".magazine"+
@@ -37,11 +37,20 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
 
     private static LoanMagazineDAOImplementation instance;
 
+    /**
+     * private constructor
+     * @throws SQLException
+     */
     private LoanMagazineDAOImplementation()throws SQLException{
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
 
-    public LoanMagazineDAOImplementation getInstance() throws SQLException{
+    /**
+     * Singleton pattern for the instance of LoanMagazineDAOImplementation
+     * @return LoanMagazineDAOImplementation
+     * @throws SQLException
+     */
+    public static synchronized LoanMagazineDAOImplementation getInstance() throws SQLException{
         if (instance==null){
 
                 instance = new LoanMagazineDAOImplementation();
@@ -55,6 +64,11 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
                 "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
     }
 
+    /**
+     * retruns an Array List of all the available magazines
+     * @return ArrayList<Magazine></>
+     * @throws SQLException
+     */
     public ArrayList<Magazine> getAvailableMagazineList() throws SQLException{
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(getAvailableMagazines);
@@ -75,6 +89,11 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
         }
     }
 
+    /**
+     * Insert a loan magazine object in to the database
+     * @param loanMagazine
+     * @throws SQLException
+     */
     @Override
     public void addLoanMagazine(LoanMagazine loanMagazine) throws SQLException {
         try (Connection connection = getConnection()) {

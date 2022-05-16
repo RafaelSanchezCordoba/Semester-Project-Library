@@ -2,9 +2,11 @@ package server;//package Client.server.Server.src;
 
 import persistance.DAO_implementation.BookDAOImplementation;
 import persistance.DAO_implementation.LibrarianDAOImplementation;
+import persistance.DAO_implementation.LoanMagazineDAOImplementation;
 import persistance.DAO_implementation.MagazineDAOImplementation;
 import persistance.adapters.AdapterBookDAO;
 import persistance.adapters.AdapterLibrarianDAO;
+import persistance.adapters.AdapterLoanMagazineDAO;
 import persistance.adapters.AdapterMagazineDAO;
 
 import java.rmi.AlreadyBoundException;
@@ -20,8 +22,10 @@ public class Server {
     BookDAOImplementation bookDAO = BookDAOImplementation.getInstance();
     MagazineDAOImplementation magazineDAO = MagazineDAOImplementation.getInstance();
     LibrarianDAOImplementation librarianDAO = LibrarianDAOImplementation.getInstance();
+    LoanMagazineDAOImplementation loanMagazineDAO = LoanMagazineDAOImplementation.getInstance();
     AdapterBookDAO adapterBookDAO = new AdapterBookDAO(bookDAO);
     AdapterMagazineDAO adapterMagazineDAO = new AdapterMagazineDAO(magazineDAO);
+    AdapterLoanMagazineDAO adapterLoanMagazineDAO = new AdapterLoanMagazineDAO(loanMagazineDAO);
 //    MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
 //    BookStorage bookStorage = BookStorageTest.getInstance();
     AdapterLibrarianDAO adapterLibrarianDAO = new AdapterLibrarianDAO(librarianDAO);
@@ -30,9 +34,9 @@ public class Server {
 
 
 
-    RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO, adapterLibrarianDAO);
-    RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO);
-    RemoteLibrarian librarian = new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO);
+    RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO);
+    RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO);
+    RemoteLibrarian librarian = new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO);
 
     registry.bind("book",book);
     registry.bind("magazine",magazine);
