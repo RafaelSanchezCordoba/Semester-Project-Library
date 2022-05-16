@@ -24,8 +24,12 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
      * sql to set an end date to the loan magazine in the db
      */
     private String setEndDateLoan = "UPDATE \"library\".loan_magazine"
-            +"SET end_of_loan=?"
-            +"WHERE loan_id = ?";
+            +"SET is_available=?"
+            +"WHERE id = ?";
+
+    private String setAvailable = "UPDATE \"library\".magazine"
+        +"SET available=?"
+        +"WHERE id = ?";
 
     /**
      * sql to get all the availables magazines to
@@ -54,6 +58,7 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
         return DriverManager.getConnection("jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
                 "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
     }
+
 
     public ArrayList<Magazine> getAvailableMagazineList() throws SQLException{
         try (Connection connection = getConnection()) {
@@ -92,6 +97,9 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
             } else {
                 throw new SQLException("No keys generated");
             }
+            PreparedStatement statement1 = connection.prepareStatement(setAvailable);
+            statement.setBoolean(1,false);
+            statement.setInt(2,loanMagazine.getId_magazine());
 
 
         }
