@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="430.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LendMultimediaItemViewController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="786.0" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="Home" />
+      <Button layoutX="87.0" layoutY="14.0" mnemonicParsing="false" onAction="#multimediaItemMenuButtonPressed" text="Multimedia Items" />
+      <Button layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
+      <Label layoutX="150.0" layoutY="63.0" text="Multimedia Items">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="multimediaItemLabel" layoutX="173.0" layoutY="92.0" text="BOOKS/MAGAZINES">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ListView fx:id="multimediaItemListView" layoutX="14.0" layoutY="158.0" prefHeight="228.0" prefWidth="444.0" />
+      <TextField fx:id="multimediaItemSearchTextField" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="403.0" />
+      <Button layoutX="427.0" layoutY="119.0" mnemonicParsing="false" onAction="#multimediaItemSearchButtonPressed" text="🔍" />
+      <Button layoutX="15.0" layoutY="392.0" mnemonicParsing="false" onAction="#showBookListButtonPressed" text="Books" />
+      <Button layoutX="82.0" layoutY="392.0" mnemonicParsing="false" onAction="#showMagazineListButtonPressed" text="Magazines" />
+      <Button layoutX="175.0" layoutY="392.0" mnemonicParsing="false" onAction="#selectMultimediaItemButtonPressed" text="Select Multimedia Item" />
+      <Label layoutX="499.0" layoutY="203.0" text="Multimedia Item: ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="501.0" layoutY="269.0" text="Library User: ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="selectedMultimediaItemLabel" layoutX="499.0" layoutY="233.0" text="Selected Multimedia Item..." />
+      <Label fx:id="selectedLibraryUserLabel" layoutX="501.0" layoutY="300.0" text="Selected Library User..." />
+      <Button layoutX="497.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" textFill="RED" />
+      <Button layoutX="630.0" layoutY="361.0" mnemonicParsing="false" onAction="#lendMultimediaItemButtonPressed" text="Lend Multimedia Item" />
+      <Label layoutX="569.0" layoutY="69.0" text="Library User">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ssnTextField" layoutX="550.0" layoutY="158.0" />
+      <Label layoutX="499.0" layoutY="159.0" text="SSN: ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="726.0" layoutY="158.0" mnemonicParsing="false" onAction="#okButtonPressed" text="OK" />
+      <Label fx:id="errorLabel" layoutX="329.0" layoutY="396.0" prefHeight="17.0" prefWidth="444.0" text="Error label" textFill="RED" />
+   </children>
+</AnchorPane>

@@ -41,4 +41,8 @@ public class LoanMagazine implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String toString(){
+        return getId() + " " + getId_magazine() + " " + getStartDate() + " " + getSsn();
+    }
 }
