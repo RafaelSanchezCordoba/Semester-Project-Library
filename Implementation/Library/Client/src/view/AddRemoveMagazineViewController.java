@@ -27,7 +27,6 @@ public class AddRemoveMagazineViewController
   @FXML private TextField genreTextField;
   @FXML private TextField searchTextField;
   @FXML private ListView<Magazine> magazineListView;
-  @FXML private ListView<String> genreListView;
   @FXML private Label errorLabel;
 
   public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root) throws SQLException, RemoteException

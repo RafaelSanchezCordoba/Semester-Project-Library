@@ -57,7 +57,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   }
 
-  public boolean errorCheck() throws SQLException, RemoteException
+  private boolean errorCheck() throws SQLException, RemoteException
   {
     if (titleTextField.get().equals(""))
     {

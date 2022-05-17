@@ -100,10 +100,6 @@ public class AddRemoveBookViewController
      viewHandler.openView(ViewHandler.BOOK);
   }
 
-  @FXML public void testDataPressed()
-  {
-
-  }
 
   @FXML public void addGenreButtonPressed()
   {
