@@ -14,7 +14,8 @@ public class ViewHandler
   public static final String BOOK = "addRemoveBook";
   public static final String MAGAZINE = "addRemoveMagazine";
   public static final String LIBRARIAN = "addRemoveLibrarian";
-  public static final String ITEM="choseItemType";
+  public static final String ITEM = "choseItemType";
+  public static final String LENDMULTIMEDIAITEM = "lendMultimediaItem";
 
 
   private Stage primaryStage;
@@ -32,7 +33,7 @@ public class ViewHandler
   public void start(Stage primaryStage) throws SQLException, RemoteException
   {
     this.primaryStage = primaryStage;
-    openView(HOME);
+    openView(LENDMULTIMEDIAITEM);
   }
 
 
@@ -53,9 +54,12 @@ public class ViewHandler
       case ITEM:
         root= viewFactory.loadChoseItemTypeView();
         break;
-        case "home":
+      case "home":
          root = viewFactory.loadHomeView();
          break;
+      case LENDMULTIMEDIAITEM:
+        root = viewFactory.loadLendMultimediaItem();
+        break;
       default:
         throw new IllegalArgumentException("Unknown view: " + id);
     }

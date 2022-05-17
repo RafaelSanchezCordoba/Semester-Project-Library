@@ -18,6 +18,7 @@ public class ViewFactory
   private AddRemoveBookViewController bookController;
   private AddRemoveMagazineViewController magazineController;
   private AddRemoveLibrarianViewController librarianViewController;
+  private LendMultimediaItemViewController lendMultimediaItemViewController;
   private HomeViewController homeController;
   private ChoseItemTypeViewController itemViewController;
 
@@ -32,7 +33,10 @@ public class ViewFactory
     librarianViewController = null;
     itemViewController=null;
     homeController=null;
+    lendMultimediaItemViewController = null;
   }
+
+
 
   public Region loadAddRemoveLibrarian() throws SQLException, RemoteException {
     if (librarianViewController== null){
@@ -49,6 +53,23 @@ public class ViewFactory
     }
     librarianViewController.reset();
     return librarianViewController.getRoot();
+  }
+
+  public Region loadLendMultimediaItem() throws SQLException, RemoteException {
+    if (lendMultimediaItemViewController== null){
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("lendMultimediaItem.fxml"));
+      try
+      {
+        Region root = loader.load();
+        lendMultimediaItemViewController = loader.getController();
+        lendMultimediaItemViewController.init(viewHandler,viewModelFactory.getLoanMagazineViewModel(),root);
+      }catch (IOException e){
+        throw  new IOError(e);
+      }
+    }
+    lendMultimediaItemViewController.reset();
+    return lendMultimediaItemViewController.getRoot();
   }
 
   public Region loadAddRemoveBookView() throws SQLException, RemoteException
