@@ -20,24 +20,18 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
      */
     private String createMagazineLoanSql = "INSERT INTO \"library\".loan_magazine(magazine_id,start_of_loan,end_of_loan,library_user)"
             +"VALUES(?,?,?,?)";
-    /**
-     * sql to set an end date to the loan magazine in the db
-     */
-    private String setEndDateLoan = "UPDATE \"library\".loan_magazine"
-            +"SET is_available=?"
-            +"WHERE id = ?";
 
-    private String setAvailable = "UPDATE \"library\".magazine"
-        +"SET available=?"
+
+    private String setAvailable = "UPDATE \"library\".magazine "
+        +"SET is_available = false "
         +"WHERE id = ?";
 
     /**
      * sql to get all the availables magazines that can be lended from the database
      */
-    private String getAvailableMagazines = "SELECT*"+
-            "FROM \"library\".magazine"+
-            "WHERE is_available = true "+
-            "ORDER BY id DESC";
+    private String getAvailableMagazines = "SELECT* "+
+            "FROM  \"library\".magazine "+
+            "WHERE is_available = TRUE ";
 
     private static LoanMagazineDAOImplementation instance;
 
@@ -49,11 +43,14 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
 
+
     /**
      * Singleton pattern for the instance of LoanMagazineDAOImplementation
      * @return LoanMagazineDAOImplementation
      * @throws SQLException
      */
+
+
     public static synchronized LoanMagazineDAOImplementation getInstance() throws SQLException{
         if (instance==null){
 
@@ -106,7 +103,7 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
             statement.setDate(2,loanMagazine.getStartDate());
             statement.setDate(3, loanMagazine.getEndDate());
             statement.setString(4, loanMagazine.getSsn());
-            //java.sql.Date date = Date.valueOf(magazine.getDate());
+
             statement.executeUpdate();
 
             ResultSet keys = statement.getGeneratedKeys();
@@ -115,11 +112,14 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
             } else {
                 throw new SQLException("No keys generated");
             }
-            PreparedStatement statement1 = connection.prepareStatement(setAvailable);
-            statement.setBoolean(1,false);
-            statement.setInt(2,loanMagazine.getId_magazine());
+            PreparedStatement statementSetFalse = connection.prepareStatement(setAvailable);
 
+            statementSetFalse.setInt(1,loanMagazine.getId_magazine());
+            statementSetFalse.executeUpdate();
+            statementSetFalse.close();
 
         }
     }
+
+
 }

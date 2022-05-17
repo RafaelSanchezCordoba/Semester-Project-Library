@@ -1,5 +1,7 @@
 package server;//package Client.server.Server.src;
 
+import model.LoanMagazine;
+import persistance.DAO.LoanMagazineDAO;
 import persistance.DAO_implementation.BookDAOImplementation;
 import persistance.DAO_implementation.LibrarianDAOImplementation;
 import persistance.DAO_implementation.LoanMagazineDAOImplementation;
@@ -13,6 +15,7 @@ import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.sql.SQLData;
 import java.sql.SQLException;
 
 public class Server {
@@ -29,6 +32,8 @@ public class Server {
 //    MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
 //    BookStorage bookStorage = BookStorageTest.getInstance();
     AdapterLibrarianDAO adapterLibrarianDAO = new AdapterLibrarianDAO(librarianDAO);
+    LoanMagazineDAOImplementation loanMagazineDAOImplementation = LoanMagazineDAOImplementation.getInstance();
+
 
 
 
