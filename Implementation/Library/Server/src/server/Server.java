@@ -42,10 +42,12 @@ public class Server {
     RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO);
     RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO);
     RemoteLibrarian librarian = new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO);
+    RemoteLoanMagazine loanMagazine = new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO);
 
     registry.bind("book",book);
     registry.bind("magazine",magazine);
     registry.bind("librarian", librarian);
+    registry.bind("loanMagazine", loanMagazine);
 
     System.out.println("server.Server running on " + Registry.REGISTRY_PORT);
 

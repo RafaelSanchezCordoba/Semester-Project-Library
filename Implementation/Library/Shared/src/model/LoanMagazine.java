@@ -10,12 +10,16 @@ public class LoanMagazine implements Serializable {
     private final String ssn;
 
 
-    public LoanMagazine(int id_magazine, Date startDate, String ssn) {
+    public LoanMagazine(int id_magazine, String ssn) {
         this.id = 0;
         this.id_magazine = id_magazine;
-        this.startDate = startDate;
         this.endDate = null;
         this.ssn = ssn;
+        CurrentTime now=new CurrentTime();
+        String day=now.getFormattedIsoDate().substring(8,10);
+        String month=now.getFormattedIsoDate().substring(5,7);
+        String year=now.getFormattedIsoDate().substring(0,4);
+        this.startDate = new Date(Integer.parseInt(year)-1900,Integer.parseInt(month)-1,Integer.parseInt(day));
     }
 
     public Date getEndDate() {

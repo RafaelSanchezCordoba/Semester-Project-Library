@@ -7,9 +7,11 @@ import server.RemoteLoanMagazine;
 
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoanMagazineClientImplementation extends UnicastRemoteObject implements LoanMagazineClient{
@@ -17,17 +19,17 @@ public class LoanMagazineClientImplementation extends UnicastRemoteObject implem
 
     public LoanMagazineClientImplementation(String  host, int port) throws IOException, NotBoundException {
         Registry registry = LocateRegistry.getRegistry(host,port);
-        remoteLoanMagazine = (RemoteLoanMagazine) registry.lookup("book");
+        remoteLoanMagazine = (RemoteLoanMagazine) registry.lookup("loanMagazine");
 
     }
 
     @Override
-    public void addMagazineLoan(LoanMagazine loanMagazine) {
+    public void addMagazineLoan(LoanMagazine loanMagazine) throws SQLException, RemoteException {
         remoteLoanMagazine.addMagazineLoan(loanMagazine);
     }
 
     @Override
-    public ArrayList<Magazine> getAvailableMagazineList() {
+    public ArrayList<Magazine> getAvailableMagazineList() throws SQLException, RemoteException {
         return remoteLoanMagazine.getAvailableMagazineList();
     }
 

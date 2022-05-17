@@ -1,14 +1,18 @@
 package viewModel;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javafx.fxml.FXML;
 import mediator.ModelLoanMagazine;
 
+import model.LoanMagazine;
 import model.Magazine;
+import model.MultimediaItem;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -25,7 +29,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
     private final StringProperty selectedLibraryUserLabel;
     private final StringProperty  multimediaItemSearchTextField;
     private final StringProperty ssnTextField;
-    private SimpleListProperty<Magazine> availableMagazines ;
+    private SimpleListProperty<MultimediaItem> availableMagazines ;
 
     public LoanMagazineViewModel(ModelLoanMagazine model){
      this.model= model;
@@ -35,7 +39,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
      this.selectedMultimediaItemLabel = new SimpleStringProperty("");
      this.multimediaItemSearchTextField = new SimpleStringProperty("");
      this.ssnTextField = new SimpleStringProperty();
-     ObservableList<Magazine> observableList = FXCollections.observableArrayList( new ArrayList<Magazine>());
+     ObservableList<MultimediaItem> observableList = FXCollections.observableArrayList( new ArrayList<MultimediaItem>());
      this.availableMagazines = new SimpleListProperty<>(observableList);
 
         model.addPropertyChangeListener("newLoanMagazine", this);
@@ -45,39 +49,57 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
     public void bindMultimediaItemLabel(StringProperty property){
         property.bindBidirectional(multimediaItemLabel);
     }
+
     public void bindErrorLabel(StringProperty property){
-        property.bindBidirectional(errorLabel);
+        property.bind(errorLabel);
     }
+
     public void bindSelectedMultimediaItemLabel(StringProperty property){
         property.bindBidirectional(selectedLibraryUserLabel);
     }
+
     public void bindSelectedLibraryUserLabel(StringProperty property){
         property.bindBidirectional(selectedLibraryUserLabel);
     }
+
     public void bindMultimediaItemSearchTextField(StringProperty property){
         property.bindBidirectional(multimediaItemLabel);
     }
+
     public void bindSsnTextField(StringProperty property){
         property.bindBidirectional(ssnTextField);
     }
-    public void bindMagazineList(SimpleListProperty<Magazine> property){
-        property.bindBidirectional(availableMagazines);
+
+    public void bindAvailableMagazineList(ObjectProperty<ObservableList<MultimediaItem>> property){
+        property.bind(availableMagazines);
     }
     public void reset() throws SQLException, RemoteException{
        setMagazineList();
+       multimediaItemLabel.set("");
+       errorLabel.set("");
+       selectedMultimediaItemLabel.set("");
+       selectedLibraryUserLabel.set("");
+       multimediaItemSearchTextField.set("");
+       ssnTextField.set("");
     }
+
     public void setMagazineList() throws RemoteException, SQLException{
         availableMagazines.clear();
         availableMagazines.addAll(model.getAvailableMagazineList());
     }
 
-    public void showBookListButtonPressed(){
-
+    public void createLoan(LoanMagazine loanMagazine) throws SQLException, RemoteException {
+        model.addMagazineLoan(loanMagazine);
     }
-
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
+        try {
+            reset();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -22,16 +22,12 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
             +"VALUES(?,?,?,?)";
 
 
-    private String setAvailable = "UPDATE \"library\".magazine "
-        +"SET is_available = false "
-        +"WHERE id = ?";
+    private String setAvailable = "UPDATE \"library\".magazine SET is_available = false WHERE id = ?";
 
     /**
      * sql to get all the availables magazines that can be lended from the database
      */
-    private String getAvailableMagazines = "SELECT* "+
-            "FROM  \"library\".magazine "+
-            "WHERE is_available = TRUE ";
+    private String getAvailableMagazines = "SELECT * FROM \"library\".magazine WHERE is_available = TRUE ";
 
     private static LoanMagazineDAOImplementation instance;
 
