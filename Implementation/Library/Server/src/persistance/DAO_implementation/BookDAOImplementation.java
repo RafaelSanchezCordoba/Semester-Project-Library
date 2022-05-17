@@ -11,13 +11,6 @@ import java.util.ArrayList;
 public class BookDAOImplementation implements BookDAO
 {
 
-  private String driver, url, user, password;
-
-  private Connection connection;
-  private PreparedStatement insBookStatement;
-  private PreparedStatement remBookStatement;
-
-
   //Pre-made sql to use in the methods
   private String insertBookSql = "INSERT INTO \"library\".book(isbn,publisher,title,year_published,author,edition)"
           + "VALUES( ?,?,?,?,?,?)";
