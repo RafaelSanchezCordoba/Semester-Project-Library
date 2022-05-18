@@ -1,10 +1,7 @@
 package server;
 
 import model.*;
-import server.storage.BookStorage;
-import server.storage.LibrarianStorage;
-import server.storage.LoanMagazineStorage;
-import server.storage.MagazineStorage;
+import server.storage.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -16,14 +13,16 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     private BookStorage bookStorage;
     private LibrarianStorage librarianStorage;
     private LoanMagazineStorage loanMagazineStorage;
+    private LoanBookStorage loanBookStorage;
 //    private GenreStorage genreStorage;
 
 
-    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage, LibrarianStorage librarianStorage, LoanMagazineStorage loanMagazineStorage) throws RemoteException {
+    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage, LibrarianStorage librarianStorage, LoanMagazineStorage loanMagazineStorage, LoanBookStorage loanBookStorage) throws RemoteException {
         this.magazineStorage = magazineStorage;
         this.bookStorage = bookStorage;
         this.librarianStorage = librarianStorage;
         this.loanMagazineStorage = loanMagazineStorage;
+        this.loanBookStorage= loanBookStorage;
 //        this.genreStorage = genreStorage;
     }
 
