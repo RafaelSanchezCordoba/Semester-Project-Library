@@ -2,6 +2,7 @@ package mediator;
 
 import client.LoanBookClient;
 import model.Book;
+import model.LibraryUser;
 import model.LoanBook;
 
 import java.beans.PropertyChangeListener;
@@ -31,6 +32,12 @@ public class ModelManagerLoanBook implements ModelLoanBook
       throws SQLException, RemoteException
   {
     return client.getAvailableBookList();
+  }
+
+  @Override public LibraryUser getUser(String ssn)
+      throws RemoteException
+  {
+   return client.getUser(ssn);
   }
 
   @Override public void addPropertyChangeListener(

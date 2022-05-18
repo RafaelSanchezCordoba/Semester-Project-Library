@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelLoanBook;
-import mediator.ModelLoanMagazine;
+import model.LibraryUser;
 import model.LoanBook;
 import model.MultimediaItem;
 
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class LoanBookViewModel implements PropertyChangeListener
 {
-
+  private LibraryUser  libraryUser;
   private final ModelLoanBook model ;
 
 
@@ -29,6 +29,7 @@ public class LoanBookViewModel implements PropertyChangeListener
   private final StringProperty selectedLibraryUserLabel;
   private final StringProperty  multimediaItemSearchTextField;
   private final StringProperty ssnTextField;
+
   private SimpleListProperty<MultimediaItem> availableBooks;
 
   public LoanBookViewModel(ModelLoanBook model){
@@ -70,9 +71,7 @@ public class LoanBookViewModel implements PropertyChangeListener
     property.bind(errorLabel);
   }
 
-  public void bindSelectedMultimediaItemLabel(StringProperty property){
-    property.bindBidirectional(selectedMultimediaItemLabel);
-  }
+
 
   public void bindSelectedLibraryUserLabel(StringProperty property){
     property.bindBidirectional(selectedLibraryUserLabel);
@@ -108,13 +107,37 @@ public class LoanBookViewModel implements PropertyChangeListener
     availableBooks.addAll(model.getAvailableBooks());
   }
 
-  public void createLoan(LoanBook loanBook) throws SQLException, RemoteException
+  public void createLoan(int idBook) throws SQLException, RemoteException
   {
-      model.addLoanBook(loanBook);
+   if(libraryUser==null){
+     errorLabel.set("First fill the ssn");
+   }
+   else
+   {
+     model.addLoanBook(new LoanBook(idBook, libraryUser.getSSN()));
+   }
+
   }
 
-  public boolean ssnCheck()
+  public void getUser(String ssn)
   {
-    return true;
+    try
+  {
+    libraryUser = model.getUser(ssn);
+    if(libraryUser==null){
+      errorLabel.set("Library User does  not exit");
+    }
+
+    else
+    {
+      selectedLibraryUserLabel.set(libraryUser.getFirstName() + "|" + libraryUser.getLastName());
+    }
+  }catch (RemoteException e){
+      errorLabel.set(e.getMessage());
+    }
   }
+
+
 }
+
+

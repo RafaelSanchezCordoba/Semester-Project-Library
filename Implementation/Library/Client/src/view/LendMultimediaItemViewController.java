@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import model.LibraryUser;
 import model.LoanBook;
 import model.LoanMagazine;
 import model.MultimediaItem;
@@ -23,7 +24,6 @@ public class LendMultimediaItemViewController {
 
     @FXML private Label multimediaItemLabel;
     @FXML private Label errorLabel;
-    @FXML private Label selectedMultimediaItemLabel;
     @FXML private Label selectedLibraryUserLabel;
     @FXML private TextField multimediaItemSearchTextField;
     @FXML private TextField ssnTextField;
@@ -43,7 +43,6 @@ public class LendMultimediaItemViewController {
 
         magazineViewModel.bindErrorLabel(errorLabel.textProperty());
         magazineViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
-        magazineViewModel.bindSelectedMultimediaItemLabel(selectedMultimediaItemLabel.textProperty());
         magazineViewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
         magazineViewModel.bindMultimediaItemSearchTextField(multimediaItemSearchTextField.textProperty());
         magazineViewModel.bindSsnTextField(ssnTextField.textProperty());
@@ -52,7 +51,6 @@ public class LendMultimediaItemViewController {
 
         bookViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
         bookViewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
-        bookViewModel.bindSelectedMultimediaItemLabel(selectedMultimediaItemLabel.textProperty());
         bookViewModel.bindMultimediaItemSearchTextField(multimediaItemSearchTextField.textProperty());
         bookViewModel.bindErrorLabel(errorLabel.textProperty());
         bookViewModel.bindSsnTextField(ssnTextField.textProperty());
@@ -78,9 +76,11 @@ public class LendMultimediaItemViewController {
     @FXML void okButtonPressed()
     {
 
+        magazineViewModel.getUser(ssnTextField.getText());
+        bookViewModel.getUser(ssnTextField.getText());
 
-            selectedLibraryUserLabel.setText(ssnTextField.getText());
-            ssnTextField.setText("");
+        ssnTextField.setText("");
+
 
     }
 
@@ -89,27 +89,45 @@ public class LendMultimediaItemViewController {
         magazineListView.setVisible(true);
         magazineViewModel.setMagazineList();
     }
-    @FXML  void selectMultimediaItemButtonPressed(){
-        MultimediaItem selectedMultimediaItem;
-        selectedMultimediaItem = magazineListView.getSelectionModel().getSelectedItem();
 
-        selectedMultimediaItemLabel.setText(selectedMultimediaItem.toString());
-    }
     @FXML void cancelButtonPressed() throws SQLException, RemoteException {
         reset();
     }
 
-    @FXML void lendMultimediaItemButtonPressed() throws SQLException, RemoteException {
+    @FXML void onLendMagazine()  {
 
             int id_magazine = magazineListView.getSelectionModel().getSelectedItem().getId();
-            LoanMagazine loanMagazine = new LoanMagazine(id_magazine, ssnTextField.getText());
-            magazineViewModel.createLoan(loanMagazine);
 
-            int id_book = bookListView.getSelectionModel().getSelectedItem().getId();
-            LoanBook loanBook = new LoanBook(id_book, ssnTextField.getText());
-            bookViewModel.createLoan(loanBook);
+      try
+      {
+        magazineViewModel.createLoan(id_magazine);
+      }
+      catch (SQLException e)
+      {
+        e.printStackTrace();
+      }
+      catch (RemoteException e)
+      {
+        e.printStackTrace();
+      }
 
+    }
+   @FXML void onLendBook(){
+        int id_book = bookListView.getSelectionModel().getSelectedItem().getId();
 
+        try
+        {
+            bookViewModel.createLoan(id_book);
+        }
+
+        catch (RemoteException e)
+        {
+            e.printStackTrace();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML void homeMenuButtonPressed() throws SQLException, RemoteException {

@@ -1,5 +1,6 @@
 package mediator;
 
+import model.LibraryUser;
 import model.LoanMagazine;
 import model.Magazine;
 
@@ -8,6 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface ModelLoanMagazine extends PropertyChangeSubject{
-    void addMagazineLoan(LoanMagazine loanMagazine) throws SQLException, RemoteException;
-    ArrayList<Magazine> getAvailableMagazineList() throws SQLException, RemoteException;
+    void addMagazineLoan(LoanMagazine loanMagazine) throws RemoteException,
+        SQLException;
+    ArrayList<Magazine> getAvailableMagazineList()
+        throws RemoteException, SQLException;
+    LibraryUser getUser(String ssn) throws  RemoteException;
 }

@@ -1,6 +1,7 @@
 package client;
 
 import model.Book;
+import model.LibraryUser;
 import model.LoanBook;
 import server.RemoteLoanBook;
 import server.RemoteLoanMagazine;
@@ -35,6 +36,12 @@ public class LoanBookClientImplementation extends UnicastRemoteObject implements
       throws SQLException, RemoteException
   {
     return remoteLoanBook.getAvailableBookList();
+  }
+
+  @Override public LibraryUser getUser(String ssn)
+      throws RemoteException
+  {
+     return  remoteLoanBook.getUser(ssn);
   }
 
   @Override public void close() throws IOException

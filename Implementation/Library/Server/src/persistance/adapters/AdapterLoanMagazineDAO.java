@@ -1,5 +1,6 @@
 package persistance.adapters;
 
+import model.LibraryUser;
 import model.LoanMagazine;
 import model.Magazine;
 import persistance.DAO.LoanMagazineDAO;
@@ -27,6 +28,7 @@ public class AdapterLoanMagazineDAO implements LoanMagazineStorage {
         catch (SQLException e)
         {
             e.printStackTrace();
+            throw new RemoteException(e.getMessage());
         }
     }
 
@@ -40,7 +42,20 @@ public class AdapterLoanMagazineDAO implements LoanMagazineStorage {
         catch (SQLException e)
         {
             e.printStackTrace();
+            throw new RemoteException(e.getMessage());
         }
-        return null;
+
+    }
+
+    @Override public LibraryUser getUser(String ssn) throws RemoteException
+    {
+        try
+
+     {
+      return loanMagazineDAO.getLibraryUser(ssn);
+     }catch (SQLException e){
+            e.printStackTrace();
+            throw new RemoteException(e.getMessage());
+        }
     }
 }

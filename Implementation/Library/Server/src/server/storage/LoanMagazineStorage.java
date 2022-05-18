@@ -1,5 +1,6 @@
 package server.storage;
 
+import model.LibraryUser;
 import model.LoanMagazine;
 import model.Magazine;
 
@@ -12,4 +13,5 @@ public interface LoanMagazineStorage {
         RemoteException;
     ArrayList<Magazine> getAvailableMagazineList() throws SQLException,
         RemoteException;
+    LibraryUser getUser(String ssn) throws RemoteException;
 }

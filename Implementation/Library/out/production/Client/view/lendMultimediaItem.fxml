@@ -29,21 +29,14 @@
       <Button layoutX="427.0" layoutY="119.0" mnemonicParsing="false" onAction="#multimediaItemSearchButtonPressed" text="🔍" />
       <Button layoutX="15.0" layoutY="392.0" mnemonicParsing="false" onAction="#showBookListButtonPressed" text="Books" />
       <Button layoutX="82.0" layoutY="392.0" mnemonicParsing="false" onAction="#showMagazineListButtonPressed" text="Magazines" />
-      <Button layoutX="175.0" layoutY="392.0" mnemonicParsing="false" onAction="#selectMultimediaItemButtonPressed" text="Select Multimedia Item" />
-      <Label layoutX="499.0" layoutY="203.0" text="Multimedia Item: ">
+      <Label layoutX="498.0" layoutY="232.0" text="Library User: ">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="501.0" layoutY="269.0" text="Library User: ">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="selectedMultimediaItemLabel" layoutX="499.0" layoutY="233.0" text="Selected Multimedia Item..." />
-      <Label fx:id="selectedLibraryUserLabel" layoutX="501.0" layoutY="300.0" text="Selected Library User..." />
+      <Label fx:id="selectedLibraryUserLabel" layoutX="498.0" layoutY="263.0" text="Selected Library User..." />
       <Button layoutX="497.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" textFill="RED" />
-      <Button layoutX="630.0" layoutY="361.0" mnemonicParsing="false" onAction="#lendMultimediaItemButtonPressed" text="Lend Multimedia Item" />
+      <Button layoutX="630.0" layoutY="361.0" mnemonicParsing="false" onAction="#onLendMagazine" text="Lend Magazine" />
       <Label layoutX="569.0" layoutY="69.0" text="Library User">
          <font>
             <Font size="24.0" />
@@ -56,7 +49,8 @@
          </font>
       </Label>
       <Button layoutX="726.0" layoutY="158.0" mnemonicParsing="false" onAction="#okButtonPressed" text="OK" />
-      <Label fx:id="errorLabel" layoutX="329.0" layoutY="396.0" prefHeight="17.0" prefWidth="444.0" text="Error label" textFill="RED" />
+      <Label fx:id="errorLabel" layoutX="498.0" layoutY="196.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
       <ListView fx:id="bookListView" layoutX="16.0" layoutY="159.0" prefHeight="228.0" prefWidth="403.0" visible="false" />
+      <Button layoutX="629.0" layoutY="319.0" mnemonicParsing="false" onAction="#onLendBook" prefHeight="26.0" prefWidth="97.0" text="Lend Book" />
    </children>
 </AnchorPane>

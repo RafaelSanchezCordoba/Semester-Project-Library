@@ -1,5 +1,6 @@
 package persistance.DAO_implementation;
 
+import model.LibraryUser;
 import model.LoanMagazine;
 import model.Magazine;
 import persistance.DAO.LoanMagazineDAO;
@@ -20,6 +21,8 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
      */
     private String createMagazineLoanSql = "INSERT INTO \"library\".loan_magazine(magazine_id,start_of_loan,end_of_loan,library_user)"
             +"VALUES(?,?,?,?)";
+
+    private String getLibraryUser = "SELECT * FROM \"library\".library_user WHERE ssn = ? ";
 
 
     private String setAvailable = "UPDATE \"library\".magazine SET is_available = false WHERE id = ?";
@@ -61,6 +64,28 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
     {
         return DriverManager.getConnection("jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
                 "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
+    }
+
+    public LibraryUser getLibraryUser(String ssn) throws SQLException{
+        try(Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(getLibraryUser);
+            statement.setString(1,ssn);
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()){
+                String socialnumber = resultSet.getString("ssn");
+                String password = resultSet.getString("password");
+                String f_name = resultSet.getString("f_name");
+                String l_name = resultSet.getString("l_name");
+
+               LibraryUser result = new LibraryUser(socialnumber,f_name,l_name,password);
+
+               return result;
+            }
+        }
+        return null;
     }
     
     /**

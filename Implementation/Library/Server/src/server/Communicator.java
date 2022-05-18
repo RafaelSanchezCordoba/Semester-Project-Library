@@ -98,7 +98,7 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
 
     @Override
     public void addMagazineLoan(LoanMagazine loanMagazine)
-        throws SQLException, RemoteException
+        throws  RemoteException,SQLException
     {
         loanMagazineStorage.addMagazineLoan(loanMagazine);
     }
@@ -121,6 +121,11 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     {
         return loanBookStorage.getAvailableBooks();
     }
+    public LibraryUser getUser(String ssn) throws RemoteException
+    {
+        return loanMagazineStorage.getUser(ssn);
+    }
+
 }
 
 
