@@ -1,0 +1,16 @@
+package server;
+
+import model.Book;
+import model.LoanBook;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public interface RemoteLoanBook extends Remote
+{
+  void addBookLoan(LoanBook loanBook) throws SQLException, RemoteException;
+  ArrayList<Book> getAvailableBookList() throws SQLException, RemoteException;
+}
+

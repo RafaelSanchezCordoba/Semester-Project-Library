@@ -1,0 +1,16 @@
+package client;
+
+import model.Book;
+import model.LoanBook;
+
+
+import java.io.Closeable;
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public interface LoanBookClient extends Closeable
+{
+  void addBookLoan(LoanBook loanBook) throws SQLException, RemoteException;
+  ArrayList<Book> getAvailableBookList() throws SQLException, RemoteException;
+}
