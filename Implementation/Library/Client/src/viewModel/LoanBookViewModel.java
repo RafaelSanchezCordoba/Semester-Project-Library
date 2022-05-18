@@ -100,6 +100,7 @@ public class LoanBookViewModel implements PropertyChangeListener
     selectedLibraryUserLabel.set("");
     multimediaItemSearchTextField.set("");
     ssnTextField.set("");
+    System.out.println(availableBooks.size());
   }
 
   public void setBookList()throws RemoteException,SQLException{

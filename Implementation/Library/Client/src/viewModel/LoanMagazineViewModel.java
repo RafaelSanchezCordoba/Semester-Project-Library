@@ -92,6 +92,13 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
         model.addMagazineLoan(loanMagazine);
     }
 
+    public boolean getLibraryUser(String ssn){
+
+
+        return false;
+
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         try {

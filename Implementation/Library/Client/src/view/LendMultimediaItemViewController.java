@@ -19,7 +19,7 @@ public class LendMultimediaItemViewController {
     private Region root;
     private LoanMagazineViewModel magazineViewModel;
     private LoanBookViewModel bookViewModel;
-    private String currentlyShowing;
+
 
     @FXML private Label multimediaItemLabel;
     @FXML private Label errorLabel;
@@ -27,7 +27,9 @@ public class LendMultimediaItemViewController {
     @FXML private Label selectedLibraryUserLabel;
     @FXML private TextField multimediaItemSearchTextField;
     @FXML private TextField ssnTextField;
-    @FXML private ListView<MultimediaItem> multimediaItemListView;
+    @FXML private ListView<MultimediaItem> magazineListView;
+    @FXML private ListView<MultimediaItem> bookListView;
+
 
 
     public void init(ViewHandler viewHandler, LoanMagazineViewModel magazineViewModel, LoanBookViewModel bookViewModel, Region root) throws SQLException, RemoteException {
@@ -35,7 +37,9 @@ public class LendMultimediaItemViewController {
         this.magazineViewModel = magazineViewModel;
         this.bookViewModel=bookViewModel;
         this.root = root;
-        currentlyShowing="books";
+
+        bookListView.setVisible(false);
+        magazineListView.setVisible(false);
 
         magazineViewModel.bindErrorLabel(errorLabel.textProperty());
         magazineViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
@@ -43,15 +47,18 @@ public class LendMultimediaItemViewController {
         magazineViewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
         magazineViewModel.bindMultimediaItemSearchTextField(multimediaItemSearchTextField.textProperty());
         magazineViewModel.bindSsnTextField(ssnTextField.textProperty());
-        magazineViewModel.bindAvailableMagazineList(multimediaItemListView.itemsProperty());
+        magazineViewModel.bindAvailableMagazineList(magazineListView.itemsProperty());
 
-        bookViewModel.bindAvailableBooksList(multimediaItemListView.itemsProperty());
+
         bookViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
         bookViewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
         bookViewModel.bindSelectedMultimediaItemLabel(selectedMultimediaItemLabel.textProperty());
         bookViewModel.bindMultimediaItemSearchTextField(multimediaItemSearchTextField.textProperty());
         bookViewModel.bindErrorLabel(errorLabel.textProperty());
         bookViewModel.bindSsnTextField(ssnTextField.textProperty());
+        bookViewModel.bindAvailableBooksList(bookListView.itemsProperty());
+
+
     }
 
     @FXML
@@ -62,23 +69,30 @@ public class LendMultimediaItemViewController {
     @FXML
     public void showBookListButtonPressed() throws SQLException, RemoteException
     {
-        currentlyShowing="books";
+
+        bookListView.setVisible(true);
+        magazineListView.setVisible(false);
         bookViewModel.setBookList();
     }
 
-    @FXML void okButtonPressed() throws SQLException, RemoteException
+    @FXML void okButtonPressed()
     {
-        selectedLibraryUserLabel.setText(ssnTextField.getText());
-        ssnTextField.setText("");
+
+
+            selectedLibraryUserLabel.setText(ssnTextField.getText());
+            ssnTextField.setText("");
+
     }
 
     @FXML void showMagazineListButtonPressed() throws SQLException, RemoteException {
-       currentlyShowing="magazines";
+        bookListView.setVisible(false);
+        magazineListView.setVisible(true);
         magazineViewModel.setMagazineList();
     }
     @FXML  void selectMultimediaItemButtonPressed(){
         MultimediaItem selectedMultimediaItem;
-        selectedMultimediaItem = multimediaItemListView.getSelectionModel().getSelectedItem();
+        selectedMultimediaItem = magazineListView.getSelectionModel().getSelectedItem();
+
         selectedMultimediaItemLabel.setText(selectedMultimediaItem.toString());
     }
     @FXML void cancelButtonPressed() throws SQLException, RemoteException {
@@ -86,18 +100,15 @@ public class LendMultimediaItemViewController {
     }
 
     @FXML void lendMultimediaItemButtonPressed() throws SQLException, RemoteException {
-        if (currentlyShowing.equals("magazines"))
-        {
-            int id_magazine = multimediaItemListView.getSelectionModel().getSelectedItem().getId();
+
+            int id_magazine = magazineListView.getSelectionModel().getSelectedItem().getId();
             LoanMagazine loanMagazine = new LoanMagazine(id_magazine, ssnTextField.getText());
             magazineViewModel.createLoan(loanMagazine);
-        }
-        else if (currentlyShowing.equals("books"))
-        {
-            int id_book = multimediaItemListView.getSelectionModel().getSelectedItem().getId();
+
+            int id_book = bookListView.getSelectionModel().getSelectedItem().getId();
             LoanBook loanBook = new LoanBook(id_book, ssnTextField.getText());
             bookViewModel.createLoan(loanBook);
-        }
+
 
     }
 
@@ -114,14 +125,13 @@ public class LendMultimediaItemViewController {
     }
 
     public void reset() throws SQLException, RemoteException {
-        if (currentlyShowing.equals("books"))
-        {
-            bookViewModel.reset();
-        }
-        else if (currentlyShowing.equals("magazines"))
-        {
-            magazineViewModel.reset();
-        }
+        bookViewModel.setBookList();
+        magazineViewModel.setMagazineList();
+
+        bookViewModel.reset();
+
+        magazineViewModel.reset();
+
     }
 
     public Region getRoot(){

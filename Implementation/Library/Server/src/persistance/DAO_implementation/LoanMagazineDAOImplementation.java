@@ -29,6 +29,8 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
      */
     private String getAvailableMagazines = "SELECT * FROM \"library\".magazine WHERE is_available = TRUE ";
 
+
+
     private static LoanMagazineDAOImplementation instance;
 
     /**

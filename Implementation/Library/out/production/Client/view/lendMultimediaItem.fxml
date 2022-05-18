@@ -24,7 +24,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ListView fx:id="multimediaItemListView" layoutX="14.0" layoutY="158.0" prefHeight="228.0" prefWidth="444.0" />
+      <ListView fx:id="magazineListView" layoutX="14.0" layoutY="158.0" prefHeight="228.0" prefWidth="403.0" />
       <TextField fx:id="multimediaItemSearchTextField" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="403.0" />
       <Button layoutX="427.0" layoutY="119.0" mnemonicParsing="false" onAction="#multimediaItemSearchButtonPressed" text="🔍" />
       <Button layoutX="15.0" layoutY="392.0" mnemonicParsing="false" onAction="#showBookListButtonPressed" text="Books" />
@@ -57,5 +57,6 @@
       </Label>
       <Button layoutX="726.0" layoutY="158.0" mnemonicParsing="false" onAction="#okButtonPressed" text="OK" />
       <Label fx:id="errorLabel" layoutX="329.0" layoutY="396.0" prefHeight="17.0" prefWidth="444.0" text="Error label" textFill="RED" />
+      <ListView fx:id="bookListView" layoutX="16.0" layoutY="159.0" prefHeight="228.0" prefWidth="403.0" visible="false" />
    </children>
 </AnchorPane>
