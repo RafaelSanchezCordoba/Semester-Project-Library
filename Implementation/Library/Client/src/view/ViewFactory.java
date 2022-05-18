@@ -63,7 +63,7 @@ public class ViewFactory
       {
         Region root = loader.load();
         lendMultimediaItemViewController = loader.getController();
-        lendMultimediaItemViewController.init(viewHandler,viewModelFactory.getLoanMagazineViewModel(),root);
+        lendMultimediaItemViewController.init(viewHandler,viewModelFactory.getLoanMagazineViewModel(),viewModelFactory.getLoanBookViewModel(),root);
       }catch (IOException e){
         throw  new IOError(e);
       }

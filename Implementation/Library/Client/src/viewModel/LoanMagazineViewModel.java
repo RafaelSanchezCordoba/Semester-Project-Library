@@ -55,7 +55,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
     }
 
     public void bindSelectedMultimediaItemLabel(StringProperty property){
-        property.bindBidirectional(selectedLibraryUserLabel);
+        property.bindBidirectional(selectedMultimediaItemLabel);
     }
 
     public void bindSelectedLibraryUserLabel(StringProperty property){

@@ -8,7 +8,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine, RemoteLibrarian, RemoteLoanMagazine{
+public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine, RemoteLibrarian, RemoteLoanMagazine, RemoteLoanBook{
     private MagazineStorage magazineStorage;
     private BookStorage bookStorage;
     private LibrarianStorage librarianStorage;
@@ -104,6 +104,18 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     @Override
     public ArrayList<Magazine> getAvailableMagazineList() throws SQLException {
         return loanMagazineStorage.getAvailableMagazineList();
+    }
+
+    @Override public void addBookLoan(LoanBook loanBook)
+        throws SQLException, RemoteException
+    {
+        loanBookStorage.addLoanBook(loanBook);
+    }
+
+    @Override public ArrayList<Book> getAvailableBookList()
+        throws SQLException, RemoteException
+    {
+        return loanBookStorage.getAvailableBooks();
     }
 }
 
