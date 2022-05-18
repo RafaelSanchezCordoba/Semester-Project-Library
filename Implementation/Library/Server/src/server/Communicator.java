@@ -97,12 +97,16 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     }
 
     @Override
-    public void addMagazineLoan(LoanMagazine loanMagazine) throws SQLException {
+    public void addMagazineLoan(LoanMagazine loanMagazine)
+        throws SQLException, RemoteException
+    {
         loanMagazineStorage.addMagazineLoan(loanMagazine);
     }
 
     @Override
-    public ArrayList<Magazine> getAvailableMagazineList() throws SQLException {
+    public ArrayList<Magazine> getAvailableMagazineList()
+        throws SQLException, RemoteException
+    {
         return loanMagazineStorage.getAvailableMagazineList();
     }
 
