@@ -20,15 +20,30 @@ public class AdapterLibraryUserDAO implements LibraryUserStorage
     this.libraryUserDAO = libraryUserDAO;
   }
 
-  @Override public void addLibraryUser(LibraryUser libraryUser) throws RemoteException, SQLException {
-    libraryUserDAO.addLibraryUser(libraryUser);
+  @Override public void addLibraryUser(LibraryUser libraryUser) throws RemoteException {
+
+    try {
+      libraryUserDAO.addLibraryUser(libraryUser);
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw new RemoteException(e.getMessage());
+    }
   }
 
-  @Override public void removeLibraryUser(String ssn) throws SQLException {
-    libraryUserDAO.removeLibraryUser(ssn);
+  @Override public void removeLibraryUser(String ssn) {
+    try {
+      libraryUserDAO.removeLibraryUser(ssn);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 
-  @Override public ArrayList<LibraryUser> getLibraryUserList() throws RemoteException, SQLException {
-    return libraryUserDAO.getLibraryUserList();
+  @Override public ArrayList<LibraryUser> getLibraryUserList() throws RemoteException {
+    try {
+      return libraryUserDAO.getLibraryUserList();
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw new RemoteException(e.getMessage());
+    }
   }
 }

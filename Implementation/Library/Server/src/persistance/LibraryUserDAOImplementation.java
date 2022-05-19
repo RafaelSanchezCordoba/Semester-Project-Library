@@ -17,7 +17,7 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
       +"VALUES(?,?,?,?)";
   private String removeLibraryUserSql= "DELETE FROM \"library\".library_user WHERE ssn = ?";
 
-  private String getLibraryUserList = "SELECT * FROM \"library\".library_user ORDER BY id DESC";
+  private String getLibraryUserList = "SELECT * FROM \"library\".library_user";
 
   private static LibraryUserDAOImplementation instance;
 

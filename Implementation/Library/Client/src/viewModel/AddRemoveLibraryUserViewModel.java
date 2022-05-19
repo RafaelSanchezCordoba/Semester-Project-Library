@@ -80,8 +80,7 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         model.removeLibraryUser(ssn);
     }
 
-    //setLibraryUserList
-    public void setUserList() throws SQLException, RemoteException {
+    public void setUserList() throws SQLException, RemoteException{
         userList.clear();
         userList.addAll(model.getLibraryUserList());
     }

@@ -57,6 +57,7 @@ public class AddRemoveLibraryUserViewController
                 passwordTextField.getText());
         viewModel.addLibraryUser(libraryUser);
         reset();
+        System.out.println("Button pressed");
         
     }
 
