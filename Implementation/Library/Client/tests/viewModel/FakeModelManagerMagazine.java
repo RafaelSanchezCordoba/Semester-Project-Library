@@ -1,5 +1,6 @@
-package mediator;
+package viewModel;
 
+import mediator.ModelMagazine;
 import model.Magazine;
 
 import java.beans.PropertyChangeListener;

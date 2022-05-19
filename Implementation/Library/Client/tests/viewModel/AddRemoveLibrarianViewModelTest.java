@@ -5,10 +5,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import mediator.FakeModelManagerLibrarian;
 import mediator.ModelLibrarian;
 import model.Librarian;
-import model.LibrarianList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +29,7 @@ public class AddRemoveLibrarianViewModelTest
 
   @BeforeEach void setUp()
   {
-    ModelLibrarian fakeModel=new FakeModelManagerLibrarian(new LibrarianList());
+    ModelLibrarian fakeModel=new FakeModelManagerLibrarian(new ArrayList<Librarian>());
     viewModel=new AddRemoveLibrarianViewModel(fakeModel);
     firstName=new SimpleStringProperty();
     lastName=new SimpleStringProperty();

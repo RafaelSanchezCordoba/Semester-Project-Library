@@ -4,7 +4,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import mediator.FakeModelManagerMagazine;
 import mediator.ModelMagazine;
 import model.Magazine;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,7 +1,7 @@
-package mediator;
+package viewModel;
 
+import mediator.ModelLibrarian;
 import model.Librarian;
-import model.LibrarianList;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -11,10 +11,10 @@ import java.util.ArrayList;
 
 public class FakeModelManagerLibrarian implements ModelLibrarian
 {
-  private LibrarianList list;
+  private ArrayList<Librarian> list;
   private final PropertyChangeSupport support;
 
-  public FakeModelManagerLibrarian(LibrarianList list)
+  public FakeModelManagerLibrarian(ArrayList<Librarian> list)
   {
     this.list = list;
     support = new PropertyChangeSupport(this);
@@ -22,14 +22,20 @@ public class FakeModelManagerLibrarian implements ModelLibrarian
 
   @Override public void addLibrarian(Librarian librarian) throws RemoteException
   {
-    list.addLibrarian(librarian);
+    list.add(librarian);
     support.firePropertyChange("newLibrarian", null, librarian);
   }
 
   @Override public void removeLibrarian(String SSN)
       throws RemoteException, SQLException
   {
-    list.removeLibrarianBySsn(SSN);
+    for (int i=0;i<list.size();i++)
+    {
+      if (list.get(i).getSsn().equals(SSN))
+      {
+        list.remove(list.get(i));
+      }
+    }
     support.firePropertyChange("removeLibrarian",null,SSN);
   }
 
@@ -37,8 +43,7 @@ public class FakeModelManagerLibrarian implements ModelLibrarian
   @Override public ArrayList<Librarian> getLibrarianList()
       throws RemoteException
   {
-    return list.getLibrarianList();
-  }
+    return list;  }
 
   @Override public void addPropertyChangeListener(
       PropertyChangeListener listener)

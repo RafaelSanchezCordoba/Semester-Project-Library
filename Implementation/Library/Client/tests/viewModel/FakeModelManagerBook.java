@@ -1,5 +1,6 @@
-package mediator;
+package viewModel;
 
+import mediator.ModelBook;
 import model.Book;
 import model.GenreList;
 
