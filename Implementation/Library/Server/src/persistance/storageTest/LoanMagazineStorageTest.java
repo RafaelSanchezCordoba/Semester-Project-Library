@@ -1,9 +1,11 @@
 package persistance.storageTest;
 
+import model.LibraryUser;
 import model.LoanMagazine;
 import model.Magazine;
 import server.storage.LoanMagazineStorage;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -40,5 +42,10 @@ public class LoanMagazineStorageTest implements LoanMagazineStorage
       throws SQLException
   {
     return magazineList;
+  }
+
+  @Override public LibraryUser getUser(String ssn) throws RemoteException
+  {
+    return null;
   }
 }

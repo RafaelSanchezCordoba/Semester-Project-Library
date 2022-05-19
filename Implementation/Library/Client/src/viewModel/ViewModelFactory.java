@@ -1,9 +1,6 @@
 package viewModel;
 
-import mediator.ModelBook;
-import mediator.ModelLibrarian;
-import mediator.ModelLoanMagazine;
-import mediator.ModelMagazine;
+import mediator.*;
 
 import java.rmi.RemoteException;
 
@@ -12,12 +9,14 @@ public class ViewModelFactory {
     private final AddRemoveMagazineViewModel magazineViewModel;
     private final AddRemoveLibrarianViewModel librarianViewModel;
     private final LoanMagazineViewModel loanMagazineViewModel;
+    private final LoanBookViewModel loanBookViewModel;
 
-    public ViewModelFactory(ModelBook modelBook, ModelMagazine modelMagazine, ModelLibrarian modelLibrarian, ModelLoanMagazine modelLoanMagazine) throws RemoteException {
+    public ViewModelFactory(ModelBook modelBook, ModelMagazine modelMagazine, ModelLibrarian modelLibrarian, ModelLoanMagazine modelLoanMagazine, ModelLoanBook modelLoanBook) throws RemoteException {
         this.bookViewModel = new AddRemoveBookViewModel(modelBook);
         this.magazineViewModel = new AddRemoveMagazineViewModel(modelMagazine);
         this.librarianViewModel = new AddRemoveLibrarianViewModel(modelLibrarian);
         this.loanMagazineViewModel = new LoanMagazineViewModel(modelLoanMagazine);
+        this.loanBookViewModel=new LoanBookViewModel(modelLoanBook);
     }
 
 
@@ -27,10 +26,14 @@ public class ViewModelFactory {
     public LoanMagazineViewModel getLoanMagazineViewModel() {
         return loanMagazineViewModel;
     }
+    public LoanBookViewModel getLoanBookViewModel() {
+        return loanBookViewModel;
+    }
     public AddRemoveMagazineViewModel getMagazineViewModel() {
         return magazineViewModel;
     }
     public  AddRemoveLibrarianViewModel getLibrarianViewModel(){
         return librarianViewModel;
     }
+
 }

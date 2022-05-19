@@ -54,7 +54,7 @@ public class ViewHandler
       case ITEM:
         root= viewFactory.loadChoseItemTypeView();
         break;
-      case "home":
+      case HOME:
          root = viewFactory.loadHomeView();
          break;
       case LENDMULTIMEDIAITEM:

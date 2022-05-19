@@ -1,6 +1,7 @@
 package mediator;
 
 import client.LoanMagazineClient;
+import model.LibraryUser;
 import model.LoanMagazine;
 import model.Magazine;
 
@@ -26,9 +27,18 @@ public class ModelManagerLoanMagazine implements ModelLoanMagazine {
     }
 
     @Override
-    public ArrayList<Magazine> getAvailableMagazineList() throws SQLException, RemoteException {
+    public ArrayList<Magazine> getAvailableMagazineList()
+        throws RemoteException, SQLException
+    {
 
         return client.getAvailableMagazineList();
+    }
+
+    @Override public LibraryUser getUser(String ssn)
+        throws  RemoteException
+    {
+
+        return client.getUser(ssn);
     }
 
     /**
@@ -58,6 +68,7 @@ public class ModelManagerLoanMagazine implements ModelLoanMagazine {
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         support.removePropertyChangeListener(listener);
     }
+
 
     /**
      *

@@ -1,6 +1,7 @@
 package persistance.DAO_implementation;
 
 import model.Book;
+import model.LibraryUser;
 import model.LoanBook;
 import persistance.DAO.BookDAO;
 import persistance.DAO.LoanBookDAO;
@@ -10,10 +11,12 @@ import java.util.ArrayList;
 
 public class LoanBookDAOImplementation implements LoanBookDAO
 {
-  private final String createLoanBookSql = "INSERT INTO \"library\".loan_book(book_id,start_of_loan,end_of_loan,library_user) "
-      +"VALUES(?,?,?,?,)";
+  private final String createLoanBookSql = "INSERT INTO \"library\".loan_book(book_id,start_of_loan,end_of_loan,library_user)"
+      +"VALUES(?,?,?,?)";
 
   private final String getAvailableBooksSql = "SELECT * FROM \"library\".book WHERE is_available = TRUE ";
+
+  private String getLibraryUser = "SELECT * FROM \"library\".library_user WHERE ssn = ? ";
 
   private String setAvailable = "UPDATE \"library\".book SET is_available = false WHERE id = ?";
 
@@ -94,5 +97,28 @@ public class LoanBookDAOImplementation implements LoanBookDAO
     {
       connection.close();
     }
+  }
+
+  @Override public LibraryUser getUser(String ssn) throws SQLException
+  {
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement(getLibraryUser);
+      statement.setString(1,ssn);
+      ResultSet resultSet = statement.executeQuery();
+
+
+      while (resultSet.next()){
+        String socialanumber = resultSet.getString("ssn");
+        String password = resultSet.getString("password");
+        String f_name = resultSet.getString("f_name");
+        String l_name = resultSet.getString("l_name");
+
+        LibraryUser result = new LibraryUser(socialanumber,f_name,l_name,password);
+
+        return result;
+      }
+    }
+    return null;
   }
 }

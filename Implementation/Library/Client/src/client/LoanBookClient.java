@@ -1,6 +1,7 @@
 package client;
 
 import model.Book;
+import model.LibraryUser;
 import model.LoanBook;
 
 
@@ -13,4 +14,5 @@ public interface LoanBookClient extends Closeable
 {
   void addBookLoan(LoanBook loanBook) throws SQLException, RemoteException;
   ArrayList<Book> getAvailableBookList() throws SQLException, RemoteException;
+  LibraryUser getUser(String ssn) throws RemoteException;
 }

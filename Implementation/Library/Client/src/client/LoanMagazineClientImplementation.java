@@ -1,5 +1,6 @@
 package client;
 
+import model.LibraryUser;
 import model.LoanMagazine;
 import model.Magazine;
 import server.RemoteBook;
@@ -29,8 +30,15 @@ public class LoanMagazineClientImplementation extends UnicastRemoteObject implem
     }
 
     @Override
-    public ArrayList<Magazine> getAvailableMagazineList() throws SQLException, RemoteException {
+    public ArrayList<Magazine> getAvailableMagazineList() throws  RemoteException,SQLException {
         return remoteLoanMagazine.getAvailableMagazineList();
+    }
+
+
+    @Override public LibraryUser getUser(String ssn)
+        throws RemoteException
+    {
+        return remoteLoanMagazine.getUser(ssn);
     }
 
     @Override

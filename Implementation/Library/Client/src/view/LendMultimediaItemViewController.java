@@ -5,8 +5,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import model.LibraryUser;
+import model.LoanBook;
 import model.LoanMagazine;
 import model.MultimediaItem;
+import viewModel.LoanBookViewModel;
 import viewModel.LoanMagazineViewModel;
 
 import java.rmi.RemoteException;
@@ -15,29 +18,45 @@ import java.sql.SQLException;
 public class LendMultimediaItemViewController {
     private ViewHandler viewHandler;
     private Region root;
-    private LoanMagazineViewModel viewModel;
+    private LoanMagazineViewModel magazineViewModel;
+    private LoanBookViewModel bookViewModel;
+
 
     @FXML private Label multimediaItemLabel;
-    @FXML private Label errorLabel;
-    @FXML private Label selectedMultimediaItemLabel;
+    @FXML private Label errorLabelBook;
+    @FXML private Label errorLabelMagazine;
     @FXML private Label selectedLibraryUserLabel;
     @FXML private TextField multimediaItemSearchTextField;
     @FXML private TextField ssnTextField;
-    @FXML private ListView<MultimediaItem> multimediaItemListView;
+    @FXML private ListView<MultimediaItem> magazineListView;
+    @FXML private ListView<MultimediaItem> bookListView;
 
 
-    public void init(ViewHandler viewHandler, LoanMagazineViewModel viewModel, Region root) throws SQLException, RemoteException {
+
+    public void init(ViewHandler viewHandler, LoanMagazineViewModel magazineViewModel, LoanBookViewModel bookViewModel, Region root) throws SQLException, RemoteException {
         this.viewHandler = viewHandler;
-        this.viewModel = viewModel;
+        this.magazineViewModel = magazineViewModel;
+        this.bookViewModel=bookViewModel;
         this.root = root;
 
-        viewModel.bindErrorLabel(errorLabel.textProperty());
-        viewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
-        viewModel.bindSelectedMultimediaItemLabel(selectedMultimediaItemLabel.textProperty());
-        viewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
-        viewModel.bindMultimediaItemSearchTextField(multimediaItemSearchTextField.textProperty());
-        viewModel.bindSsnTextField(ssnTextField.textProperty());
-        viewModel.bindAvailableMagazineList(multimediaItemListView.itemsProperty());
+        bookListView.setVisible(false);
+        magazineListView.setVisible(false);
+
+        magazineViewModel.bindErrorLabel(errorLabelMagazine.textProperty());
+        magazineViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
+        magazineViewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
+        magazineViewModel.bindMultimediaItemSearchTextField(multimediaItemSearchTextField.textProperty());
+        magazineViewModel.bindSsnTextField(ssnTextField.textProperty());
+        magazineViewModel.bindAvailableMagazineList(magazineListView.itemsProperty());
+
+
+        bookViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
+        bookViewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
+        bookViewModel.bindMultimediaItemSearchTextField(multimediaItemSearchTextField.textProperty());
+        bookViewModel.bindErrorLabel(errorLabelBook.textProperty());
+        bookViewModel.bindSsnTextField(ssnTextField.textProperty());
+        bookViewModel.bindAvailableBooksList(bookListView.itemsProperty());
+
 
     }
 
@@ -47,30 +66,87 @@ public class LendMultimediaItemViewController {
     }
 
     @FXML
-    public void showBookListButtonPressed(){
-        //Not now
+    public void showBookListButtonPressed() throws SQLException, RemoteException
+    {
+        resetErrorLabels();
+        bookListView.setVisible(true);
+        magazineListView.setVisible(false);
+        bookViewModel.setBookList();
     }
 
-    @FXML void okButtonPressed(){
-        //We need the library User
+    @FXML void okButtonPressed()
+    {
+      resetErrorLabels();
+      magazineViewModel.getUser(ssnTextField.getText());
+      bookViewModel.getUser(ssnTextField.getText());
+
+      ssnTextField.setText("");
+
+
     }
 
     @FXML void showMagazineListButtonPressed() throws SQLException, RemoteException {
-        viewModel.setMagazineList();
-    }
-    @FXML  void selectMultimediaItemButtonPressed(){
-        MultimediaItem selectedMultimediaItem;
-        selectedMultimediaItem = multimediaItemListView.getSelectionModel().getSelectedItem();
-        selectedMultimediaItemLabel.setText(selectedMultimediaItem.toString());
-    }
-    @FXML void cancelButtonPressed() throws SQLException, RemoteException {
-        viewModel.reset();
+      resetErrorLabels();
+        bookListView.setVisible(false);
+        magazineListView.setVisible(true);
+        magazineViewModel.setMagazineList();
     }
 
-    @FXML void lendMultimediaItemButtonPressed() throws SQLException, RemoteException {
-        int id_magazine = multimediaItemListView.getSelectionModel().getSelectedItem().getId();
-        LoanMagazine loanMagazine = new LoanMagazine(id_magazine, ssnTextField.getText());
-        viewModel.createLoan(loanMagazine);
+    @FXML void cancelButtonPressed() throws SQLException, RemoteException {
+        reset();
+    }
+
+    @FXML void onLendMagazine()  {
+      resetErrorLabels();
+      try
+      {
+        int id_magazine = magazineListView.getSelectionModel().getSelectedItem()
+            .getId();
+        try
+        {
+          magazineViewModel.createLoan(id_magazine);
+        }
+        catch (SQLException e)
+        {
+          e.printStackTrace();
+        }
+        catch (RemoteException e)
+        {
+          e.printStackTrace();
+        }
+      }
+      catch (NullPointerException e){
+        errorLabelMagazine.setText("No magazine selected");
+      }
+
+
+
+
+
+    }
+   @FXML void onLendBook(){
+     resetErrorLabels();
+     try
+     {
+       int id_book = bookListView.getSelectionModel().getSelectedItem().getId();
+       try
+       {
+         bookViewModel.createLoan(id_book);
+       }
+       catch (SQLException e)
+       {
+         e.printStackTrace();
+       }
+       catch (RemoteException e)
+       {
+         e.printStackTrace();
+       }
+     }
+     catch (NullPointerException e){
+       errorLabelBook.setText("No book selected");
+     }
+
+
     }
 
     @FXML void homeMenuButtonPressed() throws SQLException, RemoteException {
@@ -78,7 +154,7 @@ public class LendMultimediaItemViewController {
     }
 
     @FXML void multimediaItemMenuButtonPressed() throws SQLException, RemoteException {
-        viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
+        viewHandler.openView(ViewHandler.ITEM);
     }
 
     @FXML void logOutButtonPressed(){
@@ -86,12 +162,21 @@ public class LendMultimediaItemViewController {
     }
 
     public void reset() throws SQLException, RemoteException {
-        viewModel.reset();
+        bookViewModel.setBookList();
+        magazineViewModel.setMagazineList();
+
+        bookViewModel.reset();
+
+        magazineViewModel.reset();
+
     }
 
     public Region getRoot(){
         return root;
     }
 
-
+    public void resetErrorLabels(){
+      errorLabelBook.setText("");
+      errorLabelMagazine.setText("");
+    }
 }

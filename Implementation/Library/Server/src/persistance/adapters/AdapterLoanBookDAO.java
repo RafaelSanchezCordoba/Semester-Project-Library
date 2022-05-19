@@ -1,10 +1,12 @@
 package persistance.adapters;
 
 import model.Book;
+import model.LibraryUser;
 import model.LoanBook;
 import persistance.DAO.LoanBookDAO;
 import server.storage.LoanBookStorage;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -16,13 +18,39 @@ public class AdapterLoanBookDAO implements LoanBookStorage
   public AdapterLoanBookDAO(LoanBookDAO loanBookDAO){
     this.loanBookDAO = loanBookDAO;
   }
-  @Override public void addLoanBook(LoanBook loanBook) throws SQLException
+  @Override public void addLoanBook(LoanBook loanBook) throws RemoteException
   {
-    loanBookDAO.addLoanBook(loanBook);
+    try
+    {
+      loanBookDAO.addLoanBook(loanBook);
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
   }
 
-  @Override public ArrayList<Book> getAvailableBooks() throws SQLException
+  @Override public ArrayList<Book> getAvailableBooks() throws RemoteException
   {
-    return loanBookDAO.getAvailableBooks();
+    try
+    {
+      return loanBookDAO.getAvailableBooks();
+    }
+    catch (SQLException e)
+    {
+
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override public LibraryUser getUser(String ssn) throws RemoteException
+  {
+    try
+    {
+      return loanBookDAO.getUser(ssn);
+    }catch (SQLException e){
+      throw  new RemoteException(e.getMessage());
+    }
   }
 }

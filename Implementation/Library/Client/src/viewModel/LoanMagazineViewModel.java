@@ -10,9 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import mediator.ModelLoanMagazine;
 
-import model.LoanMagazine;
-import model.Magazine;
-import model.MultimediaItem;
+import model.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -22,6 +20,7 @@ import java.util.ArrayList;
 
 public class LoanMagazineViewModel implements PropertyChangeListener {
     private final ModelLoanMagazine model;
+    private LibraryUser user;
 
     private final StringProperty multimediaItemLabel;
     private final StringProperty errorLabel;
@@ -42,6 +41,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
      ObservableList<MultimediaItem> observableList = FXCollections.observableArrayList( new ArrayList<MultimediaItem>());
      this.availableMagazines = new SimpleListProperty<>(observableList);
 
+
         model.addPropertyChangeListener("newLoanMagazine", this);
         model.addPropertyChangeListener("removeLoanMagazine", this);
     }
@@ -51,12 +51,10 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
     }
 
     public void bindErrorLabel(StringProperty property){
-        property.bind(errorLabel);
+        property.bindBidirectional(errorLabel);
     }
 
-    public void bindSelectedMultimediaItemLabel(StringProperty property){
-        property.bindBidirectional(selectedLibraryUserLabel);
-    }
+
 
     public void bindSelectedLibraryUserLabel(StringProperty property){
         property.bindBidirectional(selectedLibraryUserLabel);
@@ -78,19 +76,51 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
        multimediaItemLabel.set("");
        errorLabel.set("");
        selectedMultimediaItemLabel.set("");
-       selectedLibraryUserLabel.set("");
+     //  selectedLibraryUserLabel.set("");
        multimediaItemSearchTextField.set("");
        ssnTextField.set("");
     }
+    public void getUser(String ssn){
+      try
+      {
+        user = model.getUser(ssn);
+        if(user==null){
+          errorLabel.set("Library User does  not exit");
+        }
+
+        else{
+        selectedLibraryUserLabel.set(user.getFirstName() + "|" + user.getLastName());
+        }
+
+      }catch (RemoteException e){
+        System.out.println("error");
+        errorLabel.set(e.getMessage());
+      }
+
+    }
+
 
     public void setMagazineList() throws RemoteException, SQLException{
         availableMagazines.clear();
         availableMagazines.addAll(model.getAvailableMagazineList());
     }
 
-    public void createLoan(LoanMagazine loanMagazine) throws SQLException, RemoteException {
-        model.addMagazineLoan(loanMagazine);
+    public void createLoan(int  idMagazine) throws SQLException,  RemoteException {
+
+      if(user==null)
+      {
+        errorLabel.set("First fill the ssn");
+      }
+      else
+      {
+        model.addMagazineLoan(new LoanMagazine(idMagazine, user.getSSN()));
+      }
+
+
     }
+
+
+
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
