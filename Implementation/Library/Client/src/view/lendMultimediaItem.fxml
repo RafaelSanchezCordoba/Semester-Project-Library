@@ -29,12 +29,12 @@
       <Button layoutX="427.0" layoutY="119.0" mnemonicParsing="false" onAction="#multimediaItemSearchButtonPressed" text="🔍" />
       <Button layoutX="15.0" layoutY="392.0" mnemonicParsing="false" onAction="#showBookListButtonPressed" text="Books" />
       <Button layoutX="82.0" layoutY="392.0" mnemonicParsing="false" onAction="#showMagazineListButtonPressed" text="Magazines" />
-      <Label layoutX="498.0" layoutY="232.0" text="Library User: ">
+      <Label layoutX="498.0" layoutY="245.0" text="Library User: ">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="selectedLibraryUserLabel" layoutX="498.0" layoutY="263.0" text="Selected Library User..." />
+      <Label fx:id="selectedLibraryUserLabel" layoutX="498.0" layoutY="285.0" text="Selected Library User..." />
       <Button layoutX="497.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" textFill="RED" />
       <Button layoutX="630.0" layoutY="361.0" mnemonicParsing="false" onAction="#onLendMagazine" text="Lend Magazine" />
       <Label layoutX="569.0" layoutY="69.0" text="Library User">
@@ -49,8 +49,9 @@
          </font>
       </Label>
       <Button layoutX="726.0" layoutY="158.0" mnemonicParsing="false" onAction="#okButtonPressed" text="OK" />
-      <Label fx:id="errorLabel" layoutX="498.0" layoutY="196.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
+      <Label fx:id="errorLabelBook" layoutX="498.0" layoutY="196.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
       <ListView fx:id="bookListView" layoutX="16.0" layoutY="159.0" prefHeight="228.0" prefWidth="403.0" visible="false" />
       <Button layoutX="629.0" layoutY="319.0" mnemonicParsing="false" onAction="#onLendBook" prefHeight="26.0" prefWidth="97.0" text="Lend Book" />
+      <Label fx:id="errorLabelMagazine" layoutX="498.0" layoutY="215.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
    </children>
 </AnchorPane>

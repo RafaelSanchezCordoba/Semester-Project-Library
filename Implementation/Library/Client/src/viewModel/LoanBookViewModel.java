@@ -68,7 +68,7 @@ public class LoanBookViewModel implements PropertyChangeListener
   }
 
   public void bindErrorLabel(StringProperty property){
-    property.bind(errorLabel);
+    property.bindBidirectional(errorLabel);
   }
 
 
@@ -96,7 +96,7 @@ public class LoanBookViewModel implements PropertyChangeListener
     multimediaItemLabel.set("");
     errorLabel.set("");
     selectedMultimediaItemLabel.set("");
-    selectedLibraryUserLabel.set("");
+   // selectedLibraryUserLabel.set("");
     multimediaItemSearchTextField.set("");
     ssnTextField.set("");
     System.out.println(availableBooks.size());

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class LoanBookDAOImplementation implements LoanBookDAO
 {
-  private final String createLoanBookSql = "INSERT INTO \"library\".loan_book(book_id,start_of_loan,end_of_loan,library_user) "
-      +"VALUES(?,?,?,?,)";
+  private final String createLoanBookSql = "INSERT INTO \"library\".loan_book(book_id,start_of_loan,end_of_loan,library_user)"
+      +"VALUES(?,?,?,?)";
 
   private final String getAvailableBooksSql = "SELECT * FROM \"library\".book WHERE is_available = TRUE ";
 

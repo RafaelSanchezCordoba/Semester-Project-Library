@@ -51,7 +51,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
     }
 
     public void bindErrorLabel(StringProperty property){
-        property.bind(errorLabel);
+        property.bindBidirectional(errorLabel);
     }
 
 
@@ -76,7 +76,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
        multimediaItemLabel.set("");
        errorLabel.set("");
        selectedMultimediaItemLabel.set("");
-       selectedLibraryUserLabel.set("");
+     //  selectedLibraryUserLabel.set("");
        multimediaItemSearchTextField.set("");
        ssnTextField.set("");
     }
@@ -107,7 +107,8 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
 
     public void createLoan(int  idMagazine) throws SQLException,  RemoteException {
 
-      if(user==null){
+      if(user==null)
+      {
         errorLabel.set("First fill the ssn");
       }
       else
