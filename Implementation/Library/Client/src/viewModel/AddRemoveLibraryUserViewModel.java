@@ -65,13 +65,25 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         }else if(passwordTextField.get().length() > 36){
             errorLabel.set("Password can't be longer than 36 characters");
         }
-        return true;
+        else if(ssnFormatCheck())
+        {
+            errorLabel.set("The ssn must be 13 digits");
+            return true;
+        }
+        else if (ssnDuplicateCheck())
+        {
+            errorLabel.set("There is already a library user with that ssn in the system");
+            return true;
+        }
+        return  false;
     }
 
 
     public void addLibraryUser(LibraryUser libraryUser) throws RemoteException, SQLException{
         if(!errorCheck()){
+            System.out.println(libraryUser.getFirstName());
             model.addLibraryUser(libraryUser);
+
         }
         reset();
     }
@@ -138,4 +150,33 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
             }
         }
     }
+    private boolean ssnFormatCheck()
+    {
+        if (ssnTextField.get().length()==13)
+        {
+            try
+            {
+                Long.parseLong(ssnTextField.get());
+            }
+            catch (NumberFormatException e)
+            {
+                return true;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    private boolean ssnDuplicateCheck()
+    {
+        for (int i=0;i<userList.getSize();i++)
+        {
+            if (userList.get(i).getSSN().equals(ssnTextField.get()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
