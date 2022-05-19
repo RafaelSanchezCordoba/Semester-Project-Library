@@ -15,4 +15,7 @@ public interface RemoteLoanMagazine extends Remote {
     ArrayList<Magazine> getAvailableMagazineList() throws  RemoteException,
         SQLException;
     LibraryUser getUser(String ssn) throws RemoteException;
+    ArrayList<Magazine> getLoanedMagazines(String ssn) throws RemoteException;
+    void returnMagazine(int loan_id) throws RemoteException;
+    ArrayList<LoanMagazine> getLoans(String ssn) throws RemoteException;
 }

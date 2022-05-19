@@ -14,4 +14,7 @@ public interface LoanMagazineStorage {
     ArrayList<Magazine> getAvailableMagazineList() throws SQLException,
         RemoteException;
     LibraryUser getUser(String ssn) throws RemoteException;
+    ArrayList<Magazine> getLoanedMagazines(String ssn)throws RemoteException;
+    ArrayList<LoanMagazine> getUsersLoans(String ssn) throws RemoteException;
+    void returnMagazine(int id_magazine) throws RemoteException;
 }

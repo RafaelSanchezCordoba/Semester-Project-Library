@@ -12,4 +12,7 @@ public interface LoanMagazineDAO {
     void addLoanMagazine(LoanMagazine loanMagazine) throws SQLException;
     ArrayList<Magazine> getAvailableMagazineList() throws SQLException;
     LibraryUser getLibraryUser(String ssn)throws SQLException;
+    ArrayList<Magazine> getLoanedMagazines(String ssn)throws SQLException;
+    ArrayList<LoanMagazine> getUsersLoans(String ssn) throws SQLException;
+    void returnMagazine(int id_magazine) throws SQLException;
 }

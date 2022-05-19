@@ -14,13 +14,14 @@ public class LoanMagazineStorageTest implements LoanMagazineStorage
 
   private int counter = 0;
   private ArrayList<LoanMagazine> loanMagazinesList;
-  private ArrayList<Magazine> magazineList;
+
 
   private static LoanMagazineStorageTest instance;
 
   private LoanMagazineStorageTest (){
     loanMagazinesList = new ArrayList<>();
-    magazineList = new ArrayList<>();
+
+
   }
 
   public  static synchronized LoanMagazineStorageTest getInstance(){
@@ -30,22 +31,40 @@ public class LoanMagazineStorageTest implements LoanMagazineStorage
     return instance;
   }
   @Override public void addMagazineLoan(LoanMagazine loanMagazine)
-      throws SQLException
+
   {
     loanMagazine.setId(counter);
     loanMagazinesList.add(loanMagazine);
+
     counter++;
 
   }
 
   @Override public ArrayList<Magazine> getAvailableMagazineList()
-      throws SQLException
+
   {
-    return magazineList;
+    throw new IllegalArgumentException();
   }
 
-  @Override public LibraryUser getUser(String ssn) throws RemoteException
+  @Override public LibraryUser getUser(String ssn)
+  {
+    throw new IllegalArgumentException();
+  }
+
+  @Override public ArrayList<Magazine> getLoanedMagazines(String ssn)
+      throws RemoteException
   {
     return null;
+  }
+
+  @Override public ArrayList<LoanMagazine> getUsersLoans(String ssn)
+      throws RemoteException
+  {
+    return null;
+  }
+
+  @Override public void returnMagazine(int id_magazine) throws RemoteException
+  {
+
   }
 }

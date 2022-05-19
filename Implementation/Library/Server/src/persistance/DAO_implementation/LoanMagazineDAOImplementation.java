@@ -1,5 +1,6 @@
 package persistance.DAO_implementation;
 
+import model.CurrentTime;
 import model.LibraryUser;
 import model.LoanMagazine;
 import model.Magazine;
@@ -25,12 +26,22 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
     private String getLibraryUser = "SELECT * FROM \"library\".library_user WHERE ssn = ? ";
 
 
-    private String setAvailable = "UPDATE \"library\".magazine SET is_available = false WHERE id = ?";
+    private String setNotAvailable = "UPDATE \"library\".magazine SET is_available = false WHERE id = ?";
+
+    private String setAvailable = "UPDATE \"library\".magazine SET is_available = true WHERE id = ?";
 
     /**
      * sql to get all the availables magazines that can be lended from the database
      */
     private String getAvailableMagazines = "SELECT * FROM \"library\".magazine WHERE is_available = TRUE ";
+
+    private String getUsersLoans = "SELECT * FROM \"library\".loan_magazine WHERE library_user = ? ";
+
+    private String getLoanedMagazinesSql = "SELECT id as id, title as title,publisher as publisher,volume as volume,date as date, genre as genre FROM \"library\".magazine,\"library\".loan_magazine where loan_magazine.magazine_id = magazine.id and loan_magazine.library_user = ?";
+
+    private String setEndLoanDate = "UPDATE \"library\".loan_magazine SET end_of_loan = current_timestamp WHERE loan_id = ? ";
+
+
 
 
 
@@ -66,6 +77,8 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
                 "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
     }
 
+
+
     public LibraryUser getLibraryUser(String ssn) throws SQLException{
         try(Connection connection = getConnection())
         {
@@ -87,7 +100,87 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
         }
         return null;
     }
-    
+
+
+    public ArrayList<Magazine> getLoanedMagazines(String ssn) throws SQLException
+    {
+        try (Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(getLoanedMagazinesSql);
+            statement.setString(1,ssn);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Magazine> result = new ArrayList<Magazine>();
+            while (resultSet.next()) {
+                int id  = resultSet.getInt("id");
+                String title = resultSet.getString("publisher");
+                String publisher = resultSet.getString("title");
+                int volume = resultSet.getInt("volume");
+                java.sql.Date date = resultSet.getDate("date");
+                String genre = resultSet.getString("genre");
+                Magazine magazine = new Magazine(title, publisher, volume, genre, date);
+                magazine.setId(id);
+
+                result.add(magazine);
+            }
+            return result;
+        }
+
+    }
+
+    @Override public ArrayList<LoanMagazine> getUsersLoans(String ssn)
+        throws SQLException
+    {
+        try (Connection connection = getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(getUsersLoans);
+            statement.setString(1,ssn);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<LoanMagazine> result = new ArrayList<LoanMagazine>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("loan_id");
+                int id_magazine = resultSet.getInt("magazine_id");
+                Date start_date = resultSet.getDate("start_of_loan");
+                Date end_date = resultSet.getDate("end_of_loan");
+                String socialSecurityN = resultSet.getString("library_user");
+
+                LoanMagazine loanMagazine = new LoanMagazine(id,id_magazine,socialSecurityN,start_date,end_date);
+                result.add(loanMagazine);
+            }
+            return result;
+        }
+    }
+
+    @Override public void returnMagazine(int id_loan) throws SQLException
+    {
+        Connection connection = getConnection();
+        try
+        {
+            connection.setAutoCommit(false);
+
+
+
+            PreparedStatement statement = connection.prepareStatement(setEndLoanDate);
+
+
+            statement.setInt(1,id_loan);
+            statement.executeUpdate();
+
+
+           // PreparedStatement statement1 = connection.prepareStatement(setAvailable);
+            //statement.setInt(1,id_loan);
+            //statement.executeUpdate();
+            //statement.close();
+
+            connection.commit();
+
+        }catch (SQLException e){
+            connection.rollback();
+            throw  e;
+        }finally
+        {
+            connection.close();
+        }
+
+    }
+
     /**
      * retruns an Array List of all the available magazines
      * @return ArrayList<Magazine></>
@@ -120,7 +213,9 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
      */
     @Override
     public void addLoanMagazine(LoanMagazine loanMagazine) throws SQLException {
-        try (Connection connection = getConnection()) {
+        Connection connection = getConnection();
+        try {
+            connection.setAutoCommit(false);
             PreparedStatement statement = connection.prepareStatement((createMagazineLoanSql), PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setInt(1, loanMagazine.getId_magazine());
             statement.setDate(2,loanMagazine.getStartDate());
@@ -135,13 +230,22 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
             } else {
                 throw new SQLException("No keys generated");
             }
-            PreparedStatement statementSetFalse = connection.prepareStatement(setAvailable);
+            PreparedStatement statementSetFalse = connection.prepareStatement(setNotAvailable);
 
             statementSetFalse.setInt(1,loanMagazine.getId_magazine());
             statementSetFalse.executeUpdate();
             statementSetFalse.close();
 
-        }
+
+        connection.commit();
+
+    }catch (SQLException e){
+        connection.rollback();
+        throw e;
+    }finally
+    {
+        connection.close();
+    }
     }
 
 

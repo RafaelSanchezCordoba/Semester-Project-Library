@@ -41,6 +41,24 @@ public class LoanMagazineClientImplementation extends UnicastRemoteObject implem
         return remoteLoanMagazine.getUser(ssn);
     }
 
+    // implement when ready
+
+    @Override public ArrayList<Magazine> getLoanedMagazines(String ssn)
+        throws RemoteException
+    {
+        return null;
+    }
+
+    @Override public void returnMagazine(int loan_id) throws RemoteException
+    {
+            remoteLoanMagazine.returnMagazine(loan_id);
+    }
+
+    @Override public LoanMagazine getLoans(String ssn) throws RemoteException
+    {
+        remoteLoanMagazine.getLoans(ssn);
+    }
+
     @Override
     public void close() throws IOException {
         UnicastRemoteObject.unexportObject(this,true);

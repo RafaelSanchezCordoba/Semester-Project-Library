@@ -58,4 +58,36 @@ public class AdapterLoanMagazineDAO implements LoanMagazineStorage {
             throw new RemoteException(e.getMessage());
         }
     }
+
+    @Override public ArrayList<Magazine> getLoanedMagazines(String ssn)
+        throws RemoteException
+    {
+        try
+        {
+            return loanMagazineDAO.getLoanedMagazines(ssn);
+        }catch (SQLException e){
+            throw new RemoteException(e.getMessage());
+        }
+    }
+
+    @Override public ArrayList<LoanMagazine> getUsersLoans(String ssn)
+        throws RemoteException
+    {
+        try
+        {
+          return   loanMagazineDAO.getUsersLoans(ssn);
+        }catch (SQLException e){
+            throw  new RemoteException(e.getMessage());
+        }
+    }
+
+    @Override public void returnMagazine(int id_magazine) throws RemoteException
+    {
+        try
+        {
+            loanMagazineDAO.returnMagazine(id_magazine);
+        }catch (SQLException e){
+            throw new RemoteException(e.getMessage());
+        }
+    }
 }
