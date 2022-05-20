@@ -53,4 +53,25 @@ public class AdapterLoanBookDAO implements LoanBookStorage
       throw  new RemoteException(e.getMessage());
     }
   }
+
+  @Override public ArrayList<LoanBook> getUserBookLoans(String ssn)
+      throws RemoteException
+  {
+    try
+    {
+      return loanBookDAO.getUserBookLoans(ssn);
+    }catch (SQLException e){
+      throw new RemoteException(e.getMessage());
+    }
+  }
+
+  @Override public void returnBook(int loan_id) throws RemoteException
+  {
+    try
+    {
+      loanBookDAO.returnBook(loan_id);
+    }catch (SQLException e){
+      throw new RemoteException(e.getMessage());
+    }
+  }
 }

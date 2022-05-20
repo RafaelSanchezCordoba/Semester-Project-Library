@@ -44,6 +44,17 @@ public class LoanBookClientImplementation extends UnicastRemoteObject implements
      return  remoteLoanBook.getUser(ssn);
   }
 
+  @Override public ArrayList<LoanBook> getUserBookLoans(String ssn)
+      throws RemoteException
+  {
+    return remoteLoanBook.getUserBookLoans(ssn);
+  }
+
+  @Override public void returnBook(int loan_id) throws RemoteException
+  {
+    remoteLoanBook.returnBook(loan_id);
+  }
+
   @Override public void close() throws IOException
   {
     UnicastRemoteObject.unexportObject(this,true);

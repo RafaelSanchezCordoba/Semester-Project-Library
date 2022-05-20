@@ -3,6 +3,7 @@ package persistance.DAO_implementation;
 import model.Book;
 import model.LibraryUser;
 import model.LoanBook;
+import model.LoanMagazine;
 import persistance.DAO.BookDAO;
 import persistance.DAO.LoanBookDAO;
 
@@ -18,7 +19,13 @@ public class LoanBookDAOImplementation implements LoanBookDAO
 
   private String getLibraryUser = "SELECT * FROM \"library\".library_user WHERE ssn = ? ";
 
-  private String setAvailable = "UPDATE \"library\".book SET is_available = false WHERE id = ?";
+  private String setNotAvailable = "UPDATE \"library\".book SET is_available = false WHERE id = ?";
+
+  private String setAvailableSql = "UPDATE \"library\".book SET is_available = true WHERE id =(Select book_id from\"library\".loan_book WHERE loan_id= ? )";
+
+  private String getUsersBookLoansSql = "SELECT * FROM \"library\".loan_book WHERE end_of_loan isnull and library_user = ? ";
+
+  private String set_end_loan_Sql = "UPDATE \"library\".loan_book SET end_of_loan = current_timestamp WHERE loan_id = ? ";
 
   private static  LoanBookDAOImplementation instance;
 
@@ -58,7 +65,7 @@ public class LoanBookDAOImplementation implements LoanBookDAO
       } else {
         throw new SQLException("No keys generated");
       }
-      PreparedStatement statementSetFalse = connection.prepareStatement(setAvailable);
+      PreparedStatement statementSetFalse = connection.prepareStatement(setNotAvailable);
 
       statementSetFalse.setInt(1,loanBook.getId_book());
       statementSetFalse.executeUpdate();
@@ -120,5 +127,55 @@ public class LoanBookDAOImplementation implements LoanBookDAO
       }
     }
     return null;
+  }
+
+  @Override public ArrayList<LoanBook> getUserBookLoans(String ssn)
+      throws SQLException
+  {
+    try (Connection connection = getConnection()) {
+      PreparedStatement statement = connection.prepareStatement(getUsersBookLoansSql);
+      statement.setString(1,ssn);
+      ResultSet resultSet = statement.executeQuery();
+      ArrayList<LoanBook> result = new ArrayList<LoanBook>();
+      while (resultSet.next()) {
+        int id = resultSet.getInt("loan_id");
+        int id_book = resultSet.getInt("book_id");
+        Date start_date = resultSet.getDate("start_of_loan");
+        Date end_date = resultSet.getDate("end_of_loan");
+        String socialSecurityN = resultSet.getString("library_user");
+
+        LoanBook loanBook = new LoanBook(id,id_book,socialSecurityN,start_date,end_date);
+
+        result.add(loanBook);
+      }
+      return result;
+    }
+  }
+
+  @Override public void returnBook(int loan_id) throws SQLException
+  {
+    Connection connection = getConnection();
+    try
+    {
+      connection.setAutoCommit(false);
+      PreparedStatement statement = connection.prepareStatement(set_end_loan_Sql);
+      statement.setInt(1,loan_id);
+      statement.executeUpdate();
+
+      PreparedStatement statement1 = connection.prepareStatement(setAvailableSql);
+      statement1.setInt(1, loan_id);
+      statement1.executeUpdate();
+      statement1.close();
+
+      connection.commit();
+
+    }catch (SQLException e){
+      connection.rollback();
+      throw  e;
+    }finally
+    {
+      connection.close();
+    }
+
   }
 }

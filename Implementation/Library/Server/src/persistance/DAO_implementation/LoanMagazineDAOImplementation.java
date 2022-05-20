@@ -159,9 +159,9 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
             statement.executeUpdate();
 
             PreparedStatement statement1 = connection.prepareStatement(setAvailable);
-            statement.setInt(1, id_loan);
-            statement.executeUpdate();
-            statement.close();
+            statement1.setInt(1, id_loan);
+            statement1.executeUpdate();
+            statement1.close();
 
             connection.commit();
 

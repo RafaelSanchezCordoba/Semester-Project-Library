@@ -21,6 +21,13 @@ public class LoanBook implements Serializable
     this.startDate = new Date(Integer.parseInt(year)-1900,Integer.parseInt(month)-1,Integer.parseInt(day));
 
   }
+  public LoanBook (int id,int id_book,String ssn,Date startDate,Date endDate){
+    this.id = id;
+    this.id_book = id_book;
+    this.ssn = ssn;
+    this.startDate = startDate;
+    this.endDate = endDate;
+  }
   public void  setId(int id){
     this.id = id;
   }

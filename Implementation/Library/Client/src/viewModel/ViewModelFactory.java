@@ -11,6 +11,7 @@ public class ViewModelFactory {
     private final LoanMagazineViewModel loanMagazineViewModel;
     private final LoanBookViewModel loanBookViewModel;
     private final ReturnMagazineViewModel returnMagazineViewModel;
+    private final ReturnBookViewModel returnBookViewModel;
 
     public ViewModelFactory(ModelBook modelBook, ModelMagazine modelMagazine, ModelLibrarian modelLibrarian, ModelLoanMagazine modelLoanMagazine, ModelLoanBook modelLoanBook) throws RemoteException {
         this.bookViewModel = new AddRemoveBookViewModel(modelBook);
@@ -19,6 +20,8 @@ public class ViewModelFactory {
         this.loanMagazineViewModel = new LoanMagazineViewModel(modelLoanMagazine);
         this.loanBookViewModel=new LoanBookViewModel(modelLoanBook);
         this.returnMagazineViewModel = new ReturnMagazineViewModel(modelLoanMagazine);
+        this.returnBookViewModel = new ReturnBookViewModel(modelLoanBook);
+
     }
 
 
@@ -39,6 +42,9 @@ public class ViewModelFactory {
     }
     public ReturnMagazineViewModel getReturnMagazineViewModel() {
         return returnMagazineViewModel;
+    }
+    public ReturnBookViewModel getReturnBookViewModel(){
+        return returnBookViewModel;
     }
 
 }

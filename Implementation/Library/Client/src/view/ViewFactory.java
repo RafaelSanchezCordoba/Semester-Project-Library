@@ -148,7 +148,7 @@ public class ViewFactory
       {
         Region root = loader.load();
         returnMultimediaItemViewController = loader.getController();
-        returnMultimediaItemViewController.init(viewHandler,viewModelFactory.getReturnMagazineViewModel(),root);
+        returnMultimediaItemViewController.init(viewHandler,viewModelFactory.getReturnMagazineViewModel(),viewModelFactory.getReturnBookViewModel(),root);
       }catch (IOException e){
         throw  new IOError(e);
       }

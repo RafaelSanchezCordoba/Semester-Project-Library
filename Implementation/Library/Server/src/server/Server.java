@@ -41,7 +41,6 @@ public class Server {
     RemoteLoanBook loanBook = new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO,adapterLoanBookDAO);
 
 
-    loanMagazineDAO.returnMagazine(36);
     registry.bind("book",book);
     registry.bind("magazine",magazine);
     registry.bind("librarian", librarian);

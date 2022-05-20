@@ -40,27 +40,39 @@ public class ModelManagerLoanBook implements ModelLoanBook
    return client.getUser(ssn);
   }
 
+  @Override public ArrayList<LoanBook> getUserBookLoans(String ssn)
+      throws RemoteException
+  {
+    return client.getUserBookLoans(ssn);
+  }
+
+  @Override public void returnBook(int loan_id) throws RemoteException
+  {
+    client.returnBook(loan_id);
+    support.firePropertyChange("removeLoanBook",null,loan_id);
+  }
+
   @Override public void addPropertyChangeListener(
       PropertyChangeListener listener)
   {
-
+    support.addPropertyChangeListener(listener);
   }
 
   @Override public void addPropertyChangeListener(String name,
       PropertyChangeListener listener)
   {
-
+      support.addPropertyChangeListener(name,listener);
   }
 
   @Override public void removePropertyChangeListener(
       PropertyChangeListener listener)
   {
-
+    support.removePropertyChangeListener(listener);
   }
 
   @Override public void removePropertyChangeListener(String name,
       PropertyChangeListener listener)
   {
-
+    support.removePropertyChangeListener(name,listener);
   }
 }
