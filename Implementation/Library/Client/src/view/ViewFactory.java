@@ -21,6 +21,7 @@ public class ViewFactory
   private LendMultimediaItemViewController lendMultimediaItemViewController;
   private HomeViewController homeController;
   private ChoseItemTypeViewController itemViewController;
+  private ReturnMultimediaItemViewController returnMultimediaItemViewController;
 
 
 
@@ -138,5 +139,21 @@ public class ViewFactory
       }
     }
     return homeController.getRoot();
+  }
+  public Region loadReturnMultimediaView() throws SQLException, RemoteException {
+    if (returnMultimediaItemViewController== null){
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("returnMultimediaItem.fxml"));
+      try
+      {
+        Region root = loader.load();
+        returnMultimediaItemViewController = loader.getController();
+        returnMultimediaItemViewController.init(viewHandler,viewModelFactory.getReturnMagazineViewModel(),root);
+      }catch (IOException e){
+        throw  new IOError(e);
+      }
+    }
+    returnMultimediaItemViewController.reset();
+    return returnMultimediaItemViewController.getRoot();
   }
 }

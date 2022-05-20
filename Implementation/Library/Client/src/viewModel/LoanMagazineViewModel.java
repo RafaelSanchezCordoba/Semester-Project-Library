@@ -43,7 +43,6 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
 
 
         model.addPropertyChangeListener("newLoanMagazine", this);
-        model.addPropertyChangeListener("removeLoanMagazine", this);
     }
 
     public void bindMultimediaItemLabel(StringProperty property){
@@ -80,6 +79,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
        multimediaItemSearchTextField.set("");
        ssnTextField.set("");
     }
+
     public void getUser(String ssn){
       try
       {
@@ -96,9 +96,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
         System.out.println("error");
         errorLabel.set(e.getMessage());
       }
-
     }
-
 
     public void setMagazineList() throws RemoteException, SQLException{
         availableMagazines.clear();

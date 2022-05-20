@@ -41,6 +41,16 @@ public class ModelManagerLoanMagazine implements ModelLoanMagazine {
         return client.getUser(ssn);
     }
 
+    @Override
+    public ArrayList<LoanMagazine> getLoans(String ssn) throws RemoteException {
+        return client.getLoans(ssn);
+    }
+
+    @Override
+    public void returnMagazine(int loan_id) throws RemoteException {
+        client.returnMagazine(loan_id);
+    }
+
     /**
      *
      * @param listener

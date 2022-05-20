@@ -10,10 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface LoanMagazineClient extends Closeable {
-    void addMagazineLoan(LoanMagazine loanMagazine) throws SQLException, RemoteException;
-    ArrayList<Magazine> getAvailableMagazineList() throws SQLException, RemoteException;
+    void addMagazineLoan(LoanMagazine loanMagazine) throws  RemoteException, SQLException;
+    ArrayList<Magazine> getAvailableMagazineList() throws  RemoteException, SQLException;
     LibraryUser getUser(String ssn) throws RemoteException;
-    ArrayList<Magazine> getLoanedMagazines(String ssn) throws RemoteException;
+    ArrayList<LoanMagazine> getLoans(String ssn) throws RemoteException;
     void returnMagazine(int loan_id) throws RemoteException;
-    LoanMagazine getLoan(int loan_id) throws RemoteException;
 }

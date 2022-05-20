@@ -1,10 +1,13 @@
 package view;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import viewModel.ViewModelFactory;
 
+import java.io.IOError;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -16,6 +19,7 @@ public class ViewHandler
   public static final String LIBRARIAN = "addRemoveLibrarian";
   public static final String ITEM = "choseItemType";
   public static final String LENDMULTIMEDIAITEM = "lendMultimediaItem";
+  public static final String RETURNMULTIMEDIAITEM= "returnMultimediaItem";
 
 
   private Stage primaryStage;
@@ -33,7 +37,7 @@ public class ViewHandler
   public void start(Stage primaryStage) throws SQLException, RemoteException
   {
     this.primaryStage = primaryStage;
-    openView(LENDMULTIMEDIAITEM);
+    openView(RETURNMULTIMEDIAITEM);
   }
 
 
@@ -60,6 +64,9 @@ public class ViewHandler
       case LENDMULTIMEDIAITEM:
         root = viewFactory.loadLendMultimediaItem();
         break;
+      case RETURNMULTIMEDIAITEM:
+        root= viewFactory.loadReturnMultimediaView();
+        break;
       default:
         throw new IllegalArgumentException("Unknown view: " + id);
     }
@@ -78,6 +85,8 @@ public class ViewHandler
   public void closeView() {
     primaryStage.close();
   }
+
+
 
 
 
