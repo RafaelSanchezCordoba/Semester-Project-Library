@@ -77,7 +77,8 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
 
     public void setLoanedMagazines() throws RemoteException, SQLException{
         loanedMagazines.clear();
-        loanedMagazines.addAll(model.getLoans(ssnTextField.get()));
+        loanedMagazines.addAll(model.getUserLoans(user.getSSN()));
+
     }
 
     public void getUser(String ssn){
@@ -113,6 +114,7 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         try {
             reset();
+            setLoanedMagazines();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (RemoteException e) {

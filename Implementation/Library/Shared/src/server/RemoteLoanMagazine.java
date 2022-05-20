@@ -13,7 +13,7 @@ public interface RemoteLoanMagazine extends Remote {
     void addMagazineLoan(LoanMagazine loanMagazine) throws  RemoteException, SQLException;
     ArrayList<Magazine> getAvailableMagazineList() throws  RemoteException, SQLException;
     LibraryUser getUser(String ssn) throws RemoteException;
-    ArrayList<LoanMagazine> getLoans(String ssn) throws RemoteException;
+    ArrayList<LoanMagazine> getUserLoans(String ssn) throws RemoteException;
     void returnMagazine(int loan_id) throws RemoteException;
 
 }

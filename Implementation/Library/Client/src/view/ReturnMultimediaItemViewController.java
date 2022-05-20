@@ -40,8 +40,8 @@ public class ReturnMultimediaItemViewController
     this.bookViewModel=bookViewModel;
     this.root = root;
 
-    bookListView.setVisible(false);
-    magazineListView.setVisible(false);
+//    bookListView.setVisible(false);
+//    magazineListView.setVisible(false);
 
     magazineViewModel.bindErrorLabel(errorLabelMagazine.textProperty());
     magazineViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
@@ -94,7 +94,7 @@ public class ReturnMultimediaItemViewController
       }
 
     }catch (NullPointerException e){
-      errorLabelMagazine.setText("No magazineSelected");
+      errorLabelMagazine.setText("No magazine selected");
     }
   }
 
@@ -152,7 +152,8 @@ public class ReturnMultimediaItemViewController
 //    magazineListView.setVisible(false);
 //    bookViewModel.setBookList();
   }
-  @FXML void showMagazineListButtonPressed() throws SQLException, RemoteException {
+  @FXML
+  void showMagazineListButtonPressed() throws SQLException, RemoteException {
     resetErrorLabels();
     bookListView.setVisible(false);
     magazineListView.setVisible(true);

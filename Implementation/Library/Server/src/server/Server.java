@@ -35,12 +35,13 @@ public class Server {
 
 
     RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO,adapterLoanBookDAO);
-    RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO,adapterLoanBookDAO);
+    RemoteMagazine magazine = new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO,adapterLoanBookDAO);
     RemoteLibrarian librarian = new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO,adapterLoanBookDAO);
     RemoteLoanMagazine loanMagazine = new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO,adapterLoanBookDAO);
-    RemoteLoanBook loanBook=new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO,adapterLoanBookDAO);
+    RemoteLoanBook loanBook = new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO, adapterLoanMagazineDAO,adapterLoanBookDAO);
 
-    loanMagazineDAO.returnMagazine(33);
+
+    loanMagazineDAO.returnMagazine(36);
     registry.bind("book",book);
     registry.bind("magazine",magazine);
     registry.bind("librarian", librarian);

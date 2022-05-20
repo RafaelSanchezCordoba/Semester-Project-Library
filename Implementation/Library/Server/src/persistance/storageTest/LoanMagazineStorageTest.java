@@ -65,6 +65,12 @@ public class LoanMagazineStorageTest implements LoanMagazineStorage
 
   @Override public void returnMagazine(int id_magazine) throws RemoteException
   {
-
+    for (int i = 0; i <loanMagazinesList.size() ; i++)
+    {
+      if(id_magazine == loanMagazinesList.get(i).getId()){
+        loanMagazinesList.remove(loanMagazinesList.get(i));
+        break;
+      }
+    }
   }
 }

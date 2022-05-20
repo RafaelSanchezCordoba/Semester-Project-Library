@@ -75,7 +75,7 @@ public class AdapterLoanMagazineDAO implements LoanMagazineStorage {
     {
         try
         {
-          return   loanMagazineDAO.getUsersLoans(ssn);
+          return   loanMagazineDAO.getUserLoans(ssn);
         }catch (SQLException e){
             throw  new RemoteException(e.getMessage());
         }

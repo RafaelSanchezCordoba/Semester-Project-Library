@@ -3,7 +3,6 @@ package client;
 import model.LibraryUser;
 import model.LoanMagazine;
 import model.Magazine;
-import server.RemoteBook;
 import server.RemoteLoanMagazine;
 
 import java.io.IOException;
@@ -41,8 +40,8 @@ public class LoanMagazineClientImplementation extends UnicastRemoteObject implem
     }
 
     @Override
-    public ArrayList<LoanMagazine> getLoans(String ssn) throws RemoteException {
-        return remoteLoanMagazine.getLoans(ssn);
+    public ArrayList<LoanMagazine> getUserLoans(String ssn) throws RemoteException {
+        return remoteLoanMagazine.getUserLoans(ssn);
     }
 
     @Override public void returnMagazine(int loan_id) throws RemoteException

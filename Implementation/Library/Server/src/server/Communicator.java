@@ -132,12 +132,11 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
 //        return loanMagazineStorage.getLoanedMagazines(ssn);
 //    }
 
-    @Override public void returnMagazine(int loan_id) throws RemoteException
-    {
-
+    @Override public void returnMagazine(int loan_id) throws RemoteException {
+        loanMagazineStorage.returnMagazine(loan_id);
     }
 
-    @Override public ArrayList<LoanMagazine> getLoans( String ssn) throws RemoteException
+    @Override public ArrayList<LoanMagazine> getUserLoans(String ssn) throws RemoteException
     {
         return loanMagazineStorage.getUsersLoans(ssn);
     }

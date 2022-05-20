@@ -28,16 +28,16 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
 
     private String setNotAvailable = "UPDATE \"library\".magazine SET is_available = false WHERE id = ?";
 
-    private String setAvailable = "UPDATE \"library\".magazine SET is_available = true WHERE id = ?";
+    private String setAvailable = "UPDATE \"library\".magazine SET is_available = true WHERE id =(Select magazine_id from\"library\".loan_magazine WHERE loan_id= ? )";
 
     /**
      * sql to get all the availables magazines that can be lended from the database
      */
     private String getAvailableMagazines = "SELECT * FROM \"library\".magazine WHERE is_available = TRUE ";
 
-    private String getUsersLoans = "SELECT * FROM \"library\".loan_magazine WHERE library_user = ? ";
+    private String getUsersLoans = "SELECT * FROM \"library\".loan_magazine WHERE end_of_loan isnull and library_user = ? ";
 
-    private String getLoanedMagazinesSql = "SELECT id as id, title as title,publisher as publisher,volume as volume,date as date, genre as genre FROM \"library\".magazine,\"library\".loan_magazine where loan_magazine.magazine_id = magazine.id and loan_magazine.library_user = ?";
+    private String getLoanedMagazinesSql = "SELECT id as id, title as title,publisher as publisher,volume as volume,date as date, genre as genre FROM \"library\".magazine,\"library\".loan_magazine WHERE loan_magazine.magazine_id = magazine.id and loan_magazine.library_user = ?";
 
     private String setEndLoanDate = "UPDATE \"library\".loan_magazine SET end_of_loan = current_timestamp WHERE loan_id = ? ";
 
@@ -126,7 +126,7 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
 
     }
 
-    @Override public ArrayList<LoanMagazine> getUsersLoans(String ssn)
+    @Override public ArrayList<LoanMagazine> getUserLoans(String ssn)
         throws SQLException
     {
         try (Connection connection = getConnection()) {
@@ -154,20 +154,14 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
         try
         {
             connection.setAutoCommit(false);
-
-
-
             PreparedStatement statement = connection.prepareStatement(setEndLoanDate);
-
-
             statement.setInt(1,id_loan);
             statement.executeUpdate();
 
-
-           // PreparedStatement statement1 = connection.prepareStatement(setAvailable);
-            //statement.setInt(1,id_loan);
-            //statement.executeUpdate();
-            //statement.close();
+            PreparedStatement statement1 = connection.prepareStatement(setAvailable);
+            statement.setInt(1, id_loan);
+            statement.executeUpdate();
+            statement.close();
 
             connection.commit();
 

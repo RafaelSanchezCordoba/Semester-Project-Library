@@ -42,13 +42,14 @@ public class ModelManagerLoanMagazine implements ModelLoanMagazine {
     }
 
     @Override
-    public ArrayList<LoanMagazine> getLoans(String ssn) throws RemoteException {
-        return client.getLoans(ssn);
+    public ArrayList<LoanMagazine> getUserLoans(String ssn) throws RemoteException {
+        return client.getUserLoans(ssn);
     }
 
     @Override
     public void returnMagazine(int loan_id) throws RemoteException {
         client.returnMagazine(loan_id);
+        support.firePropertyChange("removeLoanMagazine", null, loan_id);
     }
 
     /**
