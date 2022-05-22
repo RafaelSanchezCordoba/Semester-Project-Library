@@ -14,7 +14,7 @@ public class LibrarianList implements Serializable
 
   /**
    * Constructor with no arguments
-   *initializes an empty list of Librarians
+   * initializes an empty list of Librarians
    */
   public LibrarianList(){
 
@@ -22,33 +22,37 @@ public class LibrarianList implements Serializable
   }
 
   /**
-   * method to add a Librarian to the list
+   * Method to add a Librarian to the list
    * @param librarian
+   * The librarian passed as an argument
    */
   public void addLibrarian(Librarian librarian){
     list.add(librarian);
   }
 
   /**
-   * method to remove a librarian from the list
+   * Method to remove a librarian from the list
    * @param librarian
+   * The librarian passed as an argument
    */
   public void removeLibrarian(Librarian librarian){
     list.remove(librarian);
   }
 
   /**
-   * method to return the entire list of Librarians
+   * Method to return the entire list of Librarians
    * @return ArrayList<Librarian>
+   * The librarian list
    */
   public ArrayList<Librarian> getLibrarianList(){
     return list;
   }
 
   /**
-   * method that removes one or multiple Librarians from the
+   * Method that removes one or multiple Librarians from the
    * list if they have the specified ssn as an attribute
    * @param ssn
+   * The social security number of the librarian
    */
   public void removeLibrarianBySsn(String ssn){
     for (int i=0;i< list.size();i++){
@@ -62,7 +66,9 @@ public class LibrarianList implements Serializable
    * Method that returns the first Librarian that has
    * the specified ssn as an attribute
    * @param ssn
+   * The social security number of the librarian
    * @return Librarian
+   * The librarian with the social security number passed as an argument
    */
   public Librarian getLibrarianBySsn(String ssn){
     for (Librarian x:list){
@@ -77,6 +83,7 @@ public class LibrarianList implements Serializable
    * Method that returns the entire List of
    * Librarian in a sting format
    * @return String
+   * All the librarians in the list as a String
    */
   public String toStringArray(){
     String result = "";
