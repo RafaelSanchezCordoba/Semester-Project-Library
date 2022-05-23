@@ -11,7 +11,7 @@ public class LoanMagazine implements Serializable {
     private final String ssn;
 
 
-    public LoanMagazine(int id_magazine, String ssn) {
+    public LoanMagazine(int id_magazine, Date startDate, String ssn) {
         this.id = 0;
         this.id_magazine = id_magazine;
         this.endDate = null;
