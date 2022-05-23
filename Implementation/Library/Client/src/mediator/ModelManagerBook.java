@@ -24,27 +24,58 @@ public class ModelManagerBook implements ModelBook {
     private final BookClient client;
     private final PropertyChangeSupport support;
 
+    /**
+     * Public constructor that set the client and a property change support
+     * @param client
+     * The book client
+     */
     public ModelManagerBook(BookClient client) {
         this.client = client;
         this.support = new PropertyChangeSupport(this);
     }
 
+    /**
+     * Get book list method
+     * @return
+     * All the books in the list
+     * @throws RemoteException
+     * @throws SQLException
+     */
     public ArrayList<Book> getBookList() throws SQLException, RemoteException {
         return client.getBookList();
     }
 
-    @Override public GenreList getGenreList()
-        throws RemoteException, SQLException
-    {
+    /**
+     * Get genre list method
+     * @return
+     * The genre list
+     * @throws RemoteException
+     * @throws SQLException
+     */
+    @Override public GenreList getGenreList() throws RemoteException, SQLException {
         return client.getGenreList();
     }
 
+    /**
+     * Add book method
+     * @param book
+     * The book passed as an argument
+     * @throws RemoteException
+     * @throws SQLException
+     */
     @Override
     public void addBook(Book book) throws RemoteException, SQLException {
         client.addBook(book);
         support.firePropertyChange("newBook", null, book);
     }
 
+    /**
+     * Remove a book with a specific id passed as an argument
+     * @param id
+     * The unique identification number
+     * @throws RemoteException
+     * @throws SQLException
+     */
     @Override
     public void removeBook(int id) throws RemoteException, SQLException {
         client.removeBook(id);
