@@ -13,19 +13,29 @@ import java.util.ArrayList;
  */
 public interface ModelMagazine extends PropertyChangeSubject{
     /**
-     *
+     * Add magazine method
      * @param magazine
+     * The magazine passed as an argument
      * @throws RemoteException
+     * @throws SQLException
      */
     void addMagazine(Magazine magazine) throws RemoteException, SQLException;
 
-
     /**
-     *
+     * Remove a magazine with a specific identification number
      * @param id
+     * The unique identification number passed as an argument
      * @throws RemoteException
+     * @throws SQLException
      */
     void removeMagazine(int id) throws RemoteException, SQLException;
 
+    /**
+     * Get magazine list method
+     * @return
+     * The magazines in the list
+     * @throws SQLException
+     * @throws RemoteException
+     */
     ArrayList<Magazine> getMagazineList() throws RemoteException, SQLException;
 }
