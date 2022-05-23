@@ -33,15 +33,20 @@ public class ReturnMagazineViewModelTest
     selectedMultimediaItemLabel=new SimpleStringProperty();
     multimediaItemSearchTextField=new SimpleStringProperty();
     ssnTextField= new SimpleStringProperty();
-    ObservableList<LoanMagazine> observableList = FXCollections.observableList(new ArrayList<>());
+    ObservableList<LoanMagazine> observableList = FXCollections.observableArrayList( new ArrayList<LoanMagazine>());
     this.loanedMagazines = new SimpleListProperty<>(observableList);
     viewModel.bindMultimediaItemLabel(multimediaItemLabel);
     viewModel.bindErrorLabel(errorLabel);
     viewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel);
     viewModel.bindMultimediaItemLabel(multimediaItemLabel);
     viewModel.bindSsnTextField(ssnTextField);
-    //viewModel.bindLoanedMagazines(loanedMagazines);
+    viewModel.bindLoanedMagazinesForTest(loanedMagazines);
 
   }
-  @Test public void zero(){}
+  //Return magazine
+
+  //Zero
+  @Test public void zero(){
+
+  }
 }

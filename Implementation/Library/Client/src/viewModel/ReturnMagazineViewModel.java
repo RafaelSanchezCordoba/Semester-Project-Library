@@ -4,9 +4,11 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelLoanMagazine;
+import model.Librarian;
 import model.LibraryUser;
 import model.LoanMagazine;
 
@@ -63,6 +65,9 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
     }
 
     public void bindLoanedMagazines(ObjectProperty<ObservableList<LoanMagazine>> property){
+        property.bind(loanedMagazines);
+    }
+    public void bindLoanedMagazinesForTest(SimpleListProperty<LoanMagazine> property){
         property.bind(loanedMagazines);
     }
 
