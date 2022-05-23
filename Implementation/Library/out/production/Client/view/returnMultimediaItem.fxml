@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="435.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ReturnMultimediaItemViewController">
+    <children>
+
+        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="Home" />
+        <Button layoutX="87.0" layoutY="14.0" mnemonicParsing="false" onAction="#multimediaItemMenuButtonPressed" text="Multimedia Items" />
+        <Button layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
+        <Label layoutX="150.0" layoutY="63.0" text="Multimedia Items">
+
+        </Label>
+        <Label fx:id="multimediaItemLabel" layoutX="173.0" layoutY="92.0" text="BOOKS/MAGAZINES">
+
+        </Label>
+        <ListView fx:id="magazineListView" layoutX="15.0" layoutY="157.0" prefHeight="228.0" prefWidth="420.0" />
+        <TextField fx:id="multimediaItemSearchTextField" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="403.0" />
+        <Button layoutX="427.0" layoutY="119.0" mnemonicParsing="false" onAction="#multimediaItemSearchButtonPressed" text="🔍" />
+        <Button layoutX="15.0" layoutY="392.0" mnemonicParsing="false" onAction="#showBookListButtonPressed" text="Books" />
+        <Button layoutX="82.0" layoutY="392.0" mnemonicParsing="false" onAction="#showMagazineListButtonPressed" text="Magazines" />
+        <Label layoutX="498.0" layoutY="245.0" text="Library User: ">
+
+        </Label>
+        <Label fx:id="selectedLibraryUserLabel" layoutX="498.0" layoutY="285.0" text="Selected Library User..." />
+        <Button layoutX="497.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" textFill="RED" />
+        <Button layoutX="630.0" layoutY="361.0" mnemonicParsing="false" onAction="#onReturnMagazine" text="Return Magazine" />
+        <Label layoutX="569.0" layoutY="69.0" text="Library User">
+
+        </Label>
+        <TextField fx:id="ssnTextField" layoutX="550.0" layoutY="158.0" />
+        <Label layoutX="499.0" layoutY="159.0" text="SSN: ">
+           
+        </Label>
+        <Button layoutX="726.0" layoutY="158.0" mnemonicParsing="false" onAction="#okButtonPressed" text="OK" />
+        <Label fx:id="errorLabelBook" layoutX="498.0" layoutY="196.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
+        <ListView fx:id="bookListView" layoutX="16.0" layoutY="153.0" prefHeight="234.0" prefWidth="420.0" />
+        <Button layoutX="629.0" layoutY="319.0" mnemonicParsing="false" onAction="#onReturnBook" prefHeight="26.0" prefWidth="97.0" text="Return Book" />
+        <Label fx:id="errorLabelMagazine" layoutX="498.0" layoutY="215.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
+    </children>
+
+
+
+</AnchorPane>

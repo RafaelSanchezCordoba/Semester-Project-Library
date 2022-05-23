@@ -22,6 +22,7 @@ public class MagazineDAOImplementation implements MagazineDAO
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
 
+
   public static synchronized MagazineDAOImplementation getInstance() throws SQLException {
     if (instance == null) {
       instance = new MagazineDAOImplementation();

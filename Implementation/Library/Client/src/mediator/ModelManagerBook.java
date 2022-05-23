@@ -4,6 +4,7 @@ import client.BookClient;
 import model.Book;
 import model.Genre;
 import model.GenreList;
+import model.LibraryUser;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -69,4 +70,5 @@ public class ModelManagerBook implements ModelBook {
     public void removePropertyChangeListener(String name, PropertyChangeListener listener) {
         support.removePropertyChangeListener(name, listener);
     }
+
 }
