@@ -92,13 +92,13 @@ class LoanMagazineViewModelTest {
         assertEquals("MultimediaItem{id=0, title='Wiedźmin', publisher='Supernova'} MultimediaItem{id=0, title='Dune', publisher='Hodder & Stoughton'}",m1 + " " + m2);
     }
 
-    @Test void add_two_record_on_objects(){
-        MultimediaItem m1 = new MultimediaItem("Wiedźmin","Supernova");
-        MultimediaItem m2 = new MultimediaItem("Dune","Hodder & Stoughton");
-        Librarian l1 = new Librarian("123456789","admin","Franciszek","Nurkiewicz");
-        multimediaItem.set(m1.toString());
-        assertEquals(m1.toString(),"MultimediaItem{id=0, title='Wiedźmin', publisher='Supernova'}");
-    }
+//    @Test void add_two_record_on_objects(){
+//        MultimediaItem m1 = new MultimediaItem("Wiedźmin","Supernova");
+//        MultimediaItem m2 = new MultimediaItem("Dune","Hodder & Stoughton");
+//        Librarian l1 = new Librarian("123456789","admin","Franciszek","Nurkiewicz");
+//        multimediaItem.set(m1.toString());
+//        assertEquals(m1.toString(),"MultimediaItem{id=0, title='Wiedźmin', publisher='Supernova'}");
+//    }
 
 
 }
