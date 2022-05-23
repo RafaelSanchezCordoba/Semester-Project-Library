@@ -1,5 +1,6 @@
 package mediator;
 
+import model.LibraryUser;
 import model.LoanMagazine;
 import model.Magazine;
 
@@ -28,6 +29,11 @@ public class FakeModelManagerLoanMagazine implements ModelLoanMagazine{
     @Override
     public ArrayList<Magazine> getAvailableMagazineList() throws SQLException, RemoteException {
         return availailbleMagazines;
+    }
+
+    @Override
+    public LibraryUser getUser(String ssn) throws RemoteException {
+        return null;
     }
 
 

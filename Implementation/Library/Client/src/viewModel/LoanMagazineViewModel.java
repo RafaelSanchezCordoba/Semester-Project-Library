@@ -71,6 +71,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
     public void bindAvailableMagazineList(ObjectProperty<ObservableList<MultimediaItem>> property){
         property.bind(availableMagazines);
     }
+
     public void reset() throws SQLException, RemoteException{
        setMagazineList();
        multimediaItemLabel.set("");
@@ -118,9 +119,6 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
 
 
     }
-
-
-
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {

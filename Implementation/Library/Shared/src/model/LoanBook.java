@@ -48,7 +48,7 @@ public class LoanBook implements Serializable
   @Override public String toString()
   {
     return "" + "id_book=" + id_book + ", startDate=" + startDate
-        + ", endDate=" + endDate + ", ssn='" + ssn;
+        + ", endDate=" + endDate + ", ssn='" + ssn + " " + id;
   }
 
   public String getSsn()
