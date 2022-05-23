@@ -17,37 +17,62 @@ import java.util.ArrayList;
  * @version 1.0 13/05/22.
  */
 
-public class LibraryUserClientImplementation extends UnicastRemoteObject implements LibraryUserClient
-{
+public class LibraryUserClientImplementation extends UnicastRemoteObject implements LibraryUserClient {
 
   private final RemoteLibraryUser remoteLibraryUser;
 
-  public LibraryUserClientImplementation(String host,int port) throws IOException, NotBoundException
-  {
+  /**
+   * The constructor that create and set the Registry.
+   * @param host
+   * The name of the host
+   * @param port
+   * The port number
+   * @throws IOException
+   * @throws NotBoundException
+   */
+  public LibraryUserClientImplementation(String host,int port) throws IOException, NotBoundException {
     Registry registry = LocateRegistry.getRegistry(host,port);
     remoteLibraryUser = (RemoteLibraryUser) registry.lookup("libraryUser");
   }
 
-  @Override public void addLibraryUser(LibraryUser libraryUser)
-      throws SQLException, RemoteException
-  {
+  /**
+   * Add library user method
+   * @param libraryUser
+   * The library user passed as an argument
+   * @throws RemoteException
+   * @throws SQLException
+   */
+  @Override public void addLibraryUser(LibraryUser libraryUser) throws SQLException, RemoteException {
     remoteLibraryUser.addLibraryUser(libraryUser);
   }
 
-  @Override public void removeLibraryUser(String ssn)
-      throws SQLException, RemoteException
-  {
+  /**
+   * Remove a library user with a specific social security number
+   * @param ssn
+   * The social security number passed as an argument
+   * @throws RemoteException
+   * @throws SQLException
+   */
+  @Override public void removeLibraryUser(String ssn) throws SQLException, RemoteException {
       remoteLibraryUser.removeLibraryUser(ssn);
   }
 
-  @Override public ArrayList<LibraryUser> getLibraryUserList()
-      throws RemoteException, SQLException
-  {
+  /**
+   * Get library user list method
+   * @return
+   * The library users in the list
+   * @throws RemoteException
+   * @throws SQLException
+   */
+  @Override public ArrayList<LibraryUser> getLibraryUserList() throws RemoteException, SQLException {
     return remoteLibraryUser.getLibraryUserList();
   }
 
-  @Override public void close() throws IOException
-  {
+  /**
+   * Close the remote object
+   * @throws IOException
+   */
+  @Override public void close() throws IOException {
     UnicastRemoteObject.unexportObject(this,true);
   }
 }
