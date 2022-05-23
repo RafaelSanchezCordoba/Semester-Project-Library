@@ -16,6 +16,8 @@ public class ViewHandler
   public static final String LIBRARIAN = "addRemoveLibrarian";
   public static final String ITEM="choseItemType";
   public static final String LIBRARY_USER = "addRemoveLibraryUser";
+  public static final String LENDMULTIMEDIAITEM = "lendMultimediaItem";
+  public static final String RETURNMULTIMEDIAITEM= "returnMultimediaItem";
 
 
   private Stage primaryStage;
@@ -59,6 +61,12 @@ public class ViewHandler
          break;
       case LIBRARY_USER:
         root = viewFactory.loadAddRemoveLibraryUserView();
+        break;
+      case LENDMULTIMEDIAITEM:
+        root = viewFactory.loadLendMultimediaItem();
+        break;
+      case RETURNMULTIMEDIAITEM:
+        root= viewFactory.loadReturnMultimediaView();
         break;
       default:
         throw new IllegalArgumentException("Unknown view: " + id);

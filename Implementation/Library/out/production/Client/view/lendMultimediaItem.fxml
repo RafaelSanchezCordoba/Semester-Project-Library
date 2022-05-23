@@ -11,9 +11,6 @@
 <AnchorPane prefHeight="430.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LendMultimediaItemViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="786.0" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="Home" />
-      <Button layoutX="87.0" layoutY="14.0" mnemonicParsing="false" onAction="#multimediaItemMenuButtonPressed" text="Multimedia Items" />
-      <Button layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
       <Label layoutX="150.0" layoutY="63.0" text="Multimedia Items">
          <font>
             <Font size="24.0" />
@@ -53,5 +50,12 @@
       <ListView fx:id="bookListView" layoutX="16.0" layoutY="159.0" prefHeight="228.0" prefWidth="403.0" visible="false" />
       <Button layoutX="629.0" layoutY="319.0" mnemonicParsing="false" onAction="#onLendBook" prefHeight="26.0" prefWidth="97.0" text="Lend Book" />
       <Label fx:id="errorLabelMagazine" layoutX="498.0" layoutY="215.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="786.0" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="Home" />
+      <Button layoutX="87.0" layoutY="14.0" mnemonicParsing="false" onAction="#multimediaItemMenuButtonPressed" text="Manage multimedia Items" />
+      <Button layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
+      <Button layoutX="364.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLoanButtonPressed" text="Create loan" />
+      <Button layoutX="460.0" layoutY="13.0" mnemonicParsing="false" onAction="#onReturnButtonPressed" text="Return item" />
+      <Button layoutX="258.0" layoutY="14.0" mnemonicParsing="false" onAction="#onAddLibraryUserButtonPressed" text="Manage user" />
    </children>
 </AnchorPane>

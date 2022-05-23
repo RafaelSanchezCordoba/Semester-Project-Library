@@ -1,5 +1,6 @@
-package mediator;
+package viewModel;
 
+import mediator.ModelLibraryUser;
 import model.LibraryUser;
 import model.Magazine;
 
@@ -10,7 +11,8 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class FakeModelManagerLibraryUser implements ModelLibraryUser{
+public class FakeModelManagerLibraryUser implements ModelLibraryUser
+{
 
     private final ArrayList<LibraryUser> list;
     private final PropertyChangeSupport support;

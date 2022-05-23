@@ -1,13 +1,7 @@
 package server;
 
-import persistance.storageTest.BookStorageTest;
-import persistance.storageTest.LibrarianStorageTest;
-import persistance.storageTest.LibraryUserStorageTest;
-import persistance.storageTest.MagazineStorageTest;
-import server.storage.BookStorage;
-import server.storage.LibrarianStorage;
-import server.storage.LibraryUserStorage;
-import server.storage.MagazineStorage;
+import persistance.storageTest.*;
+import server.storage.*;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -27,13 +21,15 @@ public class testServer
     MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
     BookStorage bookStorage = BookStorageTest.getInstance();
     LibrarianStorage librarianStorage= LibrarianStorageTest.getInstance();
+    LoanMagazineStorage magazineLoanStorage= LoanMagazineStorageTest.getInstance();
+    LoanBookStorage bookLoanStorage= LoanBookStorageTest.getInstance();
 
     RemoteBook book = new Communicator(magazineStorage, bookStorage,librarianStorage,
-        libraryUserStorage);
+        libraryUserStorage, magazineLoanStorage, bookLoanStorage);
     RemoteMagazine magazine = new Communicator(magazineStorage, bookStorage,librarianStorage,
-        libraryUserStorage);
-    RemoteLibrarian librarian = new Communicator(magazineStorage, bookStorage,librarianStorage, libraryUserStorage);
-    RemoteLibraryUser libraryUser = new Communicator(magazineStorage, bookStorage, librarianStorage, libraryUserStorage);
+        libraryUserStorage, magazineLoanStorage, bookLoanStorage);
+    RemoteLibrarian librarian = new Communicator(magazineStorage, bookStorage,librarianStorage, libraryUserStorage, magazineLoanStorage, bookLoanStorage);
+    RemoteLibraryUser libraryUser = new Communicator(magazineStorage, bookStorage, librarianStorage, libraryUserStorage, magazineLoanStorage, bookLoanStorage);
 
     registry.bind("book", book);
     registry.bind("magazine", magazine);

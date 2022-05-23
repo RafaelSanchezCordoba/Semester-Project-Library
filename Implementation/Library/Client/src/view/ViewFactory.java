@@ -21,7 +21,8 @@ public class ViewFactory
   private HomeViewController homeController;
   private ChoseItemTypeViewController itemViewController;
   private AddRemoveLibraryUserViewController libraryUserController;
-
+  private ReturnMultimediaItemViewController returnMultimediaItemViewController;
+  private LendMultimediaItemViewController lendMultimediaItemViewController;
 
 
   public ViewFactory(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
@@ -34,6 +35,8 @@ public class ViewFactory
     itemViewController=null;
     homeController=null;
     libraryUserController = null;
+    lendMultimediaItemViewController = null;
+    returnMultimediaItemViewController=null;
   }
 
   public Region loadAddRemoveLibrarian() throws SQLException, RemoteException {
@@ -136,4 +139,39 @@ public class ViewFactory
     }
     return homeController.getRoot();
   }
+
+  public Region loadLendMultimediaItem() throws SQLException, RemoteException {
+    if (lendMultimediaItemViewController== null){
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("lendMultimediaItem.fxml"));
+      try
+      {
+        Region root = loader.load();
+        lendMultimediaItemViewController = loader.getController();
+        lendMultimediaItemViewController.init(viewHandler,viewModelFactory.getLoanMagazineViewModel(),viewModelFactory.getLoanBookViewModel(),root);
+      }catch (IOException e){
+        throw  new IOError(e);
+      }
+    }
+    lendMultimediaItemViewController.reset();
+    return lendMultimediaItemViewController.getRoot();
+  }
+
+  public Region loadReturnMultimediaView() throws SQLException, RemoteException {
+    if (returnMultimediaItemViewController== null){
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("returnMultimediaItem.fxml"));
+      try
+      {
+        Region root = loader.load();
+        returnMultimediaItemViewController = loader.getController();
+        returnMultimediaItemViewController.init(viewHandler,viewModelFactory.getReturnMagazineViewModel(),viewModelFactory.getReturnBookViewModel(),root);
+      }catch (IOException e){
+        throw  new IOError(e);
+      }
+    }
+    returnMultimediaItemViewController.reset();
+    return returnMultimediaItemViewController.getRoot();
+  }
+
 }

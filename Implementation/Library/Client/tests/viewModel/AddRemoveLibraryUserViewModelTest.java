@@ -6,17 +6,14 @@ import javafx.beans.property.StringProperty;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import mediator.FakeModelManagerLibraryUser;
 import mediator.ModelLibraryUser;
 import model.LibraryUser;
 
-import model.Magazine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.rmi.RemoteException;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

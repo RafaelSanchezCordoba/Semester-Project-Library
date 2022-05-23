@@ -64,12 +64,13 @@ public class ReturnMultimediaItemViewController
     //Not now
   }
   @FXML
-  public  void homeMenuButtonPressed() {
-
+  public  void homeMenuButtonPressed() throws SQLException, RemoteException
+  {
+    viewHandler.openView(viewHandler.HOME);
   }
   @FXML
   public void multimediaItemMenuButtonPressed() throws RemoteException,SQLException{
-    viewHandler.openView(viewHandler.HOME);
+    viewHandler.openView(viewHandler.ITEM);
   }
 
   @FXML
@@ -152,5 +153,23 @@ public class ReturnMultimediaItemViewController
     bookListView.setVisible(false);
     magazineListView.setVisible(true);
     magazineViewModel.setLoanedMagazines();
+  }
+
+  @FXML public void onAddLibraryUserButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(ViewHandler.LIBRARY_USER);
+  }
+
+  @FXML public void onLoanButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
+  }
+
+  @FXML public void onReturnButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
   }
 }

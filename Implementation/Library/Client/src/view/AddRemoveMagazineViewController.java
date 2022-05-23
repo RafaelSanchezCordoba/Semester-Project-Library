@@ -109,11 +109,6 @@ public class AddRemoveMagazineViewController
     viewHandler.openView(viewHandler.HOME);
   }
 
-  @FXML public void onLoanButtonPressed()
-      throws SQLException, RemoteException
-  {
-
-  }
 
   @FXML public void onAddLibraryUserButtonPressed()
       throws SQLException, RemoteException
@@ -121,10 +116,16 @@ public class AddRemoveMagazineViewController
     viewHandler.openView(viewHandler.LIBRARY_USER);
   }
 
+  @FXML public void onLoanButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(viewHandler.LENDMULTIMEDIAITEM);
+  }
+
   @FXML public void onReturnButtonPressed()
       throws SQLException, RemoteException
   {
-
+    viewHandler.openView(viewHandler.RETURNMULTIMEDIAITEM);
   }
 
   public void reset() throws SQLException, RemoteException{

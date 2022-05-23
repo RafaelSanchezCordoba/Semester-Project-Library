@@ -106,11 +106,7 @@ public class LendMultimediaItemViewController {
         {
           magazineViewModel.createLoan(id_magazine);
         }
-        catch (SQLException e)
-        {
-          e.printStackTrace();
-        }
-        catch (RemoteException e)
+        catch (SQLException | RemoteException e)
         {
           e.printStackTrace();
         }
@@ -133,11 +129,7 @@ public class LendMultimediaItemViewController {
        {
          bookViewModel.createLoan(id_book);
        }
-       catch (SQLException e)
-       {
-         e.printStackTrace();
-       }
-       catch (RemoteException e)
+       catch (SQLException | RemoteException e)
        {
          e.printStackTrace();
        }
@@ -156,6 +148,23 @@ public class LendMultimediaItemViewController {
     @FXML void multimediaItemMenuButtonPressed() throws SQLException, RemoteException {
         viewHandler.openView(ViewHandler.ITEM);
     }
+  @FXML public void onAddLibraryUserButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(ViewHandler.LIBRARY_USER);
+  }
+
+  @FXML public void onLoanButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
+  }
+
+  @FXML public void onReturnButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
+  }
 
     @FXML void logOutButtonPressed(){
             viewHandler.closeView();

@@ -13,13 +13,17 @@ public class Application extends javafx.application.Application {
         MagazineClient magazineClient = new MagazineClientImplementation("localhost", Registry.REGISTRY_PORT);
         LibrarianClient librarianClient = new LibrarianClientImplementation("localhost",Registry.REGISTRY_PORT);
         LibraryUserClient libraryUserClient = new LibraryUserClientImplementation("localhost", Registry.REGISTRY_PORT);
+        LoanMagazineClient loanMagazineClient = new LoanMagazineClientImplementation("localhost", Registry.REGISTRY_PORT);
+        LoanBookClient loanBookClient=new LoanBookClientImplementation("localhost",Registry.REGISTRY_PORT);
 
         ModelBook modelBook = new ModelManagerBook(bookClient);
         ModelMagazine modelMagazine = new ModelManagerMagazine(magazineClient);
         ModelLibrarian modelLibrarian = new ModelManagerLibrarian(librarianClient);
         ModelLibraryUser modelLibraryUser = new ModelManagerLibraryUser(libraryUserClient);
+        ModelLoanMagazine modelLoanMagazine = new ModelManagerLoanMagazine(loanMagazineClient);
+        ModelLoanBook modelLoanBook=new ModelManagerLoanBook(loanBookClient);
 
-        ViewModelFactory viewModelFactory = new ViewModelFactory(modelBook, modelMagazine,modelLibrarian,modelLibraryUser);
+        ViewModelFactory viewModelFactory = new ViewModelFactory(modelBook, modelMagazine,modelLibrarian,modelLibraryUser,modelLoanMagazine, modelLoanBook);
         ViewHandler viewHandler = new ViewHandler(viewModelFactory);
         viewHandler.start(primaryStage);
     }

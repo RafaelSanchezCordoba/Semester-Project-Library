@@ -1,29 +1,30 @@
 package server;
 
 import model.*;
-import server.storage.BookStorage;
-import server.storage.LibrarianStorage;
-import server.storage.LibraryUserStorage;
-import server.storage.MagazineStorage;
+import server.storage.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine, RemoteLibrarian, RemoteLibraryUser{
+public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine, RemoteLibrarian, RemoteLibraryUser,RemoteLoanBook,RemoteLoanMagazine{
     private MagazineStorage magazineStorage;
     private BookStorage bookStorage;
     private LibrarianStorage librarianStorage;
     private LibraryUserStorage libraryUserStorage;
+    private LoanMagazineStorage loanMagazineStorage;
+    private LoanBookStorage loanBookStorage;
 //    private GenreStorage genreStorage;
 
 
-    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage, LibrarianStorage librarianStorage,LibraryUserStorage libraryUserStorage) throws RemoteException {
+    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage, LibrarianStorage librarianStorage,LibraryUserStorage libraryUserStorage, LoanMagazineStorage loanMagazineStorage, LoanBookStorage loanBookStorage) throws RemoteException {
         this.magazineStorage = magazineStorage;
         this.bookStorage = bookStorage;
         this.librarianStorage = librarianStorage;
         this.libraryUserStorage = libraryUserStorage;
+        this.loanMagazineStorage = loanMagazineStorage;
+        this.loanBookStorage= loanBookStorage;
 //        this.genreStorage = genreStorage;
     }
 
@@ -114,7 +115,61 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     {
         return libraryUserStorage.getLibraryUserList();
     }
+    @Override
+    public void addMagazineLoan(LoanMagazine loanMagazine)
+        throws  RemoteException,SQLException
+    {
+        loanMagazineStorage.addMagazineLoan(loanMagazine);
+    }
 
+    @Override
+    public ArrayList<Magazine> getAvailableMagazineList()
+        throws SQLException, RemoteException
+    {
+        return loanMagazineStorage.getAvailableMagazineList();
+    }
+
+    @Override public void addBookLoan(LoanBook loanBook)
+        throws SQLException, RemoteException
+    {
+        loanBookStorage.addLoanBook(loanBook);
+    }
+
+    @Override public ArrayList<Book> getAvailableBookList()
+        throws SQLException, RemoteException
+    {
+        return loanBookStorage.getAvailableBooks();
+    }
+    public LibraryUser getUser(String ssn) throws RemoteException
+    {
+        return loanMagazineStorage.getUser(ssn);
+    }
+
+    @Override public ArrayList<LoanBook> getUserBookLoans(String ssn)
+        throws RemoteException
+    {
+        return loanBookStorage.getUserBookLoans(ssn);
+    }
+
+    @Override public void returnBook(int loan_id) throws RemoteException
+    {
+        loanBookStorage.returnBook(loan_id);
+    }
+
+    //    @Override public ArrayList<Magazine> getLoanedMagazines(String ssn)
+    //        throws RemoteException
+    //    {
+    //        return loanMagazineStorage.getLoanedMagazines(ssn);
+    //    }
+
+    @Override public void returnMagazine(int loan_id) throws RemoteException {
+        loanMagazineStorage.returnMagazine(loan_id);
+    }
+
+    @Override public ArrayList<LoanMagazine> getUserLoans(String ssn) throws RemoteException
+    {
+        return loanMagazineStorage.getUsersLoans(ssn);
+    }
 }
 
 
