@@ -22,11 +22,17 @@ public class BookStorageTestTest
 
     @BeforeAll
     public static void  setupVariables(){
-//      book = new Book("mark of the shaper","atlas",1432,1999,2034);
-//      book1 = new Book("mark of the elder","atlas","polka",123,4,2011);
-//      book2 = new Book("hjkl","fghjk",123,23,203);
+     book = new Book("mark of the shaper","atlas","hgfdsf",1999,2034);
+     book1 = new Book("mark of the elder","atlas","polka",123,2011);
+     book2 = new Book("hjkl","fghjk","saahara",23,203);
     }
 
+    @Test
+    public void checkEmpty() throws SQLException
+    {
+      storage.getBookList().clear();
+      Assertions.assertTrue(storage.getBookList().isEmpty());
+    }
     @Test
     public void addOne()
     {
