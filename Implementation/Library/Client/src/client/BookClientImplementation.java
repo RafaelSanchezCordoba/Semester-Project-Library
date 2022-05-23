@@ -22,35 +22,71 @@ import java.util.ArrayList;
 public class BookClientImplementation extends UnicastRemoteObject implements  BookClient {
 
   private final  RemoteBook remoteBook;
-  public BookClientImplementation(String  host, int port) throws IOException,
-      NotBoundException
-  {
+
+  /**
+   * The constructor that create and set the Registry.
+   * @param host
+   * The name of the host
+   * @param port
+   * The port number
+   * @throws IOException
+   * @throws NotBoundException
+   */
+  public BookClientImplementation(String  host, int port) throws IOException, NotBoundException {
     Registry registry = LocateRegistry.getRegistry(host,port);
     remoteBook = (RemoteBook) registry.lookup("book");
 
   }
-  public ArrayList<Book> getBookList() throws RemoteException, SQLException
-  {
+
+  /**
+   * Get book list method
+   * @return
+   * All the books in the list as a String
+   * @throws RemoteException
+   * @throws SQLException
+   */
+  public ArrayList<Book> getBookList() throws RemoteException, SQLException {
     return  remoteBook.getBookList();
   }
-  @Override public void addBook(Book book) throws RemoteException, SQLException
-  {
+
+  /**
+   * Add book method
+   * @param book
+   * The book passed as an argument
+   * @throws RemoteException
+   * @throws SQLException
+   */
+  @Override public void addBook(Book book) throws RemoteException, SQLException {
     remoteBook.addBook(book);
   }
 
-  @Override public void removeBook(int id) throws RemoteException, SQLException
-  {
+  /**
+   * Remove a book with a specific id passed as an argument
+   * @param id
+   * The unique identification number
+   * @throws RemoteException
+   * @throws SQLException
+   */
+  @Override public void removeBook(int id) throws RemoteException, SQLException {
     remoteBook.removeBook(id);
   }
 
-  @Override public GenreList getGenreList()
-      throws RemoteException, SQLException
-  {
+  /**
+   * Get genre list method
+   * @return
+   * All the genres in the list as a String
+   * @throws RemoteException
+   * @throws SQLException
+   */
+  @Override public GenreList getGenreList() throws RemoteException, SQLException {
     return remoteBook.getGenreList();
   }
 
-  @Override public void close() throws IOException
-  {
+  /**
+   * Close the remote object
+   * @throws IOException
+   */
+  @Override public void close() throws IOException {
       UnicastRemoteObject.unexportObject(this,true);
   }
 
