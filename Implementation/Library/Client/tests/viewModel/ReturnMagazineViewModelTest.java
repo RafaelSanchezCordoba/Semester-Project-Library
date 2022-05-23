@@ -10,7 +10,10 @@ import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ReturnMagazineViewModelTest
 {
@@ -46,7 +49,57 @@ public class ReturnMagazineViewModelTest
   //Return magazine
 
   //Zero
-  @Test public void zero(){
+  @Test public void zeroReturnMagazine(){
 
+  }
+  //One
+  @Test  public void oneReturnMagazine(){
+    try
+    {
+      viewModel.returnMagazine(3);
+      //assertEquals();
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
+  }
+  //Many
+  @Test public void manyReturnMagazine(){
+
+  }
+  //Boundary
+  @Test public void boundaryReturnMagazine(){
+
+  }
+  //Exception
+  @Test public void exceptionReturnMagazine(){
+    //should i create a method to set user to null   and  then check?
+  }
+
+  //GetUser
+  //Zero
+  @Test public void zeroGetUser(){
+
+  }
+  //One
+  @Test  public void oneGetUser(){
+    ssnTextField.set("1234567891234");
+    viewModel.getUser(ssnTextField.getValue());
+    assertEquals("Rosa|Lopez",selectedLibraryUserLabel.get());
+  }
+  //Many
+  @Test public void manyGetUser(){
+
+  }
+  //Boundary
+  @Test public void boundaryGetUser(){
+
+  }
+  //Exception
+  @Test public void exceptionGetUser(){
+    ssnTextField.set("1234567891239");
+    viewModel.getUser(ssnTextField.getValue());
+    assertEquals("Library User does  not exit",errorLabel.get());
   }
 }
