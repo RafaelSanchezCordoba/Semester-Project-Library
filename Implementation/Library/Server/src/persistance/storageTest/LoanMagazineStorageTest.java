@@ -15,12 +15,15 @@ public class LoanMagazineStorageTest implements LoanMagazineStorage
   private int counter = 0;
   private ArrayList<LoanMagazine> loanMagazinesList;
   private ArrayList<Magazine> magazineList;
+  private  LibraryUser libraryUser;
 
   private static LoanMagazineStorageTest instance;
 
   private LoanMagazineStorageTest (){
     loanMagazinesList = new ArrayList<>();
     magazineList = new ArrayList<>();
+    libraryUser = new LibraryUser("12456789909","gianni","nove","palla");
+
   }
 
   public  static synchronized LoanMagazineStorageTest getInstance(){
@@ -46,6 +49,13 @@ public class LoanMagazineStorageTest implements LoanMagazineStorage
 
   @Override public LibraryUser getUser(String ssn) throws RemoteException
   {
-    return null;
+    if (ssn.equals(libraryUser.getSSN()))
+    {
+      return libraryUser;
+    }
+    else
+    {
+      return null;
+    }
   }
 }
