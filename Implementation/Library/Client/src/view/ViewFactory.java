@@ -20,6 +20,7 @@ public class ViewFactory
   private AddRemoveLibrarianViewController librarianViewController;
   private HomeViewController homeController;
   private ChoseItemTypeViewController itemViewController;
+  private AddRemoveLibraryUserViewController libraryUserController;
 
 
 
@@ -32,6 +33,7 @@ public class ViewFactory
     librarianViewController = null;
     itemViewController=null;
     homeController=null;
+    libraryUserController = null;
   }
 
   public Region loadAddRemoveLibrarian() throws SQLException, RemoteException {
@@ -66,6 +68,22 @@ public class ViewFactory
   }
     bookController.reset();
     return bookController.getRoot();
+  }
+
+  public Region loadAddRemoveLibraryUserView() throws SQLException, RemoteException{
+    if(libraryUserController == null){
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("addRemoveUser.fxml"));
+      try{
+        Region root = loader.load();
+        libraryUserController = loader.getController();
+        libraryUserController.init(viewHandler, viewModelFactory.getUserViewModel(), root);
+      }catch (IOException | SQLException e){
+        throw new IOError(e);
+      }
+    }
+    libraryUserController.reset();
+    return libraryUserController.getRoot();
   }
 
   public Region loadAddRemoveMagazineView() throws SQLException, RemoteException

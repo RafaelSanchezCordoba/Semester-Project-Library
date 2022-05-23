@@ -1,7 +1,13 @@
 package server;
 
-import model.LibraryUser;
-import persistance.*;
+import persistance.storageTest.BookStorageTest;
+import persistance.storageTest.LibrarianStorageTest;
+import persistance.storageTest.LibraryUserStorageTest;
+import persistance.storageTest.MagazineStorageTest;
+import server.storage.BookStorage;
+import server.storage.LibrarianStorage;
+import server.storage.LibraryUserStorage;
+import server.storage.MagazineStorage;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -16,25 +22,22 @@ public class testServer
   {
 
     Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
-    LibraryUserDAOImplementation libraryUserDAO =  LibraryUserDAOImplementation.getInstance();
-    // BookDAOImplementation bookDAO = BookDAOImplementation.getInstance();
-    //MagazineDAOImplementation magazineDAO = MagazineDAOImplementation.getInstance();
-    //AdapterBookDAO adapterBookDAO = new AdapterBookDAO(bookDAO);
-    //AdapterMagazineDAO adapterMagazineDAO = new AdapterMagazineDAO(magazineDAO);
 
     LibraryUserStorage libraryUserStorage = LibraryUserStorageTest.getInstance();
     MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
     BookStorage bookStorage = BookStorageTest.getInstance();
+    LibrarianStorage librarianStorage= LibrarianStorageTest.getInstance();
 
-    RemoteBook book = new Communicator(magazineStorage, bookStorage,
+    RemoteBook book = new Communicator(magazineStorage, bookStorage,librarianStorage,
         libraryUserStorage);
-    RemoteMagazine magazine = new Communicator(magazineStorage, bookStorage,
+    RemoteMagazine magazine = new Communicator(magazineStorage, bookStorage,librarianStorage,
         libraryUserStorage);
-    RemoteLibraryUser libraryUser = new Communicator(magazineStorage,
-        bookStorage, libraryUserStorage);
+    RemoteLibrarian librarian = new Communicator(magazineStorage, bookStorage,librarianStorage, libraryUserStorage);
+    RemoteLibraryUser libraryUser = new Communicator(magazineStorage, bookStorage, librarianStorage, libraryUserStorage);
 
     registry.bind("book", book);
     registry.bind("magazine", magazine);
+    registry.bind("librarian", librarian);
     registry.bind("libraryUser", libraryUser);
 
 

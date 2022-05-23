@@ -3,6 +3,7 @@ package server;
 import model.*;
 import server.storage.BookStorage;
 import server.storage.LibrarianStorage;
+import server.storage.LibraryUserStorage;
 import server.storage.MagazineStorage;
 
 import java.rmi.RemoteException;
@@ -10,17 +11,19 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine, RemoteLibrarian{
+public class Communicator extends UnicastRemoteObject implements RemoteBook, RemoteMagazine, RemoteLibrarian, RemoteLibraryUser{
     private MagazineStorage magazineStorage;
     private BookStorage bookStorage;
     private LibrarianStorage librarianStorage;
+    private LibraryUserStorage libraryUserStorage;
 //    private GenreStorage genreStorage;
 
 
-    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage, LibrarianStorage librarianStorage) throws RemoteException {
+    public Communicator(MagazineStorage magazineStorage, BookStorage bookStorage, LibrarianStorage librarianStorage,LibraryUserStorage libraryUserStorage) throws RemoteException {
         this.magazineStorage = magazineStorage;
         this.bookStorage = bookStorage;
         this.librarianStorage = librarianStorage;
+        this.libraryUserStorage = libraryUserStorage;
 //        this.genreStorage = genreStorage;
     }
 
@@ -92,6 +95,24 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
 
     @Override public ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException {
         return librarianStorage.getLibrarianList();
+    }
+
+    @Override public void addLibraryUser(LibraryUser libraryUser)
+        throws RemoteException, SQLException
+    {
+        libraryUserStorage.addLibraryUser(libraryUser);
+    }
+
+    @Override public void removeLibraryUser(String ssn)
+        throws RemoteException, SQLException
+    {
+        libraryUserStorage.removeLibraryUser(ssn);
+    }
+
+    @Override public ArrayList<LibraryUser> getLibraryUserList()
+        throws RemoteException, SQLException
+    {
+        return libraryUserStorage.getLibraryUserList();
     }
 
 }

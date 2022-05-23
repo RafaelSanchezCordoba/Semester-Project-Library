@@ -10,10 +10,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="878.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRemoveLibraryUserViewController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="878.0" />
-        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="HOME" />
-<!--        <Button layoutX="375.0" layoutY="14.0" mnemonicParsing="false" onAction="#librarianMenuButtonPressed" text="LIBRARIAN" />-->
-        <Button layoutX="771.0" layoutY="16.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
         <Label layoutX="23.0" layoutY="65.0" text="Library Users">
             <font>
                 <Font size="36.0" />
@@ -64,7 +60,13 @@
                 <Font size="13.0" />
             </font>
         </Label>
-        <Button layoutX="123.0" layoutY="14.0" mnemonicParsing="false" onAction="#bookMenuButtonPressed" text="BOOK" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="878.0" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="Home" />
+      <Button layoutX="87.0" layoutY="14.0" mnemonicParsing="false" onAction="#multimediaItemMenuButtonPressed" text="Manage multimedia Items" />
+      <Button layoutX="775.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
+      <Button layoutX="364.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLoanButtonPressed" text="Create loan" />
+      <Button layoutX="460.0" layoutY="13.0" mnemonicParsing="false" onAction="#onReturnButtonPressed" text="Return item" />
+      <Button layoutX="258.0" layoutY="14.0" mnemonicParsing="false" onAction="#onAddLibraryUserButtonPressed" text="Manage user" />
 <!--        <Button layoutX="236.0" layoutY="14.0" mnemonicParsing="false" onAction="#magazineMenuButtonPressed" text="MAGAZINE" />-->
 <!--        <Button layoutX="505.0" layoutY="14.0" mnemonicParsing="false" onAction="#userMenuButtonPressed" text="LIBRARY USER" />-->
     </children>

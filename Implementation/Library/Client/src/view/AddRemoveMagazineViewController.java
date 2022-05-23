@@ -97,15 +97,34 @@ public class AddRemoveMagazineViewController
     viewModel.removeMagazine(magazineListView.getSelectionModel().getSelectedItem().getId());
   }
 
-  @FXML
-  public void homeMenuButtonPressed() throws SQLException, RemoteException
+  @FXML public void multimediaItemMenuButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(viewHandler.ITEM);
+  }
+
+  @FXML public void homeMenuButtonPressed()
+      throws SQLException, RemoteException
   {
     viewHandler.openView(viewHandler.HOME);
   }
 
-  @FXML public void manageItemsPressed() throws SQLException, RemoteException
+  @FXML public void onLoanButtonPressed()
+      throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.ITEM);
+
+  }
+
+  @FXML public void onAddLibraryUserButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(viewHandler.LIBRARY_USER);
+  }
+
+  @FXML public void onReturnButtonPressed()
+      throws SQLException, RemoteException
+  {
+
   }
 
   public void reset() throws SQLException, RemoteException{

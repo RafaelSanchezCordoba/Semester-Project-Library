@@ -1,7 +1,8 @@
-package persistance;
+package persistance.adapters;
 
 import model.LibraryUser;
-import server.LibraryUserStorage;
+import persistance.DAO.LibraryUserDAO;
+import server.storage.LibraryUserStorage;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

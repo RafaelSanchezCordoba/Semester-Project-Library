@@ -15,6 +15,7 @@ public class ViewHandler
   public static final String MAGAZINE = "addRemoveMagazine";
   public static final String LIBRARIAN = "addRemoveLibrarian";
   public static final String ITEM="choseItemType";
+  public static final String LIBRARY_USER = "addRemoveLibraryUser";
 
 
   private Stage primaryStage;
@@ -53,9 +54,12 @@ public class ViewHandler
       case ITEM:
         root= viewFactory.loadChoseItemTypeView();
         break;
-        case "home":
+        case HOME:
          root = viewFactory.loadHomeView();
          break;
+      case LIBRARY_USER:
+        root = viewFactory.loadAddRemoveLibraryUserView();
+        break;
       default:
         throw new IllegalArgumentException("Unknown view: " + id);
     }

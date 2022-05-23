@@ -21,10 +21,46 @@ public class ChoseItemTypeViewController
   }
 
 
-  @FXML
-  public void homeMenuButtonPressed() throws SQLException, RemoteException
+  @FXML public void multimediaItemMenuButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(viewHandler.ITEM);
+  }
+
+  @FXML public void homeMenuButtonPressed()
+      throws SQLException, RemoteException
   {
     viewHandler.openView(viewHandler.HOME);
+  }
+
+  @FXML public void bookMenuButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(viewHandler.BOOK);
+  }
+
+  @FXML public void magazinesMenuButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(viewHandler.MAGAZINE);
+  }
+
+  @FXML public void onLoanButtonPressed()
+      throws SQLException, RemoteException
+  {
+
+  }
+
+  @FXML public void onAddLibraryUserButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewHandler.openView(viewHandler.LIBRARY_USER);
+  }
+
+  @FXML public void onReturnButtonPressed()
+      throws SQLException, RemoteException
+  {
+
   }
 
   @FXML
@@ -33,16 +69,7 @@ public class ChoseItemTypeViewController
     viewHandler.closeView();
   }
 
-  @FXML
-  public void bookMenuButtonPressed() throws SQLException, RemoteException
-  {
-    viewHandler.openView(viewHandler.BOOK);
-  }
 
-  @FXML
-  public void magazinesMenuButtonPressed() throws SQLException, RemoteException {
-    viewHandler.openView(viewHandler.MAGAZINE);
-  }
 
   public Region getRoot()
   {

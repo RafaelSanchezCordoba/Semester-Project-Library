@@ -10,11 +10,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRemoveMagazineViewController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="1107.0" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="HOME" />
-      <Button layoutX="87.0" layoutY="14.0" mnemonicParsing="false" onAction="#manageItemsPressed" text="MANAGE ITEMS" />
-      <Button layoutX="207.0" layoutY="14.0" mnemonicParsing="false" text="USERS" />
-      <Button layoutX="1002.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
       <Label layoutX="10.0" layoutY="65.0" text="MAGAZINES">
          <font>
             <Font size="36.0" />
@@ -96,5 +91,12 @@
             <Font size="14.0" />
          </font>
       </TextField>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="1107.0" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="Home" />
+      <Button layoutX="87.0" layoutY="14.0" mnemonicParsing="false" onAction="#multimediaItemMenuButtonPressed" text="Manage multimedia Items" />
+      <Button layoutX="992.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
+      <Button layoutX="364.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLoanButtonPressed" text="Create loan" />
+      <Button layoutX="460.0" layoutY="13.0" mnemonicParsing="false" onAction="#onReturnButtonPressed" text="Return item" />
+      <Button layoutX="258.0" layoutY="14.0" mnemonicParsing="false" onAction="#onAddLibraryUserButtonPressed" text="Manage user" />
    </children>
 </AnchorPane>

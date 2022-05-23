@@ -10,9 +10,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddRemoveBookViewController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="1107.0" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="HOME" />
-      <Button layoutX="1002.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
       <Label layoutX="10.0" layoutY="65.0" text="BOOKS">
          <font>
             <Font size="36.0" />
@@ -98,8 +95,13 @@
          </font>
       </Label>
       <ListView fx:id="genreListView" layoutX="312.0" layoutY="292.0" prefHeight="200.0" prefWidth="213.0" />
-      <Button layoutX="88.0" layoutY="14.0" mnemonicParsing="false" onAction="#manageItemsPressed" text="MANAGE ITEMS" />
-      <Button layoutX="208.0" layoutY="14.0" mnemonicParsing="false" text="USERS" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="63.0" layoutX="-3.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="1118.0" />
+      <Button layoutX="22.0" layoutY="20.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="Home" />
+      <Button layoutX="95.0" layoutY="20.0" mnemonicParsing="false" onAction="#multimediaItemMenuButtonPressed" text="Manage multimedia Items" />
+      <Button layoutX="1006.0" layoutY="20.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
+      <Button layoutX="372.0" layoutY="20.0" mnemonicParsing="false" onAction="#onLoanButtonPressed" text="Create loan" />
+      <Button layoutX="468.0" layoutY="19.0" mnemonicParsing="false" onAction="#onReturnButtonPressed" text="Return item" />
+      <Button layoutX="266.0" layoutY="20.0" mnemonicParsing="false" onAction="#onAddLibraryUserButtonPressed" text="Manage user" />
 
    </children>
 </AnchorPane>

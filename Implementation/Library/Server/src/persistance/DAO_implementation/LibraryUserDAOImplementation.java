@@ -1,7 +1,7 @@
-package persistance;
+package persistance.DAO_implementation;
 
-import model.Book;
 import model.LibraryUser;
+import persistance.DAO.LibraryUserDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
