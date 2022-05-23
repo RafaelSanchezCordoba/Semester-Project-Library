@@ -21,7 +21,15 @@ public class MagazineClientImplementation extends UnicastRemoteObject implements
 
   private final RemoteMagazine remoteMagazine;
 
-
+  /**
+   * The constructor that create and set the Registry.
+   * @param host
+   * The name of the host
+   * @param port
+   * The port number
+   * @throws IOException
+   * @throws NotBoundException
+   */
   public MagazineClientImplementation(String  host, int port) throws IOException, NotBoundException
   {
 
@@ -30,6 +38,13 @@ public class MagazineClientImplementation extends UnicastRemoteObject implements
 
   }
 
+  /**
+   * Add magazine method
+   * @param magazine
+   * The magazine passed as an argument
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @Override public void addMagazine(Magazine magazine) throws RemoteException
   {
     try
@@ -40,6 +55,13 @@ public class MagazineClientImplementation extends UnicastRemoteObject implements
     }
   }
 
+  /**
+   * Remove a magazine with a specific identification number
+   * @param id
+   * The unique identification number passed as an argument
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @Override public void removeMagazine(int id) throws RemoteException
   {
     try
@@ -51,12 +73,23 @@ public class MagazineClientImplementation extends UnicastRemoteObject implements
 
   }
 
+  /**
+   * Get magazine list method
+   * @return
+   * The magazines in the list
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public ArrayList<Magazine> getMagazineList()
       throws SQLException, RemoteException
   {
     return remoteMagazine.getMagazineList();
   }
 
+  /**
+   * Close the remote object
+   * @throws IOException
+   */
   @Override public void close() throws IOException
   {
       UnicastRemoteObject.unexportObject(this,true);
