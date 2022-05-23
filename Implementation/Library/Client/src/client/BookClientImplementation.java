@@ -41,7 +41,7 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
   /**
    * Get book list method
    * @return
-   * All the books in the list as a String
+   * All the books in the list
    * @throws RemoteException
    * @throws SQLException
    */
@@ -74,7 +74,7 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
   /**
    * Get genre list method
    * @return
-   * All the genres in the list as a String
+   * The list of genres
    * @throws RemoteException
    * @throws SQLException
    */

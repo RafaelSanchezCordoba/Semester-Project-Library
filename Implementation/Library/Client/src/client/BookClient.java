@@ -36,7 +36,7 @@ public interface BookClient extends Closeable {
   /**
    * Get book list method
    * @return
-   * All the books in the list as a String
+   * All the books in the list
    * @throws RemoteException
    * @throws SQLException
    */
@@ -45,7 +45,7 @@ public interface BookClient extends Closeable {
   /**
    * Get genre list method
    * @return
-   * All the genres in the list as a String
+   * The genre list
    * @throws RemoteException
    * @throws SQLException
    */
