@@ -14,6 +14,7 @@ public class ViewHandler
   public static final String BOOK = "addRemoveBook";
   public static final String MAGAZINE = "addRemoveMagazine";
   public static final String LIBRARIAN = "addRemoveLibrarian";
+  public static final String LIBRARIAN_HOME = "librarianHome";
   public static final String ITEM="choseItemType";
   public static final String LIBRARY_USER = "addRemoveLibraryUser";
   public static final String LENDMULTIMEDIAITEM = "lendMultimediaItem";
@@ -67,6 +68,9 @@ public class ViewHandler
         break;
       case RETURNMULTIMEDIAITEM:
         root= viewFactory.loadReturnMultimediaView();
+        break;
+      case LIBRARIAN_HOME:
+        root=viewFactory.loadLibrarianHome();
         break;
       default:
         throw new IllegalArgumentException("Unknown view: " + id);

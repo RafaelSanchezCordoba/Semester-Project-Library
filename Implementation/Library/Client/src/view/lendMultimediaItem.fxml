@@ -30,7 +30,6 @@
          </font>
       </Label>
       <Label fx:id="selectedLibraryUserLabel" layoutX="498.0" layoutY="285.0" text="Selected Library User..." />
-      <Button layoutX="497.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelButtonPressed" text="Cancel" textFill="RED" />
       <Button layoutX="630.0" layoutY="361.0" mnemonicParsing="false" onAction="#onLendMagazine" text="Lend Magazine" />
       <Label layoutX="569.0" layoutY="69.0" text="Library User">
          <font>

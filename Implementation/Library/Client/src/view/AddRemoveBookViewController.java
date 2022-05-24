@@ -62,25 +62,32 @@ public class AddRemoveBookViewController
 
   @FXML public void addBookButtonPressed() throws SQLException, RemoteException
   {
+    String edition;
     GenreList genres;
     genres = viewModel.getGenreList();
-    if (authorTextField.equals("")) {
+    if (editionTextField.getText().equals(""))
+    {
+      edition="1";
+    }
+    else
+    {
+      edition=editionTextField.getText();
+    }
+
+    if (authorTextField.getText().equals("")) {
       Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
-          isbnTextField.getText(), Integer.parseInt(editionTextField.getText()),
+          isbnTextField.getText(), Integer.parseInt(edition),
           Integer.parseInt(yearTextField.getText()), genres);
       viewModel.addBook(book);
-
     }
     else{
       Book book = new Book(authorTextField.getText(), titleTextField.getText(), publisherTextField.getText(),
           isbnTextField.getText()
-          , Integer.parseInt(editionTextField.getText()),
+          , Integer.parseInt(edition),
           Integer.parseInt(yearTextField.getText()), genres);
       viewModel.addBook(book);
     }
     reset();
-
-
 
   }
 

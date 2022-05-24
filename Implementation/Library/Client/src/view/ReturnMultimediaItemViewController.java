@@ -72,11 +72,6 @@ public class ReturnMultimediaItemViewController
     viewHandler.closeView();
   }
 
-  @FXML
-  public void  cancelButtonPressed() throws SQLException, RemoteException{
-    reset();
-  }
-
 
   @FXML
   public void okButtonPressed() {

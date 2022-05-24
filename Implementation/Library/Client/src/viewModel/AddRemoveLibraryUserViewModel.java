@@ -60,8 +60,8 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         }else if(passwordTextField.get().equals("")){
             errorLabel.set("Password can't be empty");
             return true;
-        }else if(passwordTextField.get().length() > 36){
-            errorLabel.set("Password can't be longer than 36 characters");
+        }else if(passwordTextField.get().length() > 20){
+            errorLabel.set("Password can't be longer than 20 characters");
         }
         else if(ssnFormatCheck())
         {

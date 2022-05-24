@@ -85,9 +85,6 @@ public class LendMultimediaItemViewController {
         magazineViewModel.setMagazineList();
     }
 
-    @FXML void cancelButtonPressed() throws SQLException, RemoteException {
-        reset();
-    }
 
     @FXML void onLendMagazine()  {
       resetErrorLabels();

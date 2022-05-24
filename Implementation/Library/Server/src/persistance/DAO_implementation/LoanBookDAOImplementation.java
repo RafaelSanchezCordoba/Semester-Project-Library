@@ -116,12 +116,12 @@ public class LoanBookDAOImplementation implements LoanBookDAO
 
 
       while (resultSet.next()){
-        String socialanumber = resultSet.getString("ssn");
+        String socialSecNumber = resultSet.getString("ssn");
         String password = resultSet.getString("password");
         String f_name = resultSet.getString("f_name");
         String l_name = resultSet.getString("l_name");
 
-        LibraryUser result = new LibraryUser(socialanumber,f_name,l_name,password);
+        LibraryUser result = new LibraryUser(socialSecNumber,f_name,l_name,password);
 
         return result;
       }

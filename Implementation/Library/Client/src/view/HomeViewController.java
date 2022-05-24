@@ -35,13 +35,9 @@ public class HomeViewController
   @FXML
   public void librarianButtonPressed() throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.ITEM);
+    viewHandler.openView(viewHandler.LIBRARIAN_HOME);
   }
-
-  @FXML
-  public void libraryUserButtonPressed() throws SQLException, RemoteException {
-
-  }
+  
 
   public Region getRoot()
   {

@@ -169,13 +169,13 @@ public class AddRemoveLibraryUserViewModelTest {
     }
 
     @Test
-    public void pasword_21_character_gives_error_and_does_not_add() throws SQLException, RemoteException {
+    public void password_21_character_gives_error_and_does_not_add() throws SQLException, RemoteException {
         firstNameTextField.set("Rafa");
         lastNameTextField.set("Sanchez");
-        passwordTextField.set("ffffffffffffffffffff");
+        passwordTextField.set("fffffffffffffffffffff");
         ssnTextField.set("1234567890123");
         viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
-        assertEquals("Password should be less than 50 characters", errorLabel.get());
+        assertEquals("Password can't be longer than 20 characters", errorLabel.get());
         assertEquals("[]", userList.get().toString());
     }
 
