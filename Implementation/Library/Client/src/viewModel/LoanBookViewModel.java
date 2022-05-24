@@ -122,12 +122,12 @@ public class LoanBookViewModel implements PropertyChangeListener
   {
     libraryUser = model.getUser(ssn);
     if(libraryUser==null){
-      errorLabel.set("Library User does  not exit");
+      errorLabel.set("");
     }
 
     else
     {
-      selectedLibraryUserLabel.set(libraryUser.getFirstName() + "|" + libraryUser.getLastName());
+      selectedLibraryUserLabel.set(libraryUser.getFirstName() + " " + libraryUser.getLastName());
     }
   }catch (RemoteException e){
       errorLabel.set(e.getMessage());

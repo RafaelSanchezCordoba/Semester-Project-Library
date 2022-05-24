@@ -79,11 +79,11 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
       {
         user = model.getUser(ssn);
         if(user==null){
-          errorLabel.set("Library User does  not exit");
+          errorLabel.set("Library User does not exist");
         }
 
         else{
-        selectedLibraryUserLabel.set(user.getFirstName() + "|" + user.getLastName());
+        selectedLibraryUserLabel.set(user.getFirstName() + " " + user.getLastName());
         }
 
       }catch (RemoteException e){

@@ -1,9 +1,8 @@
-package persistance.storageTest;
+package storageTest;
 
 import model.LoanBook;
 import model.Book;
 import model.LibraryUser;
-import model.LoanBook;
 import server.storage.LoanBookStorage;
 
 import java.rmi.RemoteException;

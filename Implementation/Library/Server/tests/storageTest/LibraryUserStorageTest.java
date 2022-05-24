@@ -1,4 +1,4 @@
-package persistance.storageTest;
+package storageTest;
 
 import model.LibraryUser;
 import server.storage.LibraryUserStorage;

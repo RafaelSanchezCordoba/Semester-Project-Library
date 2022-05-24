@@ -1,6 +1,6 @@
 package server;
 
-import persistance.storageTest.*;
+import storageTest.*;
 import server.storage.*;
 
 import java.rmi.AlreadyBoundException;

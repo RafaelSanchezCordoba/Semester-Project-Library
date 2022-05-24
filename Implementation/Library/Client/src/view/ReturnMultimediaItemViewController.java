@@ -49,22 +49,22 @@ public class ReturnMultimediaItemViewController
     magazineViewModel.bindLoanedMagazines(magazineListView.itemsProperty());
 
 
-      bookViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
-      bookViewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
-     bookViewModel.bindErrorLabel(errorLabelBook.textProperty());
-     bookViewModel.bindSsnTextField(ssnTextField.textProperty());
-     bookViewModel.bindLoanedBooks(bookListView.itemsProperty());
+    bookViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
+    bookViewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
+    bookViewModel.bindErrorLabel(errorLabelBook.textProperty());
+    bookViewModel.bindSsnTextField(ssnTextField.textProperty());
+    bookViewModel.bindLoanedBooks(bookListView.itemsProperty());
   }
 
 
   @FXML
   public  void homeMenuButtonPressed() throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.HOME);
+    viewHandler.openView(ViewHandler.HOME);
   }
   @FXML
   public void multimediaItemMenuButtonPressed() throws RemoteException,SQLException{
-    viewHandler.openView(viewHandler.ITEM);
+    viewHandler.openView(ViewHandler.ITEM);
   }
 
   @FXML

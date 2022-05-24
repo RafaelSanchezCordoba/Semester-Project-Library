@@ -4,7 +4,7 @@ import model.Magazine;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import persistance.storageTest.MagazineStorageTest;
+import storageTest.MagazineStorageTest;
 
 import java.sql.Date;
 

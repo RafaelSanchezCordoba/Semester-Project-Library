@@ -1,4 +1,4 @@
-package persistance.storageTest;
+package storageTest;
 
 import model.Librarian;
 import server.storage.LibrarianStorage;

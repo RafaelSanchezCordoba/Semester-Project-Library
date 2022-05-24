@@ -3,7 +3,7 @@ package storage;
 import model.LibraryUser;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import persistance.storageTest.LibraryUserStorageTest;
+import storageTest.LibraryUserStorageTest;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package persistance.storageTest;
+package storageTest;
 
 import model.LibraryUser;
 import model.LoanMagazine;
@@ -6,7 +6,6 @@ import model.Magazine;
 import server.storage.LoanMagazineStorage;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoanMagazineStorageTest implements LoanMagazineStorage
