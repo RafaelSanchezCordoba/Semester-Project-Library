@@ -15,8 +15,6 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="searchTextField" layoutX="606.0" layoutY="62.0" prefHeight="25.0" prefWidth="444.0" />
-      <Button layoutX="1062.0" layoutY="62.0" mnemonicParsing="false" onAction="#searchButtonPressed" text="🔍" />
       <ListView fx:id="magazineListView" layoutX="606.0" layoutY="96.0" prefHeight="283.0" prefWidth="487.0" />
       <Button layoutX="281.0" layoutY="304.0" mnemonicParsing="false" onAction="#removeMagazineButtonPressed" text="Remove" />
       <Label layoutX="40.0" layoutY="139.0" text="Title: ">

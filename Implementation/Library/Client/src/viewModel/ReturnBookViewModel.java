@@ -27,7 +27,6 @@ public class ReturnBookViewModel implements PropertyChangeListener
   private final StringProperty errorLabel;
   private final StringProperty selectedMultimediaItemLabel;
   private final StringProperty selectedLibraryUserLabel;
-  private final StringProperty  multimediaItemSearchTextField;
   private final StringProperty ssnTextField;
   private SimpleListProperty<LoanBook> loanedBooks;
 
@@ -37,7 +36,6 @@ public class ReturnBookViewModel implements PropertyChangeListener
     this.errorLabel = new SimpleStringProperty("");
     this.selectedMultimediaItemLabel = new SimpleStringProperty("");
     this.selectedLibraryUserLabel = new SimpleStringProperty("");
-    this.multimediaItemSearchTextField = new SimpleStringProperty("");
     this.ssnTextField = new SimpleStringProperty();
     ObservableList<LoanBook> observableList = FXCollections.observableArrayList( new ArrayList<LoanBook>());
     this.loanedBooks = new SimpleListProperty<>(observableList);
@@ -57,9 +55,7 @@ public class ReturnBookViewModel implements PropertyChangeListener
     property.bindBidirectional(selectedLibraryUserLabel);
   }
 
-  public void bindMultimediaItemSearchTextField(StringProperty property){
-    property.bindBidirectional(multimediaItemLabel);
-  }
+
 
   public void bindSsnTextField(StringProperty property){
     property.bindBidirectional(ssnTextField);
@@ -75,7 +71,6 @@ public class ReturnBookViewModel implements PropertyChangeListener
     errorLabel.set("");
     selectedMultimediaItemLabel.set("");
     //  selectedLibraryUserLabel.set("");
-    multimediaItemSearchTextField.set("");
     ssnTextField.set("");
   }
 
@@ -117,9 +112,7 @@ public class ReturnBookViewModel implements PropertyChangeListener
     try {
      // reset();
       setLoanedBooks();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (RemoteException e) {
+    } catch (SQLException | RemoteException e) {
       e.printStackTrace();
     }
 

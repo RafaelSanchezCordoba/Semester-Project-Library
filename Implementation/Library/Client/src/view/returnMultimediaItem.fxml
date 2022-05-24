@@ -16,8 +16,6 @@
 
         </Label>
         <ListView fx:id="magazineListView" layoutX="15.0" layoutY="157.0" prefHeight="228.0" prefWidth="420.0" />
-        <TextField fx:id="multimediaItemSearchTextField" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="403.0" />
-        <Button layoutX="427.0" layoutY="119.0" mnemonicParsing="false" onAction="#multimediaItemSearchButtonPressed" text="🔍" />
         <Button layoutX="15.0" layoutY="392.0" mnemonicParsing="false" onAction="#showBookListButtonPressed" text="Books" />
         <Button layoutX="82.0" layoutY="392.0" mnemonicParsing="false" onAction="#showMagazineListButtonPressed" text="Magazines" />
         <Label layoutX="498.0" layoutY="245.0" text="Library User: ">
@@ -35,7 +33,7 @@
         </Label>
         <Button layoutX="726.0" layoutY="158.0" mnemonicParsing="false" onAction="#okButtonPressed" text="OK" />
         <Label fx:id="errorLabelBook" layoutX="498.0" layoutY="196.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
-        <ListView fx:id="bookListView" layoutX="16.0" layoutY="153.0" prefHeight="234.0" prefWidth="420.0" />
+        <ListView fx:id="bookListView" layoutX="16.0" layoutY="125.0" prefHeight="262.0" prefWidth="420.0" />
         <Button layoutX="629.0" layoutY="319.0" mnemonicParsing="false" onAction="#onReturnBook" prefHeight="26.0" prefWidth="97.0" text="Return Book" />
         <Label fx:id="errorLabelMagazine" layoutX="498.0" layoutY="215.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="791.0" />

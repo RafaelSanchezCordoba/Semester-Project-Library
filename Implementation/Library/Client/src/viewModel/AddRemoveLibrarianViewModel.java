@@ -63,9 +63,6 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
         property.bindBidirectional(librarianList);
     }
 
-    public void search() {
-
-    }
 
     public void addLibrarian(Librarian librarian) throws RemoteException, SQLException {
         if (!errorsCheck())

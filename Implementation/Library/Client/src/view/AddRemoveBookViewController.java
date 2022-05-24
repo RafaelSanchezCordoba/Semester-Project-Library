@@ -26,7 +26,6 @@ public class AddRemoveBookViewController
   @FXML private TextField isbnTextField;
   @FXML private TextField yearTextField;
   @FXML private TextField editionTextField;
-  @FXML private TextField searchTextField;
   @FXML private ListView<Book> bookListView;
   @FXML private ListView<Genre> genreListView;
   @FXML private ListView<Genre> selectedGenreListView;
@@ -45,7 +44,6 @@ public class AddRemoveBookViewController
     viewModel.bindErrorLabel(errorLabel.textProperty());
     viewModel.bindISBNTextField(isbnTextField.textProperty());
     viewModel.bindPublisherTextField(publisherTextField.textProperty());
-    viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindYearTextField(yearTextField.textProperty());
     viewModel.bindBookListView(bookListView.itemsProperty());
     viewModel.bindGenreList(genreListView.itemsProperty());
@@ -60,10 +58,7 @@ public class AddRemoveBookViewController
     viewHandler.closeView();
   }
 
-  @FXML public void searchButtonPressed()
-  {
-    viewModel.search();
-  }
+
 
   @FXML public void addBookButtonPressed() throws SQLException, RemoteException
   {

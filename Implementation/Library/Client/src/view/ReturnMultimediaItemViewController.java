@@ -27,7 +27,6 @@ public class ReturnMultimediaItemViewController
   @FXML private Label errorLabelBook;
   @FXML private Label errorLabelMagazine;
   @FXML private Label selectedLibraryUserLabel;
-  @FXML private TextField multimediaItemSearchTextField;
   @FXML private TextField ssnTextField;
   @FXML private ListView<LoanMagazine> magazineListView;
   @FXML private ListView<LoanBook> bookListView;
@@ -46,23 +45,18 @@ public class ReturnMultimediaItemViewController
     magazineViewModel.bindErrorLabel(errorLabelMagazine.textProperty());
     magazineViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
     magazineViewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
-    magazineViewModel.bindMultimediaItemSearchTextField(multimediaItemSearchTextField.textProperty());
     magazineViewModel.bindSsnTextField(ssnTextField.textProperty());
     magazineViewModel.bindLoanedMagazines(magazineListView.itemsProperty());
 
 
       bookViewModel.bindMultimediaItemLabel(multimediaItemLabel.textProperty());
       bookViewModel.bindSelectedLibraryUserLabel(selectedLibraryUserLabel.textProperty());
-      bookViewModel.bindMultimediaItemSearchTextField(multimediaItemSearchTextField.textProperty());
      bookViewModel.bindErrorLabel(errorLabelBook.textProperty());
      bookViewModel.bindSsnTextField(ssnTextField.textProperty());
      bookViewModel.bindLoanedBooks(bookListView.itemsProperty());
   }
 
-  @FXML
-  public void multimediaItemSearchButtonPressed() {
-    //Not now
-  }
+
   @FXML
   public  void homeMenuButtonPressed() throws SQLException, RemoteException
   {

@@ -24,7 +24,6 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
     private final StringProperty errorLabel;
     private final StringProperty selectedMultimediaItemLabel;
     private final StringProperty selectedLibraryUserLabel;
-    private final StringProperty  multimediaItemSearchTextField;
     private final StringProperty ssnTextField;
     private SimpleListProperty<LoanMagazine> loanedMagazines ;
 
@@ -34,7 +33,6 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
         this.errorLabel = new SimpleStringProperty("");
         this.selectedLibraryUserLabel = new SimpleStringProperty("");
         this.selectedMultimediaItemLabel = new SimpleStringProperty("");
-        this.multimediaItemSearchTextField = new SimpleStringProperty("");
         this.ssnTextField = new SimpleStringProperty();
         ObservableList<LoanMagazine> observableList = FXCollections.observableArrayList( new ArrayList<LoanMagazine>());
         this.loanedMagazines = new SimpleListProperty<>(observableList);
@@ -54,9 +52,6 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
         property.bindBidirectional(selectedLibraryUserLabel);
     }
 
-    public void bindMultimediaItemSearchTextField(StringProperty property){
-        property.bindBidirectional(multimediaItemLabel);
-    }
 
     public void bindSsnTextField(StringProperty property){
         property.bindBidirectional(ssnTextField);
@@ -71,8 +66,7 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
         errorLabel.set("");
         selectedMultimediaItemLabel.set("");
         //  selectedLibraryUserLabel.set("");
-        multimediaItemSearchTextField.set("");
-        ssnTextField.set("");
+         ssnTextField.set("");
     }
 
     public void setLoanedMagazines() throws RemoteException, SQLException{
@@ -115,9 +109,7 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
         try {
             reset();
             setLoanedMagazines();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
+        } catch (SQLException | RemoteException e) {
             e.printStackTrace();
         }
     }

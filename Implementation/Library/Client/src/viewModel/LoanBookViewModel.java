@@ -27,7 +27,6 @@ public class LoanBookViewModel implements PropertyChangeListener
   private final StringProperty errorLabel;
   private final StringProperty selectedMultimediaItemLabel;
   private final StringProperty selectedLibraryUserLabel;
-  private final StringProperty  multimediaItemSearchTextField;
   private final StringProperty ssnTextField;
 
   private SimpleListProperty<MultimediaItem> availableBooks;
@@ -38,7 +37,6 @@ public class LoanBookViewModel implements PropertyChangeListener
     this.errorLabel = new SimpleStringProperty("");
     this.selectedMultimediaItemLabel = new SimpleStringProperty("");
     this.selectedLibraryUserLabel = new SimpleStringProperty("");
-    this.multimediaItemSearchTextField = new SimpleStringProperty("");
     this.ssnTextField = new SimpleStringProperty("");
 
     ObservableList<MultimediaItem> observableList = FXCollections.observableArrayList( new ArrayList<MultimediaItem>());
@@ -97,7 +95,6 @@ public class LoanBookViewModel implements PropertyChangeListener
     errorLabel.set("");
     selectedMultimediaItemLabel.set("");
    // selectedLibraryUserLabel.set("");
-    multimediaItemSearchTextField.set("");
     ssnTextField.set("");
     System.out.println(availableBooks.size());
   }

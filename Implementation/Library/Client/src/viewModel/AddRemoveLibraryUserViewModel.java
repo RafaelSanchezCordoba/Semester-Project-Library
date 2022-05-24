@@ -24,7 +24,6 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
     private final StringProperty lastNameTextField;
     private final StringProperty ssnTextField;
     private final StringProperty passwordTextField;
-    private final StringProperty searchTextField;
     private final SimpleListProperty<LibraryUser> userList;
     private final StringProperty errorLabel;
 
@@ -34,7 +33,6 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         this.lastNameTextField = new SimpleStringProperty("");
         this.ssnTextField = new SimpleStringProperty("");
         this.passwordTextField = new SimpleStringProperty("");
-        this.searchTextField = new SimpleStringProperty("");
         ObservableList<LibraryUser> observableListUserList = FXCollections.observableArrayList(new ArrayList<>());
         this.userList = new SimpleListProperty<>(observableListUserList);
         this.errorLabel = new SimpleStringProperty("");
@@ -105,7 +103,6 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         lastNameTextField.set("");
         ssnTextField.set("");
         passwordTextField.set("");
-        searchTextField.set("");
     }
 
     public void bindFirstNameTextField(StringProperty property){
@@ -120,9 +117,7 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
     public void bindPasswordTextField(StringProperty property){
         property.bindBidirectional(passwordTextField);
     }
-    public void bindSearchTextField(StringProperty property){
-        property.bindBidirectional(searchTextField);
-    }
+
     public void bindUserListView(ObjectProperty<ObservableList<LibraryUser>> property){
         property.bind(userList);
     }

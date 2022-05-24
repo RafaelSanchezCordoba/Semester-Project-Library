@@ -25,7 +25,6 @@ public class AddRemoveMagazineViewController
   @FXML private TextField yearTextField;
   @FXML private TextField monthTextField;
   @FXML private TextField genreTextField;
-  @FXML private TextField searchTextField;
   @FXML private ListView<Magazine> magazineListView;
   @FXML private Label errorLabel;
 
@@ -42,7 +41,6 @@ public class AddRemoveMagazineViewController
     viewModel.bindYearTextField(yearTextField.textProperty());
     viewModel.bindMontTextField(monthTextField.textProperty());
     viewModel.bindGenreTextField(genreTextField.textProperty());
-    viewModel.bindSearchTextField(searchTextField.textProperty());
     viewModel.bindErrorLabel(errorLabel.textProperty());
     viewModel.bindMagazineListView(magazineListView.itemsProperty());
 
@@ -56,11 +54,6 @@ public class AddRemoveMagazineViewController
     viewHandler.closeView();
   }
 
-  @FXML
-  public void searchButtonPressed()
-  {
-    viewModel.search();
-  }
 
   @FXML
   public void addMagazineButtonPressed() throws RemoteException, SQLException

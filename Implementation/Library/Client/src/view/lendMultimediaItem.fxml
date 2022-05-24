@@ -21,9 +21,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ListView fx:id="magazineListView" layoutX="14.0" layoutY="158.0" prefHeight="228.0" prefWidth="403.0" />
-      <TextField fx:id="multimediaItemSearchTextField" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="403.0" />
-      <Button layoutX="427.0" layoutY="119.0" mnemonicParsing="false" onAction="#multimediaItemSearchButtonPressed" text="🔍" />
+      <ListView fx:id="magazineListView" layoutX="14.0" layoutY="134.0" prefHeight="252.0" prefWidth="403.0" />
       <Button layoutX="15.0" layoutY="392.0" mnemonicParsing="false" onAction="#showBookListButtonPressed" text="Books" />
       <Button layoutX="82.0" layoutY="392.0" mnemonicParsing="false" onAction="#showMagazineListButtonPressed" text="Magazines" />
       <Label layoutX="498.0" layoutY="245.0" text="Library User: ">

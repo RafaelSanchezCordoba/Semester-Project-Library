@@ -27,7 +27,6 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
     private final StringProperty yearTextField;
     private final StringProperty monthTextField;
     private final StringProperty genreTextField;
-    private final StringProperty searchTextField;
     private final SimpleListProperty<Magazine> magazineList;
     private final StringProperty errorLabel;
 
@@ -40,7 +39,6 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         this.yearTextField = new SimpleStringProperty("");
         this.genreTextField = new SimpleStringProperty("");
         this.monthTextField = new SimpleStringProperty("");
-        this.searchTextField = new SimpleStringProperty("");
         this.errorLabel = new SimpleStringProperty("");
         ObservableList<Magazine> observableList = FXCollections.observableArrayList( new ArrayList<Magazine>());
         this.magazineList = new SimpleListProperty<>(observableList);
@@ -78,10 +76,6 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         property.bindBidirectional(monthTextField);
     }
 
-    public void bindSearchTextField(StringProperty property) {
-        property.bindBidirectional(searchTextField);
-    }
-
     public void bindErrorLabel(StringProperty property) {
         property.bind(errorLabel);
     }
@@ -96,9 +90,6 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
     }
 
 
-    public void search() {
-
-    }
 
     public void reset() throws SQLException, RemoteException
     {

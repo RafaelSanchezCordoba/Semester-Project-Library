@@ -25,7 +25,9 @@ public class AddRemoveLibrarianViewController
   @FXML private Label errorLabel;
   @FXML private ListView<Librarian> librarianTextListView;
 
-  public  void  init(ViewHandler viewHandler, AddRemoveLibrarianViewModel viewModel, Region root) throws SQLException, RemoteException {
+  public void init(ViewHandler viewHandler, AddRemoveLibrarianViewModel viewModel, Region root)
+      throws SQLException, RemoteException
+  {
     this.viewHandler = viewHandler;
     this.viewModel = viewModel;
     this.root = root;
@@ -40,34 +42,40 @@ public class AddRemoveLibrarianViewController
     viewModel.setLibrarianList();
   }
 
-  @FXML
-  public void addLibrarianButtonPressed() throws SQLException, RemoteException {
-    Librarian  librarian = new Librarian(ssnTextField.getText(), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
+  @FXML public void addLibrarianButtonPressed()
+      throws SQLException, RemoteException
+  {
+    Librarian librarian = new Librarian(ssnTextField.getText(),
+        passwordTextField.getText(), firstNameTextField.getText(),
+        lastNameTextField.getText());
     viewModel.addLibrarian(librarian);
   }
-  @FXML
-  public void removeLibrarianButtonPressed() throws SQLException, RemoteException {
-    viewModel.removeLibrarian(librarianTextListView.getSelectionModel().getSelectedItem().getSsn());
+
+  @FXML public void removeLibrarianButtonPressed()
+      throws SQLException, RemoteException
+  {
+    viewModel.removeLibrarian(
+        librarianTextListView.getSelectionModel().getSelectedItem().getSsn());
   }
-  public void reset() throws SQLException, RemoteException {
+
+  public void reset() throws SQLException, RemoteException
+  {
     viewModel.reset();
   }
-  public Region getRoot(){
+
+  public Region getRoot()
+  {
     return root;
   }
 
-  @FXML
-  public void logOutButtonPressed()
+  @FXML public void logOutButtonPressed()
   {
     viewHandler.closeView();
   }
 
-  @FXML
-  public void homeMenuButtonPressed() throws SQLException, RemoteException {
+  @FXML public void homeMenuButtonPressed() throws SQLException, RemoteException
+  {
     viewHandler.openView(viewHandler.HOME);
   }
 
-  public void searchButtonPressed() {
-    viewModel.search();
-  }
 }

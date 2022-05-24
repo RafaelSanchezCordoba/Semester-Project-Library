@@ -27,7 +27,6 @@ public class AddRemoveMagazineViewModelTest
   private StringProperty year;
   private StringProperty month;
   private StringProperty genre;
-  private StringProperty search;
   private SimpleListProperty<Magazine> magazineList;
   private StringProperty error;
   private ModelMagazine model;
@@ -43,7 +42,6 @@ public class AddRemoveMagazineViewModelTest
     this.year = new SimpleStringProperty("");
     this.genre = new SimpleStringProperty("");
     this.month= new SimpleStringProperty("");
-    this.search= new SimpleStringProperty("");
     this.error = new SimpleStringProperty("");
     ObservableList<Magazine> observableList = FXCollections.observableArrayList(
         new ArrayList<>());
@@ -56,7 +54,6 @@ public class AddRemoveMagazineViewModelTest
     viewModel.bindMontTextField(month);
     viewModel.bindYearTextField(year);
     viewModel.bindGenreTextField(genre);
-    viewModel.bindSearchTextField(search);
     viewModel.bindErrorLabel(error);
     viewModel.bindMagazineListViewForTest(magazineList);
   }
@@ -70,7 +67,6 @@ public class AddRemoveMagazineViewModelTest
     assertEquals("",month.get());
     assertEquals("",year.get());
     assertEquals("",genre.get());
-    assertEquals("",search.get());
     assertEquals("",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
@@ -139,7 +135,6 @@ public class AddRemoveMagazineViewModelTest
     assertEquals("",month.get());
     assertEquals("",year.get());
     assertEquals("",genre.get());
-    assertEquals("",search.get());
     assertEquals("",error.get());
   }
 
@@ -349,7 +344,6 @@ public class AddRemoveMagazineViewModelTest
     assertEquals("",month.get());
     assertEquals("",year.get());
     assertEquals("",genre.get());
-    assertEquals("",search.get());
   }
 
   @Test void correctly_adding_clear_errors() throws SQLException, RemoteException

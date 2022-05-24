@@ -23,7 +23,6 @@ public class AddRemoveLibraryUserViewController
     @FXML private TextField lastNameTextField;
     @FXML private TextField ssnTextField;
     @FXML private TextField passwordTextField;
-    @FXML private TextField searchTextField;
     @FXML private ListView<LibraryUser> userTextListView;
     @FXML private Label errorLabel;
 
@@ -37,7 +36,6 @@ public class AddRemoveLibraryUserViewController
         viewModel.bindLastNameTextField(lastNameTextField.textProperty());
         viewModel.bindSSNTextField(ssnTextField.textProperty());
         viewModel.bindPasswordTextField(passwordTextField.textProperty());
-        viewModel.bindSearchTextField(searchTextField.textProperty());
         viewModel.bindUserListView(userTextListView.itemsProperty());
         viewModel.bindErrorLabel(errorLabel.textProperty());
 
@@ -47,9 +45,7 @@ public class AddRemoveLibraryUserViewController
     @FXML public void logOutButtonPressed(){
         viewHandler.closeView();
     }
-    @FXML public void searchButtonPressed(){
-        viewModel.search();
-    }
+
     @FXML public void addUserButtonPressed() throws RemoteException, SQLException{
         LibraryUser libraryUser = new LibraryUser(ssnTextField.getText(),firstNameTextField.getText(),
                 lastNameTextField.getText(), passwordTextField.getText());

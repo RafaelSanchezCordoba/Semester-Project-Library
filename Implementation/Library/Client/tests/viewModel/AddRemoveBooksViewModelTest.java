@@ -26,7 +26,6 @@ public class AddRemoveBooksViewModelTest
   private StringProperty year;
   private StringProperty genre;
   private StringProperty edition;
-  private StringProperty search;
   private StringProperty error;
   private SimpleListProperty<Book> bookList;
   private SimpleListProperty<Genre> genreList;
@@ -45,7 +44,6 @@ public class AddRemoveBooksViewModelTest
     this.year = new SimpleStringProperty("");
     this.genre = new SimpleStringProperty("");
     this.edition = new SimpleStringProperty("");
-    this.search = new SimpleStringProperty("");
     this.error = new SimpleStringProperty("");
     ObservableList<Book> observableListBook = FXCollections.observableArrayList(new ArrayList<>());
     ObservableList<Genre> observableListGenre = FXCollections.observableArrayList(new ArrayList<>());
@@ -62,7 +60,6 @@ public class AddRemoveBooksViewModelTest
     viewModel.bindErrorLabel(error);
     viewModel.bindISBNTextField(isbn);
     viewModel.bindPublisherTextField(publisher);
-    viewModel.bindSearchTextField(search);
     viewModel.bindYearTextField(year);
     viewModel.bindBookListViewForTesting(bookList);
     viewModel.bindSelectedGenreListForTest(selectedGenreList);
@@ -78,7 +75,6 @@ public class AddRemoveBooksViewModelTest
     assertEquals("",year.get());
     assertEquals("",genre.get());
     assertEquals("",edition.get());
-    assertEquals("",search.get());
     assertEquals("",error.get());
     assertEquals("[]",bookList.get().toString());
     assertEquals("[]",selectedGenreList.get().toString());

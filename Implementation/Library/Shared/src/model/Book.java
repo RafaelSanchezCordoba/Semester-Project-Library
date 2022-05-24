@@ -112,8 +112,12 @@ public class Book extends MultimediaItem implements Serializable {
      * The author of the book.
      */
     public void setAuthor(String author) {
-
-      this.author = Objects.requireNonNullElse(author, "Anonymous");
+      if (author.equals(""))
+      {
+        this.author="Anonymous";
+      }
+      else
+      {this.author = author;}
     }
 
   @Override public String toString()

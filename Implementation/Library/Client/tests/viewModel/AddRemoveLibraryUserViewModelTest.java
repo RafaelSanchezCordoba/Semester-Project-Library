@@ -26,7 +26,6 @@ public class AddRemoveLibraryUserViewModelTest {
     private StringProperty lastNameTextField;
     private StringProperty ssnTextField;
     private StringProperty passwordTextField;
-    private StringProperty searchTextField;
     private SimpleListProperty<LibraryUser> userList;
     private StringProperty errorLabel;
 
@@ -38,14 +37,12 @@ public class AddRemoveLibraryUserViewModelTest {
         this.lastNameTextField = new SimpleStringProperty("");
         this.ssnTextField = new SimpleStringProperty("");
         this.passwordTextField = new SimpleStringProperty("");
-        this.searchTextField = new SimpleStringProperty("");
         this.errorLabel = new SimpleStringProperty("");
         ObservableList<LibraryUser> observableList = FXCollections.observableArrayList(new ArrayList<>());
         this.userList = new SimpleListProperty<>(observableList);
 
         viewModel.bindErrorLabel(errorLabel);
-        viewModel.bindSearchTextField(searchTextField);
-        viewModel.bindFirstNameTextField(firstNameTextField);
+         viewModel.bindFirstNameTextField(firstNameTextField);
         viewModel.bindLastNameTextField(lastNameTextField);
         viewModel.bindSSNTextField(ssnTextField);
         viewModel.bindPasswordTextField(passwordTextField);
@@ -55,7 +52,6 @@ public class AddRemoveLibraryUserViewModelTest {
     @Test
     public void new_object_is_blank() {
         assertEquals("", errorLabel.get());
-        assertEquals("", searchTextField.get());
         assertEquals("", firstNameTextField.get());
         assertEquals("", lastNameTextField.get());
         assertEquals("", passwordTextField.get());

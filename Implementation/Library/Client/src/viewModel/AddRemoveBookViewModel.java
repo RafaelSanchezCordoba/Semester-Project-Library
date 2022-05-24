@@ -24,7 +24,6 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   private final StringProperty isbnTextField;
   private final StringProperty yearTextField;
   private final StringProperty editionTextField;
-  private final StringProperty searchTextField;
   private final StringProperty errorLabel;
   private final SimpleListProperty<Book> bookList;
   private final SimpleListProperty<Genre> genreList;
@@ -39,7 +38,6 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     this.isbnTextField = new SimpleStringProperty("");
     this.yearTextField = new SimpleStringProperty("");
     this.editionTextField = new SimpleStringProperty("");
-    this.searchTextField = new SimpleStringProperty("");
     this.errorLabel = new SimpleStringProperty("");
     ObservableList<Book> observableListBook = FXCollections.observableArrayList(new ArrayList<>());
     ObservableList<Genre> observableListGenre = FXCollections.observableArrayList(new ArrayList<>());
@@ -190,7 +188,6 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     isbnTextField.set("");
     yearTextField.set("");
     editionTextField.set("");
-    searchTextField.set("");
   }
 
   public void bindTitleTextField(StringProperty property)
@@ -221,11 +218,6 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   public void bindEditionTextField(StringProperty property)
   {
     property.bindBidirectional(editionTextField);
-  }
-
-  public void bindSearchTextField(StringProperty property)
-  {
-    property.bindBidirectional(searchTextField);
   }
 
   public void bindErrorLabel(StringProperty property)
