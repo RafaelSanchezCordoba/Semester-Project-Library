@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LibrarianHomeViewController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="63.0" layoutX="-1.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <Button layoutX="28.0" layoutY="17.0" mnemonicParsing="false" onAction="#homeMenuButtonPressed" text="Home" />
+      <Button layoutX="63.0" layoutY="126.0" mnemonicParsing="false" onAction="#multimediaItemMenuButtonPressed" prefHeight="60.0" prefWidth="168.0" text="Manage multimedia Items" />
+      <Button layoutX="492.0" layoutY="17.0" mnemonicParsing="false" onAction="#logOutButtonPressed" text="LOG-OUT 📴" />
+      <Button layoutX="63.0" layoutY="236.0" mnemonicParsing="false" onAction="#onLoanButtonPressed" prefHeight="60.0" prefWidth="168.0" text="Create loan" />
+      <Button layoutX="342.0" layoutY="236.0" mnemonicParsing="false" onAction="#onReturnButtonPressed" prefHeight="60.0" prefWidth="168.0" text="Return item" />
+      <Button layoutX="342.0" layoutY="126.0" mnemonicParsing="false" onAction="#onAddLibraryUserButtonPressed" prefHeight="60.0" prefWidth="168.0" text="Manage user" />
+   </children>
+</AnchorPane>

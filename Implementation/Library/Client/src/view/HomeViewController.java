@@ -37,7 +37,7 @@ public class HomeViewController
   {
     viewHandler.openView(viewHandler.LIBRARIAN_HOME);
   }
-  
+
 
   public Region getRoot()
   {

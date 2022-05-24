@@ -45,7 +45,6 @@ public class AddRemoveMagazineViewController
     viewModel.bindMagazineListView(magazineListView.itemsProperty());
 
     viewModel.setMagazineList();
-    //include all the bind from viewModel
   }
 
   @FXML
@@ -58,10 +57,24 @@ public class AddRemoveMagazineViewController
   @FXML
   public void addMagazineButtonPressed() throws RemoteException, SQLException
   {
-    if (!errorsCheck()){
-    Date date = new Date(Integer.parseInt(yearTextField.getText())-1900, Integer.parseInt(monthTextField.getText())-1, Integer.parseInt(dayTextField.getText()));
-    Magazine magazine = new Magazine(titleTextField.getText(), publisherTextField.getText(), Integer.parseInt(volumeTextField.getText()), genreTextField.getText(),date);
-    viewModel.addMagazine(magazine);}
+    int volume;
+    if (!errorsCheck())
+      {
+        if (volumeTextField.getText().equals(""))
+        {
+        volume= 1;
+        }
+        else
+        {
+          volume=Integer.parseInt(volumeTextField.getText());
+        }
+        Date date = new Date(Integer.parseInt(yearTextField.getText()) - 1900,
+            Integer.parseInt(monthTextField.getText()) - 1, Integer.parseInt(dayTextField.getText()));
+        Magazine magazine = new Magazine(titleTextField.getText(),
+            publisherTextField.getText(), volume,
+            genreTextField.getText(), date);
+        viewModel.addMagazine(magazine);
+      }
   }
 
   public boolean errorsCheck()
@@ -81,7 +94,28 @@ public class AddRemoveMagazineViewController
     errorLabel.setText("Year can't be null");
     return true;
   }
+  else if(!volumeTextField.getText().equals(""))
+    {
+      if (volumeFormatCheck())
+      {
+        errorLabel.setText("The volume must be a number");
+        return true;
+      }
+    }
   return  false;
+  }
+
+  private boolean volumeFormatCheck()
+  {
+    try
+    {
+      Integer.parseInt(volumeTextField.getText());
+    }
+    catch (NumberFormatException e)
+    {
+      return true;
+    }
+    return false;
   }
 
   @FXML
@@ -93,32 +127,32 @@ public class AddRemoveMagazineViewController
   @FXML public void multimediaItemMenuButtonPressed()
       throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.ITEM);
+    viewHandler.openView(ViewHandler.ITEM);
   }
 
   @FXML public void homeMenuButtonPressed()
       throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.HOME);
+    viewHandler.openView(ViewHandler.HOME);
   }
 
 
   @FXML public void onAddLibraryUserButtonPressed()
       throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.LIBRARY_USER);
+    viewHandler.openView(ViewHandler.LIBRARY_USER);
   }
 
   @FXML public void onLoanButtonPressed()
       throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.LENDMULTIMEDIAITEM);
+    viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
   }
 
   @FXML public void onReturnButtonPressed()
       throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.RETURNMULTIMEDIAITEM);
+    viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
   }
 
   public void reset() throws SQLException, RemoteException{
