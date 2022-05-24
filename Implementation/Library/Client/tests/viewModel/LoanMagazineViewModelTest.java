@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import mediator.FakeModelManagerLoanMagazine;
 import mediator.ModelLoanMagazine;
 import model.Librarian;
+import model.Magazine;
 import model.MultimediaItem;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,8 +27,6 @@ class LoanMagazineViewModelTest {
     private StringProperty multimediaItemSearch;
     private StringProperty ssn;
     private SimpleListProperty<MultimediaItem> availaibleMagazines;
-
-
 
     @BeforeEach void setUp() {
         model = new FakeModelManagerLoanMagazine();
@@ -50,55 +49,42 @@ class LoanMagazineViewModelTest {
 
     }
 
-//    @Test void new_object_has_empty_fields(){
-//        assertEquals("",multimediaItem.get());
-//        assertEquals("",error.get());
-//        assertEquals("",selectedMultimediaItem.get());
-//        assertEquals("",selectedLibraryUser.get());
-//        assertEquals("",multimediaItem.get());
-//        assertEquals("",ssn.get());
-//        assertEquals("[]",availaibleMagazines.get().toString());
-//    }
+    @Test void new_object_has_empty_fields(){
+        assertEquals("",multimediaItem.get());
+        assertEquals("",error.get());
+        assertEquals("",selectedMultimediaItem.get());
+        assertEquals("",selectedLibraryUser.get());
+        assertEquals("ListProperty [value: []]",availaibleMagazines.toString());
+    }
 
     @Test void filling_fields_doesnt_change_error_or_list(){
-        MultimediaItem m1 = new MultimediaItem("Wiedźmin","Supernova");
+        MultimediaItem m1 = new MultimediaItem("New Your Times","NYC");
         Librarian l1 = new Librarian("123456789","admin","Franciszek","Nurkiewicz");
-        multimediaItem.set(m1.toString());
-        assertEquals("",error.get());
-        selectedMultimediaItem.set(m1.toString());
+        Magazine ma1 = new Magazine(m1.getTitle(),m1.getPublisher(),1,"News", java.sql.Date.valueOf("2022-12-1"));
+        selectedMultimediaItem.set(ma1.toString());
         selectedLibraryUser.set(l1.toString());
-        ssn.set(l1.getSsn());
-        assertEquals("[]",availaibleMagazines.get().toString());
+        assertEquals("MultimediaItem{id=0, title='New Your Times', publisher='NYC'}",m1.toString());
     }
 
     @Test void add_one_record_to_loan_magazine_view_by_one_librarian(){
-        MultimediaItem m1 = new MultimediaItem("Wiedźmin","Supernova");
+        MultimediaItem m1 = new MultimediaItem("New Your Times","NYC");
+        Magazine ma1 = new Magazine(m1.getTitle(),m1.getPublisher(),1,"News", java.sql.Date.valueOf("2022-12-1"));
         Librarian l1 = new Librarian("123456789","admin","Franciszek","Nurkiewicz");
-        multimediaItem.set(m1.toString());
-        selectedMultimediaItem.set(m1.toString());
+        selectedMultimediaItem.set(ma1.toString());
         selectedLibraryUser.set(l1.toString());
-        assertEquals("MultimediaItem{id=0, title='Wiedźmin', publisher='Supernova'}",m1.toString());
+        assertEquals("MultimediaItem{id=0, title='New Your Times', publisher='NYC'}",m1.toString());
     }
 
     @Test void add_two_record_to_loan_magazine_view_model_by_one_librarian(){
-        MultimediaItem m1 = new MultimediaItem("Wiedźmin","Supernova");
-        MultimediaItem m2 = new MultimediaItem("Dune","Hodder & Stoughton");
+        MultimediaItem m1 = new MultimediaItem("New Your Times","NYC");
+        MultimediaItem m2 = new MultimediaItem("Forbes","NYC");
+        Magazine ma1 = new Magazine(m1.getTitle(),m1.getPublisher(),1,"News", java.sql.Date.valueOf("2022-12-1"));
+        Magazine ma2 = new Magazine(m2.getTitle(),m2.getPublisher(),2,"Finances", java.sql.Date.valueOf("2022-05-05"));
         Librarian l1 = new Librarian("123456789","admin","Franciszek","Nurkiewicz");
-        multimediaItem.set(m1.toString());
-        multimediaItem.set(m2.toString());
-        selectedMultimediaItem.set(m1.toString());
-        selectedMultimediaItem.set(m2.toString());
-        selectedLibraryUser.set(l1.toString());
-        assertEquals("MultimediaItem{id=0, title='Wiedźmin', publisher='Supernova'} MultimediaItem{id=0, title='Dune', publisher='Hodder & Stoughton'}",m1 + " " + m2);
+        assertEquals("123456789",l1.getSsn());
+        selectedMultimediaItem.set(ma1.toString());
+        assertEquals("StringProperty [value: MultimediaItem{id=0, title='New Your Times', publisher='NYC'}]",selectedMultimediaItem.toString());
+        selectedMultimediaItem.set(ma2.toString());
+        assertEquals("StringProperty [value: MultimediaItem{id=0, title='Forbes', publisher='NYC'}]",selectedMultimediaItem.toString());
     }
-
-//    @Test void add_two_record_on_objects(){
-//        MultimediaItem m1 = new MultimediaItem("Wiedźmin","Supernova");
-//        MultimediaItem m2 = new MultimediaItem("Dune","Hodder & Stoughton");
-//        Librarian l1 = new Librarian("123456789","admin","Franciszek","Nurkiewicz");
-//        multimediaItem.set(m1.toString());
-//        assertEquals(m1.toString(),"MultimediaItem{id=0, title='Wiedźmin', publisher='Supernova'}");
-//    }
-
-
 }
