@@ -59,12 +59,19 @@ public class LoanBookRmiTest
 
     loanBookClient.addBookLoan(new LoanBook(6,"777"));
 
+
   }
+  @Test
+  public void checkGetUserLoans() throws RemoteException
+  {
+    Assertions.assertEquals(1,loanBookClient.getUserBookLoans("12312").size());
+  }
+
   @Test
   public void returnBookTest() throws RemoteException
   {
-    loanBookClient.returnBook(1);
 
+    loanBookClient.returnBook(1);
   }
 
 }

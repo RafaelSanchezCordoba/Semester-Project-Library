@@ -55,22 +55,22 @@ public class TestComunicator extends UnicastRemoteObject implements RemoteLoanBo
   @Override public ArrayList<LoanMagazine> getUserLoans(String ssn)
       throws RemoteException
   {
-    return null;
+    return loanMagazineStorage.getUsersLoans(ssn);
   }
 
   @Override public void returnMagazine(int loan_id) throws RemoteException
   {
-
+    loanMagazineStorage.returnMagazine(loan_id);
   }
 
   @Override public ArrayList<LoanBook> getUserBookLoans(String ssn)
       throws RemoteException
   {
-    return null;
+    return loanBookStorage.getUserBookLoans(ssn);
   }
 
   @Override public void returnBook(int loan_id) throws RemoteException
   {
-
+    loanBookStorage.returnBook(loan_id);
   }
 }

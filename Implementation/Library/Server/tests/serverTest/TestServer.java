@@ -21,7 +21,7 @@ public class TestServer {
   {
     Registry registry= LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
     LoanMagazineStorage loanMagazineStorage = LoanMagazineStorageTest.getInstance();
-    LoanBookStorage loanBookStorage = LoanBookStorageTest.getInstance();
+    LoanBookStorageTest loanBookStorage = LoanBookStorageTest.getInstance();
 
     RemoteLoanMagazine loanMagazine = new TestComunicator(loanBookStorage,loanMagazineStorage);
     RemoteLoanBook loanBook = new TestComunicator(loanBookStorage,loanMagazineStorage);
@@ -29,7 +29,7 @@ public class TestServer {
     registry.bind("loanMagazine", loanMagazine);
     registry.bind("loanBook",loanBook);
 
-
+    System.out.println(loanMagazineStorage.getUsersLoans("").toString());
     System.out.println("server running on port:"+Registry.REGISTRY_PORT);
 
 

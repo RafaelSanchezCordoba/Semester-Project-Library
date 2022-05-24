@@ -16,15 +16,21 @@ public class LoanBookStorageTest implements LoanBookStorage
   private static LoanBookStorageTest instance;
   private  LibraryUser libraryUser;
   private ArrayList<Book> availableBooks;
+  ArrayList<LoanBook> userLoanBooks;
   private int counter;
 
 
 
   private LoanBookStorageTest (){
     loanBooks = new ArrayList<>();
-    libraryUser = new LibraryUser("12456789909","gianni","nove","palla");
+    userLoanBooks = new ArrayList<>();
     availableBooks = new ArrayList<>();
+    libraryUser = new LibraryUser("12456789909","gianni","nove","palla");
+
+    loanBooks.add(new LoanBook(1,"3455"));
     availableBooks.add(new Book("Laini Taylor" ,"Daughter of Smoke and Bone","Hodder & Stoughton","978-0-316-13402-6",2,2011));
+    userLoanBooks.add(new LoanBook(1,"12312"));
+
     counter = 0;
 
 
@@ -63,13 +69,8 @@ public class LoanBookStorageTest implements LoanBookStorage
   @Override public ArrayList<LoanBook> getUserBookLoans(String ssn)
       throws RemoteException
   {
-    ArrayList<LoanBook> result = new ArrayList<>();
-    for (int i = 0; i<loanBooks.size();i++){
-      if (loanBooks.get(i).getSsn().equals(ssn)){
-        result.add(loanBooks.get(i));
-      }
-    }
-    return result;
+
+    return userLoanBooks;
   }
 
   @Override public void returnBook(int loan_id) throws RemoteException
@@ -80,4 +81,5 @@ public class LoanBookStorageTest implements LoanBookStorage
       }
     }
   }
+
 }
