@@ -26,14 +26,15 @@ public class ModelManagerMagazine implements ModelMagazine{
     }
 
     /**
-     *
+     * Add magazine method
      * @param magazine
+     * The magazine passed as an argument
      * @throws RemoteException
+     * @throws SQLException
      */
     @Override
     public void addMagazine(Magazine magazine)
     {
-
         try
         {
             client.addMagazine(magazine);
@@ -48,9 +49,11 @@ public class ModelManagerMagazine implements ModelMagazine{
     }
 
     /**
-     *
+     * Remove a magazine with a specific identification number
      * @param id
+     * The unique identification number passed as an argument
      * @throws RemoteException
+     * @throws SQLException
      */
     @Override
     public void removeMagazine(int id) throws RemoteException
@@ -61,8 +64,21 @@ public class ModelManagerMagazine implements ModelMagazine{
     }
 
     /**
-     *
+     * Get magazine list method
+     * @return
+     * The magazines in the list
+     * @throws SQLException
+     * @throws RemoteException
+     */
+    @Override public ArrayList<Magazine> getMagazineList() throws RemoteException
+    {
+        return client.getMagazineList();
+    }
+
+    /**
+     * Add property change listener, just with the listener
      * @param listener
+     * The listener
      */
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -70,9 +86,11 @@ public class ModelManagerMagazine implements ModelMagazine{
     }
 
     /**
-     *
+     * Add property change listener with a name and the listener
      * @param name
+     * The name
      * @param listener
+     * The listener
      */
     @Override
     public void addPropertyChangeListener(String name, PropertyChangeListener listener) {
@@ -80,8 +98,9 @@ public class ModelManagerMagazine implements ModelMagazine{
     }
 
     /**
-     *
+     * Remove property change listener, just with the listener
      * @param listener
+     * The listener
      */
     @Override
     public void removePropertyChangeListener(PropertyChangeListener listener) {
@@ -89,17 +108,14 @@ public class ModelManagerMagazine implements ModelMagazine{
     }
 
     /**
-     *
+     * Remove property change listener with a name and the listener
      * @param name
+     * The name
      * @param listener
+     * The listener
      */
     @Override
     public void removePropertyChangeListener(String name, PropertyChangeListener listener) {
         support.removePropertyChangeListener(name, listener);
-    }
-
-    @Override public ArrayList<Magazine> getMagazineList() throws RemoteException
-    {
-        return client.getMagazineList();
     }
 }
