@@ -9,28 +9,34 @@ import java.beans.PropertyChangeListener;
  */
 public interface PropertyChangeSubject {
     /**
-     *
+     * Add property change listener, just with the listener
      * @param listener
+     * The listener
      */
     public void addPropertyChangeListener(PropertyChangeListener listener);
 
     /**
-     *
+     * Add property change listener with a name and the listener
      * @param name
+     * The name
      * @param listener
+     * The listener
      */
     public void addPropertyChangeListener(String name, PropertyChangeListener listener);
 
     /**
-     *
+     * Remove property change listener, just with the listener
      * @param listener
+     * The listener
      */
     public void removePropertyChangeListener(PropertyChangeListener listener);
 
     /**
-     *
+     * Remove property change listener with a name and the listener
      * @param name
+     * The name
      * @param listener
+     * The listener
      */
     public void removePropertyChangeListener(String name, PropertyChangeListener listener);
 }
