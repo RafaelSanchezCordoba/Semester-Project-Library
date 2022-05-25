@@ -46,8 +46,7 @@ public class MultimediaItem implements Serializable {
 
     @Override public String toString()
     {
-        return "MultimediaItem{" + "id=" + id + ", title='" + title + '\''
-            + ", publisher='" + publisher + '\'' + '}';
+        return  title + ", Publisher: " + publisher ;
     }
 
 

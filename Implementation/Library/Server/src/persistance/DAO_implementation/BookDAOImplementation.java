@@ -18,7 +18,7 @@ public class BookDAOImplementation implements BookDAO
   private String insertGenreBookSql = "INSERT INTO \"library\".book_genre(book_id, genre_id)" + "VALUES(?,?)";
   private String getGenreListSql= "SELECT * FROM \"library\".genre ORDER BY id DESC";
 
-  private String removeBookSql = "DELETE FROM \"library\".book  WHERE id=?";
+  private String removeBookSql = "DELETE FROM \"library\".book  WHERE id=? and is_available = true ";
 
   private String getBookListSql = "SELECT * FROM \"library\".book ORDER BY id DESC";
 
@@ -45,7 +45,13 @@ public class BookDAOImplementation implements BookDAO
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement(removeBookSql);
       statement.setInt(1, id);
-      statement.executeUpdate();
+      int rowAffected= statement.executeUpdate();
+
+     if (rowAffected == 0){
+       throw new SQLException("no delete because the book is currently lended");
+     }
+
+
     }
   }
 

@@ -167,6 +167,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   public void addBook(Book book) throws RemoteException, SQLException
   {
+    errorLabel.set("");
     if (!errorCheck()){
     model.addBook(book);}
     reset();
@@ -174,7 +175,16 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   public void removeBook(int id) throws RemoteException, SQLException
   {
-    model.removeBook(id);
+
+    try
+    {
+      model.removeBook(id);
+      errorLabel.set("");
+    }catch (RemoteException e)
+    {
+      errorLabel.set("cannot remove this book because is currently being lended");
+    }
+
   }
 
   public void reset() throws SQLException, RemoteException

@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AdapterBookDAO implements BookStorage {
+
   private BookDAO bookDAO;
   
   public AdapterBookDAO(BookDAO bookDAO) {

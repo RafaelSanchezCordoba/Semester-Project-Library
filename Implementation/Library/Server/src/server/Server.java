@@ -49,6 +49,8 @@ public class Server {
     registry.bind("loanMagazine", loanMagazine);
     registry.bind("loanBook",loanBook);
 
+
+
     System.out.println("server.Server running on " + Registry.REGISTRY_PORT);
 
   }
