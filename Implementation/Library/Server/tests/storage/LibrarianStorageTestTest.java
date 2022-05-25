@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import storageTest.LibrarianStorageTest;
 import server.storage.LibrarianStorage;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 public class LibrarianStorageTestTest
@@ -23,7 +24,7 @@ public class LibrarianStorageTestTest
   }
 
   @BeforeAll
-  public static void setupVariables() throws SQLException
+  public static void setupVariables() throws RemoteException
   {
     librarian = new Librarian("1234","pass","marco","polo");
     librarian1 = new Librarian("2345", "pass","cristoforo","colombo");
@@ -32,7 +33,7 @@ public class LibrarianStorageTestTest
   }
 
   @Test
-  public  void addOne() throws SQLException
+  public  void addOne() throws RemoteException
   {
     storage.addLibrarian(librarian);
     expected++;
@@ -40,14 +41,14 @@ public class LibrarianStorageTestTest
   }
 
   @Test
-  public void checkAttributesOfAddedLibrarian() throws SQLException
+  public void checkAttributesOfAddedLibrarian() throws RemoteException
   {
     storage.addLibrarian(librarian);
     Assertions.assertEquals(librarian,storage.getLibrarianList().get(0));
   }
 
   @Test
-  public void addMultiple() throws SQLException
+  public void addMultiple() throws RemoteException
   {
     storage.addLibrarian(librarian);
     expected++;
@@ -59,7 +60,7 @@ public class LibrarianStorageTestTest
     Assertions.assertEquals(expected,storage.getLibrarianList().size());
   }
   @Test
-  public void removeOne() throws SQLException
+  public void removeOne() throws RemoteException
   {
     storage.addLibrarian(librarian);
     storage.addLibrarian(librarian2);
@@ -69,7 +70,7 @@ public class LibrarianStorageTestTest
     Assertions.assertEquals(expected,storage.getLibrarianList().size());
   }
   @Test
-  public void removeMultiple() throws SQLException
+  public void removeMultiple() throws RemoteException
   {
     storage.addLibrarian(librarian);
     expected++;
@@ -87,7 +88,7 @@ public class LibrarianStorageTestTest
   }
 
   @Test
-  public void addWithSameSsn() throws SQLException
+  public void addWithSameSsn() throws RemoteException
   {
     storage.addLibrarian(librarian2);
     expected++;
@@ -98,7 +99,7 @@ public class LibrarianStorageTestTest
   }
 
   @Test
-  public void removeNonExistingSsn() throws SQLException
+  public void removeNonExistingSsn() throws RemoteException
   {
     storage.addLibrarian(librarian);
     expected++;

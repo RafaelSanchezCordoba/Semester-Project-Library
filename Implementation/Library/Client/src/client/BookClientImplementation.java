@@ -45,7 +45,7 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
    * @throws RemoteException
    * @throws SQLException
    */
-  public ArrayList<Book> getBookList() throws RemoteException, SQLException {
+  public ArrayList<Book> getBookList() throws RemoteException {
     return  remoteBook.getBookList();
   }
 
@@ -56,7 +56,7 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
    * @throws RemoteException
    * @throws SQLException
    */
-  @Override public void addBook(Book book) throws RemoteException, SQLException {
+  @Override public void addBook(Book book) throws RemoteException {
     remoteBook.addBook(book);
   }
 
@@ -67,7 +67,7 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
    * @throws RemoteException
    * @throws SQLException
    */
-  @Override public void removeBook(int id) throws RemoteException, SQLException {
+  @Override public void removeBook(int id) throws RemoteException {
     remoteBook.removeBook(id);
   }
 
@@ -78,7 +78,7 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
    * @throws RemoteException
    * @throws SQLException
    */
-  @Override public GenreList getGenreList() throws RemoteException, SQLException {
+  @Override public GenreList getGenreList() throws RemoteException {
     return remoteBook.getGenreList();
   }
 

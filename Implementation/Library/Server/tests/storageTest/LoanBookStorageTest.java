@@ -36,7 +36,7 @@ public class LoanBookStorageTest implements LoanBookStorage
     return instance;
   }
   @Override public void addLoanBook(LoanBook loanBook)
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     counter++;
     loanBook.setId(counter);
@@ -45,7 +45,7 @@ public class LoanBookStorageTest implements LoanBookStorage
   }
 
   @Override public ArrayList<Book> getAvailableBooks()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     return availableBooks;
   }

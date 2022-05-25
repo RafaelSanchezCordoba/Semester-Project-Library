@@ -17,7 +17,7 @@ public interface LoanMagazineClient extends Closeable {
      * @throws SQLException
      * @throws RemoteException
      */
-    void addMagazineLoan(LoanMagazine loanMagazine) throws  RemoteException, SQLException;
+    void addMagazineLoan(LoanMagazine loanMagazine) throws  RemoteException;
 
     /**
      * Get the available magazines
@@ -26,7 +26,7 @@ public interface LoanMagazineClient extends Closeable {
      * @throws SQLException
      * @throws RemoteException
      */
-    ArrayList<Magazine> getAvailableMagazineList() throws  RemoteException, SQLException;
+    ArrayList<Magazine> getAvailableMagazineList() throws  RemoteException;
 
     /**
      * Get a user with a specific social security number

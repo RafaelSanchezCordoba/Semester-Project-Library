@@ -15,7 +15,7 @@ import model.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 public class LoanMagazineViewModel implements PropertyChangeListener {
@@ -65,7 +65,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
     public void bindAvailableMagazineList(ObjectProperty<ObservableList<MultimediaItem>> property){
         property.bind(availableMagazines);
     }
-    public void reset() throws SQLException, RemoteException{
+    public void reset() throws  RemoteException{
        setMagazineList();
        multimediaItemLabel.set("");
        errorLabel.set("");
@@ -92,12 +92,12 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
       }
     }
 
-    public void setMagazineList() throws RemoteException, SQLException{
+    public void setMagazineList() throws RemoteException{
         availableMagazines.clear();
         availableMagazines.addAll(model.getAvailableMagazineList());
     }
 
-    public void createLoan(int  idMagazine) throws SQLException,  RemoteException {
+    public void createLoan(int  idMagazine) throws   RemoteException {
 
       if(user==null)
       {
@@ -118,7 +118,7 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         try {
             reset();
-        } catch (SQLException | RemoteException e) {
+        } catch ( RemoteException e) {
             e.printStackTrace();
         }
     }

@@ -47,96 +47,96 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
 //    }
 
     @Override
-    public void addBook(Book book) throws RemoteException, SQLException {
+    public void addBook(Book book) throws RemoteException {
         bookStorage.addBook(book);
 
     }
 
     @Override
-    public void removeBook(int id) throws RemoteException, SQLException
+    public void removeBook(int id) throws RemoteException
     {
         bookStorage.removeBook(id);
     }
 
-    @Override public ArrayList<Book> getBookList() throws RemoteException, SQLException
+    @Override public ArrayList<Book> getBookList() throws RemoteException
     {
         return bookStorage.getBookList();
     }
 
     @Override public GenreList getGenreList()
-        throws RemoteException, SQLException
+        throws RemoteException
     {
         return bookStorage.getGenreList();
     }
 
     @Override
-    public void addMagazine(Magazine magazine) throws RemoteException, SQLException {
+    public void addMagazine(Magazine magazine) throws RemoteException {
         magazineStorage.addMagazine(magazine);
     }
 
     @Override
-    public void removeMagazine(int id) throws RemoteException, SQLException
+    public void removeMagazine(int id) throws RemoteException
     {
         magazineStorage.removeMagazine(id);
     }
     @Override
     public ArrayList<Magazine> getMagazineList()
-        throws SQLException, RemoteException
+        throws  RemoteException
     {
         return magazineStorage.getMagazineList();
     }
 
-    @Override public void addLibrarian(Librarian librarian) throws RemoteException, SQLException {
+    @Override public void addLibrarian(Librarian librarian) throws RemoteException {
         librarianStorage.addLibrarian(librarian);
     }
 
-    @Override public void removeLibrarian(String SSN) throws RemoteException, SQLException {
+    @Override public void removeLibrarian(String SSN) throws RemoteException {
         librarianStorage.removeLibrarian(SSN);
     }
 
-    @Override public ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException {
+    @Override public ArrayList<Librarian> getLibrarianList() throws RemoteException {
         return librarianStorage.getLibrarianList();
     }
 
     @Override public void addLibraryUser(LibraryUser libraryUser)
-        throws RemoteException, SQLException
+        throws RemoteException
     {
         libraryUserStorage.addLibraryUser(libraryUser);
     }
 
     @Override public void removeLibraryUser(String ssn)
-        throws RemoteException, SQLException
+        throws RemoteException
     {
         libraryUserStorage.removeLibraryUser(ssn);
     }
 
     @Override public ArrayList<LibraryUser> getLibraryUserList()
-        throws RemoteException, SQLException
+        throws RemoteException
     {
         return libraryUserStorage.getLibraryUserList();
     }
     @Override
     public void addMagazineLoan(LoanMagazine loanMagazine)
-        throws  RemoteException,SQLException
+        throws  RemoteException
     {
         loanMagazineStorage.addMagazineLoan(loanMagazine);
     }
 
     @Override
     public ArrayList<Magazine> getAvailableMagazineList()
-        throws SQLException, RemoteException
+        throws  RemoteException
     {
         return loanMagazineStorage.getAvailableMagazineList();
     }
 
     @Override public void addBookLoan(LoanBook loanBook)
-        throws SQLException, RemoteException
+        throws  RemoteException
     {
         loanBookStorage.addLoanBook(loanBook);
     }
 
     @Override public ArrayList<Book> getAvailableBookList()
-        throws SQLException, RemoteException
+        throws  RemoteException
     {
         return loanBookStorage.getAvailableBooks();
     }

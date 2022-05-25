@@ -9,8 +9,7 @@ import java.util.ArrayList;
 public interface LibraryUserStorage
 {
 
-  void addLibraryUser(LibraryUser libraryUser) throws RemoteException,
-      SQLException;
-  void removeLibraryUser(String ssn)throws RemoteException,SQLException;
-  ArrayList<LibraryUser> getLibraryUserList() throws RemoteException,SQLException;
+  void addLibraryUser(LibraryUser libraryUser) throws RemoteException;
+  void removeLibraryUser(String ssn)throws RemoteException;
+  ArrayList<LibraryUser> getLibraryUserList() throws RemoteException;
 }

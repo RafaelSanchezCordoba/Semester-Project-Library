@@ -13,7 +13,7 @@ import model.Magazine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
@@ -64,7 +64,7 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
     }
 
 
-    public void addLibrarian(Librarian librarian) throws RemoteException, SQLException {
+    public void addLibrarian(Librarian librarian) throws RemoteException {
         if (!errorsCheck())
         {
             model.addLibrarian(librarian);
@@ -73,23 +73,23 @@ public class AddRemoveLibrarianViewModel implements PropertyChangeListener {
         {
             reset();
         }
-        catch (SQLException | RemoteException e)
+        catch ( RemoteException e)
         {
             e.printStackTrace();
         }
     }
 
-    public void removeLibrarian(String SSN) throws SQLException, RemoteException
+    public void removeLibrarian(String SSN) throws  RemoteException
     {
         model.removeLibrarian(SSN);
     }
 
-    public void setLibrarianList() throws RemoteException, SQLException{
+    public void setLibrarianList() throws RemoteException{
         librarianList.clear();
         librarianList.addAll(model.getLibrarianList());
     }
 
-    public void reset() throws SQLException, RemoteException
+    public void reset() throws  RemoteException
     {
         setLibrarianList();
 

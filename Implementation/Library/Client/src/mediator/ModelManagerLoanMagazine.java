@@ -21,14 +21,14 @@ public class ModelManagerLoanMagazine implements ModelLoanMagazine {
     }
 
     @Override
-    public void addMagazineLoan(LoanMagazine loanMagazine) throws SQLException, RemoteException {
+    public void addMagazineLoan(LoanMagazine loanMagazine) throws  RemoteException {
         client.addMagazineLoan(loanMagazine);
         support.firePropertyChange("newLoanMagazine",null,loanMagazine);
     }
 
     @Override
     public ArrayList<Magazine> getAvailableMagazineList()
-        throws RemoteException, SQLException
+        throws RemoteException
     {
 
         return client.getAvailableMagazineList();

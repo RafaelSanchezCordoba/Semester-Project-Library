@@ -9,10 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface LoanMagazineStorage {
-    void addMagazineLoan(LoanMagazine loanMagazine) throws SQLException,
-        RemoteException;
-    ArrayList<Magazine> getAvailableMagazineList() throws SQLException,
-        RemoteException;
+    void addMagazineLoan(LoanMagazine loanMagazine) throws RemoteException;
+    ArrayList<Magazine> getAvailableMagazineList() throws RemoteException;
     LibraryUser getUser(String ssn) throws RemoteException;
     ArrayList<Magazine> getLoanedMagazines(String ssn)throws RemoteException;
     ArrayList<LoanMagazine> getUsersLoans(String ssn) throws RemoteException;

@@ -47,12 +47,10 @@ public class MagazineClientImplementation extends UnicastRemoteObject implements
    */
   @Override public void addMagazine(Magazine magazine) throws RemoteException
   {
-    try
-    {
+
       remoteMagazine.addMagazine(magazine);
-    }catch (SQLException e){
-      e.printStackTrace();
-    }
+
+
   }
 
   /**
@@ -64,12 +62,9 @@ public class MagazineClientImplementation extends UnicastRemoteObject implements
    */
   @Override public void removeMagazine(int id) throws RemoteException
   {
-    try
-    {
+
       remoteMagazine.removeMagazine(id);
-    }catch (SQLException e){
-      e.printStackTrace();
-    }
+
 
   }
 
@@ -81,7 +76,7 @@ public class MagazineClientImplementation extends UnicastRemoteObject implements
    * @throws RemoteException
    */
   @Override public ArrayList<Magazine> getMagazineList()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     return remoteMagazine.getMagazineList();
   }

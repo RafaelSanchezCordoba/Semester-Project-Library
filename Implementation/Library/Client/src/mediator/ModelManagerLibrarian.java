@@ -36,7 +36,7 @@ public class ModelManagerLibrarian implements ModelLibrarian
    * Librarian object
    * @throws RemoteException
    */
-  public void addLibrarian(Librarian librarian) throws RemoteException, SQLException {
+  public void addLibrarian(Librarian librarian) throws RemoteException {
     client.addLibrarian(librarian);
     support.firePropertyChange("newLibrarian", null, librarian);
   }
@@ -47,7 +47,7 @@ public class ModelManagerLibrarian implements ModelLibrarian
    * The Social Security Number
    * @throws RemoteException
    */
-  public void removeLibrarian(String SSN) throws RemoteException, SQLException {
+  public void removeLibrarian(String SSN) throws RemoteException {
     client.removeLibrarian(SSN);
     support.firePropertyChange("removeLibrarian", null , SSN);
   }
@@ -59,7 +59,7 @@ public class ModelManagerLibrarian implements ModelLibrarian
    * @throws RemoteException
    * @throws SQLException
    */
-  public ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException {
+  public ArrayList<Librarian> getLibrarianList() throws RemoteException {
      return  client.getLibrarianList();
   }
 

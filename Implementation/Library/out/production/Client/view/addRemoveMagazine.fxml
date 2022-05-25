@@ -54,7 +54,7 @@
          </font>
       </TextField>
       <Button layoutX="157.0" layoutY="305.0" mnemonicParsing="false" onAction="#addMagazineButtonPressed" text="Add Magazine" />
-      <Label fx:id="errorLabel" layoutX="10.0" layoutY="344.0" prefHeight="35.0" prefWidth="335.0" text="Error message / Information message" textFill="RED">
+      <Label fx:id="errorLabel" layoutX="10.0" layoutY="344.0" prefHeight="35.0" prefWidth="487.0" text="Error message / Information message" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public interface RemoteLibrarian extends Remote
 {
-  void  addLibrarian(Librarian librarian) throws RemoteException, SQLException;
-  void removeLibrarian(String SSN) throws RemoteException, SQLException;
-  ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException;
+  void  addLibrarian(Librarian librarian) throws RemoteException;
+  void removeLibrarian(String SSN) throws RemoteException;
+  ArrayList<Librarian> getLibrarianList() throws RemoteException;
 }

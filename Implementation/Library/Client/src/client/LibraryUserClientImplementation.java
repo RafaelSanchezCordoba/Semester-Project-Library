@@ -42,7 +42,7 @@ public class LibraryUserClientImplementation extends UnicastRemoteObject impleme
    * @throws RemoteException
    * @throws SQLException
    */
-  @Override public void addLibraryUser(LibraryUser libraryUser) throws SQLException, RemoteException {
+  @Override public void addLibraryUser(LibraryUser libraryUser) throws RemoteException {
     remoteLibraryUser.addLibraryUser(libraryUser);
   }
 
@@ -53,7 +53,7 @@ public class LibraryUserClientImplementation extends UnicastRemoteObject impleme
    * @throws RemoteException
    * @throws SQLException
    */
-  @Override public void removeLibraryUser(String ssn) throws SQLException, RemoteException {
+  @Override public void removeLibraryUser(String ssn) throws  RemoteException {
       remoteLibraryUser.removeLibraryUser(ssn);
   }
 
@@ -64,7 +64,7 @@ public class LibraryUserClientImplementation extends UnicastRemoteObject impleme
    * @throws RemoteException
    * @throws SQLException
    */
-  @Override public ArrayList<LibraryUser> getLibraryUserList() throws RemoteException, SQLException {
+  @Override public ArrayList<LibraryUser> getLibraryUserList() throws RemoteException {
     return remoteLibraryUser.getLibraryUserList();
   }
 

@@ -18,7 +18,7 @@ public interface LibrarianStorage {
    * Librarian object
    * @throws RemoteException
    */
-  void addLibrarian(Librarian librarian) throws SQLException;
+  void addLibrarian(Librarian librarian) throws RemoteException;
 
   /**
    * Remove a Librarian by the SSN
@@ -26,7 +26,7 @@ public interface LibrarianStorage {
    * The Social Security Number
    * @throws RemoteException
    */
-  void removeLibrarian(String SSN) throws SQLException;
+  void removeLibrarian(String SSN) throws RemoteException;
 
   /**
    * Return a list with all the librarians added
@@ -35,5 +35,5 @@ public interface LibrarianStorage {
    * @throws RemoteException
    * @throws SQLException
    */
-  ArrayList<Librarian> getLibrarianList() throws SQLException;
+  ArrayList<Librarian> getLibrarianList() throws RemoteException;
 }

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public interface RemoteLoanBook extends Remote
 {
-  void addBookLoan(LoanBook loanBook) throws SQLException, RemoteException;
-  ArrayList<Book> getAvailableBookList() throws SQLException, RemoteException;
+  void addBookLoan(LoanBook loanBook) throws  RemoteException;
+  ArrayList<Book> getAvailableBookList() throws  RemoteException;
   LibraryUser getUser(String ssn) throws RemoteException;
   ArrayList<LoanBook> getUserBookLoans(String ssn) throws RemoteException;
   void returnBook(int loan_id) throws RemoteException;

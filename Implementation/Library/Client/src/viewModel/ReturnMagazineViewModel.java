@@ -13,7 +13,7 @@ import model.LoanMagazine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 public class ReturnMagazineViewModel implements PropertyChangeListener {
@@ -61,7 +61,7 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
         property.bind(loanedMagazines);
     }
 
-    public void reset() throws SQLException, RemoteException {
+    public void reset() throws  RemoteException {
         multimediaItemLabel.set("");
         errorLabel.set("");
         selectedMultimediaItemLabel.set("");
@@ -69,7 +69,7 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
          ssnTextField.set("");
     }
 
-    public void setLoanedMagazines() throws RemoteException, SQLException{
+    public void setLoanedMagazines() throws RemoteException{
         loanedMagazines.clear();
         loanedMagazines.addAll(model.getUserLoans(user.getSSN()));
 
@@ -108,7 +108,7 @@ public class ReturnMagazineViewModel implements PropertyChangeListener {
         try {
             reset();
             setLoanedMagazines();
-        } catch (SQLException | RemoteException e) {
+        } catch ( RemoteException e) {
             e.printStackTrace();
         }
     }

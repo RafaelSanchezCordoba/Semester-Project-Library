@@ -31,11 +31,11 @@ public class AdapterLibraryUserDAO implements LibraryUserStorage
     }
   }
 
-  @Override public void removeLibraryUser(String ssn) {
+  @Override public void removeLibraryUser(String ssn) throws RemoteException{
     try {
       libraryUserDAO.removeLibraryUser(ssn);
     } catch (SQLException e) {
-      e.printStackTrace();
+      throw new  RemoteException(e.getMessage(), e);
     }
   }
 

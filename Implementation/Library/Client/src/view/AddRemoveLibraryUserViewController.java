@@ -12,7 +12,7 @@ import viewModel.AddRemoveLibraryUserViewModel;
 
 import javafx.scene.layout.Region;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 
 public class AddRemoveLibraryUserViewController
 {
@@ -27,7 +27,7 @@ public class AddRemoveLibraryUserViewController
     @FXML private Label errorLabel;
 
 
-    public void init(ViewHandler viewHandler, AddRemoveLibraryUserViewModel viewModel, Region root) throws SQLException, RemoteException{
+    public void init(ViewHandler viewHandler, AddRemoveLibraryUserViewModel viewModel, Region root) throws  RemoteException{
         this.viewHandler = viewHandler;
         this.viewModel = viewModel;
         this.root = root;
@@ -46,7 +46,7 @@ public class AddRemoveLibraryUserViewController
         viewHandler.closeView();
     }
 
-    @FXML public void addUserButtonPressed() throws RemoteException, SQLException{
+    @FXML public void addUserButtonPressed() throws RemoteException{
         LibraryUser libraryUser = new LibraryUser(ssnTextField.getText(),firstNameTextField.getText(),
                 lastNameTextField.getText(), passwordTextField.getText());
         viewModel.addLibraryUser(libraryUser);
@@ -55,18 +55,18 @@ public class AddRemoveLibraryUserViewController
         
     }
 
-    @FXML public void removeUserButtonPressed() throws RemoteException, SQLException{
+    @FXML public void removeUserButtonPressed() throws RemoteException {
         viewModel.removeLibraryUser(userTextListView.getSelectionModel().getSelectedItem().getSSN());
     }
 
     @FXML public void multimediaItemMenuButtonPressed()
-        throws SQLException, RemoteException
+        throws  RemoteException
     {
         viewHandler.openView(viewHandler.ITEM);
     }
 
     @FXML public void homeMenuButtonPressed()
-        throws SQLException, RemoteException
+        throws  RemoteException
     {
         viewHandler.openView(viewHandler.HOME);
     }
@@ -74,24 +74,24 @@ public class AddRemoveLibraryUserViewController
 
 
     @FXML public void onAddLibraryUserButtonPressed()
-        throws SQLException, RemoteException
+        throws  RemoteException
     {
         viewHandler.openView(viewHandler.LIBRARY_USER);
     }
 
     @FXML public void onLoanButtonPressed()
-        throws SQLException, RemoteException
+        throws  RemoteException
     {
         viewHandler.openView(viewHandler.LENDMULTIMEDIAITEM);
     }
 
     @FXML public void onReturnButtonPressed()
-        throws SQLException, RemoteException
+        throws  RemoteException
     {
         viewHandler.openView(viewHandler.RETURNMULTIMEDIAITEM);
     }
 
-    public void reset() throws SQLException, RemoteException{
+    public void reset() throws  RemoteException{
         viewModel.reset();
     }
 

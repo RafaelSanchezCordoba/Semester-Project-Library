@@ -23,13 +23,13 @@ public class FakeModelManagerLibraryUser implements ModelLibraryUser
     }
 
     @Override
-    public void addLibraryUser(LibraryUser libraryUser) throws RemoteException, SQLException {
+    public void addLibraryUser(LibraryUser libraryUser) throws RemoteException {
         list.add(libraryUser);
         support.firePropertyChange("addLibraryUser", null, libraryUser);
     }
 
     @Override
-    public void removeLibraryUser(String ssn) throws RemoteException, SQLException {
+    public void removeLibraryUser(String ssn) throws RemoteException {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getSSN().equals(ssn)) {
                 list.remove(list.get(i));
@@ -39,7 +39,7 @@ public class FakeModelManagerLibraryUser implements ModelLibraryUser
     }
 
     @Override
-    public ArrayList<LibraryUser> getLibraryUserList() throws RemoteException, SQLException {
+    public ArrayList<LibraryUser> getLibraryUserList() throws RemoteException {
         return list;
     }
 

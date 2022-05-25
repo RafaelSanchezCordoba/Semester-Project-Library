@@ -23,13 +23,13 @@ public class FakeModelManagerBook implements ModelBook
     genres=new GenreList();
   }
 
-  @Override public void addBook(Book book) throws RemoteException, SQLException
+  @Override public void addBook(Book book) throws RemoteException
   {
     list.add(book);
     support.firePropertyChange("newBook",null,book);
   }
 
-  @Override public void removeBook(int id) throws RemoteException, SQLException
+  @Override public void removeBook(int id) throws RemoteException
   {
     for (int i=0;i<list.size();i++)
     {
@@ -42,12 +42,12 @@ public class FakeModelManagerBook implements ModelBook
   }
 
   @Override public ArrayList<Book> getBookList()
-      throws RemoteException, SQLException
+      throws RemoteException
   {
     return list;
   }
 
-  @Override public GenreList getGenreList() throws RemoteException, SQLException
+  @Override public GenreList getGenreList() throws RemoteException
   {
     return genres;
   }

@@ -32,7 +32,7 @@ public class BookStorageTest implements BookStorage
     return instance;
   }
 
-  @Override public void removeBook(int id) throws SQLException
+  @Override public void removeBook(int id)
   {
     for (int i = 0; i <books.size() ; i++)
     {
@@ -43,18 +43,17 @@ public class BookStorageTest implements BookStorage
     }
   }
 
-  @Override public ArrayList<Book> getBookList() throws SQLException
+  @Override public ArrayList<Book> getBookList()
   {
     return books;
   }
 
   @Override public GenreList getGenreList()
-      throws SQLException, RemoteException
   {
   return genres;
   }
 
-  @Override public void addBook(Book book) throws SQLException
+  @Override public void addBook(Book book)
   {
     books.add(book);
     book.setId(counter);

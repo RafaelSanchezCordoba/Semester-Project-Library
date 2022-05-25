@@ -4,6 +4,7 @@ import model.Librarian;
 import persistance.DAO.LibrarianDAO;
 import server.storage.LibrarianStorage;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -32,8 +33,14 @@ public class AdapterLibrarianDAO implements LibrarianStorage {
      * @throws RemoteException
      */
     @Override
-    public void addLibrarian(Librarian librarian) throws SQLException {
-        librarianDAO.addLibrarian(librarian);
+    public void addLibrarian(Librarian librarian)throws RemoteException {
+        try
+        {
+            librarianDAO.addLibrarian(librarian);
+        }catch (SQLException e){
+            throw  new RemoteException(e.getMessage(),e);
+        }
+
     }
 
     /**
@@ -43,8 +50,14 @@ public class AdapterLibrarianDAO implements LibrarianStorage {
      * @throws RemoteException
      */
     @Override
-    public void removeLibrarian(String SSN) throws SQLException {
-        librarianDAO.removeLibrarian(SSN);
+    public void removeLibrarian(String SSN) throws RemoteException {
+        try
+        {
+            librarianDAO.removeLibrarian(SSN);
+        }catch (SQLException e){
+            throw new RemoteException(e.getMessage(),e);
+        }
+
     }
 
     /**
@@ -55,7 +68,13 @@ public class AdapterLibrarianDAO implements LibrarianStorage {
      * @throws SQLException
      */
     @Override
-    public ArrayList<Librarian> getLibrarianList() throws SQLException {
-        return librarianDAO.getLibrarianList();
+    public ArrayList<Librarian> getLibrarianList() throws RemoteException {
+        try
+        {
+            return librarianDAO.getLibrarianList();
+        }catch (SQLException e){
+            throw new RemoteException(e.getMessage(),e);
+        }
+
     }
 }

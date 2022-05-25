@@ -19,7 +19,7 @@ public interface LibrarianClient extends Closeable {
      * The librarian object
      * @throws RemoteException
      */
-    void addLibrarian(Librarian librarian) throws RemoteException, SQLException;
+    void addLibrarian(Librarian librarian) throws RemoteException;
 
     /**
      * The method remove a librarian by the SSN
@@ -27,7 +27,7 @@ public interface LibrarianClient extends Closeable {
      * The Social Security Number
      * @throws RemoteException
      */
-    void removeLibrarian(String SSN) throws RemoteException, SQLException;
+    void removeLibrarian(String SSN) throws RemoteException;
 
     /**
      * Returns a list with all the librarians
@@ -35,5 +35,5 @@ public interface LibrarianClient extends Closeable {
      * Librarian list
      * @throws RemoteException
      */
-    ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException;
+    ArrayList<Librarian> getLibrarianList() throws RemoteException;
 }

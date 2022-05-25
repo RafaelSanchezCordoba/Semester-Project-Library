@@ -18,7 +18,7 @@ public interface ModelLibrarian extends PropertyChangeSubject {
    * Librarian object
    * @throws RemoteException
    */
-  void addLibrarian(Librarian librarian) throws RemoteException, SQLException;
+  void addLibrarian(Librarian librarian) throws RemoteException;
 
   /**
    * Remove a Librarian by the SSN
@@ -26,7 +26,7 @@ public interface ModelLibrarian extends PropertyChangeSubject {
    * The Social Security Number
    * @throws RemoteException
    */
-  void removeLibrarian(String SSN) throws RemoteException, SQLException;
+  void removeLibrarian(String SSN) throws RemoteException;
 
   /**
    * Return a list with all the librarians added
@@ -35,5 +35,5 @@ public interface ModelLibrarian extends PropertyChangeSubject {
    * @throws RemoteException
    * @throws SQLException
    */
-  ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException;
+  ArrayList<Librarian> getLibrarianList() throws RemoteException;
 }

@@ -21,25 +21,25 @@ public interface MagazineClient extends Closeable
    * @throws RemoteException
    * @throws SQLException
    */
-  void addMagazine(Magazine magazine) throws RemoteException, SQLException;
+  void addMagazine(Magazine magazine) throws RemoteException;
 
   /**
    * Remove a magazine with a specific identification number
    * @param id
    * The unique identification number passed as an argument
    * @throws RemoteException
-   * @throws SQLException
+
    */
-  void removeMagazine(int id) throws RemoteException, SQLException;
+  void removeMagazine(int id) throws RemoteException;
 
   /**
    * Get magazine list method
    * @return
    * The magazines in the list
-   * @throws SQLException
+
    * @throws RemoteException
    */
-  ArrayList<Magazine> getMagazineList() throws SQLException, RemoteException;
+  ArrayList<Magazine> getMagazineList() throws  RemoteException;
 
 
 }

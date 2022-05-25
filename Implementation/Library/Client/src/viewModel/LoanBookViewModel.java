@@ -14,7 +14,7 @@ import model.MultimediaItem;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 public class LoanBookViewModel implements PropertyChangeListener
@@ -50,7 +50,7 @@ public class LoanBookViewModel implements PropertyChangeListener
     {
       reset();
     }
-    catch (SQLException | RemoteException e)
+    catch ( RemoteException e)
     {
 
       e.printStackTrace();
@@ -84,7 +84,7 @@ public class LoanBookViewModel implements PropertyChangeListener
     property.bind(availableBooks);
   }
 
-  public void reset() throws SQLException, RemoteException
+  public void reset() throws  RemoteException
   {
     setBookList();
     multimediaItemLabel.set("");
@@ -95,12 +95,12 @@ public class LoanBookViewModel implements PropertyChangeListener
     System.out.println(availableBooks.size());
   }
 
-  public void setBookList()throws RemoteException,SQLException{
+  public void setBookList()throws RemoteException{
     availableBooks.clear();
     availableBooks.addAll(model.getAvailableBooks());
   }
 
-  public void createLoan(int idBook) throws SQLException, RemoteException
+  public void createLoan(int idBook) throws  RemoteException
   {
    if(libraryUser==null){
      errorLabel.set("First fill the ssn");

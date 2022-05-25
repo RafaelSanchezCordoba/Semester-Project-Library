@@ -12,7 +12,7 @@ import model.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 public class AddRemoveBookViewModel implements PropertyChangeListener
@@ -55,7 +55,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   }
 
-  private boolean errorCheck() throws SQLException, RemoteException
+  private boolean errorCheck() throws RemoteException
   {
     if (titleTextField.get().equals(""))
     {
@@ -100,7 +100,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     return Integer.parseInt(yearTextField.get())>Integer.parseInt(year);
   }
 
-  private boolean duplicateIsbnCheck() throws SQLException, RemoteException
+  private boolean duplicateIsbnCheck() throws  RemoteException
   {
     for (int i=0;i<model.getBookList().size();i++)
     {
@@ -123,7 +123,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     return false;
   }
 
-  public GenreList getGenreList() throws SQLException, RemoteException {
+  public GenreList getGenreList() throws  RemoteException {
     GenreList genres = new GenreList();
     for (int i = 0; i < selectedGenreList.size(); i++) {
       genres.addGenre(selectedGenreList.get(i));
@@ -150,7 +150,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     selectedGenreList.remove(genre);
   }
 
-  public void setGenreList() throws RemoteException, SQLException {
+  public void setGenreList() throws RemoteException {
     genreList.clear();
 
     for (int i = 0; i < model.getGenreList().getSize(); i++)
@@ -159,13 +159,13 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     }
   }
 
-  public void setBookList() throws RemoteException, SQLException
+  public void setBookList() throws RemoteException
   {
     bookList.clear();
     bookList.addAll(model.getBookList());
   }
 
-  public void addBook(Book book) throws RemoteException, SQLException
+  public void addBook(Book book) throws RemoteException
   {
     errorLabel.set("");
     if (!errorCheck()){
@@ -173,7 +173,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     reset();
   }
 
-  public void removeBook(int id) throws RemoteException, SQLException
+  public void removeBook(int id) throws RemoteException
   {
 
     try
@@ -187,7 +187,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   }
 
-  public void reset() throws SQLException, RemoteException
+  public void reset() throws  RemoteException
   {
     setBookList();
     setGenreList();

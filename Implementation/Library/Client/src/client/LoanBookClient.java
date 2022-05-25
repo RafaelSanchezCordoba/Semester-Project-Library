@@ -18,7 +18,7 @@ public interface LoanBookClient extends Closeable {
    * @throws SQLException
    * @throws RemoteException
    */
-  void addBookLoan(LoanBook loanBook) throws SQLException, RemoteException;
+  void addBookLoan(LoanBook loanBook) throws  RemoteException;
 
   /**
    * Get the available books
@@ -27,7 +27,7 @@ public interface LoanBookClient extends Closeable {
    * @throws SQLException
    * @throws RemoteException
    */
-  ArrayList<Book> getAvailableBookList() throws SQLException, RemoteException;
+  ArrayList<Book> getAvailableBookList() throws  RemoteException;
 
   /**
    * Get a user with a specific social security number

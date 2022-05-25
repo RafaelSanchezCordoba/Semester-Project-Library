@@ -27,7 +27,7 @@ public class FakeModelManagerLibrarian implements ModelLibrarian
   }
 
   @Override public void removeLibrarian(String SSN)
-      throws RemoteException, SQLException
+      throws RemoteException
   {
     for (int i=0;i<list.size();i++)
     {

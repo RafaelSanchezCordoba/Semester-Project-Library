@@ -36,15 +36,12 @@ public class BookStorageTestTest
     @Test
     public void addOne()
     {
-      try
-      {
+
         int exp = storage.getBookList().size();
         storage.addBook(book);
         exp++;
         Assertions.assertEquals(exp, storage.getBookList().size());
-      }catch (SQLException e){
-        e.printStackTrace();
-      }
+
     }
     public  void clear() throws SQLException
     {

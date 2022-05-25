@@ -44,10 +44,7 @@ public class ModelManagerMagazine implements ModelMagazine{
         {
             e.printStackTrace();
         }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
+
     }
 
     /**
@@ -56,7 +53,7 @@ public class ModelManagerMagazine implements ModelMagazine{
      * @throws RemoteException
      */
     @Override
-    public void removeMagazine(int id) throws RemoteException, SQLException
+    public void removeMagazine(int id) throws RemoteException
     {
         System.out.println(id);
         client.removeMagazine(id);
@@ -101,7 +98,7 @@ public class ModelManagerMagazine implements ModelMagazine{
         support.removePropertyChangeListener(name, listener);
     }
 
-    @Override public ArrayList<Magazine> getMagazineList() throws RemoteException, SQLException
+    @Override public ArrayList<Magazine> getMagazineList() throws RemoteException
     {
         return client.getMagazineList();
     }

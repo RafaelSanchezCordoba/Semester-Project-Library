@@ -41,7 +41,7 @@ public class ViewFactory
     librarianHomeViewController=null;
   }
 
-  public Region loadAddRemoveLibrarian() throws SQLException, RemoteException {
+  public Region loadAddRemoveLibrarian() throws  RemoteException {
     if (librarianViewController== null){
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("addRemoveLibrarian.fxml"));
@@ -58,7 +58,7 @@ public class ViewFactory
     return librarianViewController.getRoot();
   }
 
-  public Region loadLibrarianHome() throws SQLException, RemoteException {
+  public Region loadLibrarianHome() throws  RemoteException {
     if (librarianHomeViewController== null){
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("librarianHome.fxml"));
@@ -74,7 +74,7 @@ public class ViewFactory
     return librarianHomeViewController.getRoot();
   }
 
-  public Region loadAddRemoveBookView() throws SQLException, RemoteException
+  public Region loadAddRemoveBookView() throws RemoteException
   {
     if (bookController == null) {
     FXMLLoader loader = new FXMLLoader();
@@ -91,7 +91,7 @@ public class ViewFactory
     return bookController.getRoot();
   }
 
-  public Region loadAddRemoveLibraryUserView() throws SQLException, RemoteException{
+  public Region loadAddRemoveLibraryUserView() throws  RemoteException{
     if(libraryUserController == null){
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("addRemoveUser.fxml"));
@@ -99,7 +99,7 @@ public class ViewFactory
         Region root = loader.load();
         libraryUserController = loader.getController();
         libraryUserController.init(viewHandler, viewModelFactory.getUserViewModel(), root);
-      }catch (IOException | SQLException e){
+      }catch (IOException e){
         throw new IOError(e);
       }
     }
@@ -107,7 +107,7 @@ public class ViewFactory
     return libraryUserController.getRoot();
   }
 
-  public Region loadAddRemoveMagazineView() throws SQLException, RemoteException
+  public Region loadAddRemoveMagazineView() throws RemoteException
   {if (magazineController == null) {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("addRemoveMagazine.fxml"));
@@ -115,7 +115,7 @@ public class ViewFactory
       Region root = loader.load();
       magazineController = loader.getController();
       magazineController.init(viewHandler, viewModelFactory.getMagazineViewModel(), root);
-    } catch (IOException | SQLException e) {
+    } catch (IOException  e) {
       throw new IOError(e);
 
     }
@@ -126,7 +126,7 @@ public class ViewFactory
 
 
 
-  public Region loadChoseItemTypeView() throws SQLException, RemoteException
+  public Region loadChoseItemTypeView() throws  RemoteException
   {if (itemViewController == null) {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("choseItemType.fxml"));
@@ -134,7 +134,7 @@ public class ViewFactory
       Region root = loader.load();
       itemViewController = loader.getController();
       itemViewController.init(viewHandler, root);
-    } catch (IOException | SQLException e) {
+    } catch (IOException  e) {
       throw new IOError(e);
 
     }
@@ -142,7 +142,7 @@ public class ViewFactory
     return itemViewController.getRoot();
   }
 
-  public Region loadHomeView() throws SQLException, RemoteException {
+  public Region loadHomeView() throws  RemoteException {
     if (homeController== null){
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("home.fxml"));
@@ -158,7 +158,7 @@ public class ViewFactory
     return homeController.getRoot();
   }
 
-  public Region loadLendMultimediaItem() throws SQLException, RemoteException {
+  public Region loadLendMultimediaItem() throws  RemoteException {
     if (lendMultimediaItemViewController== null){
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("lendMultimediaItem.fxml"));
@@ -175,7 +175,7 @@ public class ViewFactory
     return lendMultimediaItemViewController.getRoot();
   }
 
-  public Region loadReturnMultimediaView() throws SQLException, RemoteException {
+  public Region loadReturnMultimediaView() throws RemoteException {
     if (returnMultimediaItemViewController== null){
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("returnMultimediaItem.fxml"));

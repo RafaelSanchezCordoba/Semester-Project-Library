@@ -17,7 +17,7 @@ public class AdapterBookDAO implements BookStorage {
     this.bookDAO = bookDAO;
   }
   
-  @Override public void addBook(Book book) throws SQLException, RemoteException {
+  @Override public void addBook(Book book) throws  RemoteException {
     try
     {
       bookDAO.addBook(book);
@@ -28,7 +28,7 @@ public class AdapterBookDAO implements BookStorage {
     }
   }
 
-  @Override public void removeBook(int id) throws SQLException, RemoteException {
+  @Override public void removeBook(int id) throws RemoteException {
     try
     {
       bookDAO.removeBook(id);
@@ -39,7 +39,7 @@ public class AdapterBookDAO implements BookStorage {
     }
   }
 
-  @Override public ArrayList<Book> getBookList() throws SQLException, RemoteException {
+  @Override public ArrayList<Book> getBookList() throws  RemoteException {
     try
     {
       return bookDAO.getBookList();
@@ -51,8 +51,14 @@ public class AdapterBookDAO implements BookStorage {
   }
 
   @Override public GenreList getGenreList()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
-    return bookDAO.getGenreList();
+    try
+    {
+      return bookDAO.getGenreList();
+    } catch ( SQLException e){
+      throw new RemoteException(e.getMessage(), e);
+    }
+
   }
 }

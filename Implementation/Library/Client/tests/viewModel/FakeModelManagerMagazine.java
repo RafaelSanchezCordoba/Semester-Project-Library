@@ -21,14 +21,14 @@ public class FakeModelManagerMagazine implements ModelMagazine
   }
 
   @Override public void addMagazine(Magazine magazine)
-      throws RemoteException, SQLException
+      throws RemoteException
   {
     list.add(magazine);
     support.firePropertyChange("newMagazine",null,magazine);
   }
 
   @Override public void removeMagazine(int id)
-      throws RemoteException, SQLException
+      throws RemoteException
   {
    for (int i=0;i<list.size();i++)
    {
@@ -41,7 +41,7 @@ public class FakeModelManagerMagazine implements ModelMagazine
   }
 
   @Override public ArrayList<Magazine> getMagazineList()
-      throws RemoteException, SQLException
+      throws RemoteException
   {
     return list;
   }

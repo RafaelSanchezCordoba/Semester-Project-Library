@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public interface MagazineStorage
 {
-  void addMagazine(Magazine magazine) throws SQLException, RemoteException;
-  void removeMagazine(int id) throws SQLException, RemoteException;
-  ArrayList<Magazine> getMagazineList() throws SQLException, RemoteException;
+  void addMagazine(Magazine magazine) throws  RemoteException;
+  void removeMagazine(int id) throws RemoteException;
+  ArrayList<Magazine> getMagazineList() throws  RemoteException;
 }

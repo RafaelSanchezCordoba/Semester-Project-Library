@@ -11,7 +11,7 @@ import viewModel.AddRemoveMagazineViewModel;
 
 import java.rmi.RemoteException;
 import java.sql.Date;
-import java.sql.SQLException;
+
 
 public class AddRemoveMagazineViewController
 {
@@ -28,7 +28,7 @@ public class AddRemoveMagazineViewController
   @FXML private ListView<Magazine> magazineListView;
   @FXML private Label errorLabel;
 
-  public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root) throws SQLException, RemoteException
+  public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root) throws  RemoteException
   {
     this.viewHandler = viewHandler;
     this.viewModel=viewModel;
@@ -55,7 +55,7 @@ public class AddRemoveMagazineViewController
 
 
   @FXML
-  public void addMagazineButtonPressed() throws RemoteException, SQLException
+  public void addMagazineButtonPressed() throws RemoteException
   {
     int volume;
     if (!errorsCheck())
@@ -119,43 +119,43 @@ public class AddRemoveMagazineViewController
   }
 
   @FXML
-  public void removeMagazineButtonPressed() throws SQLException, RemoteException
+  public void removeMagazineButtonPressed() throws RemoteException
   {
     viewModel.removeMagazine(magazineListView.getSelectionModel().getSelectedItem().getId());
   }
 
   @FXML public void multimediaItemMenuButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(ViewHandler.ITEM);
   }
 
   @FXML public void homeMenuButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(ViewHandler.HOME);
   }
 
 
   @FXML public void onAddLibraryUserButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(ViewHandler.LIBRARY_USER);
   }
 
   @FXML public void onLoanButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
   }
 
   @FXML public void onReturnButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
   }
 
-  public void reset() throws SQLException, RemoteException{
+  public void reset() throws  RemoteException{
     viewModel.reset();
   }
 

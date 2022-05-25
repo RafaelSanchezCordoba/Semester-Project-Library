@@ -16,7 +16,7 @@ public interface ModelLoanBook extends PropertyChangeSubject {
    * @throws SQLException
    * @throws RemoteException
    */
-  void addLoanBook(LoanBook loanBook) throws SQLException, RemoteException;
+  void addLoanBook(LoanBook loanBook) throws  RemoteException;
 
   /**
    * Get the available books
@@ -25,7 +25,7 @@ public interface ModelLoanBook extends PropertyChangeSubject {
    * @throws SQLException
    * @throws RemoteException
    */
-  ArrayList<Book> getAvailableBooks() throws SQLException, RemoteException;
+  ArrayList<Book> getAvailableBooks() throws  RemoteException;
 
   /**
    * Get a user with a specific social security number

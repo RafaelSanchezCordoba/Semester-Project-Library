@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public interface LoanBookStorage
 {
-  void addLoanBook(LoanBook loanBook) throws SQLException, RemoteException;
-  ArrayList<Book> getAvailableBooks() throws SQLException, RemoteException;
+  void addLoanBook(LoanBook loanBook) throws  RemoteException;
+  ArrayList<Book> getAvailableBooks() throws  RemoteException;
   LibraryUser getUser(String ssn) throws RemoteException;
   ArrayList<LoanBook> getUserBookLoans(String ssn) throws RemoteException;
   void returnBook(int loan_id) throws RemoteException;

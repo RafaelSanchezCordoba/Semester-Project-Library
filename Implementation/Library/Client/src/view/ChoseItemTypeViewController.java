@@ -6,7 +6,7 @@ import javafx.scene.layout.Region;
 
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 
 public class ChoseItemTypeViewController
 {
@@ -14,7 +14,7 @@ public class ChoseItemTypeViewController
   private Region root;
 
 
-  public void init(ViewHandler viewHandler,Region root) throws SQLException, RemoteException
+  public void init(ViewHandler viewHandler,Region root) throws  RemoteException
   {
     this.viewHandler = viewHandler;
     this.root = root;
@@ -22,42 +22,42 @@ public class ChoseItemTypeViewController
 
 
   @FXML public void multimediaItemMenuButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.ITEM);
   }
 
   @FXML public void homeMenuButtonPressed()
-      throws SQLException, RemoteException
+      throws RemoteException
   {
     viewHandler.openView(viewHandler.HOME);
   }
 
   @FXML public void bookMenuButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.BOOK);
   }
 
   @FXML public void magazinesMenuButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.MAGAZINE);
   }
   @FXML public void onAddLibraryUserButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.LIBRARY_USER);
   }
 
   @FXML public void onLoanButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.LENDMULTIMEDIAITEM);
   }
 
   @FXML public void onReturnButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.RETURNMULTIMEDIAITEM);
   }

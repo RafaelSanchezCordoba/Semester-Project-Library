@@ -33,14 +33,14 @@ public class ViewHandler
 
 
 
-  public void start(Stage primaryStage) throws SQLException, RemoteException
+  public void start(Stage primaryStage) throws  RemoteException
   {
     this.primaryStage = primaryStage;
     openView(HOME);
   }
 
 
-  public void openView(String id) throws SQLException, RemoteException
+  public void openView(String id) throws  RemoteException
   {
     Region root;
     switch (id)

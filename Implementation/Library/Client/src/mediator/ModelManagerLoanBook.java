@@ -22,14 +22,14 @@ public class ModelManagerLoanBook implements ModelLoanBook
   }
 
   @Override public void addLoanBook(LoanBook loanBook)
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     client.addBookLoan(loanBook);
     support.firePropertyChange("newLoanBook",null,loanBook);
   }
 
   @Override public ArrayList<Book> getAvailableBooks()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     return client.getAvailableBookList();
   }

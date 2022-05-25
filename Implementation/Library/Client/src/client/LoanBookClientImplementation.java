@@ -43,7 +43,7 @@ public class LoanBookClientImplementation extends UnicastRemoteObject implements
    * @throws RemoteException
    */
   @Override public void addBookLoan(LoanBook loanBook)
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     remoteLoanBook.addBookLoan(loanBook);
   }
@@ -56,7 +56,7 @@ public class LoanBookClientImplementation extends UnicastRemoteObject implements
    * @throws RemoteException
    */
   @Override public ArrayList<Book> getAvailableBookList()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     return remoteLoanBook.getAvailableBookList();
   }

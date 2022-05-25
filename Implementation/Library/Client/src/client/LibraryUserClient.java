@@ -21,7 +21,7 @@ public interface LibraryUserClient extends Closeable
    * @throws RemoteException
    * @throws SQLException
    */
-  void addLibraryUser(LibraryUser libraryUser) throws RemoteException, SQLException;
+  void addLibraryUser(LibraryUser libraryUser) throws RemoteException;
 
   /**
    * Remove a library user with a specific social security number
@@ -30,7 +30,7 @@ public interface LibraryUserClient extends Closeable
    * @throws RemoteException
    * @throws SQLException
    */
-  void removeLibraryUser(String ssn)throws RemoteException,SQLException;
+  void removeLibraryUser(String ssn)throws RemoteException;
 
   /**
    * Get library user list method
@@ -39,5 +39,5 @@ public interface LibraryUserClient extends Closeable
    * @throws RemoteException
    * @throws SQLException
    */
-  ArrayList<LibraryUser> getLibraryUserList() throws RemoteException,SQLException;
+  ArrayList<LibraryUser> getLibraryUserList() throws RemoteException;
 }

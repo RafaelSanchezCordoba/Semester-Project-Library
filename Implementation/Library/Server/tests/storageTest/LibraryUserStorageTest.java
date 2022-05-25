@@ -43,7 +43,7 @@ public class LibraryUserStorageTest implements LibraryUserStorage
    * @throws SQLException
    */
   @Override public void addLibraryUser(LibraryUser libraryUser)
-      throws RemoteException, SQLException
+      throws RemoteException
   {
     libraryUsers.add(libraryUser);
     libraryUsers.removeAll(Collections.singleton(null));
@@ -57,7 +57,7 @@ public class LibraryUserStorageTest implements LibraryUserStorage
    */
   @Override
   public void removeLibraryUser(String ssn)
-      throws RemoteException, SQLException
+      throws RemoteException
   {
     for (int i = 0; i<libraryUsers.size();i++){
       if (ssn.equals( libraryUsers.get(i).getSSN())){
@@ -73,7 +73,7 @@ public class LibraryUserStorageTest implements LibraryUserStorage
    * @throws SQLException
    */
   @Override public ArrayList<LibraryUser> getLibraryUserList()
-      throws RemoteException, SQLException
+      throws RemoteException
   {
     return libraryUsers;
   }

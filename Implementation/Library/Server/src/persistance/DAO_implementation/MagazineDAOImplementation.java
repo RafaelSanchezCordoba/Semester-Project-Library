@@ -11,7 +11,7 @@ public class MagazineDAOImplementation implements MagazineDAO
 
   private String insertMagazineSql = "INSERT INTO \"library\".magazine(publisher,title,volume,genre,date)"
       +"VALUES(?,?,?,?,?)";
-  private String removeMagazineSql = "DELETE FROM \"library\".magazine WHERE id = ?";
+  private String removeMagazineSql = "DELETE FROM \"library\".magazine WHERE id = ? and is_available = true";
 
   private String getMagazineListSql = "SELECT * FROM \"library\".magazine ORDER BY id DESC";
 
@@ -42,7 +42,10 @@ public class MagazineDAOImplementation implements MagazineDAO
       System.out.println("database"+ id);
       PreparedStatement statement = connection.prepareStatement(removeMagazineSql);
       statement.setInt(1, id);
-      statement.executeUpdate();
+      int rowAffected =  statement.executeUpdate();
+      if(rowAffected==0){
+        throw new  SQLException("magazine is being lended");
+      }
     }
 
   }

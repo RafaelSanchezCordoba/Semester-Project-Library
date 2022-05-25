@@ -10,7 +10,7 @@ import model.Librarian;
 import viewModel.AddRemoveLibrarianViewModel;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 
 public class AddRemoveLibrarianViewController
 {
@@ -26,7 +26,7 @@ public class AddRemoveLibrarianViewController
   @FXML private ListView<Librarian> librarianTextListView;
 
   public void init(ViewHandler viewHandler, AddRemoveLibrarianViewModel viewModel, Region root)
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     this.viewHandler = viewHandler;
     this.viewModel = viewModel;
@@ -43,7 +43,7 @@ public class AddRemoveLibrarianViewController
   }
 
   @FXML public void addLibrarianButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     Librarian librarian = new Librarian(ssnTextField.getText(),
         passwordTextField.getText(), firstNameTextField.getText(),
@@ -52,13 +52,13 @@ public class AddRemoveLibrarianViewController
   }
 
   @FXML public void removeLibrarianButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewModel.removeLibrarian(
         librarianTextListView.getSelectionModel().getSelectedItem().getSsn());
   }
 
-  public void reset() throws SQLException, RemoteException
+  public void reset() throws  RemoteException
   {
     viewModel.reset();
   }
@@ -73,7 +73,7 @@ public class AddRemoveLibrarianViewController
     viewHandler.closeView();
   }
 
-  @FXML public void homeMenuButtonPressed() throws SQLException, RemoteException
+  @FXML public void homeMenuButtonPressed() throws  RemoteException
   {
     viewHandler.openView(viewHandler.HOME);
   }

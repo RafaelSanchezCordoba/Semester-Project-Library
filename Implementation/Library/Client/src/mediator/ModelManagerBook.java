@@ -41,7 +41,7 @@ public class ModelManagerBook implements ModelBook {
      * @throws RemoteException
      * @throws SQLException
      */
-    public ArrayList<Book> getBookList() throws SQLException, RemoteException {
+    public ArrayList<Book> getBookList() throws  RemoteException {
         return client.getBookList();
     }
 
@@ -52,7 +52,7 @@ public class ModelManagerBook implements ModelBook {
      * @throws RemoteException
      * @throws SQLException
      */
-    @Override public GenreList getGenreList() throws RemoteException, SQLException {
+    @Override public GenreList getGenreList() throws RemoteException {
         return client.getGenreList();
     }
 
@@ -64,7 +64,7 @@ public class ModelManagerBook implements ModelBook {
      * @throws SQLException
      */
     @Override
-    public void addBook(Book book) throws RemoteException, SQLException {
+    public void addBook(Book book) throws RemoteException {
         client.addBook(book);
         support.firePropertyChange("newBook", null, book);
     }
@@ -77,7 +77,7 @@ public class ModelManagerBook implements ModelBook {
      * @throws SQLException
      */
     @Override
-    public void removeBook(int id) throws RemoteException, SQLException {
+    public void removeBook(int id) throws RemoteException {
         client.removeBook(id);
         support.firePropertyChange("removeBook", null, id);
     }

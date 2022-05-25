@@ -14,7 +14,7 @@ import model.Magazine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
@@ -77,7 +77,7 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
     }
 
 
-    public void addLibraryUser(LibraryUser libraryUser) throws RemoteException, SQLException{
+    public void addLibraryUser(LibraryUser libraryUser) throws RemoteException{
         if(!errorCheck()){
             System.out.println(libraryUser.getFirstName());
             model.addLibraryUser(libraryUser);
@@ -86,17 +86,17 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         reset();
     }
 
-    public void removeLibraryUser(String ssn) throws RemoteException, SQLException{
+    public void removeLibraryUser(String ssn) throws RemoteException{
         model.removeLibraryUser(ssn);
     }
 
-    public void setUserList() throws SQLException, RemoteException{
+    public void setUserList() throws RemoteException{
         userList.clear();
         userList.addAll(model.getLibraryUserList());
     }
 
     //reset
-    public void reset() throws SQLException, RemoteException{
+    public void reset() throws  RemoteException{
         setUserList();
 
         firstNameTextField.set("");

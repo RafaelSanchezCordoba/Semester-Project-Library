@@ -13,7 +13,7 @@ import viewModel.ReturnBookViewModel;
 import viewModel.ReturnMagazineViewModel;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 
 public class ReturnMultimediaItemViewController
 {
@@ -33,7 +33,7 @@ public class ReturnMultimediaItemViewController
 
 
   public void init(ViewHandler viewHandler, ReturnMagazineViewModel magazineViewModel, ReturnBookViewModel returnBookViewModel, Region root)
-      throws SQLException, RemoteException {
+      throws  RemoteException {
     this.viewHandler = viewHandler;
     this.magazineViewModel = magazineViewModel;
     this.bookViewModel= returnBookViewModel;
@@ -58,12 +58,12 @@ public class ReturnMultimediaItemViewController
 
 
   @FXML
-  public  void homeMenuButtonPressed() throws SQLException, RemoteException
+  public  void homeMenuButtonPressed() throws  RemoteException
   {
     viewHandler.openView(ViewHandler.HOME);
   }
   @FXML
-  public void multimediaItemMenuButtonPressed() throws RemoteException,SQLException{
+  public void multimediaItemMenuButtonPressed() throws RemoteException {
     viewHandler.openView(ViewHandler.ITEM);
   }
 
@@ -114,7 +114,7 @@ public class ReturnMultimediaItemViewController
     }
 
   }
-  public void reset() throws SQLException, RemoteException {
+  public void reset() throws  RemoteException {
     bookViewModel.reset();
     magazineViewModel.reset();
   }
@@ -128,7 +128,7 @@ public class ReturnMultimediaItemViewController
     errorLabelMagazine.setText("");
   }
   @FXML
-  public void showBookListButtonPressed() throws SQLException, RemoteException
+  public void showBookListButtonPressed() throws  RemoteException
   {
     resetErrorLabels();
     bookListView.setVisible(true);
@@ -137,7 +137,7 @@ public class ReturnMultimediaItemViewController
 
   }
   @FXML
-  void showMagazineListButtonPressed() throws SQLException, RemoteException {
+  void showMagazineListButtonPressed() throws  RemoteException {
     resetErrorLabels();
     bookListView.setVisible(false);
     magazineListView.setVisible(true);
@@ -145,19 +145,19 @@ public class ReturnMultimediaItemViewController
   }
 
   @FXML public void onAddLibraryUserButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(ViewHandler.LIBRARY_USER);
   }
 
   @FXML public void onLoanButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
   }
 
   @FXML public void onReturnButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
   }

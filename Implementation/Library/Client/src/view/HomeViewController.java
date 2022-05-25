@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 
 public class HomeViewController
 {
@@ -12,7 +12,7 @@ public class HomeViewController
   private Region root;
 
 
-  public void init(ViewHandler viewHandler,Region root) throws SQLException,
+  public void init(ViewHandler viewHandler,Region root) throws
       RemoteException
   {
     this.viewHandler = viewHandler;
@@ -21,7 +21,7 @@ public class HomeViewController
 
 
   @FXML
-  public void managerButtonPressed() throws SQLException, RemoteException
+  public void managerButtonPressed() throws  RemoteException
   {
     viewHandler.openView(viewHandler.LIBRARIAN);
   }
@@ -33,7 +33,7 @@ public class HomeViewController
   }
 
   @FXML
-  public void librarianButtonPressed() throws SQLException, RemoteException
+  public void librarianButtonPressed() throws  RemoteException
   {
     viewHandler.openView(viewHandler.LIBRARIAN_HOME);
   }

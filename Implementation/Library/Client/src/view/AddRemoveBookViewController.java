@@ -11,7 +11,7 @@ import model.GenreList;
 import viewModel.AddRemoveBookViewModel;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 public class AddRemoveBookViewController
@@ -32,7 +32,7 @@ public class AddRemoveBookViewController
   @FXML private Label errorLabel;
 
   public void init(ViewHandler viewHandler, AddRemoveBookViewModel viewModel,
-      Region root) throws SQLException, RemoteException
+      Region root) throws RemoteException
   {
     this.viewHandler = viewHandler;
     this.viewModel = viewModel;
@@ -60,7 +60,7 @@ public class AddRemoveBookViewController
 
 
 
-  @FXML public void addBookButtonPressed() throws SQLException, RemoteException
+  @FXML public void addBookButtonPressed() throws RemoteException
   {
     if (!errorsCheck())
     {
@@ -113,36 +113,36 @@ public class AddRemoveBookViewController
   }
 
   @FXML public void removeBookButtonPressed()
-      throws RemoteException, SQLException
+      throws RemoteException
   {
     viewModel.removeBook(bookListView.getSelectionModel().getSelectedItem().getId());
   }
 
   @FXML public void multimediaItemMenuButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.ITEM);
   }
 
   @FXML public void homeMenuButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.HOME);
   }
 
   @FXML public void onAddLibraryUserButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.LIBRARY_USER);
   }
   @FXML public void onLoanButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.LENDMULTIMEDIAITEM);
   }
 
   @FXML public void onReturnButtonPressed()
-      throws SQLException, RemoteException
+      throws  RemoteException
   {
     viewHandler.openView(viewHandler.RETURNMULTIMEDIAITEM);
   }
@@ -160,7 +160,7 @@ public class AddRemoveBookViewController
   }
 
 
-  public void reset() throws SQLException, RemoteException
+  public void reset() throws  RemoteException
   {
     viewModel.reset();
   }

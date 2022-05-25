@@ -40,7 +40,8 @@ public class LoanMagazineClientImplementation extends UnicastRemoteObject implem
      * @throws RemoteException
      */
     @Override
-    public void addMagazineLoan(LoanMagazine loanMagazine) throws SQLException, RemoteException {
+    public void addMagazineLoan(LoanMagazine loanMagazine) throws RemoteException
+    {
         remoteLoanMagazine.addMagazineLoan(loanMagazine);
     }
 
@@ -52,7 +53,7 @@ public class LoanMagazineClientImplementation extends UnicastRemoteObject implem
      * @throws RemoteException
      */
     @Override
-    public ArrayList<Magazine> getAvailableMagazineList() throws  RemoteException,SQLException {
+    public ArrayList<Magazine> getAvailableMagazineList() throws  RemoteException {
         return remoteLoanMagazine.getAvailableMagazineList();
     }
 

@@ -46,7 +46,7 @@ public class LibrarianClientImplementation extends UnicastRemoteObject implement
      * @throws RemoteException
      */
     @Override
-    public void addLibrarian(Librarian librarian) throws RemoteException, SQLException {
+    public void addLibrarian(Librarian librarian) throws RemoteException {
         remoteLibrarian.addLibrarian(librarian);
     }
 
@@ -57,7 +57,7 @@ public class LibrarianClientImplementation extends UnicastRemoteObject implement
      * @throws RemoteException
      */
     @Override
-    public void removeLibrarian(String SSN) throws RemoteException, SQLException {
+    public void removeLibrarian(String SSN) throws RemoteException {
         remoteLibrarian.removeLibrarian(SSN);
     }
 
@@ -68,7 +68,7 @@ public class LibrarianClientImplementation extends UnicastRemoteObject implement
      * @throws RemoteException
      */
     @Override
-    public ArrayList<Librarian> getLibrarianList() throws RemoteException, SQLException {
+    public ArrayList<Librarian> getLibrarianList() throws RemoteException {
         return remoteLibrarian.getLibrarianList();
     }
 

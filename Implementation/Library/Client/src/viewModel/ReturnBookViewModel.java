@@ -15,7 +15,7 @@ import model.LoanMagazine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 public class ReturnBookViewModel implements PropertyChangeListener
@@ -65,7 +65,7 @@ public class ReturnBookViewModel implements PropertyChangeListener
       ObjectProperty<ObservableList<LoanBook>> property){
     property.bind(loanedBooks);
   }
-  public void reset() throws SQLException, RemoteException
+  public void reset() throws  RemoteException
   {
     multimediaItemLabel.set("");
     errorLabel.set("");
@@ -74,7 +74,7 @@ public class ReturnBookViewModel implements PropertyChangeListener
     ssnTextField.set("");
   }
 
-  public void setLoanedBooks() throws RemoteException, SQLException{
+  public void setLoanedBooks() throws RemoteException{
     loanedBooks.clear();
     loanedBooks.addAll(model.getUserBookLoans(user.getSSN()));
 
@@ -112,7 +112,7 @@ public class ReturnBookViewModel implements PropertyChangeListener
     try {
      // reset();
       setLoanedBooks();
-    } catch (SQLException | RemoteException e) {
+    } catch ( RemoteException e) {
       e.printStackTrace();
     }
 

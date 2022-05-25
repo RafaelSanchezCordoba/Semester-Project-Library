@@ -13,7 +13,7 @@ import model.Magazine;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -91,7 +91,7 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
 
 
 
-    public void reset() throws SQLException, RemoteException
+    public void reset() throws  RemoteException
     {
         setMagazineList();
 
@@ -106,7 +106,7 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
     }
 
     public void addMagazine(Magazine magazine)
-        throws RemoteException, SQLException
+        throws RemoteException
     {
         if (!errorsCheck())
         {
@@ -116,13 +116,19 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         reset();
     }
 
-    public void removeMagazine(int id) throws SQLException, RemoteException
+    public void removeMagazine(int id) throws  RemoteException
     {
-        System.out.println("viewModel");
-        model.removeMagazine(id);
+        try
+        {
+            errorLabel.set("");
+            model.removeMagazine(id);
+        }catch (RemoteException e){
+            errorLabel.set("cannot remove this magazine because is currently being lended");
+        }
+
     }
 
-    public void setMagazineList() throws RemoteException, SQLException{
+    public void setMagazineList() throws RemoteException{
         magazineList.clear();
         magazineList.addAll(model.getMagazineList());
     }
