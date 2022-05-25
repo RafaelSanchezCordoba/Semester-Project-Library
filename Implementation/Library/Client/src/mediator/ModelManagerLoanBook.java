@@ -16,11 +16,23 @@ public class ModelManagerLoanBook implements ModelLoanBook
   private final LoanBookClient client;
   private PropertyChangeSupport support;
 
+  /**
+   * Public constructor that set the client and a property change support
+   * @param loanBookClient
+   * The loan book client
+   */
   public ModelManagerLoanBook(LoanBookClient loanBookClient){
     this.client = loanBookClient;
     this.support = new PropertyChangeSupport(this);
   }
 
+  /**
+   * Add loan book method
+   * @param loanBook
+   * The loan book passed as an argument
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public void addLoanBook(LoanBook loanBook)
       throws  RemoteException
   {
@@ -28,24 +40,51 @@ public class ModelManagerLoanBook implements ModelLoanBook
     support.firePropertyChange("newLoanBook",null,loanBook);
   }
 
+  /**
+   * Get the available books
+   * @return
+   * All the available books
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public ArrayList<Book> getAvailableBooks()
       throws  RemoteException
   {
     return client.getAvailableBookList();
   }
 
+  /**
+   * Get a user with a specific social security number
+   * @param ssn
+   * The social security number passed as an argument
+   * @return
+   * @throws RemoteException
+   */
   @Override public LibraryUser getUser(String ssn)
       throws RemoteException
   {
    return client.getUser(ssn);
   }
 
+  /**
+   * Get the loan of the user with the social security number passed as an argument
+   * @param ssn
+   * The social security number
+   * @return
+   * @throws RemoteException
+   */
   @Override public ArrayList<LoanBook> getUserBookLoans(String ssn)
       throws RemoteException
   {
     return client.getUserBookLoans(ssn);
   }
 
+  /**
+   * Return book method
+   * @param loan_id
+   * The unique identification number of the loan
+   * @throws RemoteException
+   */
   @Override public void returnBook(int loan_id) throws RemoteException
   {
     client.returnBook(loan_id);

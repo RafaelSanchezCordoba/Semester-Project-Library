@@ -14,23 +14,47 @@ public class ModelManagerLibraryUser implements ModelLibraryUser
   private final LibraryUserClient client;
   private final PropertyChangeSupport support;
 
+  /**
+   * Public constructor that set the client and a property change support
+   * @param client
+   * The library user client
+   */
   public ModelManagerLibraryUser(LibraryUserClient client){
     this.client = client;
     this.support = new PropertyChangeSupport(this);
   }
 
-
-
+  /**
+   * Add library user method
+   * @param libraryUser
+   * The library user passed as an argument
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @Override public void addLibraryUser(LibraryUser libraryUser) throws RemoteException{
     client.addLibraryUser(libraryUser);
     support.firePropertyChange("addLibraryUser",null, libraryUser);
   }
 
+  /**
+   * Remove a library user with a specific social security number
+   * @param ssn
+   * The social security number passed as an argument
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @Override public void removeLibraryUser(String ssn) throws RemoteException{
     client.removeLibraryUser(ssn);
     support.firePropertyChange("removeLibraryUser",null,ssn);
   }
 
+  /**
+   * Get library user list method
+   * @return
+   * The library users in the list
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @Override
   public ArrayList<LibraryUser> getLibraryUserList() throws RemoteException{
     return client.getLibraryUserList();
