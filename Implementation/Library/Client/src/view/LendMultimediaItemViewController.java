@@ -12,6 +12,7 @@ import model.MultimediaItem;
 import viewModel.LoanBookViewModel;
 import viewModel.LoanMagazineViewModel;
 
+import java.lang.management.MemoryUsage;
 import java.rmi.RemoteException;
 
 
@@ -61,6 +62,7 @@ public class LendMultimediaItemViewController {
     @FXML
     public void showBookListButtonPressed() throws  RemoteException
     {
+      multimediaItemLabel.setText("BOOKS");
         resetErrorLabels();
         bookListView.setVisible(true);
         magazineListView.setVisible(false);
@@ -79,6 +81,7 @@ public class LendMultimediaItemViewController {
     }
 
     @FXML void showMagazineListButtonPressed() throws RemoteException {
+      multimediaItemLabel.setText("MAGAZINES");
       resetErrorLabels();
         bookListView.setVisible(false);
         magazineListView.setVisible(true);
@@ -112,8 +115,10 @@ public class LendMultimediaItemViewController {
     }
    @FXML void onLendBook(){
      resetErrorLabels();
+
      try
      {
+
        int id_book = bookListView.getSelectionModel().getSelectedItem().getId();
        try
        {

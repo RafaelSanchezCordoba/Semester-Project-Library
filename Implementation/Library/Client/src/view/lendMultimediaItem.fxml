@@ -11,7 +11,7 @@
 <AnchorPane prefHeight="430.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LendMultimediaItemViewController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="786.0" />
-      <Label layoutX="150.0" layoutY="63.0" text="Multimedia Items">
+      <Label layoutX="150.0" layoutY="63.0" text="Loan Item">
          <font>
             <Font size="24.0" />
          </font>

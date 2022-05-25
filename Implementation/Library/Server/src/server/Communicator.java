@@ -3,6 +3,7 @@ package server;
 import model.*;
 import server.storage.*;
 
+import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     private LibraryUserStorage libraryUserStorage;
     private LoanMagazineStorage loanMagazineStorage;
     private LoanBookStorage loanBookStorage;
+    private PropertyChangeSupport support;
 //    private GenreStorage genreStorage;
 
 
@@ -25,8 +27,11 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
         this.libraryUserStorage = libraryUserStorage;
         this.loanMagazineStorage = loanMagazineStorage;
         this.loanBookStorage= loanBookStorage;
+
 //        this.genreStorage = genreStorage;
     }
+
+
 
 //    @Override public void addGenre(Genre genre)
 //        throws SQLException, RemoteException

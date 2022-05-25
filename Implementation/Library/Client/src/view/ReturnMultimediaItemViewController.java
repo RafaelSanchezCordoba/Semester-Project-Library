@@ -130,6 +130,7 @@ public class ReturnMultimediaItemViewController
   @FXML
   public void showBookListButtonPressed() throws  RemoteException
   {
+    multimediaItemLabel.setText("BOOKS");
     resetErrorLabels();
     bookListView.setVisible(true);
     magazineListView.setVisible(false);
@@ -138,6 +139,7 @@ public class ReturnMultimediaItemViewController
   }
   @FXML
   void showMagazineListButtonPressed() throws  RemoteException {
+    multimediaItemLabel.setText("MAGAZINES");
     resetErrorLabels();
     bookListView.setVisible(false);
     magazineListView.setVisible(true);
