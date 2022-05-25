@@ -10,6 +10,9 @@ import model.Genre;
 import model.GenreList;
 import viewModel.AddRemoveBookViewModel;
 
+import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -55,10 +58,20 @@ public class AddRemoveBookViewController
 
   @FXML public void logOutButtonPressed()
   {
+//    JFrame frame = new JFrame("close");
+//    frame.setSize(300,300);
+//    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//    frame.setVisible(true);
+//    frame.pack();
     viewHandler.closeView();
   }
 
-
+//  public void checkIfKeyIsPressed(KeyEvent e){
+//    switch (e.getKeyCode()){
+//      case KeyEvent.KEY_PRESSED:
+//        if(e.getKeyCode() == Key.)
+//    }
+//  }
 
   @FXML public void addBookButtonPressed() throws SQLException, RemoteException
   {
