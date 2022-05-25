@@ -17,7 +17,6 @@ public interface ModelLibraryUser extends PropertyChangeSubject {
    * @param libraryUser
    * The library user passed as an argument
    * @throws RemoteException
-   * @throws SQLException
    */
   void addLibraryUser(LibraryUser libraryUser) throws RemoteException;
 
@@ -26,7 +25,6 @@ public interface ModelLibraryUser extends PropertyChangeSubject {
    * @param ssn
    * The social security number passed as an argument
    * @throws RemoteException
-   * @throws SQLException
    */
   void removeLibraryUser(String ssn) throws RemoteException;
 
@@ -35,7 +33,6 @@ public interface ModelLibraryUser extends PropertyChangeSubject {
    * @return
    * The library users in the list
    * @throws RemoteException
-   * @throws SQLException
    */
   ArrayList<LibraryUser> getLibraryUserList() throws RemoteException;
 

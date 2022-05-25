@@ -39,7 +39,6 @@ public class ModelManagerBook implements ModelBook {
      * @return
      * All the books in the list
      * @throws RemoteException
-     * @throws SQLException
      */
     public ArrayList<Book> getBookList() throws  RemoteException {
         return client.getBookList();
@@ -50,7 +49,6 @@ public class ModelManagerBook implements ModelBook {
      * @return
      * The genre list
      * @throws RemoteException
-     * @throws SQLException
      */
     @Override public GenreList getGenreList() throws RemoteException {
         return client.getGenreList();
@@ -61,7 +59,6 @@ public class ModelManagerBook implements ModelBook {
      * @param book
      * The book passed as an argument
      * @throws RemoteException
-     * @throws SQLException
      */
     @Override
     public void addBook(Book book) throws RemoteException {
@@ -74,7 +71,6 @@ public class ModelManagerBook implements ModelBook {
      * @param id
      * The unique identification number
      * @throws RemoteException
-     * @throws SQLException
      */
     @Override
     public void removeBook(int id) throws RemoteException {

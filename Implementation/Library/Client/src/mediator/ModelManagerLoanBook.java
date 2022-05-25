@@ -30,7 +30,6 @@ public class ModelManagerLoanBook implements ModelLoanBook
    * Add loan book method
    * @param loanBook
    * The loan book passed as an argument
-   * @throws SQLException
    * @throws RemoteException
    */
   @Override public void addLoanBook(LoanBook loanBook)
@@ -44,7 +43,6 @@ public class ModelManagerLoanBook implements ModelLoanBook
    * Get the available books
    * @return
    * All the available books
-   * @throws SQLException
    * @throws RemoteException
    */
   @Override public ArrayList<Book> getAvailableBooks()

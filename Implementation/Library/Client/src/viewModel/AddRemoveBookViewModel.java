@@ -13,6 +13,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AddRemoveBookViewModel implements PropertyChangeListener
@@ -29,6 +30,15 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   private final SimpleListProperty<Genre> genreList;
   private final SimpleListProperty<Genre> selectedGenreList;
 
+  /**
+   * AddRemoveBookViewModel constructor that:
+   * set the model
+   * ,add the property change listener for adding and removing a book
+   * and set JavaFX variables
+   * @param model
+   * The model book
+   * @throws RemoteException
+   */
   public AddRemoveBookViewModel(ModelBook model) throws RemoteException
   {
     this.model = model;
@@ -50,11 +60,20 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     model.addPropertyChangeListener("removeBook", this);
   }
 
+  /**
+   * Not implemented
+   */
   public void search()
   {
 
   }
 
+  /**
+   * Check if the information passed is correct if not print out a specific error message
+   * @return
+   * True if there are any error, false if not
+   * @throws RemoteException
+   */
   private boolean errorCheck() throws RemoteException
   {
     if (titleTextField.get().equals(""))
@@ -93,6 +112,12 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     }
     return false;
   }
+
+  /**
+   * Check if the year set it by the user is a future year
+   * @return
+   * True if is a future year, false if not
+   */
   private boolean futureYearCheck()
   {
     CurrentTime now=new CurrentTime();
@@ -100,6 +125,12 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     return Integer.parseInt(yearTextField.get())>Integer.parseInt(year);
   }
 
+  /**
+   * Check if the isbn is unique
+   * @return
+   * True if is not unique, false if it is
+   * @throws RemoteException
+   */
   private boolean duplicateIsbnCheck() throws  RemoteException
   {
     for (int i=0;i<model.getBookList().size();i++)
@@ -111,6 +142,13 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     } return false;
   }
 
+  /**
+   * Check if the genre is unique
+   * @param genre
+   * The genre to check
+   * @return
+   * True if is not unique, false if it is
+   */
   private boolean duplicatedGenreCheck(Genre genre)
   {
     for (int i=0;i<selectedGenreList.get().size();i++)
@@ -123,6 +161,12 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     return false;
   }
 
+  /**
+   * Get genre list method
+   * @return
+   * The genre list
+   * @throws RemoteException
+   */
   public GenreList getGenreList() throws  RemoteException {
     GenreList genres = new GenreList();
     for (int i = 0; i < selectedGenreList.size(); i++) {
@@ -131,6 +175,11 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     return genres;
   }
 
+  /**
+   * Add the selected genre to the selected genre list
+   * @param genre
+   * The genre selected
+   */
   public void addGenreToSelectedGenreList(Genre genre) {
     if (!duplicatedGenreCheck(genre))
     {
@@ -146,6 +195,11 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     }
   }
 
+  /**
+   * Remove the selected genre from the selected genre list
+   * @param genre
+   * The genre selected
+   */
   public void removeFromSelectedGenreList(Genre genre) {
     selectedGenreList.remove(genre);
   }
@@ -159,12 +213,22 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     }
   }
 
+  /**
+   * Set the book list with all the books
+   * @throws RemoteException
+   */
   public void setBookList() throws RemoteException
   {
     bookList.clear();
     bookList.addAll(model.getBookList());
   }
 
+  /**
+   * Add book method
+   * @param book
+   * The book passed as an argument
+   * @throws RemoteException
+   */
   public void addBook(Book book) throws RemoteException
   {
     errorLabel.set("");
@@ -173,9 +237,14 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     reset();
   }
 
+  /**
+   * Remove a book with a specific id passed as an argument
+   * @param id
+   * The unique identification number
+   * @throws RemoteException
+   */
   public void removeBook(int id) throws RemoteException
   {
-
     try
     {
       model.removeBook(id);
@@ -184,9 +253,12 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     {
       errorLabel.set("cannot remove this book because is currently being lended");
     }
-
   }
 
+  /**
+   * Reset all the JavaFX variables
+   * @throws RemoteException
+   */
   public void reset() throws  RemoteException
   {
     setBookList();
@@ -200,11 +272,20 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     editionTextField.set("");
   }
 
+  /**
+   * Bind the title text field
+   * @param property
+   * A String property
+   */
   public void bindTitleTextField(StringProperty property)
   {
     property.bindBidirectional(titleTextField);
   }
 
+  /**
+   *
+   * @param property
+   */
   public void bindPublisherTextField(StringProperty property)
   {
     property.bindBidirectional(publisherTextField);
@@ -260,6 +341,10 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
     property.bind(selectedGenreList);
   }
 
+  /**
+   * Property change method that call different methods depends on the event name
+   * @param evt
+   */
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
     if (evt.getPropertyName().equals("newBook"))

@@ -13,7 +13,6 @@ public interface ModelLoanBook extends PropertyChangeSubject {
    * Add loan book method
    * @param loanBook
    * The loan book passed as an argument
-   * @throws SQLException
    * @throws RemoteException
    */
   void addLoanBook(LoanBook loanBook) throws  RemoteException;
@@ -22,7 +21,6 @@ public interface ModelLoanBook extends PropertyChangeSubject {
    * Get the available books
    * @return
    * All the available books
-   * @throws SQLException
    * @throws RemoteException
    */
   ArrayList<Book> getAvailableBooks() throws  RemoteException;

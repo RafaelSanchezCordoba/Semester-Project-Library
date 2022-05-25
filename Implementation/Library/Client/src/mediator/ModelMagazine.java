@@ -17,7 +17,6 @@ public interface ModelMagazine extends PropertyChangeSubject{
      * @param magazine
      * The magazine passed as an argument
      * @throws RemoteException
-     * @throws SQLException
      */
     void addMagazine(Magazine magazine) throws RemoteException;
 
@@ -26,7 +25,6 @@ public interface ModelMagazine extends PropertyChangeSubject{
      * @param id
      * The unique identification number passed as an argument
      * @throws RemoteException
-     * @throws SQLException
      */
     void removeMagazine(int id) throws RemoteException;
 
@@ -34,7 +32,6 @@ public interface ModelMagazine extends PropertyChangeSubject{
      * Get magazine list method
      * @return
      * The magazines in the list
-     * @throws SQLException
      * @throws RemoteException
      */
     ArrayList<Magazine> getMagazineList() throws RemoteException;
