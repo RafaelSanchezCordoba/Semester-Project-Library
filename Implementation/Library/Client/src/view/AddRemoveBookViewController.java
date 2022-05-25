@@ -115,36 +115,43 @@ public class AddRemoveBookViewController
   @FXML public void removeBookButtonPressed()
       throws RemoteException, SQLException
   {
-    viewModel.removeBook(bookListView.getSelectionModel().getSelectedItem().getId());
+    try
+    {
+      viewModel.removeBook(bookListView.getSelectionModel().getSelectedItem().getId());
+    }
+    catch (NullPointerException e)
+    {
+      errorLabel.setText("No book selected");
+    }
   }
 
   @FXML public void multimediaItemMenuButtonPressed()
       throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.ITEM);
+    viewHandler.openView(ViewHandler.ITEM);
   }
 
   @FXML public void homeMenuButtonPressed()
       throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.HOME);
+    viewHandler.openView(ViewHandler.HOME);
   }
 
   @FXML public void onAddLibraryUserButtonPressed()
       throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.LIBRARY_USER);
+    viewHandler.openView(ViewHandler.LIBRARY_USER);
   }
   @FXML public void onLoanButtonPressed()
       throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.LENDMULTIMEDIAITEM);
+    viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
   }
 
   @FXML public void onReturnButtonPressed()
       throws SQLException, RemoteException
   {
-    viewHandler.openView(viewHandler.RETURNMULTIMEDIAITEM);
+    viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
   }
 
   @FXML public void addGenreButtonPressed()
