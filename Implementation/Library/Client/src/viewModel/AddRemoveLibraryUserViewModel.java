@@ -79,9 +79,8 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
 
     public void addLibraryUser(LibraryUser libraryUser) throws RemoteException{
         if(!errorCheck()){
-            System.out.println(libraryUser.getFirstName());
             model.addLibraryUser(libraryUser);
-
+            clearErrorLabel();
         }
         reset();
     }
@@ -103,6 +102,10 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         lastNameTextField.set("");
         ssnTextField.set("");
         passwordTextField.set("");
+    }
+
+    public void clearErrorLabel() throws RemoteException{
+        errorLabel.set("");
     }
 
     public void bindFirstNameTextField(StringProperty property){

@@ -22,7 +22,7 @@ public class ViewHandler
   public static final String RETURNMULTIMEDIAITEM= "returnMultimediaItem";
 
 
-  private Stage primaryStage;
+  private Stage primaryStage; 
   private final Scene currentScene;
   private final ViewFactory viewFactory;
 

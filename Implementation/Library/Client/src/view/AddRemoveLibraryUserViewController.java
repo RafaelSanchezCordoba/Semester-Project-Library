@@ -51,8 +51,6 @@ public class AddRemoveLibraryUserViewController
                 lastNameTextField.getText(), passwordTextField.getText());
         viewModel.addLibraryUser(libraryUser);
         reset();
-        System.out.println("Button pressed");
-        
     }
 
     @FXML public void removeUserButtonPressed() throws RemoteException {

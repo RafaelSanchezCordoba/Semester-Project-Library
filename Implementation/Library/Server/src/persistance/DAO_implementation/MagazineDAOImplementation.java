@@ -39,7 +39,6 @@ public class MagazineDAOImplementation implements MagazineDAO
   @Override public void removeMagazine(int id) throws SQLException
   {
     try(Connection connection = getConnection()){
-      System.out.println("database"+ id);
       PreparedStatement statement = connection.prepareStatement(removeMagazineSql);
       statement.setInt(1, id);
       int rowAffected =  statement.executeUpdate();
