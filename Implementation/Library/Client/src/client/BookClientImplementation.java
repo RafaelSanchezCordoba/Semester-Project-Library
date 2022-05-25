@@ -83,7 +83,8 @@ public class BookClientImplementation extends UnicastRemoteObject implements  Bo
   }
 
   /**
-   * Close the remote object
+   * Close the remote object by
+   * unexporting unicast remote object
    * @throws IOException
    */
   @Override public void close() throws IOException {

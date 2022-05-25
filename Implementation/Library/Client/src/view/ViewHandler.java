@@ -1,5 +1,6 @@
 package view;
 
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
@@ -89,8 +90,7 @@ public class ViewHandler
 
   public void closeView() {
     primaryStage.close();
+    System.exit(0);
   }
-
-
 
 }
