@@ -222,7 +222,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   public void bindErrorLabel(StringProperty property)
   {
-    property.bind(errorLabel);
+    property.bindBidirectional(errorLabel);
   }
 
   public void bindBookListView(ObjectProperty<ObservableList<Book>> property)

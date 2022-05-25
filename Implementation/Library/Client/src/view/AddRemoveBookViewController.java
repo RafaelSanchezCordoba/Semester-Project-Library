@@ -62,33 +62,54 @@ public class AddRemoveBookViewController
 
   @FXML public void addBookButtonPressed() throws SQLException, RemoteException
   {
-    String edition;
-    GenreList genres;
-    genres = viewModel.getGenreList();
-    if (editionTextField.getText().equals(""))
+    if (!errorsCheck())
     {
-      edition="1";
+      String edition;
+      GenreList genres;
+      genres = viewModel.getGenreList();
+      if (editionTextField.getText().equals(""))
+      {
+        edition = "1";
+      }
+      else
+      {
+        edition = editionTextField.getText();
+      }
+      if (authorTextField.getText().equals(""))
+      {
+        Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
+            isbnTextField.getText(), Integer.parseInt(edition), Integer.parseInt(yearTextField.getText()), genres);
+        viewModel.addBook(book);
+      }
+      else
+      {
+        Book book = new Book(authorTextField.getText(), titleTextField.getText(), publisherTextField.getText(),
+            isbnTextField.getText(), Integer.parseInt(edition), Integer.parseInt(yearTextField.getText()), genres);
+        viewModel.addBook(book);
+      }
+      reset();
+    }
+  }
+  private boolean errorsCheck()
+  {
+    if (yearTextField.getText().equals(""))
+    {
+      errorLabel.setText("Year of publication can't be empty");
+      return true;
     }
     else
     {
-      edition=editionTextField.getText();
+      try
+      {
+        Integer.parseInt(yearTextField.getText());
+      }
+      catch (NumberFormatException e)
+      {
+        errorLabel.setText("Invalid year: not number");
+        return true;
+      }
     }
-
-    if (authorTextField.getText().equals("")) {
-      Book book = new Book(titleTextField.getText(), publisherTextField.getText(),
-          isbnTextField.getText(), Integer.parseInt(edition),
-          Integer.parseInt(yearTextField.getText()), genres);
-      viewModel.addBook(book);
-    }
-    else{
-      Book book = new Book(authorTextField.getText(), titleTextField.getText(), publisherTextField.getText(),
-          isbnTextField.getText()
-          , Integer.parseInt(edition),
-          Integer.parseInt(yearTextField.getText()), genres);
-      viewModel.addBook(book);
-    }
-    reset();
-
+    return false;
   }
 
   @FXML public void removeBookButtonPressed()

@@ -50,13 +50,9 @@ public class LoanBookViewModel implements PropertyChangeListener
     {
       reset();
     }
-    catch (SQLException e)
+    catch (SQLException | RemoteException e)
     {
 
-      e.printStackTrace();
-    }
-    catch (RemoteException e)
-    {
       e.printStackTrace();
     }
 
