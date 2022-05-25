@@ -36,18 +36,42 @@ public class ModelManagerLibraryUser implements ModelLibraryUser
     return client.getLibraryUserList();
   }
 
+  /**
+   * Add property change listener, just with the listener
+   * @param listener
+   * The listener
+   */
   @Override public void addPropertyChangeListener(PropertyChangeListener listener){
     support.addPropertyChangeListener(listener);
   }
 
+  /**
+   * Add property change listener with a name and the listener
+   * @param name
+   * The name
+   * @param listener
+   * The listener
+   */
   @Override public void addPropertyChangeListener(String name, PropertyChangeListener listener){
     support.addPropertyChangeListener(name, listener);
   }
 
+  /**
+   * Remove property change listener, just with the listener
+   * @param listener
+   * The listener
+   */
   @Override public void removePropertyChangeListener(PropertyChangeListener listener){
     support.removePropertyChangeListener(listener);
   }
 
+  /**
+   * Remove property change listener with a name and the listener
+   * @param name
+   * The name
+   * @param listener
+   * The listener
+   */
   @Override public void removePropertyChangeListener(String name, PropertyChangeListener listener){
     support.removePropertyChangeListener(name, listener);
   }
