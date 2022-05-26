@@ -154,9 +154,11 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
 
     }
 
-
-
-
+    /**
+     * Property change method that call different methods depends on the event name
+     * @param evt
+     * A library user object passed as an event
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         try {
