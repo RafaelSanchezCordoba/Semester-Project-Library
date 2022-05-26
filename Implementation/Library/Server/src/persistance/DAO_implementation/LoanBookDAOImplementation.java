@@ -10,6 +10,10 @@ import persistance.DAO.LoanBookDAO;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * Public class LoanBookDAOImplementation implementing interface LoanBookDAO
+ * This class is opening and closing connection with database.
+ */
 public class LoanBookDAOImplementation implements LoanBookDAO
 {
   private final String createLoanBookSql = "INSERT INTO \"library\".loan_book(book_id,start_of_loan,end_of_loan,library_user)"
@@ -29,6 +33,12 @@ public class LoanBookDAOImplementation implements LoanBookDAO
 
   private static  LoanBookDAOImplementation instance;
 
+  /**
+   * LoanBookDAOImplementation constructor with zero parameters
+   * Driver manager inside the constructor will attempt to
+   * connect to the database.
+   * @throws SQLException
+   */
   private LoanBookDAOImplementation()throws SQLException{
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
@@ -42,12 +52,25 @@ public class LoanBookDAOImplementation implements LoanBookDAO
     return instance;
   }
 
+  /**
+   * getConnection method
+   * @return
+   * Driver manager connecting using url, user and password.
+   * @throws SQLException
+   */
   private Connection getConnection() throws SQLException
   {
     return DriverManager.getConnection("jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
         "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
   }
 
+  /**
+   * Method adding a book to loan
+   * @param loanBook
+   * LoanBook
+   * @throws SQLException
+   * SQL exception will be thrown with message "No keys generated"
+   */
   @Override public void addLoanBook(LoanBook loanBook) throws SQLException
   {
     try (Connection connection = getConnection()) {
@@ -75,6 +98,12 @@ public class LoanBookDAOImplementation implements LoanBookDAO
 
   }
 
+  /**
+   * Method returning ArrayList of all books available to loan
+   * @return
+   * ArrayList of books available to loan
+   * @throws SQLException
+   */
   @Override public ArrayList<Book> getAvailableBooks() throws SQLException
   {
     Connection connection = getConnection();
@@ -106,6 +135,14 @@ public class LoanBookDAOImplementation implements LoanBookDAO
     }
   }
 
+  /**
+   * Method returning a user after it's ssn
+   * @param ssn
+   * Social security number
+   * @return
+   * User with given ssn number
+   * @throws SQLException
+   */
   @Override public LibraryUser getUser(String ssn) throws SQLException
   {
     try(Connection connection = getConnection())
@@ -129,6 +166,14 @@ public class LoanBookDAOImplementation implements LoanBookDAO
     return null;
   }
 
+  /**
+   * Method returning loans of user after it's ssn
+   * @param ssn
+   * Social security number
+   * @return
+   * Loans of user after it's ssn
+   * @throws SQLException
+   */
   @Override public ArrayList<LoanBook> getUserBookLoans(String ssn)
       throws SQLException
   {
@@ -152,6 +197,12 @@ public class LoanBookDAOImplementation implements LoanBookDAO
     }
   }
 
+  /**
+   * Method returning a book from being loaned to the library
+   * @param loan_id
+   * ID number of loan
+   * @throws SQLException
+   */
   @Override public void returnBook(int loan_id) throws SQLException
   {
     Connection connection = getConnection();
