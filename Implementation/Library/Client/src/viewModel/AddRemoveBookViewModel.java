@@ -215,7 +215,6 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
 
   /**
    * Set the book list with all the books
-   * @throws RemoteException
    */
   public void setBookList() throws RemoteException
   {
@@ -227,7 +226,6 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
    * Add book method
    * @param book
    * The book passed as an argument
-   * @throws RemoteException
    */
   public void addBook(Book book) throws RemoteException
   {

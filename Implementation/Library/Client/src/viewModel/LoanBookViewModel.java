@@ -31,6 +31,14 @@ public class LoanBookViewModel implements PropertyChangeListener
 
   private SimpleListProperty<MultimediaItem> availableBooks;
 
+  /**
+   * LoanBookViewModel constructor that:
+   * set the model
+   * ,add the property change listener for adding and removing a book
+   * and set JavaFX variables
+   * @param model
+   * The model library user
+   */
   public LoanBookViewModel(ModelLoanBook model){
     this.model= model;
     this.multimediaItemLabel = new SimpleStringProperty("");
@@ -45,6 +53,11 @@ public class LoanBookViewModel implements PropertyChangeListener
     model.addPropertyChangeListener("newLoanBook",this);
   }
 
+  /**
+   * Property change method that call different methods depends on the event name
+   * @param event
+   * A library user object passed as an event
+   */
   public void propertyChange(PropertyChangeEvent event){
     try
     {
@@ -57,33 +70,55 @@ public class LoanBookViewModel implements PropertyChangeListener
     }
 
   }
+
+  /**
+   * Bind the multimedia label
+   * @param property
+   * A String property
+   */
   public void bindMultimediaItemLabel(StringProperty property){
     property.bindBidirectional(multimediaItemLabel);
   }
 
+  /**
+   * Bind the error label
+   * @param property
+   * A String property
+   */
   public void bindErrorLabel(StringProperty property){
     property.bindBidirectional(errorLabel);
   }
 
-
-
+  /**
+   * Bind selected library user label
+   * @param property
+   * A String property
+   */
   public void bindSelectedLibraryUserLabel(StringProperty property){
     property.bindBidirectional(selectedLibraryUserLabel);
   }
 
-  public void bindMultimediaItemSearchTextField(StringProperty property){
-    property.bindBidirectional(multimediaItemLabel);
-  }
-
+  /**
+   * Bind
+   * @param property
+   */
   public void bindSsnTextField(StringProperty property){
     property.bindBidirectional(ssnTextField);
   }
 
+  /**
+   * Bind the available book list
+   * @param property
+   * Object property, multimedia item observable list
+   */
   public void bindAvailableBooksList(
       ObjectProperty<ObservableList<MultimediaItem>> property){
     property.bind(availableBooks);
   }
 
+  /**
+   * Reset all the JavaFX variables
+   */
   public void reset() throws  RemoteException
   {
     setBookList();
@@ -95,11 +130,21 @@ public class LoanBookViewModel implements PropertyChangeListener
     System.out.println(availableBooks.size());
   }
 
+  /**
+   * Set the book list with the available books
+   * @throws RemoteException
+   */
   public void setBookList()throws RemoteException{
     availableBooks.clear();
     availableBooks.addAll(model.getAvailableBooks());
   }
 
+  /**
+   * Create a new book loan
+   * @param idBook
+   * The unique book identification number
+   * @throws RemoteException
+   */
   public void createLoan(int idBook) throws  RemoteException
   {
    if(libraryUser==null){
@@ -112,6 +157,11 @@ public class LoanBookViewModel implements PropertyChangeListener
 
   }
 
+  /**
+   * Get a user with a specific social security number
+   * @param ssn
+   * The social security number passed as an argument
+   */
   public void getUser(String ssn)
   {
     try

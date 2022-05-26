@@ -30,6 +30,13 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
     private final SimpleListProperty<Magazine> magazineList;
     private final StringProperty errorLabel;
 
+    /**
+     * AddRemoveMagazineViewModel constructor that: set the model
+     * ,add the property change listener for adding and removing a book
+     * and set JavaFX variables
+     * @param model
+     * The model book
+     */
     public AddRemoveMagazineViewModel(ModelMagazine model)  {
         this.model = model;
         this.titleTextField = new SimpleStringProperty("");
@@ -48,49 +55,100 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
 
     }
 
+    /**
+     * Bind the title text field
+     * @param property
+     * A String property
+     */
     public void bindTitleTextField(StringProperty property) {
         property.bindBidirectional(titleTextField);
     }
 
+    /**
+     * Bind the publisher text field
+     * @param property
+     * A String property
+     */
     public void bindPublisherTextField(StringProperty property) {
         property.bindBidirectional(publisherTextField);
     }
 
+    /**
+     * Bind the volume text field
+     * @param property
+     * A String property
+     */
     public void bindVolumeTextField(StringProperty property) {
         property.bindBidirectional(volumeTextField);
     }
 
+    /**
+     * Bind the day text field
+     * @param property
+     * A String property
+     */
     public void bindDayTextField(StringProperty property) {
         property.bindBidirectional(dayTextField);
     }
 
+    /**
+     * Bind the year text field
+     * @param property
+     * A String property
+     */
     public void bindYearTextField(StringProperty property) {
         property.bindBidirectional(yearTextField);
     }
 
+    /**
+     * Bind the genre text field
+     * @param property
+     * A String property
+     */
     public void bindGenreTextField(StringProperty property) {
         property.bindBidirectional(genreTextField);
     }
 
+    /**
+     * Bind the month text field
+     * @param property
+     * A String property
+     */
     public void bindMontTextField(StringProperty property) {
         property.bindBidirectional(monthTextField);
     }
 
+    /**
+     * Bind the error label
+     * @param property
+     * A String property
+     */
     public void bindErrorLabel(StringProperty property) {
         property.bindBidirectional(errorLabel);
     }
 
+    /**
+     * Bind the magazine list
+     * @param property
+     * Object property, magazine observable list
+     */
     public void bindMagazineListView(ObjectProperty<ObservableList<Magazine>> property){
         property.bind(magazineList);
     }
 
+    /**
+     * Bind the magazine list for testing
+     * @param property
+     * Magazine simple list property
+     */
     public void bindMagazineListViewForTest(SimpleListProperty<Magazine> property)
     {
         property.bind(magazineList);
     }
 
-
-
+    /**
+     * Reset all the JavaFX variables
+     */
     public void reset() throws  RemoteException
     {
         setMagazineList();
@@ -102,9 +160,13 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         dayTextField.set("");
         monthTextField.set("");
         yearTextField.set("");
-
     }
 
+    /**
+     * Add magazine method
+     * @param magazine
+     * The magazine passed as an argument
+     */
     public void addMagazine(Magazine magazine)
         throws RemoteException
     {
@@ -116,6 +178,11 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         reset();
     }
 
+    /**
+     * Remove a magazine with a specific identification number
+     * @param id
+     * The unique identification number passed as an argument
+     */
     public void removeMagazine(int id) throws  RemoteException
     {
         try
@@ -128,11 +195,20 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
 
     }
 
+    /**
+     * Set the magazine list with all the magazines
+     * @throws RemoteException
+     */
     public void setMagazineList() throws RemoteException{
         magazineList.clear();
         magazineList.addAll(model.getMagazineList());
     }
 
+    /**
+     * Check if the information passed is correct if not print out a specific error message
+     * @return
+     * True if there are any error, false if not
+     */
     private boolean errorsCheck()
     {
         if (titleTextField.get().equals(""))
@@ -195,7 +271,11 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         return false;
     }
 
-
+    /**
+     * Check if the selected date is a future date
+     * @return
+     * True if it is, false if not
+     */
     public boolean futureDateCheck()
     {
         //There probably is a simpler way to check if the date is future, but this is working
@@ -211,7 +291,11 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
         return date.after(currentDate);
     }
 
-
+    /**
+     * Property change method that call different methods depends on the event name
+     * @param evt
+     * A book object passed as an event
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt)
     {
