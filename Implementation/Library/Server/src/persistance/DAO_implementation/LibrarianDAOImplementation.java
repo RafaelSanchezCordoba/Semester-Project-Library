@@ -93,7 +93,7 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
     /**
      * Method returning librarians in an ArrayList
      * @return
-     * ArrayList of an librarian
+     * ArrayList of a librarian
      * @throws SQLException
      */
     @Override

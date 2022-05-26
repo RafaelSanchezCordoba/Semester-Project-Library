@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 /**
  * class to access the db to store or remove data implements <code>LibraryUserDao</code>.
+ * The class is opening and closing connection with database
  * @author Alexandru Dulghier
  * @version 1.0
  */
@@ -21,11 +22,23 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
 
   private static LibraryUserDAOImplementation instance;
 
+  /**
+   * LibraryUserDAOImplementation constructor with zero parameters
+   * Driver manager inside the constructor will attempt to connect
+   * to the database
+   * @throws SQLException
+   */
   private LibraryUserDAOImplementation() throws SQLException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
 
+  /**
+   * Method returning an instance of LibraryUserDAOImplementation
+   * @return
+   * instance of LibraryUserDAOImplementation
+   * @throws SQLException
+   */
   public static synchronized LibraryUserDAOImplementation getInstance() throws SQLException
   {
     if(instance ==null){
@@ -33,12 +46,25 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
     }
     return instance;
   }
+
+  /**
+   * getConnection method
+   * @return
+   * Driver manager connecting using url,user, and password
+   * @throws SQLException
+   */
   private Connection getConnection() throws SQLException
   {
     return DriverManager.getConnection("jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
         "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
   }
 
+  /**
+   * Method adding a library user
+   * @param libraryUser
+   * Library user object
+   * @throws SQLException
+   */
   @Override public void addLibraryUser(LibraryUser libraryUser)
       throws SQLException
   {
@@ -52,6 +78,12 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
   }
   }
 
+  /**
+   * Method removing a library user after it's SSN
+   * @param ssn
+   * Social security number
+   * @throws SQLException
+   */
   @Override public void removeLibraryUser(String ssn) throws SQLException
   {
     try(Connection connection = getConnection())
@@ -63,6 +95,12 @@ public class LibraryUserDAOImplementation implements LibraryUserDAO
     }
   }
 
+  /**
+   * Method returning library users in an ArrayList
+   * @return
+   * ArrayList of a library users
+   * @throws SQLException
+   */
   @Override public ArrayList<LibraryUser> getLibraryUserList() throws SQLException {
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement(getLibraryUserList);
