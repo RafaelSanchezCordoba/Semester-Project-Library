@@ -29,8 +29,6 @@ public interface ModelLoanMagazine extends PropertyChangeSubject {
      * Get a user with a specific social security number
      * @param ssn
      * The social security number passed as an argument
-     * @return
-     * @throws RemoteException
      */
     LibraryUser getUser(String ssn) throws RemoteException;
 
