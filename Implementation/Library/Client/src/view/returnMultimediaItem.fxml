@@ -6,13 +6,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="435.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ReturnMultimediaItemViewController">
     <children>
-        <Label layoutX="150.0" layoutY="63.0" text="Multimedia Items">
-
-        </Label>
-        <Label fx:id="multimediaItemLabel" layoutX="173.0" layoutY="92.0" text="BOOKS/MAGAZINES">
+        <Label layoutX="150.0" layoutY="63.0" prefHeight="26.0" prefWidth="131.0" text="Return Item">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+        <Label fx:id="multimediaItemLabel" layoutX="161.0" layoutY="98.0" text="BOOKS/MAGAZINES">
 
         </Label>
         <ListView fx:id="magazineListView" layoutX="15.0" layoutY="157.0" prefHeight="228.0" prefWidth="420.0" />
@@ -32,7 +34,7 @@
         </Label>
         <Button layoutX="726.0" layoutY="158.0" mnemonicParsing="false" onAction="#okButtonPressed" text="OK" />
         <Label fx:id="errorLabelBook" layoutX="498.0" layoutY="196.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
-        <ListView fx:id="bookListView" layoutX="16.0" layoutY="125.0" prefHeight="262.0" prefWidth="420.0" />
+        <ListView fx:id="bookListView" layoutX="16.0" layoutY="159.0" prefHeight="228.0" prefWidth="420.0" />
         <Button layoutX="629.0" layoutY="319.0" mnemonicParsing="false" onAction="#onReturnBook" prefHeight="26.0" prefWidth="97.0" text="Return Book" />
         <Label fx:id="errorLabelMagazine" layoutX="498.0" layoutY="215.0" prefHeight="18.0" prefWidth="261.0" text="Error label" textFill="RED" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="52.0" stroke="BLACK" strokeType="INSIDE" width="791.0" />

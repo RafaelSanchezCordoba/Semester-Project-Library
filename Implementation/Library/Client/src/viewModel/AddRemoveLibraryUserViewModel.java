@@ -78,11 +78,18 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
 
 
     public void addLibraryUser(LibraryUser libraryUser) throws RemoteException{
+        try
+        {
+
+
         if(!errorCheck()){
             model.addLibraryUser(libraryUser);
             clearErrorLabel();
         }
         reset();
+        }catch (RemoteException e){
+            e.printStackTrace();
+        }
     }
 
     public void removeLibraryUser(String ssn) throws RemoteException{
@@ -125,7 +132,7 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         property.bind(userList);
     }
     public void bindErrorLabel(StringProperty property){
-        property.bind(errorLabel);
+        property.bindBidirectional(errorLabel);
     }
 
     public void bindLibraryUserListViewForTest(SimpleListProperty<LibraryUser> property)

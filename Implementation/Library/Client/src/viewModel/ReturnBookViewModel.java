@@ -103,6 +103,7 @@ public class ReturnBookViewModel implements PropertyChangeListener
     }
     else
     {
+
       model.returnBook(id_loan);
     }
   }

@@ -54,7 +54,13 @@ public class AddRemoveLibraryUserViewController
     }
 
     @FXML public void removeUserButtonPressed() throws RemoteException {
-        viewModel.removeLibraryUser(userTextListView.getSelectionModel().getSelectedItem().getSSN());
+        try
+        {
+            viewModel.removeLibraryUser(userTextListView.getSelectionModel().getSelectedItem().getSSN());
+        }catch (NullPointerException e){
+            errorLabel.setText("no library user to be removed selected ");
+        }
+
     }
 
     @FXML public void multimediaItemMenuButtonPressed()
