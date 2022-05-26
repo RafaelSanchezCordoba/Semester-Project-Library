@@ -19,7 +19,6 @@ public interface ModelBook extends PropertyChangeSubject{
      * @param book
      * The book passed as an argument
      * @throws RemoteException
-     * @throws SQLException
      */
     void addBook(Book book) throws RemoteException;
 
@@ -28,7 +27,6 @@ public interface ModelBook extends PropertyChangeSubject{
      * @param id
      * The unique identification number
      * @throws RemoteException
-     * @throws SQLException
      */
     void removeBook(int id) throws RemoteException;
 
@@ -37,7 +35,6 @@ public interface ModelBook extends PropertyChangeSubject{
      * @return
      * All the books in the list
      * @throws RemoteException
-     * @throws SQLException
      */
     ArrayList<Book> getBookList() throws RemoteException;
 
@@ -46,7 +43,6 @@ public interface ModelBook extends PropertyChangeSubject{
      * @return
      * The genre list
      * @throws RemoteException
-     * @throws SQLException
      */
     GenreList getGenreList() throws RemoteException;
 }

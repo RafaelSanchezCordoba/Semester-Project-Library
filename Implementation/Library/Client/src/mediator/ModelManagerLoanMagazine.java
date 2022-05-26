@@ -29,7 +29,6 @@ public class ModelManagerLoanMagazine implements ModelLoanMagazine {
      * Add loan magazine method
      * @param loanMagazine
      * The loan magazine passed as an argument
-     * @throws SQLException
      * @throws RemoteException
      */
     @Override
@@ -42,7 +41,6 @@ public class ModelManagerLoanMagazine implements ModelLoanMagazine {
      * Get the available magazines
      * @return
      * All the available magazines
-     * @throws SQLException
      * @throws RemoteException
      */
     @Override

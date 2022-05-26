@@ -25,7 +25,13 @@ public class ViewFactory
   private LendMultimediaItemViewController lendMultimediaItemViewController;
   private LibrarianHomeViewController librarianHomeViewController;
 
-
+  /**
+   * View factory constructor that set the viewHandler and the viewModelFactory
+   * @param viewHandler
+   * The view handler
+   * @param viewModelFactory
+   * The view model factory
+   */
   public ViewFactory(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
   {
     this.viewHandler=viewHandler;
@@ -41,6 +47,12 @@ public class ViewFactory
     librarianHomeViewController=null;
   }
 
+  /**
+   * Load and return the AddRemoveLibrarian root
+   * @return
+   * The AddRemoveLibrarian root
+   * @throws RemoteException
+   */
   public Region loadAddRemoveLibrarian() throws  RemoteException {
     if (librarianViewController== null){
       FXMLLoader loader = new FXMLLoader();
@@ -58,6 +70,12 @@ public class ViewFactory
     return librarianViewController.getRoot();
   }
 
+  /**
+   * Load and return the LibrarianHome root
+   * @return
+   * The LibrarianHome root
+   * @throws RemoteException
+   */
   public Region loadLibrarianHome() throws  RemoteException {
     if (librarianHomeViewController== null){
       FXMLLoader loader = new FXMLLoader();
@@ -74,6 +92,12 @@ public class ViewFactory
     return librarianHomeViewController.getRoot();
   }
 
+  /**
+   * Load and return the AddRemoveBook root
+   * @return
+   * The AddRemoveBook root
+   * @throws RemoteException
+   */
   public Region loadAddRemoveBookView() throws RemoteException
   {
     if (bookController == null) {
@@ -91,6 +115,12 @@ public class ViewFactory
     return bookController.getRoot();
   }
 
+  /**
+   * Load and return the AddRemoveLibraryUser root
+   * @return
+   * The AddRemoveLibraryUser root
+   * @throws RemoteException
+   */
   public Region loadAddRemoveLibraryUserView() throws  RemoteException{
     if(libraryUserController == null){
       FXMLLoader loader = new FXMLLoader();
@@ -107,6 +137,12 @@ public class ViewFactory
     return libraryUserController.getRoot();
   }
 
+  /**
+   * Load and return the AddRemoveMagazine root
+   * @return
+   * The AddRemoveMagazine root
+   * @throws RemoteException
+   */
   public Region loadAddRemoveMagazineView() throws RemoteException
   {if (magazineController == null) {
     FXMLLoader loader = new FXMLLoader();
@@ -124,8 +160,12 @@ public class ViewFactory
     return magazineController.getRoot();
   }
 
-
-
+  /**
+   * Load and return the ChoseItemType root
+   * @return
+   * The ChoseItemType root
+   * @throws RemoteException
+   */
   public Region loadChoseItemTypeView() throws  RemoteException
   {if (itemViewController == null) {
     FXMLLoader loader = new FXMLLoader();
@@ -142,6 +182,12 @@ public class ViewFactory
     return itemViewController.getRoot();
   }
 
+  /**
+   * Load and return the Home rot
+   * @return
+   * The home root
+   * @throws RemoteException
+   */
   public Region loadHomeView() throws  RemoteException {
     if (homeController== null){
       FXMLLoader loader = new FXMLLoader();
@@ -158,6 +204,12 @@ public class ViewFactory
     return homeController.getRoot();
   }
 
+  /**
+   * Load and return the LendMultimediaItem root
+   * @return
+   * The LendMultimediaItem root
+   * @throws RemoteException
+   */
   public Region loadLendMultimediaItem() throws  RemoteException {
     if (lendMultimediaItemViewController== null){
       FXMLLoader loader = new FXMLLoader();
@@ -175,6 +227,12 @@ public class ViewFactory
     return lendMultimediaItemViewController.getRoot();
   }
 
+  /**
+   * Load and return the ReturnMultimediaItem root
+   * @return
+   * The ReturnMultimediaItem root
+   * @throws RemoteException
+   */
   public Region loadReturnMultimediaView() throws RemoteException {
     if (returnMultimediaItemViewController== null){
       FXMLLoader loader = new FXMLLoader();

@@ -29,7 +29,6 @@ public class ModelManagerLibraryUser implements ModelLibraryUser
    * @param libraryUser
    * The library user passed as an argument
    * @throws RemoteException
-   * @throws SQLException
    */
   @Override public void addLibraryUser(LibraryUser libraryUser) throws RemoteException{
     client.addLibraryUser(libraryUser);
@@ -41,7 +40,6 @@ public class ModelManagerLibraryUser implements ModelLibraryUser
    * @param ssn
    * The social security number passed as an argument
    * @throws RemoteException
-   * @throws SQLException
    */
   @Override public void removeLibraryUser(String ssn) throws RemoteException{
     client.removeLibraryUser(ssn);
@@ -53,7 +51,6 @@ public class ModelManagerLibraryUser implements ModelLibraryUser
    * @return
    * The library users in the list
    * @throws RemoteException
-   * @throws SQLException
    */
   @Override
   public ArrayList<LibraryUser> getLibraryUserList() throws RemoteException{

@@ -57,7 +57,6 @@ public class ModelManagerLibrarian implements ModelLibrarian
    * @return
    * Librarian List
    * @throws RemoteException
-   * @throws SQLException
    */
   public ArrayList<Librarian> getLibrarianList() throws RemoteException {
      return  client.getLibrarianList();

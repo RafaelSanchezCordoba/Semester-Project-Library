@@ -14,8 +14,6 @@ public class Genre implements Serializable
 
     /**
      * Genre constructor
-     * @param id
-     * The unique identification number of the genre.
      * @param genre
      * The genre name, ex: Drama, Horror...
      */

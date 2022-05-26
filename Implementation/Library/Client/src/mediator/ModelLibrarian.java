@@ -33,7 +33,6 @@ public interface ModelLibrarian extends PropertyChangeSubject {
    * @return
    * Librarian List
    * @throws RemoteException
-   * @throws SQLException
    */
   ArrayList<Librarian> getLibrarianList() throws RemoteException;
 }

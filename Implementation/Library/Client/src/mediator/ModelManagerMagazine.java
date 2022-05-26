@@ -29,8 +29,6 @@ public class ModelManagerMagazine implements ModelMagazine{
      * Add magazine method
      * @param magazine
      * The magazine passed as an argument
-     * @throws RemoteException
-     * @throws SQLException
      */
     @Override
     public void addMagazine(Magazine magazine)
@@ -53,7 +51,6 @@ public class ModelManagerMagazine implements ModelMagazine{
      * @param id
      * The unique identification number passed as an argument
      * @throws RemoteException
-     * @throws SQLException
      */
     @Override
     public void removeMagazine(int id) throws RemoteException
@@ -67,7 +64,6 @@ public class ModelManagerMagazine implements ModelMagazine{
      * Get magazine list method
      * @return
      * The magazines in the list
-     * @throws SQLException
      * @throws RemoteException
      */
     @Override public ArrayList<Magazine> getMagazineList() throws RemoteException

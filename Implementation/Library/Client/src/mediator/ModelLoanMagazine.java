@@ -13,7 +13,6 @@ public interface ModelLoanMagazine extends PropertyChangeSubject {
      * Add loan magazine method
      * @param loanMagazine
      * The loan magazine passed as an argument
-     * @throws SQLException
      * @throws RemoteException
      */
     void addMagazineLoan(LoanMagazine loanMagazine) throws  RemoteException;
@@ -22,7 +21,6 @@ public interface ModelLoanMagazine extends PropertyChangeSubject {
      * Get the available magazines
      * @return
      * All the available magazines
-     * @throws SQLException
      * @throws RemoteException
      */
     ArrayList<Magazine> getAvailableMagazineList() throws  RemoteException;

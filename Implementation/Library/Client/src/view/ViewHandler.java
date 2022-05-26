@@ -26,21 +26,35 @@ public class ViewHandler
   private final Scene currentScene;
   private final ViewFactory viewFactory;
 
+  /**
+   * The view handler constructor that set the view model factory
+   * @param viewModelFactory
+   * The view model factory passed as an argument
+   */
   public ViewHandler(ViewModelFactory viewModelFactory)
   {
     this.viewFactory=new ViewFactory(this,viewModelFactory);
     this.currentScene = new Scene(new Region());
   }
 
-
-
+  /**
+   * Set as primary stage the stage passed as an argument and open it
+   * @param primaryStage
+   * The stage that we want to make it primary stage
+   * @throws RemoteException
+   */
   public void start(Stage primaryStage) throws  RemoteException
   {
     this.primaryStage = primaryStage;
     openView(HOME);
   }
 
-
+  /**
+   * The method open and show a specific view depends on the id passed as an argument
+   * @param id
+   * The id passed as an argument
+   * @throws RemoteException
+   */
   public void openView(String id) throws  RemoteException
   {
     Region root;
@@ -87,7 +101,9 @@ public class ViewHandler
     primaryStage.show();
   }
 
-
+  /**
+   * Close the opened view
+   */
   public void closeView() {
     primaryStage.close();
     System.exit(0);
