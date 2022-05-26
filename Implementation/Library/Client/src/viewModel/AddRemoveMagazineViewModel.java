@@ -197,7 +197,6 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
 
     /**
      * Set the magazine list with all the magazines
-     * @throws RemoteException
      */
     public void setMagazineList() throws RemoteException{
         magazineList.clear();
