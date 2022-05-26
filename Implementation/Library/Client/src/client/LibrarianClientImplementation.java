@@ -2,15 +2,12 @@ package client;
 
 import model.Librarian;
 import server.RemoteLibrarian;
-import server.RemoteMagazine;
-
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**

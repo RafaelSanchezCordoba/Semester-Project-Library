@@ -4,7 +4,6 @@ import model.Librarian;
 
 import java.io.Closeable;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**

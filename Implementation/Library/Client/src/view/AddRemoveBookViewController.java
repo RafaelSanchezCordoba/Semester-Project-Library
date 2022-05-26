@@ -1,7 +1,5 @@
 package view;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
@@ -9,13 +7,7 @@ import model.Book;
 import model.Genre;
 import model.GenreList;
 import viewModel.AddRemoveBookViewModel;
-
-import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
 import java.rmi.RemoteException;
-
-import java.util.ArrayList;
 
 public class AddRemoveBookViewController
 {

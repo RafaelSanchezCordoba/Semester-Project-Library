@@ -8,6 +8,10 @@ import persistance.DAO.BookDAO;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * Public class BookDAOImplementation implementing interface BookDAO
+ * This class is opening and closing connection with database.
+ */
 public class BookDAOImplementation implements BookDAO
 {
 
@@ -24,10 +28,22 @@ public class BookDAOImplementation implements BookDAO
 
   private static BookDAOImplementation instance;
 
+  /**
+   * BookDAOImplementation constructor with zero parameters
+   * Driver manager inside the constructor will attempt to
+   * connect to the database.
+   * @throws SQLException
+   */
   private BookDAOImplementation() throws SQLException {
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
 
+  /**
+   * GetInstance method
+   * @return
+   * instance of BookDAOImplementation
+   * @throws SQLException
+   */
   public static synchronized BookDAOImplementation getInstance() throws SQLException {
     if (instance == null) {
       instance = new BookDAOImplementation();
@@ -35,11 +51,25 @@ public class BookDAOImplementation implements BookDAO
     return instance;
   }
 
+  /**
+   * getConnection method
+   * @return
+   * Driver manager connecting using url,user and password.
+   * @throws SQLException
+   */
   private Connection getConnection() throws SQLException {
     return DriverManager.getConnection("jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
             "naeoxool", "1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
   }
 
+  /**
+   * Method removing a book after it's id
+   * @param id
+   * Id of the book
+   * @throws SQLException
+   * The method will throw and SQL exception if affected database row is 0
+   * The message of the exception is "no delete because the book is currently lent"
+   */
   @Override
   public void removeBook(int id) throws SQLException {
     try (Connection connection = getConnection()) {
@@ -48,13 +78,20 @@ public class BookDAOImplementation implements BookDAO
       int rowAffected= statement.executeUpdate();
 
      if (rowAffected == 0){
-       throw new SQLException("no delete because the book is currently lended");
+       throw new SQLException("no delete because the book is currently lent");
      }
 
 
     }
   }
 
+  /**
+   * Method adding a book
+   * @param book
+   * Book
+   * @throws SQLException
+   * The method will throw an exception with message "No keys generated"
+   */
   @Override
   public void addBook(Book book) throws SQLException {
     try (Connection connection = getConnection()) {
@@ -85,6 +122,12 @@ public class BookDAOImplementation implements BookDAO
     }
   }
 
+  /**
+   * Method returning list of the books as an ArrayList
+   * @return
+   * ArrayList of the books
+   * @throws SQLException
+   */
   @Override
   public ArrayList<Book> getBookList() throws SQLException {
     Connection connection = getConnection();
@@ -115,7 +158,14 @@ public class BookDAOImplementation implements BookDAO
       connection.close();
     }
   }
-  
+
+  /**
+   * Method returning list of genre as
+   * an ArrayList from GenreList class
+   * @return
+   * ArrayList of genres from Genre list class
+   * @throws SQLException
+   */
   public GenreList getGenreList() throws SQLException {
     try (Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement(getGenreListSql);
