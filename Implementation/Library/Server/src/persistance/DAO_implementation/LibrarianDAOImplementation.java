@@ -7,6 +7,10 @@ import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * Public class LibrarianDAOImplementation implementing interface LibrarianDAO
+ * This class is opening and closing connection with database.
+ */
 public class LibrarianDAOImplementation implements LibrarianDAO {
 
     private String insertLibrarianSql = "INSERT INTO \"library\".librarian(ssn,password,f_name,l_name,dateOfEmployment)"
@@ -17,10 +21,22 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
 
     private static LibrarianDAOImplementation instance;
 
+    /**
+     * LibrarianDAOImplementation constructor with zero parameters
+     * Driver manager inside the constructor will attempt to
+     * connect to the database
+     * @throws SQLException
+     */
     private LibrarianDAOImplementation() throws SQLException {
         DriverManager.registerDriver(new org.postgresql.Driver());
     }
 
+    /**
+     * Method returning an instance of LibrarianDAPImplementation
+     * @return
+     * instance of LibrarianDAOImplementation
+     * @throws SQLException
+     */
     public static synchronized LibrarianDAOImplementation getInstance() throws SQLException {
         if (instance == null) {
             instance = new LibrarianDAOImplementation();
@@ -28,12 +44,24 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
         return instance;
     }
 
+    /**
+     * getConnection method
+     * @return
+     * Driver manager connecting using url,user and password
+     * @throws SQLException
+     */
     private Connection getConnection() throws SQLException
     {
         return DriverManager.getConnection("jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
                 "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
     }
 
+    /**
+     * Method adding a librarian
+     * @param librarian
+     * Librarian object
+     * @throws SQLException
+     */
     @Override
     public void addLibrarian(Librarian librarian) throws SQLException {
         try(Connection connection = getConnection()) {
@@ -47,6 +75,12 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
         }
     }
 
+    /**
+     * Method removing a librarian after it's SSN
+     * @param SSN
+     * The Social Security Number
+     * @throws SQLException
+     */
     @Override
     public void removeLibrarian(String SSN) throws SQLException {
         try(Connection connection = getConnection()) {
@@ -56,6 +90,12 @@ public class LibrarianDAOImplementation implements LibrarianDAO {
         }
     }
 
+    /**
+     * Method returning librarians in an ArrayList
+     * @return
+     * ArrayList of an librarian
+     * @throws SQLException
+     */
     @Override
     public ArrayList<Librarian> getLibrarianList() throws SQLException {
         try (Connection connection = getConnection()) {
