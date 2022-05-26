@@ -115,7 +115,6 @@ public class LendMultimediaItemViewController {
     }
    @FXML void onLendBook(){
      resetErrorLabels();
-
      try
      {
 
@@ -123,6 +122,7 @@ public class LendMultimediaItemViewController {
        try
        {
          bookViewModel.createLoan(id_book);
+         bookViewModel.addPropertyChangeLister();
        }
        catch ( RemoteException e)
        {

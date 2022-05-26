@@ -3,10 +3,11 @@ package mediator;
 import model.Book;
 import model.LibraryUser;
 import model.LoanBook;
+import model.MultimediaItem;
 
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public interface ModelLoanBook extends PropertyChangeSubject {
   /**
@@ -50,5 +51,7 @@ public interface ModelLoanBook extends PropertyChangeSubject {
    * @throws RemoteException
    */
   void returnBook(int loan_id) throws RemoteException;
+
+  Collection<? extends MultimediaItem> addPropertyChangeListener();
 }
 

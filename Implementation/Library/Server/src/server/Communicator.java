@@ -1,5 +1,7 @@
 package server;
 
+import dk.via.remote.observer.RemotePropertyChangeListener;
+import dk.via.remote.observer.RemotePropertyChangeSupport;
 import model.*;
 import server.storage.*;
 
@@ -16,7 +18,7 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     private LibraryUserStorage libraryUserStorage;
     private LoanMagazineStorage loanMagazineStorage;
     private LoanBookStorage loanBookStorage;
-    private PropertyChangeSupport support;
+    private final RemotePropertyChangeSupport<ArrayList<Book>> supportAvailableBook;
 //    private GenreStorage genreStorage;
 
 
@@ -28,6 +30,7 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
         this.loanMagazineStorage = loanMagazineStorage;
         this.loanBookStorage= loanBookStorage;
 
+        this.supportAvailableBook = new RemotePropertyChangeSupport<>(this);
 //        this.genreStorage = genreStorage;
     }
 
@@ -159,6 +162,16 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     @Override public void returnBook(int loan_id) throws RemoteException
     {
         loanBookStorage.returnBook(loan_id);
+    }
+
+    @Override
+    public void addPropertyChangeListener(RemotePropertyChangeListener<ArrayList<Book>> listener) throws RemoteException{
+        supportAvailableBook.addPropertyChangeListener(listener);
+    }
+
+    @Override
+    public void removePropertyChangeListener(RemotePropertyChangeListener<ArrayList<Book>> listener) throws RemoteException{
+        supportAvailableBook.removePropertyChangeListener(listener);
     }
 
     //    @Override public ArrayList<Magazine> getLoanedMagazines(String ssn)

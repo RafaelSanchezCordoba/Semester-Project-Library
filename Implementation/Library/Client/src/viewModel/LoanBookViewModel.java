@@ -130,6 +130,9 @@ public class LoanBookViewModel implements PropertyChangeListener
     }
   }
 
+  public void addPropertyChangeLister() throws RemoteException {
+    availableBooks.addAll(model.addPropertyChangeListener());
+  }
 
 }
 

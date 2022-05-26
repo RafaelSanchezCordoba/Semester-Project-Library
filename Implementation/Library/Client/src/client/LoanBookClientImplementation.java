@@ -1,11 +1,15 @@
 package client;
 
+import dk.via.remote.observer.RemotePropertyChangeEvent;
+import dk.via.remote.observer.RemotePropertyChangeListener;
 import model.Book;
 import model.LibraryUser;
 import model.LoanBook;
 import server.RemoteLoanBook;
 import server.RemoteLoanMagazine;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -15,9 +19,10 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class LoanBookClientImplementation extends UnicastRemoteObject implements LoanBookClient
+public class LoanBookClientImplementation extends UnicastRemoteObject implements LoanBookClient, RemotePropertyChangeListener<ArrayList<Book>>
 {
   private RemoteLoanBook remoteLoanBook;
+  private final PropertyChangeSupport support;
 
   /**
    * The constructor that create and set the Registry.
@@ -28,11 +33,10 @@ public class LoanBookClientImplementation extends UnicastRemoteObject implements
    * @throws IOException
    * @throws NotBoundException
    */
-  public LoanBookClientImplementation(String host, int port) throws IOException,
-      NotBoundException
-  {
+  public LoanBookClientImplementation(String host, int port) throws IOException, NotBoundException {
     Registry registry = LocateRegistry.getRegistry(host,port);
     remoteLoanBook = (RemoteLoanBook) registry.lookup("loanBook");
+    support = new PropertyChangeSupport(this);
   }
 
   /**
@@ -98,6 +102,16 @@ public class LoanBookClientImplementation extends UnicastRemoteObject implements
     remoteLoanBook.returnBook(loan_id);
   }
 
+  @Override
+  public void addPropertyChangeListener(PropertyChangeListener listener) {
+    support.addPropertyChangeListener(listener);
+  }
+
+  @Override
+  public void removePropertyChangeListener(PropertyChangeListener listener) {
+    support.removePropertyChangeListener(listener);
+  }
+
   /**
    * Close the remote object
    * @throws IOException
@@ -105,5 +119,10 @@ public class LoanBookClientImplementation extends UnicastRemoteObject implements
   @Override public void close() throws IOException
   {
     UnicastRemoteObject.unexportObject(this,true);
+  }
+
+  @Override
+  public void propertyChange(RemotePropertyChangeEvent<ArrayList<Book>> event) throws RemoteException {
+    support.firePropertyChange(event.getPropertyName(), event.getOldValue(), event.getNewValue());
   }
 }

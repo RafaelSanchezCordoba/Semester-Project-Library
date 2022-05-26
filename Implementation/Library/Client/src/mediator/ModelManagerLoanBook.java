@@ -4,12 +4,13 @@ import client.LoanBookClient;
 import model.Book;
 import model.LibraryUser;
 import model.LoanBook;
+import model.MultimediaItem;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class ModelManagerLoanBook implements ModelLoanBook
 {
@@ -87,6 +88,12 @@ public class ModelManagerLoanBook implements ModelLoanBook
   {
     client.returnBook(loan_id);
     support.firePropertyChange("removeLoanBook",null,loan_id);
+  }
+
+  @Override
+  public Collection<? extends MultimediaItem> addPropertyChangeListener() {
+    client.addPropertyChangeListener(evt -> evt.getNewValue());
+    return null;
   }
 
   /**

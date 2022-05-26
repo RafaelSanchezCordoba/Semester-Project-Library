@@ -5,6 +5,8 @@ import model.LibraryUser;
 import model.LoanBook;
 
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Closeable;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -54,4 +56,7 @@ public interface LoanBookClient extends Closeable {
    * @throws RemoteException
    */
   void returnBook(int loan_id) throws RemoteException;
+
+  void addPropertyChangeListener(PropertyChangeListener listener);
+  void removePropertyChangeListener(PropertyChangeListener listener);
 }
