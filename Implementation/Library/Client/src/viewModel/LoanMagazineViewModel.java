@@ -29,6 +29,14 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
     private final StringProperty ssnTextField;
     private SimpleListProperty<MultimediaItem> availableMagazines ;
 
+    /**
+     * AddRemoveLibraryUserViewModel constructor that:
+     * set the model
+     * ,add the property change listener for adding and removing a book
+     * and set JavaFX variables
+     * @param model
+     * The model library user
+     */
     public LoanMagazineViewModel(ModelLoanMagazine model){
      this.model= model;
      this.multimediaItemLabel = new SimpleStringProperty("");

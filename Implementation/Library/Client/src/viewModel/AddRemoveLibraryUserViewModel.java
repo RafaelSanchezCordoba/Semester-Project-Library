@@ -27,6 +27,14 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
     private final SimpleListProperty<LibraryUser> userList;
     private final StringProperty errorLabel;
 
+    /**
+     * AddRemoveLibraryUserViewModel constructor that:
+     * set the model
+     * ,add the property change listener for adding and removing a book
+     * and set JavaFX variables
+     * @param model
+     * The model library user
+     */
     public AddRemoveLibraryUserViewModel(ModelLibraryUser model) throws RemoteException{
         this.model = model;
         this.firstNameTextField = new SimpleStringProperty("");
@@ -37,16 +45,20 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         this.userList = new SimpleListProperty<>(observableListUserList);
         this.errorLabel = new SimpleStringProperty("");
 
-
-
         model.addPropertyChangeListener("addLibraryUser",this);
         model.addPropertyChangeListener("removeLibraryUser",this);
-
     }
 
+    /**
+     * Not implemented
+     */
     public void search(){}
 
-    //error check - LABEL
+    /**
+     * Check if the information passed is correct if not print out a specific error message
+     * @return
+     * True if there are any error, false if not
+     */
     public boolean errorCheck(){
         if(firstNameTextField.get().equals("")){
             errorLabel.set("First name can't be empty");
@@ -76,12 +88,13 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         return  false;
     }
 
-
+    /**
+     * Add library user method
+     * @param libraryUser
+     * The library user passed as an argument
+     */
     public void addLibraryUser(LibraryUser libraryUser) throws RemoteException{
-        try
-        {
-
-
+        try {
         if(!errorCheck()){
             model.addLibraryUser(libraryUser);
             clearErrorLabel();
@@ -92,16 +105,26 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         }
     }
 
+    /**
+     * Remove a library user with a specific social security number
+     * @param ssn
+     * The social security number passed as an argument
+     */
     public void removeLibraryUser(String ssn) throws RemoteException{
         model.removeLibraryUser(ssn);
     }
 
+    /**
+     * Set the library user list
+     */
     public void setUserList() throws RemoteException{
         userList.clear();
         userList.addAll(model.getLibraryUserList());
     }
 
-    //reset
+    /**
+     * Reset all the JavaFX variables
+     */
     public void reset() throws  RemoteException{
         setUserList();
 
@@ -111,35 +134,81 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         passwordTextField.set("");
     }
 
+    /**
+     * Seat blank the error label
+     */
     public void clearErrorLabel() throws RemoteException{
         errorLabel.set("");
     }
 
+    /**
+     * Bind the first name text field
+     * @param property
+     * A String property
+     */
     public void bindFirstNameTextField(StringProperty property){
         property.bindBidirectional(firstNameTextField);
     }
+
+    /**
+     * Bind the last name text field
+     * @param property
+     * A String property
+     */
     public void bindLastNameTextField(StringProperty property){
         property.bindBidirectional(lastNameTextField);
     }
+
+    /**
+     * Bind the social security number
+     * @param property
+     * A String property
+     */
     public void bindSSNTextField(StringProperty property){
         property.bindBidirectional(ssnTextField);
     }
+
+    /**
+     * Bind the password text field
+     * @param property
+     * A String property
+     */
     public void bindPasswordTextField(StringProperty property){
         property.bindBidirectional(passwordTextField);
     }
 
+    /**
+     * Bind the library user list
+     * @param property
+     * Object property, library user observable list property
+     */
     public void bindUserListView(ObjectProperty<ObservableList<LibraryUser>> property){
         property.bind(userList);
     }
+
+    /**
+     * Bind the error label
+     * @param property
+     * A String property
+     */
     public void bindErrorLabel(StringProperty property){
         property.bindBidirectional(errorLabel);
     }
 
+    /**
+     * Bind the
+     * @param property
+     */
     public void bindLibraryUserListViewForTest(SimpleListProperty<LibraryUser> property)
     {
         property.bind(userList);
     }
 
+    /**
+     * Property change method that call different methods depends on the event name
+     * @param evt
+     * A library user object passed as an event
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("addLibraryUser"))
@@ -155,6 +224,12 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
             }
         }
     }
+
+    /**
+     * Check if the social security number format is correct
+     * @return
+     * True if it is, false if not
+     */
     private boolean ssnFormatCheck()
     {
         if (ssnTextField.get().length()==13)
@@ -172,6 +247,11 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         return true;
     }
 
+    /**
+     * Check if the ssn number is unique
+     * @return
+     * True if it is not, false if it is
+     */
     private boolean ssnDuplicateCheck()
     {
         for (int i=0;i<userList.getSize();i++)
