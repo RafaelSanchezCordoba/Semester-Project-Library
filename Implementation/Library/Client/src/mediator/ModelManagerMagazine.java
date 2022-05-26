@@ -36,14 +36,12 @@ public class ModelManagerMagazine implements ModelMagazine{
         try
         {
             client.addMagazine(magazine);
-            System.out.println("client");
             support.firePropertyChange("newMagazine",null, magazine);
         }
         catch (RemoteException e)
         {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -55,7 +53,6 @@ public class ModelManagerMagazine implements ModelMagazine{
     @Override
     public void removeMagazine(int id) throws RemoteException
     {
-        System.out.println(id);
         client.removeMagazine(id);
         support.firePropertyChange("removeMagazine", null, id);
     }
