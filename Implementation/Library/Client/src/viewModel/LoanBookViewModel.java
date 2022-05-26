@@ -143,7 +143,6 @@ public class LoanBookViewModel implements PropertyChangeListener
    * Create a new book loan
    * @param idBook
    * The unique book identification number
-   * @throws RemoteException
    */
   public void createLoan(int idBook) throws  RemoteException
   {

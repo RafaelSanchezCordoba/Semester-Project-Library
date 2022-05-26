@@ -37,39 +37,60 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
      * @param model
      * The model library user
      */
-    public LoanMagazineViewModel(ModelLoanMagazine model){
-     this.model= model;
-     this.multimediaItemLabel = new SimpleStringProperty("");
-     this.errorLabel = new SimpleStringProperty("");
-     this.selectedLibraryUserLabel = new SimpleStringProperty("");
-     this.selectedMultimediaItemLabel = new SimpleStringProperty("");
-     this.ssnTextField = new SimpleStringProperty();
-     ObservableList<MultimediaItem> observableList = FXCollections.observableArrayList( new ArrayList<MultimediaItem>());
-     this.availableMagazines = new SimpleListProperty<>(observableList);
-
+    public LoanMagazineViewModel(ModelLoanMagazine model) {
+        this.model= model;
+        this.multimediaItemLabel = new SimpleStringProperty("");
+        this.errorLabel = new SimpleStringProperty("");
+        this.selectedLibraryUserLabel = new SimpleStringProperty("");
+        this.selectedMultimediaItemLabel = new SimpleStringProperty("");
+        this.ssnTextField = new SimpleStringProperty();
+        ObservableList<MultimediaItem> observableList = FXCollections.observableArrayList( new ArrayList<MultimediaItem>());
+        this.availableMagazines = new SimpleListProperty<>(observableList);
 
         model.addPropertyChangeListener("newLoanMagazine", this);
     }
 
+    /**
+     * Bind multimedia item label
+     * @param property
+     * A String property
+     */
     public void bindMultimediaItemLabel(StringProperty property){
         property.bindBidirectional(multimediaItemLabel);
     }
 
+    /**
+     * Bind the error label
+     * @param property
+     * A String property
+     */
     public void bindErrorLabel(StringProperty property){
         property.bindBidirectional(errorLabel);
     }
 
-
-
+    /**
+     * Bind the selected library user label
+     * @param property
+     * A String property
+     */
     public void bindSelectedLibraryUserLabel(StringProperty property){
         property.bindBidirectional(selectedLibraryUserLabel);
     }
 
-
+    /**
+     * Bind the social security number text field
+     * @param property
+     * A String property
+     */
     public void bindSsnTextField(StringProperty property){
         property.bindBidirectional(ssnTextField);
     }
 
+    /**
+     * Bind the available magazine list
+     * @param property
+     * Object property, multimedia item observable list
+     */
     public void bindAvailableMagazineList(ObjectProperty<ObservableList<MultimediaItem>> property){
         property.bind(availableMagazines);
     }
@@ -82,6 +103,11 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
       ssnTextField.set("");
     }
 
+    /**
+     * Get a user with a specific social security number
+     * @param ssn
+     * The social security number passed as an argument
+     */
     public void getUser(String ssn){
       try
       {
@@ -100,12 +126,21 @@ public class LoanMagazineViewModel implements PropertyChangeListener {
       }
     }
 
+    /**
+     * Set the magazine list with the available magazines
+     * @throws RemoteException
+     */
     public void setMagazineList() throws RemoteException{
         availableMagazines.clear();
         availableMagazines.addAll(model.getAvailableMagazineList());
     }
 
-    public void createLoan(int  idMagazine) throws   RemoteException {
+    /**
+     * Create a new magazine loan
+     * @param idMagazine
+     * The unique magazine identification number
+     */
+    public void createLoan(int idMagazine) throws   RemoteException {
 
       if(user==null)
       {
