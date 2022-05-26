@@ -1,7 +1,6 @@
 package client;
 
 import model.Book;
-import model.Genre;
 import model.GenreList;
 import server.RemoteBook;
 
