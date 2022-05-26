@@ -242,6 +242,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
    * @param id
    * The unique identification number
    * @throws RemoteException
+   * If the book is already lent
    */
   public void removeBook(int id) throws RemoteException
   {
@@ -251,7 +252,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
       errorLabel.set("");
     }catch (RemoteException e)
     {
-      errorLabel.set("cannot remove this book because is currently being lended");
+      errorLabel.set("cannot remove this book because is currently being lent");
     }
   }
 
@@ -283,60 +284,117 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   }
 
   /**
-   *
+   * Bind the publisher text field
    * @param property
+   * A String property
    */
   public void bindPublisherTextField(StringProperty property)
   {
     property.bindBidirectional(publisherTextField);
   }
 
+  /**
+   * Bind the author text field
+   * @param property
+   * A String property
+   */
   public void bindAuthorTextField(StringProperty property)
   {
     property.bindBidirectional(authorTextField);
   }
 
+  /**
+   * Bind the isbn text field
+   * @param property
+   * A String property
+   */
   public void bindISBNTextField(StringProperty property)
   {
     property.bindBidirectional(isbnTextField);
   }
 
+  /**
+   * Bind the year text field
+   * @param property
+   * A String property
+   */
   public void bindYearTextField(StringProperty property)
   {
     property.bindBidirectional(yearTextField);
   }
 
+  /**
+   * Bind the edition text field
+   * @param property
+   * A String property
+   */
   public void bindEditionTextField(StringProperty property)
   {
     property.bindBidirectional(editionTextField);
   }
 
+  /**
+   * Bind the error label
+   * @param property
+   * A String property
+   */
   public void bindErrorLabel(StringProperty property)
   {
     property.bindBidirectional(errorLabel);
   }
 
+  /**
+   * Bind the book list
+   * @param property
+   * Object property, observable list of books
+   */
   public void bindBookListView(ObjectProperty<ObservableList<Book>> property)
   {
     property.bindBidirectional(bookList);
   }
 
+  /**
+   * Bind the book list for testing
+   * @param property
+   * Simple list property of type book
+   */
   public void bindBookListViewForTesting(SimpleListProperty<Book> property)
   {
     property.bind(bookList);
   }
 
+  /**
+   * Bind the genre list
+   * @param property
+   * Object property, observable list of genres
+   */
   public void bindGenreList(ObjectProperty<ObservableList<Genre>> property) {
     property.bindBidirectional(genreList);
   }
 
+  /**
+   * Bind the selected genre list
+   * @param property
+   * Object property, observable list of genres
+   */
   public void bindSelectedGenreList(ObjectProperty<ObservableList<Genre>> property) {
     property.bindBidirectional(selectedGenreList);
   }
 
+  /**
+   * Bind the genre list for testing
+   * @param property
+   * Simple list property of genre
+   */
   public void bindGenreListForTest(SimpleListProperty<Genre> property) {
     property.bind(genreList);
   }
+
+  /**
+   * Bind the genre list for testing
+   * @param property
+   * Simple list property of genre
+   */
   public void bindSelectedGenreListForTest(SimpleListProperty<Genre> property) {
     property.bind(selectedGenreList);
   }
@@ -344,6 +402,7 @@ public class AddRemoveBookViewModel implements PropertyChangeListener
   /**
    * Property change method that call different methods depends on the event name
    * @param evt
+   * A book object passed as an event
    */
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
