@@ -13,63 +13,96 @@ public class ChoseItemTypeViewController
   private ViewHandler viewHandler;
   private Region root;
 
-
+  /**
+   * A predefine method to initialize an object after its creation
+   * @param viewHandler
+   * The view handler
+   * @param root
+   * The root
+   */
   public void init(ViewHandler viewHandler,Region root) throws  RemoteException
   {
     this.viewHandler = viewHandler;
     this.root = root;
   }
 
-
+  /**
+   * Opens the chose item view when the button is pressed
+   */
   @FXML public void multimediaItemMenuButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(viewHandler.ITEM);
   }
 
+  /**
+   * Opens the Home view when the button is pressed
+   */
   @FXML public void homeMenuButtonPressed()
       throws RemoteException
   {
     viewHandler.openView(viewHandler.HOME);
   }
 
+  /**
+   * Opens the book view when the button is pressed
+   */
   @FXML public void bookMenuButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(viewHandler.BOOK);
   }
 
+  /**
+   * Opens the magazine view when the button is pressed
+   */
   @FXML public void magazinesMenuButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(viewHandler.MAGAZINE);
   }
+
+  /**
+   * Opens the library user view when the button is pressed
+   */
   @FXML public void onAddLibraryUserButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(viewHandler.LIBRARY_USER);
   }
 
+  /**
+   * Opens the lent multimedia item view when the button is pressed
+   */
   @FXML public void onLoanButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(viewHandler.LENDMULTIMEDIAITEM);
   }
 
+  /**
+   * Opens the return multimedia item when the button is pressed
+   */
   @FXML public void onReturnButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(viewHandler.RETURNMULTIMEDIAITEM);
   }
 
+  /**
+   * Closes the actual view when the button is pressed
+   */
   @FXML
   public void logOutButtonPressed()
   {
     viewHandler.closeView();
   }
 
-
-
+  /**
+   * Get root method
+   * @return
+   * The root
+   */
   public Region getRoot()
   {
     return root;

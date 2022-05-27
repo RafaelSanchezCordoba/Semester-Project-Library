@@ -28,6 +28,15 @@ public class AddRemoveMagazineViewController
   @FXML private ListView<Magazine> magazineListView;
   @FXML private Label errorLabel;
 
+  /**
+   * A predefine method to initialize an object after its creation
+   * @param viewHandler
+   * The view handler
+   * @param viewModel
+   * The view model
+   * @param root
+   * The root
+   */
   public void init(ViewHandler viewHandler, AddRemoveMagazineViewModel viewModel, Region root) throws  RemoteException
   {
     this.viewHandler = viewHandler;
@@ -47,13 +56,18 @@ public class AddRemoveMagazineViewController
     viewModel.setMagazineList();
   }
 
+  /**
+   * Closes the actual view when the button is pressed
+   */
   @FXML
   public void logOutButtonPressed()
   {
     viewHandler.closeView();
   }
 
-
+  /**
+   * Calls the method add magazine from the view when the button is pressed
+   */
   @FXML
   public void addMagazineButtonPressed() throws RemoteException
   {
@@ -77,6 +91,11 @@ public class AddRemoveMagazineViewController
       }
   }
 
+  /**
+   * Checks if the input information is correct
+   * @return
+   * True if is not, false if is
+   */
   public boolean errorsCheck()
   {
     if (dayTextField.getText().equals(""))
@@ -105,6 +124,11 @@ public class AddRemoveMagazineViewController
   return  false;
   }
 
+  /**
+   * Check if the value format is correct
+   * @return
+   * False if it is, true if not
+   */
   private boolean volumeFormatCheck()
   {
     try
@@ -118,47 +142,73 @@ public class AddRemoveMagazineViewController
     return false;
   }
 
+  /**
+   * Calls the method remove magazine from the view when the button is pressed
+   */
   @FXML
   public void removeMagazineButtonPressed() throws RemoteException
   {
     viewModel.removeMagazine(magazineListView.getSelectionModel().getSelectedItem().getId());
   }
 
+  /**
+   * Opens the chose item view when the button is pressed
+   */
   @FXML public void multimediaItemMenuButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(ViewHandler.ITEM);
   }
 
+  /**
+   * Opens the home view when the button is pressed
+   */
   @FXML public void homeMenuButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(ViewHandler.HOME);
   }
 
-
+  /**
+   * Opens the library user view when the button is pressed
+   */
   @FXML public void onAddLibraryUserButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(ViewHandler.LIBRARY_USER);
   }
 
+  /**
+   * Opens the lent multimedia item view when the button is pressed
+   */
   @FXML public void onLoanButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
   }
 
+  /**
+   * Opens the return multimedia item view when the button is pressed
+   */
   @FXML public void onReturnButtonPressed()
       throws  RemoteException
   {
     viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
   }
 
+  /**
+   * Calls the reset method in the viewModel
+   * @throws RemoteException
+   */
   public void reset() throws  RemoteException{
     viewModel.reset();
   }
 
+  /**
+   * Get root method
+   * @return
+   * The root
+   */
   public Region getRoot() {
     return root;
   }
