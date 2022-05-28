@@ -10,7 +10,8 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * Class from data access object for the loan magazine in the database
+ * Public class LoanMagazineDAOImplementation implementing interface LoanMagazineDAO
+ * This class is opening and closing connection with database.
  * @author Alexandru Dulghier
  * @version 1.0 16/05/22.
  */
@@ -48,7 +49,9 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
     private static LoanMagazineDAOImplementation instance;
 
     /**
-     * private constructor
+     * LoanMagazineDAOImplementation constructor with zero parameters
+     * Driver manager inside the constructor will attempt to
+     * connect to the database.
      * @throws SQLException
      */
     private LoanMagazineDAOImplementation()throws SQLException{
@@ -61,8 +64,6 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
      * @return LoanMagazineDAOImplementation
      * @throws SQLException
      */
-
-
     public static synchronized LoanMagazineDAOImplementation getInstance() throws SQLException{
         if (instance==null){
 
@@ -71,14 +72,25 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
         return instance;
     }
 
+    /**
+     * getConnection method
+     * @return
+     * Driver manager connecting using url, user and password
+     * @throws SQLException
+     */
     private Connection getConnection() throws SQLException
     {
         return DriverManager.getConnection("jdbc:postgresql://tai.db.elephantsql.com/naeoxool",
                 "naeoxool","1eiSjWkSFVXj15hc0j47p_js1irgaDWr");
     }
 
-
-
+    /**
+     * Method returning library user after it's ssn
+     * @param ssn
+     * Social security number
+     * @return
+     * @throws SQLException
+     */
     public LibraryUser getLibraryUser(String ssn) throws SQLException{
         try(Connection connection = getConnection())
         {
@@ -101,7 +113,14 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
         return null;
     }
 
-
+    /**
+     * Method returning ArrayList of magazine that are loaned
+     * @param ssn
+     * Social security number
+     * @return
+     * ArrayList of loaned magazines
+     * @throws SQLException
+     */
     public ArrayList<Magazine> getLoanedMagazines(String ssn) throws SQLException
     {
         try (Connection connection = getConnection()) {
@@ -126,6 +145,14 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
 
     }
 
+    /**
+     * Method returning loans of user after it's ssn
+     * @param ssn
+     * Social security number
+     * @return
+     * Loans of user after it's ssn
+     * @throws SQLException
+     */
     @Override public ArrayList<LoanMagazine> getUserLoans(String ssn)
         throws SQLException
     {
@@ -148,6 +175,12 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
         }
     }
 
+    /**
+     * Method returning a magazine from being loaned to the library
+     * @param id_loan
+     * ID number of loan
+     * @throws SQLException
+     */
     @Override public void returnMagazine(int id_loan) throws SQLException
     {
         Connection connection = getConnection();
@@ -176,8 +209,9 @@ public class LoanMagazineDAOImplementation implements LoanMagazineDAO {
     }
 
     /**
-     * retruns an Array List of all the available magazines
-     * @return ArrayList<Magazine></>
+     * Method returning ArrayList of all magazine to loan
+     * @return
+     * ArrayList of magazines available to loan
      * @throws SQLException
      */
     public ArrayList<Magazine> getAvailableMagazineList() throws SQLException{
