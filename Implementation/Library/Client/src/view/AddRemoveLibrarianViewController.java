@@ -25,6 +25,15 @@ public class AddRemoveLibrarianViewController
   @FXML private Label errorLabel;
   @FXML private ListView<Librarian> librarianTextListView;
 
+  /**
+   * A predefine method to initialize an object after its creation
+   * @param viewHandler
+   * The view handler
+   * @param viewModel
+   * The view model
+   * @param root
+   * The root
+   */
   public void init(ViewHandler viewHandler, AddRemoveLibrarianViewModel viewModel, Region root)
       throws  RemoteException
   {
@@ -42,6 +51,9 @@ public class AddRemoveLibrarianViewController
     viewModel.setLibrarianList();
   }
 
+  /**
+   * Calls the method addLibrarian from the view model when the button is pressed
+   */
   @FXML public void addLibrarianButtonPressed()
       throws  RemoteException
   {
@@ -51,6 +63,9 @@ public class AddRemoveLibrarianViewController
     viewModel.addLibrarian(librarian);
   }
 
+  /**
+   * Calls the method removeLibrarian from the view model when the button is pressed
+   */
   @FXML public void removeLibrarianButtonPressed()
       throws  RemoteException
   {
@@ -58,21 +73,35 @@ public class AddRemoveLibrarianViewController
         librarianTextListView.getSelectionModel().getSelectedItem().getSsn());
   }
 
+  /**
+   * Calls the method reset from the view model when the button is pressed
+   */
   public void reset() throws  RemoteException
   {
     viewModel.reset();
   }
 
+  /**
+   * Get root method
+   * @return
+   * The root
+   */
   public Region getRoot()
   {
     return root;
   }
 
+  /**
+   * Closes the actual view when the button is pressed
+   */
   @FXML public void logOutButtonPressed()
   {
     viewHandler.closeView();
   }
 
+  /**
+   * Opens the home view when the button is pressed
+   */
   @FXML public void homeMenuButtonPressed() throws  RemoteException
   {
     viewHandler.openView(viewHandler.HOME);

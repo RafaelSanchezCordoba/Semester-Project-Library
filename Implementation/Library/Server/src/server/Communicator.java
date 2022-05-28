@@ -31,26 +31,6 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
 //        this.genreStorage = genreStorage;
     }
 
-
-
-//    @Override public void addGenre(Genre genre)
-//        throws SQLException, RemoteException
-//    {
-//        genreStorage.addGenre(genre);
-//    }
-//
-//    @Override public void removeGenre(int id)
-//        throws SQLException, RemoteException
-//    {
-//        genreStorage.removeGenre(id);
-//    }
-//
-//    @Override public ArrayList<Genre> getGenreList()
-//        throws SQLException, RemoteException
-//    {
-//        return genreStorage.getGenreList();
-//    }
-
     @Override
     public void addBook(Book book) throws RemoteException {
         bookStorage.addBook(book);

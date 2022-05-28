@@ -31,8 +31,17 @@ public class LendMultimediaItemViewController {
     @FXML private ListView<MultimediaItem> magazineListView;
     @FXML private ListView<MultimediaItem> bookListView;
 
-
-
+    /**
+     * A predefine method to initialize an object after its creation
+     * @param viewHandler
+     * The view handler
+     * @param magazineViewModel
+     * The loan magazine view model
+     * @param bookViewModel
+     * The loan book view model
+     * @param root
+     * The root
+     */
     public void init(ViewHandler viewHandler, LoanMagazineViewModel magazineViewModel, LoanBookViewModel bookViewModel, Region root) throws RemoteException {
         this.viewHandler = viewHandler;
         this.magazineViewModel = magazineViewModel;
@@ -54,11 +63,11 @@ public class LendMultimediaItemViewController {
         bookViewModel.bindErrorLabel(errorLabelBook.textProperty());
         bookViewModel.bindSsnTextField(ssnTextField.textProperty());
         bookViewModel.bindAvailableBooksList(bookListView.itemsProperty());
-
-
     }
 
-
+    /**
+     * Makes visible the book list view and shows the book list when the button is pressed
+     */
     @FXML
     public void showBookListButtonPressed() throws  RemoteException
     {
@@ -69,6 +78,9 @@ public class LendMultimediaItemViewController {
         bookViewModel.setBookList();
     }
 
+    /**
+     * Gets the user when the button is pressed
+     */
     @FXML void okButtonPressed()
     {
       resetErrorLabels();
@@ -80,6 +92,9 @@ public class LendMultimediaItemViewController {
 
     }
 
+    /**
+     * Makes visible the magazine list view and shows the magazine list when the button is pressed
+     */
     @FXML void showMagazineListButtonPressed() throws RemoteException {
       multimediaItemLabel.setText("MAGAZINES");
       resetErrorLabels();
@@ -88,7 +103,9 @@ public class LendMultimediaItemViewController {
         magazineViewModel.setMagazineList();
     }
 
-
+    /**
+     * Calls the create loan method in the view model with the selected magazine in the magazine list view
+     */
     @FXML void onLendMagazine()  {
       resetErrorLabels();
       try
@@ -107,13 +124,12 @@ public class LendMultimediaItemViewController {
       catch (NullPointerException e){
         errorLabelMagazine.setText("No magazine selected");
       }
-
-
-
-
-
     }
-   @FXML void onLendBook(){
+
+    /**
+     * Calls the create loan method in the view model with the selected book in the book list view
+     */
+    @FXML void onLendBook(){
      resetErrorLabels();
 
      try
@@ -132,39 +148,59 @@ public class LendMultimediaItemViewController {
      catch (NullPointerException e){
        errorLabelBook.setText("No book selected");
      }
-
-
     }
 
+    /**
+     * Opens the Home view when the button is pressed
+     */
     @FXML void homeMenuButtonPressed() throws  RemoteException {
         viewHandler.openView(ViewHandler.HOME);
     }
 
+    /**
+     * Opens the chose item view when the button is pressed
+     */
     @FXML void multimediaItemMenuButtonPressed() throws  RemoteException {
         viewHandler.openView(ViewHandler.ITEM);
     }
-  @FXML public void onAddLibraryUserButtonPressed()
-      throws  RemoteException
-  {
-    viewHandler.openView(ViewHandler.LIBRARY_USER);
-  }
 
-  @FXML public void onLoanButtonPressed()
-      throws  RemoteException
-  {
-    viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
-  }
+    /**
+     * Opens the library user view when the button is pressed
+     */
+    @FXML public void onAddLibraryUserButtonPressed() throws  RemoteException
+    {
+        viewHandler.openView(ViewHandler.LIBRARY_USER);
+    }
 
-  @FXML public void onReturnButtonPressed()
-      throws  RemoteException
-  {
-    viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
-  }
+    /**
+     * Opens the lent multimedia item view when the button is pressed
+     */
+    @FXML public void onLoanButtonPressed()
+        throws  RemoteException
+    {
+        viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
+    }
 
+    /**
+     * Opens the return multimedia item view when the button is pressed
+     * @throws RemoteException
+     */
+    @FXML public void onReturnButtonPressed()
+        throws  RemoteException
+    {
+        viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
+    }
+
+    /**
+     * Closes the actual view when the button is pressed
+     */
     @FXML void logOutButtonPressed(){
             viewHandler.closeView();
     }
 
+    /**
+     * Calls the method reset in the view model
+     */
     public void reset() throws  RemoteException {
         bookViewModel.setBookList();
         magazineViewModel.setMagazineList();
@@ -175,10 +211,18 @@ public class LendMultimediaItemViewController {
 
     }
 
+    /**
+     * Get root method
+     * @return
+     * The root
+     */
     public Region getRoot(){
         return root;
     }
 
+    /**
+     * Sets as blank the error label
+     */
     public void resetErrorLabels(){
       errorLabelBook.setText("");
       errorLabelMagazine.setText("");
