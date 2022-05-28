@@ -88,17 +88,11 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         return  false;
     }
 
-<<<<<<< Updated upstream
+
     /**
      * Add library user method
-     * @param libraryUser
-     * The library user passed as an argument
+     *
      */
-    public void addLibraryUser(LibraryUser libraryUser) throws RemoteException{
-        try {
-        if(!errorCheck()){
-            model.addLibraryUser(libraryUser);
-=======
 
     public void addLibraryUser() {
 
@@ -106,7 +100,6 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         {
             model.addLibraryUser(new LibraryUser(ssnTextField.get(),firstNameTextField.get(),lastNameTextField.get(),
                 passwordTextField.get()));
->>>>>>> Stashed changes
             clearErrorLabel();
         }
         reset();
@@ -129,14 +122,11 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         userList.addAll(model.getLibraryUserList());
     }
 
-<<<<<<< Updated upstream
+
     /**
      * Reset all the JavaFX variables
      */
-    public void reset() throws  RemoteException{
-        setUserList();
-=======
-    //reset
+
     public void reset() {
         try
         {
@@ -146,22 +136,18 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
         {
             e.printStackTrace();
         }
->>>>>>> Stashed changes
-
         firstNameTextField.set("");
         lastNameTextField.set("");
         ssnTextField.set("");
         passwordTextField.set("");
     }
 
-<<<<<<< Updated upstream
+
     /**
      * Seat blank the error label
      */
-    public void clearErrorLabel() throws RemoteException{
-=======
     public void clearErrorLabel() {
->>>>>>> Stashed changes
+
         errorLabel.set("");
     }
 

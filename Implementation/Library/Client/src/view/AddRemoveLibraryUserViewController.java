@@ -57,18 +57,11 @@ public class AddRemoveLibraryUserViewController
         viewHandler.closeView();
     }
 
-<<<<<<< Updated upstream
     /**
      * Calls the method addLibraryUser from the view model when the button is pressed
      */
-    @FXML public void addUserButtonPressed() throws RemoteException{
-        LibraryUser libraryUser = new LibraryUser(ssnTextField.getText(),firstNameTextField.getText(),
-                lastNameTextField.getText(), passwordTextField.getText());
-        viewModel.addLibraryUser(libraryUser);
-=======
     @FXML public void addUserButtonPressed(){
         viewModel.addLibraryUser();
->>>>>>> Stashed changes
         reset();
     }
 
@@ -130,14 +123,12 @@ public class AddRemoveLibraryUserViewController
         viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
     }
 
-<<<<<<< Updated upstream
+
     /**
      * Calls the reset method from the view
      */
-    public void reset() throws  RemoteException{
-=======
+
     public void reset() {
->>>>>>> Stashed changes
         viewModel.reset();
     }
 
