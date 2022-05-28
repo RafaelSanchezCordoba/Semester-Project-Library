@@ -21,7 +21,7 @@ public interface LibraryUserClient extends Closeable
    * @throws RemoteException
    * @throws SQLException
    */
-  void addLibraryUser(LibraryUser libraryUser) throws RemoteException;
+  void addLibraryUser(LibraryUser libraryUser)throws RemoteException;
 
   /**
    * Remove a library user with a specific social security number

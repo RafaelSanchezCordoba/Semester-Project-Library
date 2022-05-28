@@ -57,6 +57,7 @@ public class AddRemoveLibraryUserViewController
         viewHandler.closeView();
     }
 
+<<<<<<< Updated upstream
     /**
      * Calls the method addLibraryUser from the view model when the button is pressed
      */
@@ -64,6 +65,10 @@ public class AddRemoveLibraryUserViewController
         LibraryUser libraryUser = new LibraryUser(ssnTextField.getText(),firstNameTextField.getText(),
                 lastNameTextField.getText(), passwordTextField.getText());
         viewModel.addLibraryUser(libraryUser);
+=======
+    @FXML public void addUserButtonPressed(){
+        viewModel.addLibraryUser();
+>>>>>>> Stashed changes
         reset();
     }
 
@@ -86,7 +91,7 @@ public class AddRemoveLibraryUserViewController
     @FXML public void multimediaItemMenuButtonPressed()
         throws  RemoteException
     {
-        viewHandler.openView(viewHandler.ITEM);
+        viewHandler.openView(ViewHandler.ITEM);
     }
 
     /**
@@ -95,7 +100,7 @@ public class AddRemoveLibraryUserViewController
     @FXML public void homeMenuButtonPressed()
         throws  RemoteException
     {
-        viewHandler.openView(viewHandler.HOME);
+        viewHandler.openView(ViewHandler.HOME);
     }
 
     /**
@@ -104,7 +109,7 @@ public class AddRemoveLibraryUserViewController
     @FXML public void onAddLibraryUserButtonPressed()
         throws  RemoteException
     {
-        viewHandler.openView(viewHandler.LIBRARY_USER);
+        viewHandler.openView(ViewHandler.LIBRARY_USER);
     }
 
     /**
@@ -113,7 +118,7 @@ public class AddRemoveLibraryUserViewController
     @FXML public void onLoanButtonPressed()
         throws  RemoteException
     {
-        viewHandler.openView(viewHandler.LENDMULTIMEDIAITEM);
+        viewHandler.openView(ViewHandler.LENDMULTIMEDIAITEM);
     }
 
     /**
@@ -122,13 +127,17 @@ public class AddRemoveLibraryUserViewController
     @FXML public void onReturnButtonPressed()
         throws  RemoteException
     {
-        viewHandler.openView(viewHandler.RETURNMULTIMEDIAITEM);
+        viewHandler.openView(ViewHandler.RETURNMULTIMEDIAITEM);
     }
 
+<<<<<<< Updated upstream
     /**
      * Calls the reset method from the view
      */
     public void reset() throws  RemoteException{
+=======
+    public void reset() {
+>>>>>>> Stashed changes
         viewModel.reset();
     }
 

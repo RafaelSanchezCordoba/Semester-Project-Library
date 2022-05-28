@@ -28,10 +28,16 @@ public class ModelManagerLibraryUser implements ModelLibraryUser
    * Add library user method
    * @param libraryUser
    * The library user passed as an argument
-   * @throws RemoteException
    */
-  @Override public void addLibraryUser(LibraryUser libraryUser) throws RemoteException{
-    client.addLibraryUser(libraryUser);
+  @Override public void addLibraryUser(LibraryUser libraryUser) {
+    try
+    {
+      client.addLibraryUser(libraryUser);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+    }
     support.firePropertyChange("addLibraryUser",null, libraryUser);
   }
 

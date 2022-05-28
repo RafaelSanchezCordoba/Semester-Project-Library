@@ -74,7 +74,7 @@ public class AddRemoveLibraryUserViewModelTest {
         lastNameTextField.set("Sanchez");
         passwordTextField.set("1234");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("[LibraryUser{ssn=1234567890123, firstName=Rafa, lastName=Sanchez, password=1234}]", userList.get().toString());
     }
 
@@ -83,13 +83,11 @@ public class AddRemoveLibraryUserViewModelTest {
         lastNameTextField.set("Sanchez");
         passwordTextField.set("1234");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
-        firstNameTextField.set("Rosa");
+        viewModel.addLibraryUser(); firstNameTextField.set("Rosa");
         lastNameTextField.set("Briales");
         passwordTextField.set("1111");
         ssnTextField.set("1234567890111");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
-        assertEquals("[LibraryUser{ssn=1234567890123, firstName=Rafa, lastName=Sanchez, password=1234}, LibraryUser{ssn=1234567890111, firstName=Rosa, lastName=Briales, password=1111}]", userList.get().toString());
+        viewModel.addLibraryUser();assertEquals("[LibraryUser{ssn=1234567890123, firstName=Rafa, lastName=Sanchez, password=1234}, LibraryUser{ssn=1234567890111, firstName=Rosa, lastName=Briales, password=1111}]", userList.get().toString());
     }
 
     @Test
@@ -98,8 +96,7 @@ public class AddRemoveLibraryUserViewModelTest {
         lastNameTextField.set("Sanchez");
         passwordTextField.set("1234");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
-        assertEquals("", firstNameTextField.get());
+        viewModel.addLibraryUser();assertEquals("", firstNameTextField.get());
         assertEquals("", lastNameTextField.get());
         assertEquals("", passwordTextField.get());
         assertEquals("", ssnTextField.get());
@@ -111,7 +108,7 @@ public class AddRemoveLibraryUserViewModelTest {
         lastNameTextField.set("Sanchez");
         passwordTextField.set("1234");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("First name can't be null", errorLabel.get());
         assertEquals("[]", userList.get().toString());
     }
@@ -121,7 +118,7 @@ public class AddRemoveLibraryUserViewModelTest {
         firstNameTextField.set("Rafa");
         passwordTextField.set("1234");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("Last name can't be null", errorLabel.get());
         assertEquals("[]", userList.get().toString());
     }
@@ -131,7 +128,7 @@ public class AddRemoveLibraryUserViewModelTest {
         firstNameTextField.set("Rafa");
         lastNameTextField.set("Sanchez");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("Password can't be null", errorLabel.get());
         assertEquals("[]", userList.get().toString());
     }
@@ -141,7 +138,7 @@ public class AddRemoveLibraryUserViewModelTest {
         firstNameTextField.set("Rafa");
         lastNameTextField.set("Sanchez");
         passwordTextField.set("1234");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("SSN can't be null", errorLabel.get());
         assertEquals("[]", userList.get().toString());
     }
@@ -152,7 +149,7 @@ public class AddRemoveLibraryUserViewModelTest {
         lastNameTextField.set("Sanchez");
         passwordTextField.set("1234");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("First name should be less than 50 characters", errorLabel.get());
         assertEquals("[]", userList.get().toString());
     }
@@ -163,7 +160,7 @@ public class AddRemoveLibraryUserViewModelTest {
         lastNameTextField.set("fffffffffffffffffffffffffffffffffffffffffffffffffff");
         passwordTextField.set("1234");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("Last name should be less than 50 characters", errorLabel.get());
         assertEquals("[]", userList.get().toString());
     }
@@ -174,7 +171,7 @@ public class AddRemoveLibraryUserViewModelTest {
         lastNameTextField.set("Sanchez");
         passwordTextField.set("fffffffffffffffffffff");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("Password can't be longer than 20 characters", errorLabel.get());
         assertEquals("[]", userList.get().toString());
     }
@@ -185,7 +182,7 @@ public class AddRemoveLibraryUserViewModelTest {
         lastNameTextField.set("Sanchez");
         passwordTextField.set("1234");
         ssnTextField.set("ffffffffffffff");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("ssn should be 13 characters", errorLabel.get());
         assertEquals("[]", userList.get().toString());
     }
@@ -196,7 +193,7 @@ public class AddRemoveLibraryUserViewModelTest {
         lastNameTextField.set("Sanchez");
         passwordTextField.set("1234");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("", firstNameTextField.get());
         assertEquals("", lastNameTextField.get());
         assertEquals("", passwordTextField.get());
@@ -209,13 +206,13 @@ public class AddRemoveLibraryUserViewModelTest {
         lastNameTextField.set("Sanchez");
         passwordTextField.set("1234");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("First name should be less than 50 characters", errorLabel.get());
         firstNameTextField.set("Rafa");
         lastNameTextField.set("Sanchez");
         passwordTextField.set("1234");
         ssnTextField.set("1234567890123");
-        viewModel.addLibraryUser(new LibraryUser(ssnTextField.getValue(), firstNameTextField.getValue(), lastNameTextField.getValue(), passwordTextField.getValue()));
+        viewModel.addLibraryUser();
         assertEquals("", errorLabel.get());
     }
 

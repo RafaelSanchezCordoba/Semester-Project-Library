@@ -23,7 +23,7 @@ public class FakeModelManagerLibraryUser implements ModelLibraryUser
     }
 
     @Override
-    public void addLibraryUser(LibraryUser libraryUser) throws RemoteException {
+    public void addLibraryUser(LibraryUser libraryUser)  {
         list.add(libraryUser);
         support.firePropertyChange("addLibraryUser", null, libraryUser);
     }

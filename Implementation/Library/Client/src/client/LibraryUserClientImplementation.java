@@ -42,7 +42,9 @@ public class LibraryUserClientImplementation extends UnicastRemoteObject impleme
    * @throws RemoteException
    * @throws SQLException
    */
-  @Override public void addLibraryUser(LibraryUser libraryUser) throws RemoteException {
+  @Override public void addLibraryUser(LibraryUser libraryUser)
+      throws RemoteException
+  {
     remoteLibraryUser.addLibraryUser(libraryUser);
   }
 
