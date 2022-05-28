@@ -124,7 +124,7 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
      * A String property
      */
     public void bindErrorLabel(StringProperty property) {
-        property.bindBidirectional(errorLabel);
+        property.bind(errorLabel);
     }
 
     /**
@@ -164,14 +164,26 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
 
     /**
      * Add magazine method
-     * @param magazine
-     * The magazine passed as an argument
      */
-    public void addMagazine(Magazine magazine)
+    public void addMagazine()
         throws RemoteException
     {
         if (!errorsCheck())
         {
+            int volume;
+            if (volumeTextField.get().equals(""))
+            {
+                volume= 1;
+            }
+            else
+            {
+                volume=Integer.parseInt(volumeTextField.get());
+            }
+            java.sql.Date date = new java.sql.Date(Integer.parseInt(yearTextField.get()) - 1900,
+                Integer.parseInt(monthTextField.get()) - 1, Integer.parseInt(dayTextField.get()));
+            Magazine magazine = new Magazine(titleTextField.get(),
+                publisherTextField.get(),volume,
+                genreTextField.get(), date);
             model.addMagazine(magazine);
             errorLabel.set("");
         }
@@ -220,6 +232,21 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
             errorLabel.set("Publisher can't be null");
             return true;
         }
+        else if (dayTextField.get().equals(""))
+        {
+            errorLabel.set("Day can't be null");
+            return true;
+        }
+        else if (monthTextField.get().equals(""))
+        {
+            errorLabel.set("Month can't be null");
+            return true;
+        }
+        else if(yearTextField.get().equals(""))
+        {
+            errorLabel.set("Year can't be null");
+            return true;
+        }
         else if (Integer.parseInt(dayTextField.get())<1)
         {
             errorLabel.set("Invalid date");
@@ -245,7 +272,6 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
                         return true;
                     }
             }
-
         }
         else if (Integer.parseInt(monthTextField.get())<1||Integer.parseInt(monthTextField.get())>12)
         {
@@ -257,16 +283,32 @@ public class AddRemoveMagazineViewModel implements PropertyChangeListener {
             errorLabel.set("Invalid date: future date");
             return true;
         }
-       /* else if (titleTextField.get().length()>50)
+        else if(!volumeTextField.get().equals(""))
         {
-            errorLabel.set("Title must be less than 50 characters");
+            if (volumeFormatCheck())
+            {
+                errorLabel.set("The volume must be a number");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Check if the value format is correct
+     * @return
+     * False if it is, true if not
+     */
+    private boolean volumeFormatCheck()
+    {
+        try
+        {
+            Integer.parseInt(volumeTextField.get());
+        }
+        catch (NumberFormatException e)
+        {
             return true;
         }
-        else if (publisherTextField.get().length()>50)
-        {
-            errorLabel.set("Publisher must be less than 50 characters");
-            return true;
-        }*/
         return false;
     }
 

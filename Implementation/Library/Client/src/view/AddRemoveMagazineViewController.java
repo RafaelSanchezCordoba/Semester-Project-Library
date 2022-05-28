@@ -71,76 +71,12 @@ public class AddRemoveMagazineViewController
   @FXML
   public void addMagazineButtonPressed() throws RemoteException
   {
-    int volume;
-    if (!errorsCheck())
-      {
-        if (volumeTextField.getText().equals(""))
-        {
-        volume= 1;
-        }
-        else
-        {
-          volume=Integer.parseInt(volumeTextField.getText());
-        }
-        Date date = new Date(Integer.parseInt(yearTextField.getText()) - 1900,
-            Integer.parseInt(monthTextField.getText()) - 1, Integer.parseInt(dayTextField.getText()));
-        Magazine magazine = new Magazine(titleTextField.getText(),
-            publisherTextField.getText(), volume,
-            genreTextField.getText(), date);
-        viewModel.addMagazine(magazine);
-      }
+    viewModel.addMagazine();
   }
 
-  /**
-   * Checks if the input information is correct
-   * @return
-   * True if is not, false if is
-   */
-  public boolean errorsCheck()
-  {
-    if (dayTextField.getText().equals(""))
-  {
-    errorLabel.setText("Day can't be null");
-    return true;
-  }
-  else if (monthTextField.getText().equals(""))
-  {
-    errorLabel.setText("Month can't be null");
-    return true;
-  }
-  else if(yearTextField.getText().equals(""))
-  {
-    errorLabel.setText("Year can't be null");
-    return true;
-  }
-  else if(!volumeTextField.getText().equals(""))
-    {
-      if (volumeFormatCheck())
-      {
-        errorLabel.setText("The volume must be a number");
-        return true;
-      }
-    }
-  return  false;
-  }
 
-  /**
-   * Check if the value format is correct
-   * @return
-   * False if it is, true if not
-   */
-  private boolean volumeFormatCheck()
-  {
-    try
-    {
-      Integer.parseInt(volumeTextField.getText());
-    }
-    catch (NumberFormatException e)
-    {
-      return true;
-    }
-    return false;
-  }
+
+
 
   /**
    * Calls the method remove magazine from the view when the button is pressed

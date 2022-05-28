@@ -51,6 +51,6 @@ public class Magazine extends MultimediaItem implements Serializable {
 
     @Override public String toString()
     {
-        return super.toString()+", Volume: "+getVolume()+", Genre: "+getGenre();
+        return super.toString()+", Volume: "+getVolume()+", Genre: "+getGenre()+", Date: "+getDate();
     }
 }

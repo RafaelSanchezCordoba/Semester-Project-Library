@@ -76,7 +76,7 @@ public class LibrarianTest {
     librarian = new Librarian("1234567890", "password", "Pepito", "Perez");
     Date date = new Date(2022, 5, 7);
     librarian.setDate(date);
-    assertEquals(date.toString(), librarian.getDateOfEmployment());
+    assertEquals(date, librarian.getDateOfEmployment());
   }
 
 
@@ -85,6 +85,6 @@ public class LibrarianTest {
     librarian = new Librarian("1234567890", "password", "Pepito", "Perez");
     Date date = new Date(2023, 5, 7);
     librarian.setDate(date);
-    assertEquals(date.toString(), librarian.getDateOfEmployment());
+    assertEquals(date, librarian.getDateOfEmployment());
   }
 }

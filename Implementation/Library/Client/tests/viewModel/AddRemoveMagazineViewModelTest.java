@@ -72,7 +72,7 @@ public class AddRemoveMagazineViewModelTest
   }
 
   @Test
-  public void setting_the_labels_doesnt_change_list_or_error() {
+   void setting_the_labels_doesnt_change_list_or_error() {
     title.set("Forbes");
     publisher.set("Forbes");
     volume.set("134");
@@ -84,7 +84,7 @@ public class AddRemoveMagazineViewModelTest
     assertEquals("[]", magazineList.getValue().toString());
   }
 
-  @Test void add_adds_the_magazine() throws SQLException, RemoteException
+  @Test void add_adds_the_magazine() throws RemoteException
   {
     title.set("Forbes");
     publisher.set("Forbes");
@@ -93,11 +93,11 @@ public class AddRemoveMagazineViewModelTest
     month.set("3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
-    assertEquals("[Magazine{title=Forbes, publisher=Forbes, volume=134, genre='Economy', date=2022-03-12}]",magazineList.get().toString());
+    viewModel.addMagazine();
+    assertEquals("[Forbes, Publisher: Forbes, Volume: 134, Genre: Economy, Date: 2022-03-12]",magazineList.get().toString());
   }
 
-  @Test void add_two_magazines() throws SQLException, RemoteException
+  @Test void add_multiple_magazines() throws SQLException, RemoteException
   {
     title.set("Forbes");
     publisher.set("Forbes");
@@ -106,7 +106,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     title.set("Hola");
     publisher.set("Paquito");
     volume.set("128");
@@ -114,11 +114,11 @@ public class AddRemoveMagazineViewModelTest
     month.set("8");
     year.set("2019");
     genre.set("Sports");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
-    assertEquals("[Magazine{title=Forbes, publisher=Forbes, volume=134, genre='Economy', date=2022-03-12}, Magazine{title=Hola, publisher=Paquito, volume=128, genre='Sports', date=2019-08-01}]",magazineList.get().toString());
+    viewModel.addMagazine();
+    assertEquals("[Forbes, Publisher: Forbes, Volume: 134, Genre: Economy, Date: 2022-03-12, Hola, Publisher: Paquito, Volume: 128, Genre: Sports, Date: 2019-08-01]",magazineList.get().toString());
   }
 
-  @Test void adding_clear_fields() throws SQLException, RemoteException
+  @Test void adding_clear_fields() throws RemoteException
   {
     title.set("Forbes");
     publisher.set("Forbes");
@@ -127,7 +127,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("",title.get());
     assertEquals("",publisher.get());
     assertEquals("",volume.get());
@@ -142,7 +142,7 @@ public class AddRemoveMagazineViewModelTest
 
   //errors
 
-  @Test void null_title_gives_error_and_doesnt_add() throws SQLException, RemoteException
+  @Test void null_title_gives_error_and_doesnt_add() throws RemoteException
   {
     publisher.set("Forbes");
     volume.set("134");
@@ -150,7 +150,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Title can't be null",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
@@ -164,7 +164,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Publisher can't be null",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
@@ -178,8 +178,8 @@ public class AddRemoveMagazineViewModelTest
     month.set("3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
-    assertEquals("Invalid date",error.get());
+    viewModel.addMagazine();
+     assertEquals("Invalid date",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
 
@@ -192,7 +192,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Invalid date",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
@@ -206,7 +206,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("2");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Invalid date",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
@@ -220,7 +220,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Invalid date",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
@@ -234,7 +234,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("9");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Invalid date",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
@@ -248,7 +248,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("6");
     year.set("2023");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Invalid date: future date",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
@@ -262,7 +262,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("-3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Invalid date",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
@@ -276,7 +276,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("0");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Invalid date",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
@@ -290,42 +290,11 @@ public class AddRemoveMagazineViewModelTest
     month.set("13");
     year.set("2021");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Invalid date",error.get());
     assertEquals("[]",magazineList.get().toString());
   }
-/*
 
-  @Test void title_51_character_gives_error_and_doent_add()
-      throws SQLException, RemoteException
-  {
-    title.set("fffffffffffffffffffffffffffffffffffffffffffffffffff");
-    publisher.set("Forbes");
-    volume.set("134");
-    day.set("12");
-    month.set("11");
-    year.set("2020");
-    genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
-    assertEquals("Title must be less than 50 characters",error.get());
-    assertEquals("[]",magazineList.get().toString());
-  }
-
-  @Test void publisher_51_character_gives_error_and_doent_add()
-      throws SQLException, RemoteException
-  {
-    title.set("Forbes");
-    publisher.set("fffffffffffffffffffffffffffffffffffffffffffffffffff");
-    volume.set("134");
-    day.set("12");
-    month.set("11");
-    year.set("2020");
-    genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
-    assertEquals("Publisher must be less than 50 characters",error.get());
-    assertEquals("[]",magazineList.get().toString());
-  }
-*/
 
   @Test void errors_clear_fields() throws SQLException, RemoteException
   {
@@ -336,7 +305,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("-3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("",title.get());
     assertEquals("",publisher.get());
     assertEquals("",volume.get());
@@ -355,7 +324,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("-3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("Invalid date",error.get());
     title.set("Forbes");
     publisher.set("Forbes");
@@ -364,7 +333,7 @@ public class AddRemoveMagazineViewModelTest
     month.set("3");
     year.set("2022");
     genre.set("Economy");
-    viewModel.addMagazine(new Magazine(title.getValue(),publisher.getValue(),Integer.parseInt(volume.getValue()),genre.getValue(),new Date(Integer.parseInt(year.getValue())-1900,Integer.parseInt(month.getValue())-1,Integer.parseInt(day.getValue()))));
+    viewModel.addMagazine();
     assertEquals("",error.get());
   }
 
