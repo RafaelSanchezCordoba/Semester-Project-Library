@@ -15,6 +15,7 @@ import java.util.ArrayList;
  * interface for the database.
  */
 public interface BookDAO {
+
   /**
    * Method removing book after it's id
    * @param id
