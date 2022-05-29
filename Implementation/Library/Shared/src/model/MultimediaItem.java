@@ -13,23 +13,6 @@ public class MultimediaItem implements Serializable {
     private int id;
     private final String title, publisher;
 
-
-    public int getId()
-    {
-        return id;
-    }
-
-    public String getTitle()
-    {
-        return title;
-    }
-
-    public String getPublisher()
-    {
-        return publisher;
-    }
-
-
     /**
      * Multimedia item constructor
      * @param title
@@ -44,6 +27,50 @@ public class MultimediaItem implements Serializable {
         this.publisher = publisher;
     }
 
+    /**
+     * Get id method
+     * @return
+     * The unique identification number of the multimedia item
+     */
+    public int getId()
+    {
+        return id;
+    }
+
+    /**
+     * Get title method
+     * @return
+     * The title of the multimedia item
+     */
+    public String getTitle()
+    {
+        return title;
+    }
+
+    /**
+     * Get publisher method
+     * @return
+     * The publisher of the multimedia item
+     */
+    public String getPublisher()
+    {
+        return publisher;
+    }
+
+    /**
+     * Set id method
+     * @param id
+     * The unique identification number
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * toString method
+     * @return
+     * The variables of the multimedia item as a String
+     */
     @Override public String toString()
     {
         return  title + ", Publisher: " + publisher ;
@@ -51,9 +78,6 @@ public class MultimediaItem implements Serializable {
 
 
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
 
 }

@@ -14,24 +14,22 @@ public class Book extends MultimediaItem implements Serializable {
     private String isbn,author;
     private GenreList genreList;
 
-    /**
-     * Book constructor with super method.
-     * The author is set to null because it could be an anonymous writer.
-     * @param title
-     * The title of the book.
-     * @param publisher
-     * The publisher of the book.
-     * @param isbn
-     * The isbn of the book.
-     * @param edition
-     * The edition of the book.
-     * @param year_published
-     * The year published of the book.
-     * @param genreList
-     * The list of genre of the book.
-     */
-
-    //constructor without author
+  /**
+   * Book constructor with super method.
+   * The author is set to null because it could be an anonymous writer.
+   * @param title
+   * The title of the book.
+   * @param publisher
+   * The publisher of the book.
+   * @param isbn
+   * The isbn of the book.
+   * @param edition
+   * The edition of the book.
+   * @param year_published
+   * The year published of the book.
+   * @param genreList
+   * The list of genre of the book.
+   */
     public Book(String title, String publisher, String isbn, int edition, int year_published, GenreList genreList) {
         super(title, publisher);
         this.isbn = isbn;
@@ -41,7 +39,23 @@ public class Book extends MultimediaItem implements Serializable {
         setAuthor("Anonymous");
     }
 
-    //complete constructor
+  /**
+   * Book constructor with super method and al the variables as an arguments
+   * @param author
+   * The author of the book
+   * @param title
+   * The title of the book
+   * @param publisher
+   * The publisher of the book
+   * @param isbn
+   * The isbn of the book
+   * @param edition
+   * The edition of the book
+   * @param year_published
+   * The year published of the book
+   * @param genreList
+   * The genres of the book
+   */
   public Book(String author,String title, String publisher, String isbn, int edition, int year_published, GenreList genreList) {
     super(title, publisher);
     this.isbn = isbn;
@@ -51,7 +65,21 @@ public class Book extends MultimediaItem implements Serializable {
     setAuthor(author);
   }
 
-  //constructor without genreList
+  /**
+   * Book constructor with super method and without genre list
+   * @param author
+   * The author of the book
+   * @param title
+   * The title of the book
+   * @param publisher
+   * The publisher of the book
+   * @param isbn
+   * The isbn of the book
+   * @param edition
+   * The edition of the book
+   * @param year_published
+   * The year published of the book
+   */
   public Book(String author,String title, String publisher, String isbn, int edition, int year_published) {
     super(title, publisher);
     this.isbn = isbn;
@@ -60,7 +88,20 @@ public class Book extends MultimediaItem implements Serializable {
     setAuthor(author);
   }
 
-  //constructor without genreList and author
+  /**
+   * Book constructor with super method.
+   * constructor without genreList and author
+   * @param title
+   * The title of the book
+   * @param publisher
+   * The publisher of the book
+   * @param isbn
+   * The isbn of the book
+   * @param edition
+   * The edition of the book
+   * @param year_published
+   * The year published of the book
+   */
   public Book(String title, String publisher, String isbn, int edition, int year_published) {
     super(title, publisher);
     this.isbn = isbn;
@@ -72,57 +113,85 @@ public class Book extends MultimediaItem implements Serializable {
 
 
 
-  public String getIsbn()
-  {
+  /**
+   * Get Isbn methon
+   * @return
+   * The isbn of the book
+   */
+  public String getIsbn() {
     return isbn;
   }
 
-  public int getEdition()
-  {
+  /**
+   * Get edition method
+   * @return
+   * The edition of the book
+   */
+  public int getEdition() {
     return edition;
   }
 
-  public int getYear_published()
-  {
+  /**
+   * Get year of published method
+   * @return
+   * The year of published of the book
+   */
+  public int getYear_published() {
     return year_published;
   }
 
-  public String getAuthor()
-  {
+  /**
+   * Get author method
+   * @return
+   * The author of the book
+   */
+  public String getAuthor() {
     return author;
   }
 
-  public GenreList getGenreList()
-  {
+  /**
+   * Get genre list method
+   * @return
+   * The genre list of the book
+   */
+  public GenreList getGenreList() {
     return genreList;
   }
 
+  /**
+   * Set id method
+   * @param id
+   * The unique identification number of book
+   */
   public void setId(int id) {
-      super.setId(id);
+    super.setId(id);
   }
-
-  public void setGenreList(GenreList genreList) {
-        this.genreList = genreList;
-  }
-
 
   /**
-     * Set an author in case it is not anonymous.
-     * @param author
-     * The author of the book.
-     */
-    public void setAuthor(String author) {
-      if (author.equals(""))
-      {
-        this.author="Anonymous";
-      }
-      else
-      {this.author = author;}
-    }
+   * Set genre list method
+   * @param genreList
+   * The genres of the book
+   */
+  public void setGenreList(GenreList genreList) {
+    this.genreList = genreList;
+  }
 
-  @Override public String toString()
-  {
-    return getTitle()+", Author: "+author+", Edition: " + edition + ", year published: " + year_published
-        + ", ISBN: " + isbn;
+  /**
+   * Set an author in case it is not anonymous.
+   * @param author
+   * The author of the book.
+   */
+  public void setAuthor(String author) {
+    this.author = Objects.requireNonNullElse(author, "Anonymous");
+  }
+
+  /**
+   * toString method of book
+   * @return
+   * Display al the variables with their values as a String
+   */
+  @Override public String toString() {
+    return "Title="+getTitle()+", author="+author+", edition=" + edition + ", year published=" + year_published
+            + ", isbn=" + isbn;
   }
 }
