@@ -20,7 +20,7 @@ public class Librarian  implements Serializable
     /**
      * Librarian constructor.
      * @param ssn
-     * The social security numbner.
+     * The social security number.
      * @param password
      * The password.
      * @param firstName
@@ -40,35 +40,69 @@ public class Librarian  implements Serializable
         this.date=new Date(Integer.parseInt(year)-1900,Integer.parseInt(month)-1,Integer.parseInt(day));
     }
 
-
+    /**
+     * Get the social security number method
+     * @return
+     * The social security number of the librarian
+     */
     public String getSsn(){
         return ssn;
     }
 
+    /**
+     * Get password method
+     * @return
+     * The password of the librarian
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Get first name method
+     * @return
+     * The first name of the librarian
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Get last name method
+     * @return
+     * The last name of the librarian
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Get date of employment method
+     * @return
+     * The date of employment
+     */
     public Date getDateOfEmployment() {
         return date;
     }
 
+    /**
+     * Set date method
+     * @param date
+     * The date of employment
+     */
     public void setDate(Date date) {
         this.date = date;
     }
 
+    /**
+     * toString method of librarian
+     * @return
+     * The librarian variables values as a String
+     */
     @Override public String toString()
     {
         return "Librarian{" + "ssn:'" + ssn
-            + '\'' + ", first Name:'" + firstName + '\'' + ", last Name:'"
-            + lastName +"'}";
+                + '\'' + ", first Name:'" + firstName + '\'' + ", last Name:'"
+                + lastName +"'}";
     }
 }

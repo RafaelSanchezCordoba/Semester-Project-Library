@@ -14,9 +14,13 @@ public class LibraryUser implements Serializable
   /**
    * Constructor of the library user class
    * @param ssn
+   * The social security number
    * @param firstName
+   * The first name
    * @param lastName
+   * The las name
    * @param password
+   * The password
    */
   public LibraryUser(String ssn,String firstName,String lastName,String password){
     this.ssn= ssn;
@@ -26,8 +30,9 @@ public class LibraryUser implements Serializable
   }
 
   /**
-   * return ssn fname lname of the library user as a String
+   * toString method
    * @return String
+   * The library user variables as a String
    */
   @Override public String toString()
   {
@@ -38,7 +43,9 @@ public class LibraryUser implements Serializable
   /**
    * Determines if 2 library users are equal to each other
    * @param o
+   * The object to compare
    * @return
+   * True if they are, false if not
    */
   @Override public boolean equals(Object o)
   {
@@ -52,24 +59,40 @@ public class LibraryUser implements Serializable
   }
 
   /**
-   * returns the ssn of the library user as String
+   * Get social security number method
    * @return String
+   * The social security number of the library user
    */
   public String getSSN()
   {
     return ssn;
   }
 
+  /**
+   * Get first name method
+   * @return
+   * The first name of the library user
+   */
   public String getFirstName()
   {
     return firstName;
   }
 
+  /**
+   * Get last name method
+   * @return
+   * The last name of the library user
+   */
   public String getLastName()
   {
     return lastName;
   }
 
+  /**
+   * Get password method
+   * @return
+   * The password of the library user
+   */
   public String getPassword()
   {
     return password;

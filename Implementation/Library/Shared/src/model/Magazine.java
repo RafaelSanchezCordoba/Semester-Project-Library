@@ -32,23 +32,41 @@ public class Magazine extends MultimediaItem implements Serializable {
         this.date = date;
     }
 
+    /**
+     * Get volume method
+     * @return
+     * The volume of the magazine
+     */
     public int getVolume()
     {
         return volume;
     }
 
+    /**
+     * Get genre method
+     * @return
+     * The genre of the magazine
+     */
     public String getGenre()
     {
         return genre;
     }
 
+    /**
+     * Get date method
+     * @return
+     * The date of the magazine
+     */
     public Date getDate()
     {
         return date;
     }
 
-
-
+    /**
+     * toString method
+     * @return
+     * The variables of magazine as a String
+     */
     @Override public String toString()
     {
         return super.toString()+", Volume: "+getVolume()+", Genre: "+getGenre()+", Date: "+getDate();
