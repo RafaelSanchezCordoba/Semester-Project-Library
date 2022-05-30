@@ -6,13 +6,14 @@ import model.LibraryUser;
 import model.LoanBook;
 import model.MultimediaItem;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ModelManagerLoanBook implements ModelLoanBook
+public class ModelManagerLoanBook implements ModelLoanBook, PropertyChangeListener
 {
   private final LoanBookClient client;
   private PropertyChangeSupport support;
@@ -25,6 +26,7 @@ public class ModelManagerLoanBook implements ModelLoanBook
   public ModelManagerLoanBook(LoanBookClient loanBookClient){
     this.client = loanBookClient;
     this.support = new PropertyChangeSupport(this);
+    support.addPropertyChangeListener("addLoanBook", this);
   }
 
   /**
@@ -37,7 +39,7 @@ public class ModelManagerLoanBook implements ModelLoanBook
       throws  RemoteException
   {
     client.addBookLoan(loanBook);
-    support.firePropertyChange("newLoanBook",null,loanBook);
+    //support.firePropertyChange("newLoanBook",null,loanBook);
   }
 
   /**
@@ -90,12 +92,6 @@ public class ModelManagerLoanBook implements ModelLoanBook
     support.firePropertyChange("removeLoanBook",null,loan_id);
   }
 
-  @Override
-  public Collection<? extends MultimediaItem> addPropertyChangeListener() {
-    client.addPropertyChangeListener(evt -> evt.getNewValue());
-    return null;
-  }
-
   /**
    * Add property change listener, just with the listener
    * @param listener
@@ -142,5 +138,10 @@ public class ModelManagerLoanBook implements ModelLoanBook
       PropertyChangeListener listener)
   {
     support.removePropertyChangeListener(name,listener);
+  }
+
+  @Override
+  public void propertyChange(PropertyChangeEvent evt) {
+    support.firePropertyChange(evt);
   }
 }

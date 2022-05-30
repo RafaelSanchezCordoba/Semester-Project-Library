@@ -1,5 +1,7 @@
 package mediator;
 
+import dk.via.remote.observer.RemotePropertyChangeListener;
+import dk.via.remote.observer.RemotePropertyChangeSupport;
 import model.Book;
 import model.LibraryUser;
 import model.LoanBook;
@@ -51,7 +53,5 @@ public interface ModelLoanBook extends PropertyChangeSubject {
    * @throws RemoteException
    */
   void returnBook(int loan_id) throws RemoteException;
-
-  Collection<? extends MultimediaItem> addPropertyChangeListener();
 }
 

@@ -19,7 +19,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class LoanBookClientImplementation extends UnicastRemoteObject implements LoanBookClient, RemotePropertyChangeListener<ArrayList<Book>>
+public class LoanBookClientImplementation extends UnicastRemoteObject implements LoanBookClient, RemotePropertyChangeListener<LoanBook>
 {
   private RemoteLoanBook remoteLoanBook;
   private final PropertyChangeSupport support;
@@ -37,6 +37,7 @@ public class LoanBookClientImplementation extends UnicastRemoteObject implements
     Registry registry = LocateRegistry.getRegistry(host,port);
     remoteLoanBook = (RemoteLoanBook) registry.lookup("loanBook");
     support = new PropertyChangeSupport(this);
+    remoteLoanBook.addPropertyChangeListener("addLoanBook", this);
   }
 
   /**
@@ -122,7 +123,7 @@ public class LoanBookClientImplementation extends UnicastRemoteObject implements
   }
 
   @Override
-  public void propertyChange(RemotePropertyChangeEvent<ArrayList<Book>> event) throws RemoteException {
+  public void propertyChange(RemotePropertyChangeEvent<LoanBook> event) throws RemoteException {
     support.firePropertyChange(event.getPropertyName(), event.getOldValue(), event.getNewValue());
   }
 }

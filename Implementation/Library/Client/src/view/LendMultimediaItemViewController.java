@@ -5,10 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
-import model.LibraryUser;
-import model.LoanBook;
-import model.LoanMagazine;
-import model.MultimediaItem;
+import model.*;
 import viewModel.LoanBookViewModel;
 import viewModel.LoanMagazineViewModel;
 
@@ -29,7 +26,7 @@ public class LendMultimediaItemViewController {
     @FXML private Label selectedLibraryUserLabel;
     @FXML private TextField ssnTextField;
     @FXML private ListView<MultimediaItem> magazineListView;
-    @FXML private ListView<MultimediaItem> bookListView;
+    @FXML private ListView<Book> bookListView;
 
 
 
@@ -122,7 +119,6 @@ public class LendMultimediaItemViewController {
        try
        {
          bookViewModel.createLoan(id_book);
-         bookViewModel.addPropertyChangeLister();
        }
        catch ( RemoteException e)
        {

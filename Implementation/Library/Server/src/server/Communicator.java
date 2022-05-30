@@ -18,7 +18,7 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     private LibraryUserStorage libraryUserStorage;
     private LoanMagazineStorage loanMagazineStorage;
     private LoanBookStorage loanBookStorage;
-    private final RemotePropertyChangeSupport<ArrayList<Book>> supportAvailableBook;
+    private final RemotePropertyChangeSupport<LoanBook> supportAvailableBook;
 //    private GenreStorage genreStorage;
 
 
@@ -141,6 +141,8 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
         throws  RemoteException
     {
         loanBookStorage.addLoanBook(loanBook);
+        supportAvailableBook.firePropertyChange("addLoanBook", null, loanBook);
+
     }
 
     @Override public ArrayList<Book> getAvailableBookList()
@@ -165,13 +167,13 @@ public class Communicator extends UnicastRemoteObject implements RemoteBook, Rem
     }
 
     @Override
-    public void addPropertyChangeListener(RemotePropertyChangeListener<ArrayList<Book>> listener) throws RemoteException{
-        supportAvailableBook.addPropertyChangeListener(listener);
+    public void addPropertyChangeListener(String name, RemotePropertyChangeListener<LoanBook> listener) throws RemoteException{
+        supportAvailableBook.addPropertyChangeListener(name, listener);
     }
 
     @Override
-    public void removePropertyChangeListener(RemotePropertyChangeListener<ArrayList<Book>> listener) throws RemoteException{
-        supportAvailableBook.removePropertyChangeListener(listener);
+    public void removePropertyChangeListener(String name, RemotePropertyChangeListener<LoanBook> listener) throws RemoteException{
+        supportAvailableBook.removePropertyChangeListener(name, listener);
     }
 
     //    @Override public ArrayList<Magazine> getLoanedMagazines(String ssn)

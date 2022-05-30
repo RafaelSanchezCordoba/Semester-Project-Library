@@ -1,5 +1,6 @@
 package client;
 
+import dk.via.remote.observer.RemotePropertyChangeListener;
 import model.Book;
 import model.LibraryUser;
 import model.LoanBook;
@@ -12,7 +13,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface LoanBookClient extends Closeable {
+public interface LoanBookClient extends Closeable, RemotePropertyChangeListener<LoanBook> {
   /**
    * Add loan book method
    * @param loanBook
@@ -57,6 +58,6 @@ public interface LoanBookClient extends Closeable {
    */
   void returnBook(int loan_id) throws RemoteException;
 
-  void addPropertyChangeListener(PropertyChangeListener listener);
-  void removePropertyChangeListener(PropertyChangeListener listener);
+  void addPropertyChangeListener(PropertyChangeListener listener) throws RemoteException;
+  void removePropertyChangeListener(PropertyChangeListener listener) throws RemoteException;
 }

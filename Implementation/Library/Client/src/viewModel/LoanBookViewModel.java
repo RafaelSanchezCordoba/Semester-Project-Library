@@ -7,6 +7,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mediator.ModelLoanBook;
+import model.Book;
 import model.LibraryUser;
 import model.LoanBook;
 import model.MultimediaItem;
@@ -16,6 +17,7 @@ import java.beans.PropertyChangeListener;
 import java.rmi.RemoteException;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class LoanBookViewModel implements PropertyChangeListener
 {
@@ -29,7 +31,7 @@ public class LoanBookViewModel implements PropertyChangeListener
   private final StringProperty selectedLibraryUserLabel;
   private final StringProperty ssnTextField;
 
-  private SimpleListProperty<MultimediaItem> availableBooks;
+  private SimpleListProperty<Book> availableBooks;
 
   public LoanBookViewModel(ModelLoanBook model){
     this.model= model;
@@ -39,24 +41,12 @@ public class LoanBookViewModel implements PropertyChangeListener
     this.selectedLibraryUserLabel = new SimpleStringProperty("");
     this.ssnTextField = new SimpleStringProperty("");
 
-    ObservableList<MultimediaItem> observableList = FXCollections.observableArrayList( new ArrayList<MultimediaItem>());
+    ObservableList<Book> observableList = FXCollections.observableArrayList( new ArrayList<Book>());
     this.availableBooks = new SimpleListProperty<>(observableList);
 
-    model.addPropertyChangeListener("newLoanBook",this);
+    model.addPropertyChangeListener("addLoanBook", this);
   }
 
-  public void propertyChange(PropertyChangeEvent event){
-    try
-    {
-      reset();
-    }
-    catch ( RemoteException e)
-    {
-
-      e.printStackTrace();
-    }
-
-  }
   public void bindMultimediaItemLabel(StringProperty property){
     property.bindBidirectional(multimediaItemLabel);
   }
@@ -80,7 +70,7 @@ public class LoanBookViewModel implements PropertyChangeListener
   }
 
   public void bindAvailableBooksList(
-      ObjectProperty<ObservableList<MultimediaItem>> property){
+      ObjectProperty<ObservableList<Book>> property){
     property.bind(availableBooks);
   }
 
@@ -130,10 +120,17 @@ public class LoanBookViewModel implements PropertyChangeListener
     }
   }
 
-  public void addPropertyChangeLister() throws RemoteException {
-    availableBooks.addAll(model.addPropertyChangeListener());
-  }
+  @Override
+  public void propertyChange(PropertyChangeEvent evt) {
+    try {
+      reset();
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
+    availableBooks.remove(evt.getNewValue());
 
+    System.out.println(evt.getNewValue().toString());
+  }
 }
 
 
