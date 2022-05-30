@@ -18,7 +18,7 @@ public interface ModelLibraryUser extends PropertyChangeSubject {
    * The library user passed as an argument
    * @throws RemoteException
    */
-  void addLibraryUser(LibraryUser libraryUser) ;
+  void addLibraryUser(LibraryUser libraryUser) throws RemoteException;
 
   /**
    * Remove a library user with a specific social security number

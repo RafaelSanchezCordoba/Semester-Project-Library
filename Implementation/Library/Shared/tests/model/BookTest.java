@@ -18,7 +18,7 @@ class BookTest {
         genres.addGenre(new Genre("Juvenile"));
         genres.addGenre(new Genre("Romance"));
         book=new Book("Laini Taylor" ,"Daughter of Smoke and Bone","Hodder & Stoughton","978-0-316-13402-6",2,2011,genres);
-        assertEquals("Title: Daughter of Smoke and Bone, author: Laini Taylor, edition=2, year_published=2011, isbn='978-0-316-13402-6', genres=Fantasy Juvenile Romance",book.toString());
+        assertEquals("Title=Daughter of Smoke and Bone, author=Laini Taylor, edition=2, year published=2011, isbn=978-0-316-13402-6",book.toString());
     }
 
     @Test void create_a_book_without_author()
@@ -28,19 +28,19 @@ class BookTest {
         genres.addGenre(new Genre("Juvenile"));
         genres.addGenre(new Genre("Romance"));
         book=new Book("Daughter of Smoke and Bone","Hodder & Stoughton","978-0-316-13402-6",2,2011,genres);
-        assertEquals("Title: Daughter of Smoke and Bone, author: Anonymous, edition=2, year_published=2011, isbn='978-0-316-13402-6', genres=Fantasy Juvenile Romance",book.toString());
+        assertEquals("Title=Daughter of Smoke and Bone, author=Anonymous, edition=2, year published=2011, isbn=978-0-316-13402-6",book.toString());
     }
 
     @Test void create_a_book_without_genre()
     {
         book=new Book("Laini Taylor", "Daughter of Smoke and Bone","Hodder & Stoughton","978-0-316-13402-6",2,2011);
-        assertEquals("Title: Daughter of Smoke and Bone, author: Laini Taylor, edition=2, year_published=2011, isbn='978-0-316-13402-6', genres=null",book.toString());
+        assertEquals("Title=Daughter of Smoke and Bone, author=Laini Taylor, edition=2, year published=2011, isbn=978-0-316-13402-6",book.toString());
     }
 
     @Test void create_a_book_without_genre_or_author()
     {
         book=new Book("Daughter of Smoke and Bone","Hodder & Stoughton","978-0-316-13402-6",2,2011);
-        assertEquals("Title: Daughter of Smoke and Bone, author: Anonymous, edition=2, year_published=2011, isbn='978-0-316-13402-6', genres=null",book.toString());
+        assertEquals("Title=Daughter of Smoke and Bone, author=Anonymous, edition=2, year published=2011, isbn=978-0-316-13402-6",book.toString());
 
     }
 
@@ -48,14 +48,14 @@ class BookTest {
     {
         book=new Book("Daughter of Smoke and Bone","Hodder & Stoughton","978-0-316-13402-6",2,2011);
        book.setAuthor("Laini Taylor");
-        assertEquals("Title: Daughter of Smoke and Bone, author: Laini Taylor, edition=2, year_published=2011, isbn='978-0-316-13402-6', genres=null",book.toString());
+        assertEquals("Title=Daughter of Smoke and Bone, author=Laini Taylor, edition=2, year published=2011, isbn=978-0-316-13402-6",book.toString());
     }
 
     @Test void set_the_author_to_null_sets_anonymous()
     {
         book=new Book("Laini Taylor","Daughter of Smoke and Bone","Hodder & Stoughton","978-0-316-13402-6",2,2011);
         book.setAuthor(null);
-        assertEquals("Title: Daughter of Smoke and Bone, author: Anonymous, edition=2, year_published=2011, isbn='978-0-316-13402-6', genres=null",book.toString());
+        assertEquals("Title=Daughter of Smoke and Bone, author=Anonymous, edition=2, year published=2011, isbn=978-0-316-13402-6",book.toString());
     }
 
     @Test void get_isbn()

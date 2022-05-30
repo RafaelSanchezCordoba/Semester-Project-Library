@@ -98,8 +98,15 @@ public class AddRemoveLibraryUserViewModel implements PropertyChangeListener {
 
         if(!errorCheck())
         {
-            model.addLibraryUser(new LibraryUser(ssnTextField.get(),firstNameTextField.get(),lastNameTextField.get(),
-                passwordTextField.get()));
+            try
+            {
+                model.addLibraryUser(new LibraryUser(ssnTextField.get(),firstNameTextField.get(),lastNameTextField.get(),
+                    passwordTextField.get()));
+            }
+            catch (RemoteException e)
+            {
+                e.printStackTrace();
+            }
             clearErrorLabel();
         }
         reset();
