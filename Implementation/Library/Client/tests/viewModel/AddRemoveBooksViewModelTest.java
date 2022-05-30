@@ -157,7 +157,7 @@ public class AddRemoveBooksViewModelTest
     viewModel.addGenreToSelectedGenreList(new Genre("Fantasy"));
     viewModel.addBook(new Book(author.get(), title.get(),publisher.get(),isbn.get(),Integer.parseInt(
     edition.get()),Integer.parseInt(year.get()),viewModel.getGenreList()));
-    assertEquals("[Daugther of Smoke and Bone, Author: Laini Taylor, Edition: 1, year published: 2011, ISBN: 9780316134026]",bookList.get().toString());
+    assertEquals("[Title=Daugther of Smoke and Bone, author=Laini Taylor, edition=1, year published=2011, isbn=9780316134026]",bookList.get().toString());
   }
 
  @Test void add_adds_the_book_with_more_genres()
@@ -174,7 +174,7 @@ public class AddRemoveBooksViewModelTest
   viewModel.addGenreToSelectedGenreList(new Genre("Juvenile"));
   viewModel.addBook(new Book(author.get(), title.get(),publisher.get(),isbn.get(),Integer.parseInt(
       edition.get()),Integer.parseInt(year.get()),viewModel.getGenreList()));
-  assertEquals("[Daugther of Smoke and Bone, Author: Laini Taylor, Edition: 1, year published: 2011, ISBN: 9780316134026]",bookList.get().toString());
+  assertEquals("[Title=Daugther of Smoke and Bone, author=Laini Taylor, edition=1, year published=2011, isbn=9780316134026]",bookList.get().toString());
 }
 
 @Test void add_two_books() throws SQLException, RemoteException
@@ -199,7 +199,7 @@ public class AddRemoveBooksViewModelTest
   viewModel.addGenreToSelectedGenreList(new Genre("Fantasy"));
    viewModel.addBook(new Book(author.get(), title.get(),publisher.get(),isbn.get(),Integer.parseInt(
       edition.get()),Integer.parseInt(year.get()),viewModel.getGenreList()));
-  assertEquals("[Daugther of Smoke and Bone, Author: Laini Taylor, Edition: 1, year published: 2011, ISBN: 9780316134026, Harry Potter and the Philosopher's Stone, Author: J.K Rowling, Edition: 1, year published: 1997, ISBN: 123456]",bookList.get().toString());
+  assertEquals("[Title=Daugther of Smoke and Bone, author=Laini Taylor, edition=1, year published=2011, isbn=9780316134026, Title=Harry Potter and the Philosopher's Stone, author=J.K Rowling, edition=1, year published=1997, isbn=123456]",bookList.get().toString());
 }
 
 @Test void add_multiple_books() throws SQLException, RemoteException
@@ -233,7 +233,7 @@ public class AddRemoveBooksViewModelTest
   viewModel.addGenreToSelectedGenreList(new Genre("Drama"));
   viewModel.addBook(new Book(author.get(), title.get(),publisher.get(),isbn.get(),Integer.parseInt(
       edition.get()),Integer.parseInt(year.get()),viewModel.getGenreList()));
-  assertEquals("[Daugther of Smoke and Bone, Author: Laini Taylor, Edition: 1, year published: 2011, ISBN: 9780316134026, Harry Potter and the Philosopher's Stone, Author: J.K Rowling, Edition: 1, year published: 1997, ISBN: 123456, The Outsiders, Author: Robert Hunt, Edition: 2, year published: 1967, ISBN: 34567890]",bookList.get().toString());
+  assertEquals("[Title=Daugther of Smoke and Bone, author=Laini Taylor, edition=1, year published=2011, isbn=9780316134026, Title=Harry Potter and the Philosopher's Stone, author=J.K Rowling, edition=1, year published=1997, isbn=123456, Title=The Outsiders, author=Robert Hunt, edition=2, year published=1967, isbn=34567890]",bookList.get().toString());
 }
 
 //remove can't be tested from the view model because is done with the id from the database
@@ -355,7 +355,7 @@ public class AddRemoveBooksViewModelTest
     viewModel.addBook(new Book(author.get(), title.get(),publisher.get(),isbn.get(),Integer.parseInt(
         edition.get()),Integer.parseInt(year.get()),viewModel.getGenreList()));
     assertEquals("There is already a book with that isbn in the system",error.get());
-    assertEquals("[Daugther of Smoke and Bone, Author: Laini Taylor, Edition: 1, year published: 2011, ISBN: 9780316134026]",bookList.getValue().toString());
+    assertEquals("[Title=Daugther of Smoke and Bone, author=Laini Taylor, edition=1, year published=2011, isbn=9780316134026]",bookList.getValue().toString());
   }
 
   @Test void correctly_adding_clear_error() throws RemoteException
