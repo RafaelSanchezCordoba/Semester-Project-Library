@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * MultimediaItem class that implements <code>Serializable</code>.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 08/04/22.
  */
 public class MultimediaItem implements Serializable {

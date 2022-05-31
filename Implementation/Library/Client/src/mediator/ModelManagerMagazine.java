@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  * The model manager for magazine.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 09/04/22
  */
 

@@ -11,6 +11,9 @@ import java.rmi.registry.Registry;
 import java.sql.SQLException;
 
 public class Server {
+  /**
+   * Main method that run the server
+   */
   public static void main(String[] args) throws RemoteException, AlreadyBoundException, SQLException {
 
     Registry registry= LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
@@ -21,18 +24,12 @@ public class Server {
     LoanMagazineDAOImplementation loanMagazineDAO = LoanMagazineDAOImplementation.getInstance();
     LoanBookDAOImplementation loanBookDAO= LoanBookDAOImplementation.getInstance();
 
-
     AdapterBookDAO adapterBookDAO = new AdapterBookDAO(bookDAO);
     AdapterMagazineDAO adapterMagazineDAO = new AdapterMagazineDAO(magazineDAO);
     AdapterLibrarianDAO adapterLibrarianDAO = new AdapterLibrarianDAO(librarianDAO);
     AdapterLibraryUserDAO adapterLibraryUserDAO = new AdapterLibraryUserDAO(userDAOImplementation);
     AdapterLoanMagazineDAO adapterLoanMagazineDAO = new AdapterLoanMagazineDAO(loanMagazineDAO);
     AdapterLoanBookDAO adapterLoanBookDAO=new AdapterLoanBookDAO(loanBookDAO);
-
-
-    //    MagazineStorage magazineStorage = MagazineStorageTest.getInstance();
-//    BookStorage bookStorage = BookStorageTest.getInstance();
-
 
     RemoteBook book = new Communicator(adapterMagazineDAO,adapterBookDAO, adapterLibrarianDAO,adapterLibraryUserDAO,adapterLoanMagazineDAO,adapterLoanBookDAO);
     RemoteMagazine magazine=new Communicator(adapterMagazineDAO, adapterBookDAO, adapterLibrarianDAO,adapterLibraryUserDAO,adapterLoanMagazineDAO,adapterLoanBookDAO);
@@ -50,9 +47,6 @@ public class Server {
     registry.bind("loanBook",loanBook);
 
 
-
     System.out.println("server.Server running on " + Registry.REGISTRY_PORT);
-
   }
-
 }

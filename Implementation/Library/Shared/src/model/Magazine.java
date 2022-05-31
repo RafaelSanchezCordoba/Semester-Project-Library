@@ -5,7 +5,7 @@ import java.sql.Date;
 
 /**
  * Sub-class Magazine that extends <code>"MultimediaItem"</code>  and implements <code>Serializable</code>.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 08/04/22.
  */
 public class Magazine extends MultimediaItem implements Serializable {

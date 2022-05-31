@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  * The Adapter for librarian.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.2 09/05/22
  */
 public class AdapterLibrarianDAO implements LibrarianStorage {

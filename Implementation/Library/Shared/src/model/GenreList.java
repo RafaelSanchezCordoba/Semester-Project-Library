@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * The class create a genre list.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 08/04/22.
  */
 public class GenreList implements Serializable

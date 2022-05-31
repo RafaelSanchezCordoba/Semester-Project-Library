@@ -4,7 +4,7 @@ import java.beans.PropertyChangeListener;
 
 /**
  * The property change subject interface.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 09/04/22
  */
 public interface PropertyChangeSubject {

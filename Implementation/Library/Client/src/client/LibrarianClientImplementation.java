@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  * The client implementation for Librarian that extends <code>UnicastRemoteObject</code> and implements <code>LibrarianCLient</code>.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.2 09/05/22.
  */
 public class LibrarianClientImplementation extends UnicastRemoteObject implements LibrarianClient{

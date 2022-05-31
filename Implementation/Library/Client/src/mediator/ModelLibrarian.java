@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * The model interface for librarian.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 09/05/22
  */
 public interface ModelLibrarian extends PropertyChangeSubject {

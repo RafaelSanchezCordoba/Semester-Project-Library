@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  * Sub-class Book that extends <code>"MultimediaItem"</code>  and implements <code>Serializable</code>.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 - 08/04/22.
  */
 public class Book extends MultimediaItem implements Serializable {

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"client"},{"l":"mediator"},{"l":"model"},{"l":"persistance.adapters"},{"l":"persistance.DAO"},{"l":"persistance.DAO_implementation"},{"l":"server"},{"l":"server.storage"},{"l":"storage"},{"l":"storageTest"},{"l":"view"},{"l":"viewModel"}];updateSearchResults();

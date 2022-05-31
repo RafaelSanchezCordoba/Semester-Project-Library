@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * The model interface for magazine.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 09/04/22
  */
 public interface ModelMagazine extends PropertyChangeSubject{
