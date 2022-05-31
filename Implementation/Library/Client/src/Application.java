@@ -7,6 +7,11 @@ import viewModel.ViewModelFactory;
 import java.rmi.registry.Registry;
 
 public class Application extends javafx.application.Application {
+    /**
+     * Start method that set the clients, models and the views
+     * @param primaryStage
+     * The primary stage
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         BookClient bookClient = new BookClientImplementation("localhost", Registry.REGISTRY_PORT);
@@ -27,7 +32,10 @@ public class Application extends javafx.application.Application {
         ViewHandler viewHandler = new ViewHandler(viewModelFactory);
         viewHandler.start(primaryStage);
     }
-    
+
+    /**
+     * Main method that lunch the application
+     */
     public static void main(String[] args) {
         Application.launch();
     }
