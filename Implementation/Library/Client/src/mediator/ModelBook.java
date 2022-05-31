@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * The model interface for book.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 09/04/22.
  */
 public interface ModelBook extends PropertyChangeSubject{

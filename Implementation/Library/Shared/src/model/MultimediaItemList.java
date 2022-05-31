@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * The multimedia item class.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 08/04/22.
  */
 public class MultimediaItemList {

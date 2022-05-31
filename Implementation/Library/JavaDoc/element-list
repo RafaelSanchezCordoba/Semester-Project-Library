@@ -1,0 +1,13 @@
+unnamed package
+client
+mediator
+model
+persistance.adapters
+persistance.DAO
+persistance.DAO_implementation
+server
+server.storage
+storage
+storageTest
+view
+viewModel

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Genre class that create a genre object.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 08/04/22.
  */
 public class Genre implements Serializable

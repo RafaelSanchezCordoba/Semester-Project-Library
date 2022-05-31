@@ -6,7 +6,7 @@ import java.sql.Date;
 
 /**
  * The librarian class.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 08/04/22.
  */
 public class Librarian  implements Serializable

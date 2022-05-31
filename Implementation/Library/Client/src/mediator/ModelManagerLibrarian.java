@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  * The model manager for Librarian.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.2 09/05/22
  */
 

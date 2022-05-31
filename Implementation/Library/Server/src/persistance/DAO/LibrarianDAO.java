@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * The LibrarianDAO interface.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.2 09/05/22
  */
 public interface LibrarianDAO {

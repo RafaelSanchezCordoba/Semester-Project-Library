@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * A class that can return the current date and time formatted in various standard formats.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.0 - 08/04/22.
  */
 public class CurrentTime implements Serializable

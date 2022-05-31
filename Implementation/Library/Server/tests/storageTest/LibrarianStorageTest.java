@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * The Librarian storage test implemented as a singleton.
- * @author Rafael Sánchez Córdoba.
+ * @author Rafael Sanchez Cordoba.
  * @version 1.2 09/05/22
  */
 public class LibrarianStorageTest implements LibrarianStorage {
