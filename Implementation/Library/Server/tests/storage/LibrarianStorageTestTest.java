@@ -63,6 +63,7 @@ public class LibrarianStorageTestTest
   public void removeOne() throws RemoteException
   {
     storage.addLibrarian(librarian);
+    expected++;
     storage.addLibrarian(librarian2);
     expected++;
     storage.removeLibrarian(librarian.getSsn());
@@ -95,7 +96,7 @@ public class LibrarianStorageTestTest
     storage.addLibrarian(librarian2);
     expected++;
 
-    Assertions.assertTrue(expected!=storage.getLibrarianList().size());
+    Assertions.assertFalse(expected!=storage.getLibrarianList().size());
   }
 
   @Test

@@ -11,8 +11,7 @@ import java.sql.Date;
 public class MagazineStorageTestTest
 {
 
-
-  private static MagazineStorageTest storage = MagazineStorageTest.getInstance();
+ private static MagazineStorageTest storage = MagazineStorageTest.getInstance();
 
  private static   Magazine magazine;
  private static   Magazine magazine1;
@@ -35,11 +34,6 @@ public class MagazineStorageTestTest
     Assertions.assertEquals(exp,storage.getMagazineList().size());
   }
 
-  @Test
-  public void checkObject(){
-    storage.addMagazine(magazine);
-    Assertions.assertEquals(magazine,storage.getMagazineList().get(0));
-  }
   @Test
   public void addMultiple(){
     int exp = storage.getMagazineList().size();
@@ -83,5 +77,10 @@ public class MagazineStorageTestTest
 
     Assertions.assertEquals(exp,storage.getMagazineList().size());
 
+  }
+
+  @Test public void checkObject(){
+    storage.addMagazine(magazine);
+    Assertions.assertEquals(magazine,storage.getMagazineList().get(0));
   }
 }
